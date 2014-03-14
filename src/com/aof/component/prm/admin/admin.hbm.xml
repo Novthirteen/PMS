@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+<class name="com.aof.component.prm.admin.BookingRoomVO" table="bookingroom">
+	<id name="bookingId" column="booking_id">
+		<generator class="native"/>
+	</id>
+	<property name="room" column="booking_room" type="string"/>
+	<property name="bookingDate" column="booking_date"/>
+	<property name="startTime" column="start_time" type="string"/>
+	<property name="endTime" column="end_time" type="string"/>
+	<many-to-one name="person" class="com.aof.component.domain.party.UserLogin" column="booking_person"/>
+</class>
+</hibernate-mapping>

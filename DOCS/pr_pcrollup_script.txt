@@ -1,0 +1,119 @@
+----------------------------------------------------------------
+--@dec:pr_createtrigger
+--@author:xuxp
+--@create:2005/01/18
+----------------------------------------------------------------
+drop trigger pr_cre
+create trigger pr_cre on party_relationship
+AFTER INSERT AS
+
+declare @partyFromId as varchar(40)
+declare @partyToId   as varchar(40)
+declare @prTypeId    as varchar(40)
+declare @role as varchar(40)
+declare @type as varchar(40)
+set @role = 'ORGANIZATION_UNIT'
+set @type = 'PC_ROLLUP'
+
+select @partyFromId = party_from_id ,@partyToid = party_to_id, @prTypeId = relationship_type_id from inserted
+
+if(@prTypeId = 'LOCATION_ROLLUP' or @prTypeId = 'GROUP_ROLLUP')
+begin
+	declare @scount as int
+	select  @scount = count(*) from party_relationship  where party_from_id=@partyFromId and party_to_id = @partyToId and relationship_type_id = @type
+	if(@scount = 0) 
+	begin
+		insert into party_relationship ( party_from_id ,party_to_id,role_from_id,role_to_id,relationship_type_id,note)
+		values(@partyFromId,@partyToId,@role,@role,@type,'')
+		
+		exec pr_p_cre @partyToId,@partyFromId,@prTypeId
+	end
+end
+go
+
+----------------------------------------------------------------
+--@dec:pr_deletetrigger
+--@author:xuxp
+--@create:2005/01/18
+----------------------------------------------------------------
+drop trigger pr_del
+create trigger pr_del on party_relationship
+for delete as
+	declare @partyToId as varchar(50)
+	declare @prTypeId    as varchar(40)
+	declare @role as varchar(40)
+	declare @type as varchar(40)
+	set @role = 'ORGANIZATION_UNIT'
+	set @type = 'PC_ROLLUP'
+	
+	select @partyToid = party_to_id,@prTypeId=relationship_type_id from deleted
+	if(@prTypeId = 'LOCATION_ROLLUP' or @prTypeId = 'GROUP_ROLLUP')
+	begin
+		delete from party_relationship where party_to_id = @partyToId and relationship_type_id = @type
+	end
+go
+
+
+----------------------------------------------------
+-- help to insert the PC_ROLLUP for the parent node
+----------------------------------------------------
+drop procedure pr_p_cre
+CREATE PROCEDURE pr_p_cre 
+   @ptoid 	 varchar(40),
+   @pfromid 	 varchar(40),
+   @prtypeid	 varchar(40)
+AS 
+
+declare @parentid as varchar(40)
+declare @role as varchar(40)
+declare @type as varchar(40)
+
+set @role = 'ORGANIZATION_UNIT'
+set @type = 'PC_ROLLUP'
+
+DECLARE pcursor CURSOR LOCAL FOR 
+select distinct party_from_id from party_relationship where party_to_id = @pfromid and relationship_type_id = @prtypeid
+
+open pcursor
+FETCH NEXT FROM pcursor into @parentid
+WHILE (@@FETCH_STATUS = 0)
+BEGIN
+	insert into party_relationship (party_from_id,party_to_id,role_from_id,role_to_id,relationship_type_id,note)
+	values (@parentid,@ptoid,@role,@role,@type,'')
+	exec pr_p_cre @ptoid,@parentid,@prtypeid
+END
+CLOSE pcursor
+DEALLOCATE pcursor
+GO
+
+
+----------------------------------------------------
+-- help to delete the PC_ROLLUP for the parent node
+----------------------------------------------------
+drop procedure pr_p_del
+CREATE PROCEDURE pr_p_del 
+   @ptoid 	 varchar(40),
+   @pfromid 	 varchar(40),
+   @prtypeid	 varchar(40)
+AS 
+
+declare @parentid as varchar(40)
+declare @role as varchar(40)
+declare @type as varchar(40)
+
+set @role = 'ORGANIZATION_UNIT'
+set @type = 'PC_ROLLUP'
+
+DECLARE pcursor CURSOR LOCAL FOR 
+select distinct party_from_id from party_relationship where party_to_id = @pfromid and relationship_type_id = @prtypeid
+
+open pcursor
+FETCH NEXT FROM pcursor into @parentid
+WHILE (@@FETCH_STATUS = 0)
+BEGIN
+	delete from party_relationship where party_from_id = @parentid and party_to_id = @ptoid and relationship_type_id = @type
+	exec pr_p_del @ptoid,@parentid,@prtypeid
+END
+CLOSE pcursor
+DEALLOCATE pcursor
+GO

@@ -1,0 +1,583 @@
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<!-- Definitions for Tiles documentation   -->
+
+<tiles-definitions>
+
+  <!-- =======================================================  -->
+  <!-- AOF System Layout  definition  				-->
+  <!-- =======================================================  -->
+  <definition name="site.mainLayout.one" path="/layouts/aof_layout_one.jsp">
+	  <put name="title"	value="AO-SYSTEM" />
+	  <put name="AppBar"	value="/includes/layout_one/AppBar.jsp" />
+	  <put name="Body"		value="/includes/layout_one/Body.jsp" />
+	  <put name="Footer"	value="/includes/layout_one/Footer.jsp" />
+  </definition>
+
+  <definition name="site.mainDialog.one" path="/layouts/aof_dialog_one.jsp">
+  	  <put name="bgColor"	value="#ffffff" />
+	  <put name="Body"		value="/includes/layout_one/Dialog.jsp" />
+  </definition>
+
+  <!-- =======================================================  -->
+  <!-- Master definition  					-->
+  <!-- =======================================================  -->
+  <definition name="empty.index.page" extends="site.mainLayout.one" >
+	  <put name="title"  value="AO-SYSTEM" />
+	  <put name="Body"   value="/rolepage/home.jsp" />
+  </definition>
+  <definition name="FULLADMIN.index.page" extends="site.mainLayout.one" >
+	  <put name="title"  value="AO-SYSTEM" />
+	  <put name="Body"   value="/rolepage/admin/home.jsp" />
+  </definition> 
+  <definition name="InternalUser.index.page" extends="site.mainLayout.one" >
+	  <put name="title"  value="AO-SYSTEM" />
+	  <put name="Body"   value="/rolepage/staff/home.jsp" />
+  </definition>
+  <definition name="site.error.page" extends="site.mainLayout.one" >
+	  <put name="title"  value="AO-SYSTEM" />
+	  <put name="Body"   value="/WEB-INF/jsp/error.jsp" />
+  </definition>
+  <definition name="dialog.error.page" extends="site.mainDialog.one" >
+	  <put name="Body"   value="/WEB-INF/jsp/dialogError.jsp" />
+  </definition>
+    
+  <!-- =======================================================  -->
+  <!--				Admin Module definition  					-->
+  <!-- =======================================================  -->
+  <!-- =======================================================  -->
+  <!--				Admin Module definition  					-->
+  <!-- =======================================================  -->
+  <definition name="system.listSecurityPermission" extends="site.mainLayout.one">
+	  <put name="Body"   value="/security/listSecurityPermission.jsp" />
+  </definition>
+  <definition name="system.editSecurityPermission" extends="site.mainLayout.one">
+	  <put name="Body"   value="/security/editSecurityPermission.jsp" />
+  </definition>  
+    <definition name="system.listSecurityGroup" extends="site.mainLayout.one">
+	  <put name="Body"   value="/security/listSecurityGroup.jsp" />
+  </definition>
+  <definition name="system.editSecurityGroup" extends="site.mainLayout.one">
+	  <put name="Body"   value="/security/editSecurityGroup.jsp" />
+  </definition> 
+  <definition name="system.editUserLogin" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/party/editUserLogin.jsp" />
+  </definition>  
+  <definition name="system.listUserLogin" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/party/listUserLogin.jsp" />
+  </definition>
+  
+    <!-- =======================================================  -->
+  <!--				New Admin Module definition  					-->
+  <!-- =======================================================  -->
+  <definition name="system.editCustUserLogin" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/editCustUserLogin.jsp" />
+  </definition>  
+  <definition name="system.listCustUserLogin" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/listCustUserLogin.jsp" />
+  </definition>
+  <definition name="system.editCustParty" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/editCustParty.jsp" />
+  </definition>  
+  <definition name="system.listCustParty" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/listCustParty.jsp" />
+  </definition>
+  <definition name="system.editParty" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/party/editParty.jsp" />
+  </definition>  
+  <definition name="system.listParty" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/party/listParty.jsp" />
+  </definition>
+
+  <definition name="system.editSysParameter" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/param/editSysParameter.jsp" />
+  </definition>  
+  <definition name="system.listSysParameter" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/admin/param/listSysParameter.jsp" />
+  </definition>
+
+  <!-- =======================================================  -->
+  <!--				PRM Module definition  					-->
+  <!-- =======================================================  -->
+
+  <definition name="prm.listBidProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listBidProject.jsp" />
+  </definition>
+  <definition name="prm.editBidProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editBidProject.jsp" />
+  </definition>  
+  <definition name="prm.listContractProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listContractProject.jsp" />
+  </definition>
+  <definition name="prm.editContractProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editContractProject.jsp" />
+  </definition>  
+  <definition name="prm.listSupportProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listSupportProject.jsp" />
+  </definition>
+  <definition name="prm.editSupportProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editSupportProject.jsp" />
+  </definition>  
+  <definition name="prm.listInternalProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listInternalProject.jsp" />
+  </definition>
+  <definition name="prm.editInternalProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editInternalProject.jsp" />
+  </definition>  
+
+  <definition name="prm.listCustProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCustProject.jsp" />
+  </definition>
+
+  <definition name="prm.editCustProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCustProject.jsp" />
+  </definition>  
+  
+  <definition name="prm.editCustProjectType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCustProjectType.jsp" />
+  </definition>  
+  <definition name="prm.listCustProjectType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCustProjectType.jsp" />
+  </definition>
+
+  <definition name="prm.editCurrencyType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCurrencyType.jsp" />
+  </definition>  
+  <definition name="prm.listCurrencyType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCurrencyType.jsp" />
+  </definition>
+  
+  <definition name="prm.listCostCenter" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCostCenter.jsp" />
+  </definition>
+  <definition name="prm.editCostCenter" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCostCenter.jsp" />
+  </definition> 
+   
+  <definition name="prm.editExpenseType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editExpenseType.jsp" />
+  </definition>  
+  <definition name="prm.listExpenseType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listExpenseType.jsp" />
+  </definition>
+  
+  <definition name="prm.editCustProjectEvent" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCustProjectEvent.jsp" />
+  </definition>  
+  <definition name="prm.listCustProjectEvent" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCustProjectEvent.jsp" />
+  </definition>
+ 
+  <definition name="prm.editCustProjectEventType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editCustProjectEventType.jsp" />
+  </definition> 
+   
+  <definition name="prm.listCustProjectEventType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listCustProjectEventType.jsp" />
+  </definition>
+  
+  <definition name="prm.editConsultantCost" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editConsultantCost.jsp" />
+  </definition>
+
+  <definition name="prm.findPRMPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/findPRMPage.jsp" />
+  </definition>
+
+  <definition name="prm.listTimeSheet" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/listTimeSheet.jsp" />
+  </definition>
+  <definition name="prm.editTimeSheet" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/editTimeSheet.jsp" />
+  </definition>
+   <definition name="prm.selMember" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/selMember.jsp" />
+  </definition>
+  
+  <definition name="prm.editFisCalender" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editFisCalender.jsp" />
+  </definition>
+  
+  <definition name="prm.listFisCalender" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/listFisCalender.jsp" />
+  </definition>
+
+  <definition name="prm.assignProject" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/assignProject.jsp" />
+  </definition>
+
+	<!-- Down was added by Jeffrey 20041210 -->   
+  <definition name="prm.listTSForecast" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/listTSForecast.jsp" />
+  </definition>
+  <definition name="prm.editTSForecast" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/editTSForecast.jsp" />
+  </definition>
+  <definition name="prm.findPrjFCPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/findPrjFCPage.jsp" />
+  </definition>
+  <definition name="prm.editPrjCTC" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editPrjCTC.jsp" />
+  </definition>
+  
+  <definition name="prm.findProjAccpPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/findProjAccpPage.jsp" />
+  </definition>
+  <definition name="prm.editProjAccp" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editProjAccp.jsp" />
+  </definition>
+  
+  <definition name="prm.editPrjPTC" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/project/editPrjPTC.jsp" />
+  </definition>
+  <definition name="prm.findExpSelfPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/findExpSelfPage.jsp" />
+  </definition>
+  <definition name="prm.findExpToApprovalPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/findExpToApprovalPage.jsp" />
+  </definition>
+  <definition name="prm.editExpense" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/editExpense.jsp" />
+  </definition>
+  <definition name="prm.findExpToVerifyPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/findExpToVerifyPage.jsp" />
+  </definition>
+  <definition name="prm.approveExpense" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/approveExpense.jsp" />
+  </definition>
+  <definition name="prm.findExpToClaimPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/findExpToClaimPage.jsp" />
+  </definition>
+  <definition name="prm.verifyExpense" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/verifyExpense.jsp" />
+  </definition>
+  <definition name="prm.claimExpense" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/claimExpense.jsp" />
+  </definition>
+
+	<!-- Up was added by Jeffrey 20041210 --> 
+	
+   <!-- Down was added by LYY 20041126 -->
+  
+  <definition name="prm.listTSCAFUpdate" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/listTSCAFUpdate.jsp" />
+  </definition>
+  <definition name="prm.listTSApproval" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/listTSApproval.jsp" />
+  </definition>
+  <definition name="prm.editTSApproval" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/editTSApproval.jsp" />
+  </definition>
+  <definition name="prm.editTSCAFUpdate" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/timesheet/editTSCAFUpdate.jsp" />
+  </definition>
+  <definition name="prm.projectCostMaintain" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/projectCostMaintain.jsp" />
+  </definition>
+  <definition name="prm.FindCostSelfPage" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/prm/expense/findCostSelfPage.jsp" />
+  </definition>    
+    
+  <!-- Up was added by LYY 20041126 -->
+  
+  <definition name="prm.listProjCalendarType" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/master/listProjCalendarTypePage.jsp" />
+  </definition>  
+  
+  <definition name="prm.editProjCalendarType" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/master/editProjCalendarTypePage.jsp" />
+  </definition> 
+  
+  <definition name="prm.editProjCalendar" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/master/editProjCalendarPage.jsp" />
+  </definition> 
+  
+  <definition name="prm.FindBillingInstruction" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findBillingInstructionPage.jsp" />
+  </definition>
+  
+  <definition name="prm.EditBillingInstruction" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/editBillingInstructionPage.jsp" />
+  </definition>
+
+ <definition name="prm.findBillPendingList" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findBillPendingList.jsp" />
+  </definition> 
+
+  <definition name="findExpense" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findExpense.jsp" />
+  </definition>
+  <definition name="findCAF" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findCAF.jsp" />
+  </definition>
+  <definition name="findAlownce" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findAlownce.jsp" />
+  </definition>
+  <definition name="findAccp" extends="site.mainLayout.one">
+	  <put name="Body" value="/WEB-INF/jsp/prm/bill/findAccp.jsp" />
+  </definition>
+  
+  <!-- =======================================================  -->
+  <!--				PAS Report Module definition  				-->
+  <!-- =======================================================  -->
+  <definition name="prm.report.CostByPMRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/CostByPMRpt.jsp"/>
+  </definition>
+
+  <definition name="prm.report.ExpenseAnalysisRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ExpenseAnalysisRpt.jsp"/>
+  </definition>
+  
+  <!-- down was added by angus 2005-2-22 -->
+  <definition name="prm.report.TSStatusSummaryRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/TSStatusSummaryRpt.jsp"/>
+  </definition>
+  <definition name="prm.report.ProjectOverBudgetRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ProjectOverBudgetRpt.jsp"/>
+  </definition>
+  <!-- up was added by angus 2005-2-22 -->
+
+  <definition name="prm.report.ProjectActualRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ProjectActualRpt.jsp"/>
+  </definition>
+
+  <definition name="prm.report.ForecastVarianceRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ForecastVarianceRpt.jsp"/>
+  </definition>
+
+  <definition name="prm.report.ProjectStatusRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ProjectStatusRpt.jsp"/>
+  </definition>
+  
+  <!-- Down was added by Jackey Ding 2005-02-06 -->
+  <definition name="prm.report.ProjectCostRpt" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/prm/report/ProjectCostRpt.jsp"/>
+  </definition>
+  <!-- Up was added by Jackey Ding 2005-02-06 -->
+
+  <!-- =======================================================  -->
+  <!--				Helpdesk Module definition  				-->
+  <!-- =======================================================  -->
+
+  <!-- =======================================================  -->
+  <!--              Action Type definition                      -->
+  <!-- =======================================================  -->
+  <definition name="helpdesk.listActionType" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/helpdesk/callAction/listActionType.jsp"/>
+  </definition>
+  <definition name="helpdesk.newActionType" extends="site.mainDialog.one">
+      <put name="Body" value="/WEB-INF/jsp/helpdesk/callAction/newActionType.jsp"/>
+  </definition> 
+  <definition name="helpdesk.editActionType" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editActionType.jsp" />
+  </definition>	
+ 
+  <!-- =======================================================  -->
+  <!--              Request Type definition                     -->
+  <!-- =======================================================  -->
+  <definition name="helpdesk.listRequestType" extends="site.mainLayout.one">
+      <put name="Body" value="/WEB-INF/jsp/helpdesk/call/listRequestType.jsp"/>
+  </definition>
+  <definition name="helpdesk.newRequestType" extends="site.mainDialog.one">
+      <put name="Body" value="/WEB-INF/jsp/helpdesk/call/newRequestType.jsp"/>
+  </definition> 
+  <definition name="helpdesk.editRequestType" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editRequestType.jsp" />
+  </definition>	
+
+  <!-- =======================================================  -->
+  <!--			Service Level Agreement definition 				-->
+  <!-- =======================================================  -->
+
+  <definition name="helpdesk.viewSLAMaster" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/viewSlaMaster.jsp" />
+  </definition>	
+  <definition name="helpdesk.listSLAMaster" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/listSlaMaster.jsp" />
+  </definition>	  
+  <definition name="helpdesk.newSLAMaster" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/newSlaMaster.jsp" />
+  </definition>	
+  <definition name="helpdesk.editSLAMaster" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/editSlaMaster.jsp" />
+  </definition>	
+  <definition name="helpdesk.newSLACategory" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/newSlaCategory.jsp" />
+  </definition>	
+  <definition name="helpdesk.editSLACategory" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/editSlaCategory.jsp" />
+  </definition>	
+  <definition name="helpdesk.showSLACategoryTree" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/dialogSlaCategory.jsp" />
+  </definition>	
+  <definition name="helpdesk.newSLAPriority" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/newSlaPriority.jsp" />
+  </definition>	
+  <definition name="helpdesk.editSLAPriority" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/editSlaPriority.jsp" />
+  </definition>	
+  <definition name="helpdesk.showSLAPriorityList" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/SLA/dialogSlaPriority.jsp" />
+  </definition>	
+
+  <!-- =======================================================  -->
+  <!--				     Knowledge Base         				-->
+  <!-- =======================================================  -->
+  <definition name="helpdesk.listKnowledgeBase" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/KB/listKnowledgeBase.jsp"  />
+  </definition>
+  <definition name="helpdesk.viewKnowledgeBase" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/KB/viewKnowledgeBase.jsp" />
+  </definition>
+  <definition name="helpdesk.newKnowledgeBase" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/KB/newKnowledgeBase.jsp" />
+  </definition>	
+  <definition name="helpdesk.editKnowledgeBase" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/KB/editKnowledgeBase.jsp" />
+  </definition>	
+
+  <definition name="helpdesk.upload" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/upload/upload.jsp" />
+  </definition>	
+  
+  <definition name="helpdesk.uploadExcel" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/upload/uploadExcel.jsp" />
+  </definition>	
+
+  <definition name="helpdesk.listAttach" extends="site.mainDialog.one">
+  	  <put name="bgColor" value="#deebeb" />
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/upload/listAttach.jsp" />
+  </definition>	
+
+  <definition name="helpdesk.confirmDelete" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/confirmDeleteDialog.jsp" />
+  </definition>	
+  
+  <definition name="helpdesk.insertCall" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=insert&amp;action=helpdesk.insertCall.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateCall" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=update&amp;action=helpdesk.updateCall.do"  />
+  </definition>
+  
+  <definition name="helpdesk.insertChangeRequest" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=insert&amp;action=helpdesk.insertChangeRequest.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateChangeRequest" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=update&amp;action=helpdesk.updateChangeRequest.do"  />
+  </definition>
+
+  <definition name="helpdesk.insertComplain" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=insert&amp;action=helpdesk.insertComplain.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateComplain" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editCall.jsp?method=update&amp;action=helpdesk.updateComplain.do"  />
+  </definition>
+
+  <definition name="helpdesk.queryCall" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/callQuery.jsp"  />
+  </definition>
+  
+  <definition name="helpdesk.insertCallActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.insertCallActionTrack.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateCallActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.updateCallActionTrack.do"  />
+  </definition>
+	
+  <definition name="helpdesk.insertChangeRequestActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.insertChangeRequestActionTrack.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateChangeRequestActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.updateChangeRequestActionTrack.do"  />
+  </definition>
+
+  <definition name="helpdesk.insertComplainActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.insertComplainActionTrack.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateComplainActionTrack" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=helpdesk.updateComplainActionTrack.do"  />
+  </definition>
+
+  <definition name="helpdesk.listTable" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/listTable.jsp"  />
+  </definition>
+	
+  <definition name="helpdesk.viewTable" extends="site.mainDialog.one">
+  	  <put name="bgColor" value="#deebeb" />
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/viewTable.jsp"  />
+  </definition>
+	
+  <definition name="helpdesk.newTable" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/editTable.jsp?action=insert"  />
+  </definition>
+
+  <definition name="helpdesk.newRow" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/editRow.jsp?action=insert"  />
+  </definition>
+
+  <definition name="helpdesk.editRow" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/editRow.jsp?action=update"  />
+  </definition>
+
+  <definition name="helpdesk.listTableType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/listTableType.jsp"  />
+  </definition>
+
+  <definition name="helpdesk.updateTableType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/editTableType.jsp?action=helpdesk.updateTableType.do"  />
+  </definition>
+  
+  <definition name="helpdesk.insertTableType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/table/editTableType.jsp?action=helpdesk.insertTableType.do"  />
+  </definition>
+	
+  <definition name="helpdesk.listStatusType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/listStatus.jsp"  />
+  </definition>
+  
+  <definition name="helpdesk.insertStatusType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editStatusType.jsp?action=helpdesk.insertStatusType.do"  />
+  </definition>
+  
+  <definition name="helpdesk.updateStatusType" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/call/editStatusType.jsp?action=helpdesk.updateStatusType.do"  />
+  </definition>
+  
+  <definition name="helpdesk.listPartyResponsibilityUser" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/party/listPartyResponsibilityUser.jsp"/>
+  </definition>
+
+  <definition name="helpdesk.newPartyResponsibilityUser" extends="site.mainDialog.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/party/newPartyResponsibilityUser.jsp"/>
+  </definition>
+
+  <definition name="helpdesk.listCustomer" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/helpdesk/party/listCustomer.jsp"/>
+  </definition>
+
+  <!-- =======================================================  -->
+  <!--				     CRM			         				-->
+  <!-- =======================================================  -->
+  <definition name="crm.listIndustry" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/listIndustry.jsp" />
+  </definition>
+  <definition name="crm.editIndustry" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/editIndustry.jsp" />
+  </definition>
+  <definition name="crm.listCustomerAccount" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/listCustomerAccount.jsp" />
+  </definition>
+  <definition name="crm.editCustomerAccount" extends="site.mainLayout.one">
+	  <put name="Body"   value="/WEB-INF/jsp/crm/customer/editCustomerAccount.jsp" />
+  </definition> 
+
+</tiles-definitions>

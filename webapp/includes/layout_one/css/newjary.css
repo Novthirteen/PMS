@@ -1,0 +1,54 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: #f0e6d0; FONT-SIZE: 9pt; SCROLLBAR-HIGHLIGHT-COLOR: #f0e6d0; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #f6f9f0; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #f6f9f0; FONT-FAMILY: "Tahoma", "宋体"; SCROLLBAR-DARKSHADOW-COLOR: #f6f9f0
+}
+TABLE {
+	FONT-SIZE: 12px; COLOR: #3c2607; LINE-HEIGHT: 18px; TEXT-DECORATION: none
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #fca806; TEXT-DECORATION: underline
+}
+A:active {
+	FONT-SIZE: 12px; COLOR: #cccc00; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #665531; TEXT-DECORATION: none
+}
+SELECT {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+INPUT {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+TEXTAREA {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+TT {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+PRE {
+	FONT-SIZE: 12px; FONT-FAMILY: "Courier New", "Courier", "mono"
+}
+.time {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+.pagenum {
+	FONT-SIZE: 12px; FONT-FAMILY: "Georgia", "Times New Roman", "Times", "serif"
+}
+TD {
+	FONT-SIZE: 12px; FONT-FAMILY: "Tahoma", "宋体"
+}
+.bigtitle {
+	FONT-SIZE: 14px; FONT-FAMILY: "Tahoma", "宋体"
+}
+.indexbuttom {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 12px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #cccccc; PADDING-BOTTOM: 1px; BORDER-TOP-COLOR: #cccccc; PADDING-TOP: 1px; HEIGHT: 18px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #cccccc
+}
+A.xykcss1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; FONT-FAMILY: "Tahoma", "宋体"
+}

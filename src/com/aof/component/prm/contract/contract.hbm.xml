@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+<class name="com.aof.component.prm.contract.BaseContract" table="Contract_profile">
+	<id name="id" column="cp_id" type="long">
+		<generator class="native"/>
+	</id>
+	<discriminator column="cp_type" type="string"/>
+	<property name="no" column="cp_no" type="string"/>
+	<property name="description" column="cp_description" type="string"/>
+	<many-to-one class="com.aof.component.domain.party.Party" column="cp_department" name="department"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="cp_proj_manager" name="projectManager"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="cp_account_manager" name="accountManager"/>
+	<property name="totalContractValue" column="cp_total_contract_value" type="double"/>
+	<property name="contractType" column="cp_contract_type" type="string"/>
+	<property name="needCAF" column="cp_need_caf" type="string"/>
+	<property name="startDate" column="cp_start_date" type="date"/>
+	<property name="endDate" column="cp_end_date" type="date"/>
+	<property name="custPaidAllowance" column="cp_allowance" type="float"/>
+	<property name="signedDate" column="cp_signed_date" type="date"/>
+	<property name="createDate" column="cp_create_date" type="date"/>
+	<property name="legalReviewDate" column="cp_legal_review_date" type="date"/>
+	<property name="customerSat" column="cust_sat" type="string"/>
+	<property name="comments" column="comments" type="string"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="cp_create_user" name="createUser"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="SalesPerson1" name="SalesPerson1"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="SalesPerson2" name="SalesPerson2"/>
+	<set name="projects" lazy="true">
+		<key column="Proj_contract_Id"/>
+		<one-to-many class="com.aof.component.prm.project.ProjectMaster"/>
+	</set>
+	<many-to-one class="com.aof.component.prm.bid.BidMaster" column="cp_bid_id" name="bidMaster"/>
+	<property name="status" column="cp_status" type="string"/>
+	<many-to-one class="com.aof.component.prm.project.CurrencyType" column="cp_currency" name="currency"/>
+	<property name="exchangeRate" column="cp_exchange_rate" type="float"/>
+	<subclass name="com.aof.component.prm.contract.ContractProfile" discriminator-value="C">
+		<many-to-one class="com.aof.component.crm.customer.CustomerProfile" column="cp_party_id" name="customer"/>
+	</subclass>
+	<subclass name="com.aof.component.prm.contract.POProfile" discriminator-value="P">
+		<many-to-one class="com.aof.component.crm.vendor.VendorProfile" column="cp_party_id" name="vendor"/>
+		<many-to-one class="com.aof.component.prm.contract.ContractProfile" column="cp_link_profile" name="linkProfile"/>
+	</subclass>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+1. Change Table proj_mstr:
+	A. Add field Proj_CAF_Flag to store if need CAF
+	B. Add field parent_proj_id to store parent project id
+	C. Add filed proj_linknote to store the project relationship
+2. Change Table proj_cost_mstr:
+	A. Add field payfor to store which company will be paid.
+3. Change Table Customer_Account:
+	A. Add field Acc_Abbr to store abbreviation
+	B. Add field Acc_Type to store if the group is local
+4. Change Table Proj_exp_mstr:
+	A. Add field em_ClaimExportDate to store if the data is exported to sun system
+	B. Add field em_VerifyExportDate to store if the data is exported for claim summary report
+	C. Add field em_Cmts_User
+	D. Add field em_Cmts_PA
+	E. Add field em_Cmts_PM
+	F. Add field em_Cmts_FA
+5. Change Table SLA_Category:
+	A. Add field SLC_FullPath to store the full path
+6. Change Table Industry:
+	A. Add field Ind_Parent_Desc to store the standard Industry definition
+	

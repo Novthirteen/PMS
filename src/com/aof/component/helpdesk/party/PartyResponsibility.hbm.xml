@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<class name="com.aof.component.helpdesk.party.PartyResponsibilityType" table="Party_Responsibility_Type">
+		<id name="typeId" column="TypeId" type="string">
+			<generator class="native"/>
+		</id>
+		<property name="description" column="Description" type="string"/>
+	</class>
+	<class name="com.aof.component.helpdesk.party.PartyResponsibilityUser" table="Party_Responsibility_User">
+		<id name="id" column="Id" type="integer">
+			<generator class="native"/>
+		</id>
+		<many-to-one name="party" column="Party_Id" class="com.aof.component.domain.party.Party"/>
+		<many-to-one name="user" column="User_Login_Id" class="com.aof.component.domain.party.UserLogin"/>
+		<many-to-one name="type" column="TypeId" class="com.aof.component.helpdesk.party.PartyResponsibilityType"/>
+	</class>
+</hibernate-mapping>

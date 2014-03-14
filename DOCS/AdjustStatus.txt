@@ -1,0 +1,47 @@
+ update proj_receipt_mstr
+ set receipt_status = 'Completed'
+ where  abs(receipt_amt -
+     		(	
+		select sum(pr.receive_amount) 
+	        from proj_receipt_mstr as m inner join proj_receipt as pr
+	        on pr.receipt_no = m.receipt_no 
+		where m.receipt_no = proj_receipt_mstr.receipt_no
+	        group by m.receipt_no,m.receipt_amt                 
+      		)
+	   )<1 and receipt_status <> 'Completed'
+
+ update proj_invoice
+ set inv_status = 'Completed'
+ where  abs(inv_amount -
+     		(	
+		select sum(pr.receive_amount) 
+	        from proj_invoice as m inner join proj_receipt as pr
+	        on m.inv_id = pr.invoice_id 
+		where m.inv_id = proj_invoice.inv_id
+	        group by m.inv_id,m.inv_amount                 
+      		)
+	   )<1 and inv_status <> 'Completed'
+
+ update proj_payment_mstr
+ set pay_status = 'Completed'
+ where  abs(pay_amount -
+     		(	
+		select sum(pcm.totalvalue) 
+	        from proj_payment_mstr as m inner join proj_cost_mstr as pcm
+	        on m.pay_code = pcm.pay_id 
+		where m.pay_code = proj_payment_mstr.pay_code 
+	        group by m.pay_code,m.pay_amount                 
+      		)
+	   )<1 and pay_status <> 'Completed'
+
+ update proj_payment
+ set pay_status = 'Completed'
+ where  abs(pay_calamount -
+     		(	
+		select sum(pcm.totalvalue) 
+	        from proj_payment as m inner join proj_cost_mstr as pcm
+	        on m.pay_code = pcm.refno 
+		where m.pay_code = proj_payment.pay_code 
+	        group by m.pay_code,m.pay_calamount                 
+      		)
+	   )<1 and pay_status <> 'Completed'

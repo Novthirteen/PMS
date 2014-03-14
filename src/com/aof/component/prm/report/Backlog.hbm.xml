@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping >
+<class name="com.aof.component.prm.report.BackLog" table="BackLog">
+<id name="bl_id" column="bl_id">
+		<generator class="native"/>
+</id>
+        
+	    <property name="bl_year" column="bl_year" />
+	    <property name="bl_month" column="bl_month" />	    
+	    <many-to-one name="project" column="project" class="com.aof.component.prm.project.ProjectMaster" />    
+		<property name="amount" column="amount" type="double"/>
+		<property name="status" column="status" />
+</class>
+
+
+<class name="com.aof.component.prm.report.BackLogMaster" table="BackLog_Mstr">
+	<id name="blm_id" column="blm_id">
+		<generator class="native"/>
+	</id>
+	    <many-to-one name="project" column="project" class="com.aof.component.prm.project.ProjectMaster" />    
+	    <property name="blm_year" column="blm_year" />
+		<property name="amount" column="amount" type="double"/>
+</class>
+</hibernate-mapping>

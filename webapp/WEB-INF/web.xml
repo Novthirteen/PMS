@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/j2ee/dtds/web-app_2_3.dtd">
+<web-app id="WebApp_ID">
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<!-- Action Servlet Configuration -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+
+		<!-- Specify servlet class to use:
+			- Struts1.0.x: ActionComponentServlet
+			- Struts1.1:   ActionServlet
+			- no Struts:   TilesServlet
+		-->
+
+		<!-- <servlet-class>org.apache.struts.tiles.ActionComponentServlet</servlet-class> -->
+
+		<!-- <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>  -->
+
+		<!-- <servlet-class>org.apache.struts.tiles.TilesServlet</servlet-class> -->
+		<servlet-class>
+			com.aof.webapp.servlet.ActionServlet
+		</servlet-class>
+
+		<!-- Tiles Servlet parameter 
+			Specify configuration file names. There can be several comma 
+			separated file names
+		-->
+		<init-param>
+			<param-name>definitions-config</param-name>
+			<param-value>/WEB-INF/tiles-defs.xml</param-value>
+		</init-param>
+
+		<!-- Tiles Servlet parameter 
+			Specify Tiles debug level.
+			O : no debug information
+			1 : debug information
+			2 : more debug information
+		-->
+		<init-param>
+			<param-name>definitions-debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+
+		<!-- Tiles Servlet parameter 
+			Specify Digester debug level. This value is passed to Digester
+			O : no debug information
+			1 : debug information
+			2 : more debug information
+		-->
+		<init-param>
+			<param-name>definitions-parser-details</param-name>
+			<param-value>0</param-value>
+		</init-param>
+
+		<!-- Tiles Servlet parameter 
+			Specify if xml parser should validate the Tiles configuration file.
+			true : validate. DTD should be specified in file header.
+			false : no validation
+		-->
+		<init-param>
+			<param-name>definitions-parser-validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!-- <init-param>
+			<param-name>application</param-name>
+			<param-value>com.aof.webapp.ApplicationResources</param-value>
+			</init-param>-->
+
+		<!-- Struts configuration, if Struts is used -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config-crm.xml,/WEB-INF/struts-config-admin.xml,/WEB-INF/struts-config-helpdesk.xml,/WEB-INF/struts-config-pas.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<!-- Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- The Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Struts Tag Library Descriptor -->
+
+	<!-- Application Tag Library Descriptor -->
+	<!-- <taglib>
+		<taglib-uri>/WEB-INF/app.tld</taglib-uri>
+		<taglib-location>/WEB-INF/app.tld</taglib-location>
+		</taglib>
+		<taglib>
+		<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+		<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>-->
+	<taglib>
+		<taglib-uri>/tags/struts-bean-el</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean-el.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/tags/struts-html-el</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html-el.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/tags/struts-logic-el</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic-el.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/tags/jstl-format</taglib-uri>
+		<taglib-location>/WEB-INF/fmt.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/tags/jstl-core</taglib-uri>
+		<taglib-location>/WEB-INF/c.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>
+			http://www.zknic.com/struts/page-taglib
+		</taglib-uri>
+		<taglib-location>/WEB-INF/page.tld</taglib-location>
+	</taglib>
+</web-app>
+

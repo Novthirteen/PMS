@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<class name="com.aof.component.helpdesk.servicelevel.SLAMaster" table="SLA_MSTR">
+		<id name="id" column="sla_id" type="integer">
+			<generator class="native"/>
+		</id>
+		<property name="desc" column="sla_desc" type="string"/>
+    	<many-to-one class="com.aof.component.domain.party.Party" column="sla_party" name="party"/>
+		<property name="active" column="sla_active" type="string"/>
+        <component name="modifyLog" class="com.aof.component.helpdesk.ModifyLog">
+        	<property name="createDate" column="sla_cdate" type="java.util.Date" />
+	        <property name="modifyDate" column="sla_mdate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="sla_cuser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="sla_muser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+		<set name="categorys" inverse="true" lazy="true" cascade="delete">
+			<key column="sla_id"/>
+			<one-to-many class="com.aof.component.helpdesk.servicelevel.SLACategory"/>
+		</set>
+	</class>
+	<class name="com.aof.component.helpdesk.servicelevel.SLACategory" table="SLA_Category">
+		<id name="id" column="slc_id" type="integer">
+			<generator class="native"/>
+		</id>
+		<many-to-one class="com.aof.component.helpdesk.servicelevel.SLAMaster" column="sla_id" name="master" not-null="true"/>
+		<property name="chsDesc" column="slc_cdesc" type="string"/>
+		<property name="engDesc" column="slc_edesc" type="string"/>
+        <component name="modifyLog" class="com.aof.component.helpdesk.ModifyLog">
+        	<property name="createDate" column="slc_cdate" type="java.util.Date" />
+	        <property name="modifyDate" column="slc_mdate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="slc_cuser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="slc_muser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+		<property name="parentId" column="slc_parent" type="integer"/>
+		<property name="fullPath" column="slc_fullpath" type="string"/>
+		<property name="fullengDesc" column="slc_fulledesc" type="string"/>
+		<property name="fullchsDesc" column="slc_fullcdesc" type="string"/>
+	    <set name="children" inverse="true" lazy="true" cascade="delete">
+	        <key column="slc_parent"/>
+	        <one-to-many class="com.aof.component.helpdesk.servicelevel.SLACategory"/>
+	    </set>
+		<set name="prioritys" inverse="true" lazy="true" cascade="delete">
+			<key column="slc_id"/>
+			<one-to-many class="com.aof.component.helpdesk.servicelevel.SLAPriority"/>
+		</set>
+	</class>
+	<class name="com.aof.component.helpdesk.servicelevel.SLAPriority" table="SLA_Priority">
+		<id name="id" column="slp_id" type="integer">
+			<generator class="native"/>
+		</id>
+		<many-to-one class="com.aof.component.helpdesk.servicelevel.SLACategory" column="slc_id" name="category" not-null="true"/>
+		<property name="chsDesc" column="slp_cdesc" type="string"/>
+		<property name="engDesc" column="slp_edesc" type="string"/>
+		<property name="responseTime" column="slp_restime" type="integer"/>
+		<property name="solveTime" column="slp_soltime" type="integer"/>
+		<property name="closeTime" column="slp_clstime" type="integer"/>
+		<property name="responseWarningTime" column="slp_wrestime" type="integer"/>
+		<property name="solveWarningTime" column="slp_wsoltime" type="integer"/>
+		<property name="closeWarningTime" column="slp_wclstime" type="integer"/>
+        <component name="modifyLog" class="com.aof.component.helpdesk.ModifyLog">
+        	<property name="createDate" column="slp_cdate" type="java.util.Date" />
+	        <property name="modifyDate" column="slp_mdate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="slp_cuser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="slp_muser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+	</class>
+</hibernate-mapping>

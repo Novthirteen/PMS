@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     If used with Struts1.1, you need to declare a Tiles plug-in.
+	 If used with Struts1.0.x, nothing special is required.
+-->
+
+
+<struts-config>
+	
+<!-- ========== Form Bean Definitions =================================== -->
+<form-beans>
+</form-beans>
+
+<!-- ========== Action Mapping Definitions ============================== -->
+<action-mappings>
+	<!-- =======================================================  -->
+	<!--				CRM Module Service						  -->
+	<!-- =======================================================  -->
+	<action    path="/editIndustry"
+	           type="com.aof.webapp.action.crm.customer.EditIndustryAction" scope="request">
+		<forward name="view" path="crm.editIndustry"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditIndustry.jsp"/>
+		<forward name="list" path="/listIndustry.do"/>        
+	</action>
+	<action    path="/listIndustry"
+	       type="com.aof.webapp.action.crm.customer.ListIndustryAction" >
+		<forward name="success" path="crm.listIndustry"/>
+	</action>
+	<action path="/editCustomerAccount" type="com.aof.webapp.action.crm.customer.EditCustomerAccountAction" scope="request">
+		<forward name="view" path="crm.editCustomerAccount"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditCustomerAccount.jsp"/>
+		<forward name="list" path="/listCustomerAccount.do"/>        
+	</action>
+
+	<action path="/editCustomerGroup" type="com.aof.webapp.action.crm.customer.EditCustomerGroupAction" scope="request">
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditCustomerGroup.jsp"/>
+	</action>
+
+	<action path="/listCustomerAccount"
+	       type="com.aof.webapp.action.crm.customer.ListCustomerAccountAction" >
+		<forward name="success" path="crm.listCustomerAccount"/>
+	</action>
+
+	<action 
+		path="/listCustParty"
+		type="com.aof.webapp.action.party.ListCustPartyAction" >
+		<forward name="success" path="system.listCustParty"/>
+	</action>
+	<action    path="/editCustParty"
+	           type="com.aof.webapp.action.party.EditCustPartyAction" scope="request" input="/WEB-INF/jsp/crm/customer/editCustParty.jsp">
+		<forward name="view" path="system.editCustParty"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditCustomer.jsp"/>
+		<forward name="list" path="system.listCustParty"/> 
+		<forward name="after_delete" path="/listCustParty.do"/>       
+	</action>
+
+	<action 
+		path="/listProspect"
+		type="com.aof.webapp.action.party.ListProspectAction" >
+		<forward name="success" path="system.listProspect"/>
+	</action>
+	<action    path="/verifyProspect"
+	           type="com.aof.webapp.action.party.VerifyProspectAction" scope="request" >
+		<forward name="view" path="system.verifyProspect"/>
+		<forward name="list" path="system.listProspect"/> 
+	</action>
+
+	<action    path="/editProspect"
+	           type="com.aof.webapp.action.party.EditProspectAction" scope="request" input="/WEB-INF/jsp/crm/customer/editProspect.jsp">
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditProspect.jsp"/>
+	</action>
+	<action    path="/listCustUserLogin"
+	       type="com.aof.webapp.action.party.ListCustUserLoginAction" >
+		<forward name="success" path="system.listCustUserLogin"/>
+	</action>
+	<action    path="/editCustUserLogin"
+	           type="com.aof.webapp.action.party.EditCustUserLoginAction" scope="request" input="/WEB-INF/jsp/crm/customer/editCustUserLogin.jsp">
+		<forward name="view" path="system.editCustUserLogin"/>
+		<forward name="list" path="system.listCustUserLogin"/>        
+	</action>
+	<!-- =======================================================  -->
+	<!--				CRM DialogBox Service					  -->
+	<!-- =======================================================  -->    
+	<action path="/crm.dialogCustomerList" 
+		type="com.aof.webapp.action.crm.customer.CustomerDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/customer/dialogCustomer.jsp" contextRelative="true"/>
+	</action>
+	<action path="/crm.dialogProspectList" 
+		type="com.aof.webapp.action.crm.customer.ProspectDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/customer/dialogProspect.jsp" contextRelative="true"/>
+	</action>
+
+	<action path="/crm.dialogCustomerGroupList" 
+		type="com.aof.webapp.action.crm.customer.CustomerGroupDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/customer/dialogCustomerGroup.jsp" contextRelative="true"/>
+	</action>
+
+	<action path="/crm.dialogIndustryList" 
+		type="com.aof.webapp.action.crm.customer.IndustryDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/customer/dialogIndustry.jsp" contextRelative="true"/>
+	</action>
+
+	<!--added by Bill , 2006/03/16 -->
+	<action path="/crm.dialogCustomerListNewone" 
+		type="com.aof.webapp.action.crm.customer.CustomerDialogNewoneAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/customer/dialogCustomerNewone.jsp" contextRelative="true"/>
+	</action>
+	<!--end added by Bill-->
+
+	<action path="/crm.dialogVendorList" 
+		type="com.aof.webapp.action.crm.supplier.VendorDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/crm/supplier/dialogVendor.jsp" contextRelative="true"/>
+	</action>
+</action-mappings>
+</struts-config>

@@ -1,0 +1,9 @@
+#	Module		        Issue										Status
+--	------------------	--------------------								---------
+18	editPrjCTC		the expense forecast can't be saved						Y
+19      editTimesheet		still can edit timesheet of the week before last				Y
+20	editTSForecast		can't edit the forecast of this month						Y
+21	editTSApprove		PM can approve the overhead project whose PM is not him in the timesheet	N
+22	listTimesheet		can't see the edit information in the listtimesheet screen after the 
+                                is approved									N
+23	editTSApprove		PM can't see the timesheet information that have been partly approved		N 

@@ -1,0 +1,28 @@
+1. Add field ts_confirm in proj_ts_det for store CAF update confirm status
+2. Change Table proj_exp_mstr:
+	A. Add field em_code to store Form Code
+	B. change field em_period to em_exp_date
+	C. add field em_entry_date
+	D. add field em_verify_date
+	E. add field em_approval_date
+	F. add field em_receipt_date
+	G. add field em_Curr_Rate to store actual exchange rate
+	H. add field em_Curr_Id	to store currency for the expense form
+3. Change Table proj_cost_mstr:
+	A. Add field formcode to store Form Code
+	B. Add field approvalDate
+4. Add Table Customer_account table to store account setting for Customer
+5. Add Table CustProfile table to store customer detail information
+6. Add field ST_SCRate and ST_EstDays in Table Proj_ServiceType for subcontract management
+7. Change Table proj_mstr:
+	A. remove field cost_center_id
+	B. Add field ContractType
+	C. change field Proj_CAF_Flag to Proj_Public_Flag
+	D. Add field total_lics_value
+	E. change field total_sales to total_service_value
+	F. change field Op_Budget to PSC_Budget
+	F. Add field EXP_Budget
+8. Add Table Proj_Exp_Cmts table to store comments for expense claim
+9. Add Table Proj_Exp_Amt table to store actual amount for expense claim
+10. Change Table proj_ctc:
+	A. Add field ctc_fm_ver to store version of fiscal month

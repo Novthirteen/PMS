@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+<class name="com.aof.component.prm.master.ProjectCalendarType" table="Proj_CalendarType">
+	<id name="TypeId" column="pc_type_id" type="string">
+	<generator class="assigned"/>
+	</id>
+	<property name="Description" column="pc_type_desc" type="string"/>
+</class>
+<class name="com.aof.component.prm.master.ProjectCalendar" table="Proj_Calendar">
+	<id name="Id" column="pc_id" type="long">
+	<generator class="native"/>
+	</id>
+	<property name="CalendarDate" column="pc_date" type="timestamp"/>
+	<many-to-one class="com.aof.component.prm.master.ProjectCalendarType" column="pc_type_id" name="Type"/>
+	<property name="Hours" column="pc_hours" type="double"/>
+</class>
+</hibernate-mapping>

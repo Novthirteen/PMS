@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     If used with Struts1.1, you need to declare a Tiles plug-in.
+	 If used with Struts1.0.x, nothing special is required.
+-->
+
+
+<struts-config>
+	
+<!-- ========== Form Bean Definitions =================================== -->
+<form-beans>
+    <!-- Logon form bean -->
+    <form-bean	name="logonForm"	
+    	type="com.aof.webapp.form.LogonForm"/>
+	<form-bean	name="securityGroupForm"	
+    	type="com.aof.webapp.form.SecurityGroupForm"/>    	
+</form-beans>
+
+
+<global-exceptions>
+    <exception
+         handler="com.aof.webapp.action.ExceptionHandler"
+         key="key"
+         path="dialog.error.page"
+         type="java.lang.Exception" />
+</global-exceptions>
+
+
+<global-forwards>
+    <forward name="failure" path="site.error.page"/>
+    <forward name="logoff" path="/logoff.do"/>
+    <forward name="logon" path="/logon.jsp" redirect="true"/>
+</global-forwards>
+
+<!-- ========== Action Mapping Definitions ============================== -->
+<action-mappings>
+
+  <!-- =======================================================  -->
+  <!-- Admin -->
+  <!-- =======================================================  -->
+    <!-- The standard administrative actions available with Struts -->
+    <!-- These would be either omitted or protected by security -->
+    <!-- in a real application deployment -->
+    <action    path="/admin/tiles/reload"
+               type="org.apache.struts.tiles.actions.ReloadDefinitionsAction"/>
+    <action    path="/admin/tiles/view"
+               type="org.apache.struts.tiles.actions.ViewDefinitionsAction"/>
+  
+  <!-- =======================================================  -->
+  <!-- System Control Services					-->
+  <!-- =======================================================  -->
+    <!-- Process a user logoff -->
+    <action    path="/logoff"
+               type="com.aof.webapp.action.userlogin.LogoffAction">
+      <forward name="success"              path="/index.jsp"/>
+    </action>
+
+    <!-- Process a user logon -->
+    <action    path="/logon"
+               type="com.aof.webapp.action.userlogin.LogonAction"
+               name="logonForm"
+              scope="request"
+              input="/logon.jsp">
+    	<forward name="success" 				path="empty.index.page"/>
+    	
+		<forward name="FULLADMIN" 				path="FULLADMIN.index.page"/>
+    	<forward name="STAFF" 					path="InternalUser.index.page"/> 
+		
+    	<forward name="EMPTY" 					path="empty.index.page"/>
+    	<forward name="ERROR" 					path="/error/Error.jsp"/>
+    	<forward name="failed"  				path="/logon.jsp"/>
+    	<forward name="changePwd"  				path="/party/editUserInfo.jsp"/>
+
+    </action>
+    <!-- Process a user logon -->
+    <action path="/checklogon"  type="com.aof.webapp.action.userlogin.CheckLogonAction">
+    	<forward name="success" 				path="empty.index.page"/>
+
+    	<forward name="FULLADMIN" 				path="FULLADMIN.index.page"/>
+    	<forward name="STAFF" 					path="InternalUser.index.page"/>   	
+    	
+    	<forward name="EMPTY" 					path="empty.index.page"/>
+    	<forward name="ERROR" 					path="/error/Error.jsp"/>
+
+    	<forward name="failed"  				path="/logon.jsp"/>  
+    </action>
+
+	<action 
+        path="/syshelp"
+		forward="site.help.page">
+    </action>
+	<!-- =======================================================  -->
+	<!--				Admin module Service					-->
+	<!-- =======================================================  -->
+    <action    path="/listSecurityPermission"
+               type="com.aof.webapp.action.security.ListSecurityPermissionAction" >
+    	<forward name="success" path="system.listSecurityPermission"/>
+    </action>
+    <action    path="/editSecurityPermission"
+               type="com.aof.webapp.action.security.EditSecurityPermissionAction" >
+    	<forward name="success" path="listSecurityPermission.do"/>
+    </action>    
+    <action    path="/listSecurityGroup"
+               type="com.aof.webapp.action.security.ListSecurityGroupAction" >
+    	<forward name="success" path="system.listSecurityGroup"/>
+    </action>
+    <action    path="/editSecurityGroup"
+               type="com.aof.webapp.action.security.EditSecurityGroupAction" >
+    	<forward name="success" path="listSecurityGroup.do"/>
+    </action>   
+    <action    path="/listUserLogin"
+               type="com.aof.webapp.action.party.ListUserLoginAction" >
+    	<forward name="success" path="system.listUserLogin"/>
+    </action>
+    <action    path="/editUserLogin"
+               type="com.aof.webapp.action.party.EditUserLoginAction" scope="request">
+        <forward name="view" path="system.editUserLogin"/>
+        <forward name="list" path="system.listUserLogin"/>        
+    </action>
+    <action    path="/onlineUserMonitor"
+               type="com.aof.webapp.action.admin.OnlineUserMonitorAction" scope="request">
+        <forward name="view" path="system.OnlineUserMonitor"/>     
+    </action>
+    
+	<!-- =======================================================  -->
+	<!--				New Admin module Service					-->
+	<!-- =======================================================  -->    
+	<action    path="/listParty"
+	       type="com.aof.webapp.action.party.ListPartyAction" >
+		<forward name="success" path="system.listParty"/>
+	</action>
+	<action    path="/editParty"
+	           type="com.aof.webapp.action.party.EditPartyAction" scope="request" input="/WEB-INF/jsp/admin/party/editParty.jsp">
+		<forward name="view" path="system.editParty"/>
+		<forward name="list" path="system.listParty"/>        
+	</action>
+	<action    path="/listSysParameter"
+	       type="com.aof.webapp.action.admin.ListSysParameterAction" >
+		<forward name="success" path="system.listSysParameter"/>
+	</action>
+	<action    path="/editSysParameter"
+	           type="com.aof.webapp.action.admin.EditSysParameterAction" scope="request" input="/WEB-INF/jsp/crm/customer/editCustUserLogin.jsp">
+		<forward name="view" path="system.editSysParameter"/>
+		<forward name="list" path="system.listSysParameter"/>        
+	</action>
+
+	<!-- =======================================================  -->
+	<!--				DialogBox Service						  -->
+	<!-- =======================================================  -->    
+	<action 
+        path="/system.showDialog"
+        type="com.aof.webapp.action.DialogAction">
+        <forward name="success" path="/WEB-INF/jsp/showDialog.jsp"/>
+    </action>
+</action-mappings>
+
+<message-resources parameter="com.aof.webapp.ApplicationResources" />
+
+<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+    <set-property property="definitions-config" 
+	                 value="/WEB-INF/tiles-defs.xml" />
+    <set-property property="moduleAware" value="true" />
+</plug-in>
+<plug-in
+	className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+</plug-in>	
+
+</struts-config>

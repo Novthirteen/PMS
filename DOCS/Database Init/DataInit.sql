@@ -1,0 +1,422 @@
+-------------------------------------------------------------
+--					系统类型数据
+-------------------------------------------------------------
+INSERT INTO Party_Type VALUES('PARTY_GROUP','组织机构');
+INSERT INTO Role_Type VALUES('ORGANIZATION','总公司');
+INSERT INTO Role_Type VALUES('ORGANIZATION_UNIT','部门机构');
+INSERT INTO Role_Type VALUES('CUSTOMER','客户');
+
+INSERT INTO Party_Relationship_Type VALUES('CUSTOMER_REL','客户关系');
+INSERT INTO Party_Relationship_Type VALUES('PARTNERSHIP','合作伙伴关系');
+INSERT INTO Party_Relationship_Type VALUES('EMPLOYMENT','雇佣关系');
+INSERT INTO Party_Relationship_Type VALUES('MANAGER','管理关系');
+INSERT INTO Party_Relationship_Type VALUES('CONTACT_REL','联系关系');
+INSERT INTO Party_Relationship_Type VALUES('GROUP_ROLLUP','下级机构');
+
+-------------------------------------------------------------
+--					系统模块数据
+-------------------------------------------------------------
+INSERT INTO Module VALUES('1',				'root',						'',	'NULL',							'Y',	1,	'', '1');
+INSERT INTO Module VALUES('1.2',	'Admin',					'',	'NULL',							'Y',	2,	'系统管理-一级菜单', '1');
+INSERT INTO Module VALUES('1.2.2',	'User',						'',	'NULL',							'Y',	2,	'', '1.2');
+INSERT INTO Module VALUES('1.2.2.1','List User',				'',	'listUserLogin',				'Y',	1,	'', '1.2.2');
+INSERT INTO Module VALUES('1.2.2.2','Create User',				'',	'editUserLogin',				'Y',	2,	'', '1.2.2');
+INSERT INTO Module VALUES('1.2.2.3','List Party',				'',	'listParty',					'Y',	3,	'', '1.2.2');
+INSERT INTO Module VALUES('1.2.2.4','Create Party',				'',	'editParty',					'Y',	4,	'', '1.2.2');
+INSERT INTO Module VALUES('1.2.3',	'Customer',					'',	'NULL',							'Y',	2,	'', '1.2');
+INSERT INTO Module VALUES('1.2.3.1','List Customer User',		'',	'listCustUserLogin',			'Y',	1,	'', '1.2.3');
+INSERT INTO Module VALUES('1.2.3.2','Create Customer User',		'',	'editCustUserLogin',			'Y',	2,	'', '1.2.3');
+INSERT INTO Module VALUES('1.2.3.3','List Customer',			'',	'listCustParty',				'Y',	3,	'', '1.2.3');
+INSERT INTO Module VALUES('1.2.3.4','Create Customer',			'',	'editCustParty',				'Y',	4,	'', '1.2.3');
+INSERT INTO Module VALUES('1.2.4',	'Project',					'',	'NULL',							'Y',	3,	'', '1.2');
+INSERT INTO Module VALUES('1.2.4.1','Project',					'',	'listCustProject',				'Y',	1,	'', '1.2.4');
+INSERT INTO Module VALUES('1.2.4.2','Event',					'',	'listCustProjectEvent',			'Y',	2,	'', '1.2.4');
+INSERT INTO Module VALUES('1.2.4.3','Event Type',				'',	'listCustProjectEventType',		'Y',	3,	'', '1.2.4');
+INSERT INTO Module VALUES('1.2.4.4','Expense Type',				'',	'listExpenseType',				'Y',	4,	'', '1.2.4');
+INSERT INTO Module VALUES('1.2.4.5','Currency',					'',	'listCurrency',					'Y',	5,	'', '1.2.4');
+INSERT INTO Module VALUES('1.2.5',	'Parameter',				'',	'NULL',							'Y',	4,	'', '1.2');
+INSERT INTO Module VALUES('1.2.5.1','Parameter',				'',	'listSysParameter',				'Y',	1,	'', '1.2.5');
+INSERT INTO Module VALUES('1.2.5.2','Create Parameter',			'',	'editSysParameter',				'Y',	2,	'', '1.2.5');
+
+-------------------------------------------------------------
+--					HelpDesk模块数据
+-------------------------------------------------------------
+INSERT INTO Module VALUES('2.1',	'Helpdesk',							'',	'NULL',									'Y',	3,	'Helpdesk日常业务', '1');
+INSERT INTO Module VALUES('2.1.1',	'Call',								'',	'NULL',									'Y',	1,	'', '2.1');
+INSERT INTO Module VALUES('2.1.1.1','New Call',							'',	'helpdesk.newCall',						'Y',	1,	'', '2.1.1');
+INSERT INTO Module VALUES('2.1.1.2','New Change Request',				'',	'helpdesk.newCall',						'Y',	1,	'', '2.1.1');
+INSERT INTO Module VALUES('2.1.1.3','New Complain',						'',	'helpdesk.newCall',						'Y',	1,	'', '2.1.1');
+INSERT INTO Module VALUES('2.1.1.4','Query',							'',	'helpdesk.queryCall',					'Y',	2,	'', '2.1.1');
+INSERT INTO Module VALUES('2.1.2',	'SLA Definition',					'',	'NULL',									'Y',	2,	'', '2.1');
+INSERT INTO Module VALUES('2.1.2.1','List SLA',							'',	'helpdesk.listSLAMaster',				'Y',	1,	'', '2.1.2');
+INSERT INTO Module VALUES('2.1.2.2','Create SLA',						'',	'helpdesk.newSLAMaster',				'Y',	1,	'', '2.1.2');
+INSERT INTO Module VALUES('2.1.3',	'KB',								'',	'NULL',									'Y',	3,	'', '2.1');
+INSERT INTO Module VALUES('2.1.3.1','List KB',							'',	'helpdesk.listKnowledgeBase',			'Y',	1,	'', '2.1.3');
+INSERT INTO Module VALUES('2.1.3.2','Create KB',						'',	'helpdesk.newKnowledgeBase',			'Y',	2,	'', '2.1.3');
+INSERT INTO Module VALUES('2.1.4',	'Other Data',						'',	'NULL',									'Y',	4,	'', '2.1');
+INSERT INTO Module VALUES('2.1.4.1','List Configuration Type',			'',	'helpdesk.listTableType',				'Y',	1,	'', '2.1.4');
+INSERT INTO Module VALUES('2.1.4.2','List Status Type',					'',	'helpdesk.listStatusType',				'Y',	2,	'', '2.1.4');
+INSERT INTO Module VALUES('2.1.4.3','List Action Type',					'',	'helpdesk.listActionType',				'Y',	3,	'', '2.1.4');
+INSERT INTO Module VALUES('2.1.4.4','List Party Responsibility User',	'',	'helpdesk.listPartyResponsibilityUser',	'Y',	4,	'', '2.1.4');
+INSERT INTO Module VALUES('2.1.4.5','List Request Type',				'',	'helpdesk.listRequestType',				'Y',	5,	'', '2.1.4');
+INSERT INTO Module VALUES('2.1.4.6','List Customer',					'',	'helpdesk.listCustomer',				'Y',	6,	'', '2.1.4');
+
+INSERT INTO Module_Group VALUES('FULLADMIN_GROUP',	'系统管理模块',		100);
+INSERT INTO Module_Group VALUES('HELPDESK_OP_GROUP','HELPDESK 操作模块',	200);
+
+INSERT INTO Module_Group_Associate VALUES('FULLADMIN_GROUP',	'1.2');
+INSERT INTO Module_Group_Associate VALUES('HELPDESK_OP_GROUP',	'2.1');
+
+-------------------------------------------------------------
+--		权限组
+-------------------------------------------------------------
+INSERT INTO Security_Group VALUES('SYSTEM_MANAGE',								'系统权限');
+INSERT INTO Security_Group VALUES('HELPDESK_ACTIONTRACK_TYPE_MANAGE',			'ActionTrack类型维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE',			'Call ActionTrack维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CALL_CHANGE_CLOSED',				'已关闭Call的修改权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CALL_MANAGE',						'Call维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE',	'Change Request ActionTrack维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CHANGEREQUEST_CHANGE_CLOSED',		'已关闭Change Request的修改权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CHANGEREQUEST_MANAGE',				'Change Request维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE',		'Complain ActionTrack维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_COMPLAIN_CHANGE_CLOSED',			'已关闭Complain的修改权限');
+INSERT INTO Security_Group VALUES('HELPDESK_COMPLAIN_MANAGE',					'Complain维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE',		'客户配置信息表维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE',	'客户配置信息表类型维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_KB_MANAGE',							'知识库维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_KB_USE',							'知识库使用权限');
+INSERT INTO Security_Group VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE',	'部门负责人维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_REQUEST_TYPE_MANAGE',				'Call请求类型维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_SERVICELEVEL_MANAGE',				'服务协议维护权限');
+INSERT INTO Security_Group VALUES('HELPDESK_STATUS_TYPE_MANAGE',				'Call状态类型维护权限');
+
+-------------------------------------------------------------
+--		权限
+-------------------------------------------------------------
+---------------------------------
+-- 缺省权限（每个登陆用户都必须具备)
+---------------------------------
+INSERT INTO Security_Permission VALUES('SYSTEM_ROLE_PAGE',	'系统角色主页查看权限');
+
+---------------------------------
+--系统管理功能(只有系统管理员可以使用这部分功能)
+---------------------------------
+INSERT INTO Security_Permission VALUES('SECURITY_PERMISSION_CREATE',	'权限列表创建权限');
+INSERT INTO Security_Permission VALUES('SECURITY_PERMISSION_VIEW',		'权限列表查看权限');
+INSERT INTO Security_Permission VALUES('USER_LOGIN_CREATE',				'登陆用户创建权限');
+INSERT INTO Security_Permission VALUES('USER_LOGIN_VIEW',				'登陆用户查看权限');
+
+---------------------------------
+-- HelpDesk权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_CREATE',					'Call ActionTrack类型创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_DELETE',					'Call ActionTrack类型删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_MODIFY',					'Call ActionTrack类型修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_VIEW',					'Call ActionTrack类型查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ATTACHMENT_CREATE',						'附件创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ATTACHMENT_DELETE',						'附件删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ATTACHMENT_MODIFY',						'附件修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_ATTACHMENT_VIEW',							'附件查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_CREATE',					'Call ActionTrack创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_DELETE',					'Call ActionTrack删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MODIFY',					'Call ActionTrack修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_VIEW',					'Call ActionTrack查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_CHANGE_CLOSED',						'已关闭Call的修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_CREATE',								'Call创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_DELETE',								'Call删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_MODIFY',								'Call修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_VIEW',								'Call查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_CREATE',			'Change Request ActionTrack创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_DELETE',			'Change Request ActionTrack删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MODIFY',			'Change Request ActionTrack修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_VIEW',			'Change Request ActionTrack查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_CHANGE_CLOSED',				'已关闭Change Request的修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_CREATE',						'Change Request创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_DELETE',						'Change Request删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_MODIFY',						'Change Request修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CHANGEREQUEST_VIEW',						'Change Request查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_CREATE',				'Complain ActionTrack创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_DELETE',				'Complain ActionTrack删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MODIFY',				'Complain ActionTrack修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_VIEW',				'Complain ActionTrack查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_CHANGE_CLOSED',					'已关闭Complain的修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_CREATE',							'Complain创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_DELETE',							'Complain删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_MODIFY',							'Complain修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_COMPLAIN_VIEW',							'Complain查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_ROW_CREATE',				'用户配置信息行创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_ROW_DELETE',				'用户配置信息行删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_ROW_MODIFY',				'用户配置信息行修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_ROW_VIEW',					'用户配置信息行查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_CREATE',				'用户配置信息表创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_DELETE',				'用户配置信息表删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MODIFY',				'用户配置信息表修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_CREATE',		'用户配置信息表类型创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_DELETE',		'用户配置信息表类型删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MODIFY',		'用户配置信息表类型修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_VIEW',			'用户配置信息表类型查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW',				'用户配置信息表查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_KB_CREATE',								'知识库创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_KB_DELETE',								'知识库删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_KB_MODIFY',								'知识库修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_KB_VIEW',									'知识库查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_CREATE',			'部门负责人创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_DELETE',			'部门负责人删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MODIFY',			'部门负责人修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_VIEW',			'部门负责人查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_PARTY_USER_VIEW',							'HelpDesk中机构/用户查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_REQUEST_TYPE_CREATE',						'Call请求类型创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_REQUEST_TYPE_DELETE',						'Call请求类型删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_REQUEST_TYPE_MODIFY',						'Call请求类型修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_REQUEST_TYPE_VIEW',						'Call请求类型查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_CATEGORY_CREATE',				'服务协议分类创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_CATEGORY_DELETE',				'服务协议分类删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_CATEGORY_MODIFY',				'服务协议分类修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_CATEGORY_VIEW',				'服务协议分类查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_MASTER_CREATE',				'服务协议主数据创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_MASTER_DELETE',				'服务协议主数据删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_MASTER_MODIFY',				'服务协议主数据修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_MASTER_VIEW',					'服务协议主数据查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_PRIORITY_CREATE',				'服务协议优先级创建权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_PRIORITY_DELETE',				'服务协议优先级删除权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_PRIORITY_MODIFY',				'服务协议优先级修改权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_SERVICELEVEL_PRIORITY_VIEW',				'服务协议优先级查看权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_STATUS_TYPE_CREATE',						'Call状态类型创建');
+INSERT INTO Security_Permission VALUES('HELPDESK_STATUS_TYPE_DELETE',						'Call状态类型删除');
+INSERT INTO Security_Permission VALUES('HELPDESK_STATUS_TYPE_MODIFY',						'Call状态类型修改');
+INSERT INTO Security_Permission VALUES('HELPDESK_STATUS_TYPE_VIEW',							'Call状态类型查看');
+
+
+-------------------------------------------------------------
+--		权限组的权限定义
+-------------------------------------------------------------
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'SECURITY_PERMISSION_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'SECURITY_PERMISSION_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'USER_LOGIN_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'USER_LOGIN_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_ACTIONTRACK_TYPE_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_CALL_ACTIONTRACK_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_CALL_ACTIONTRACK_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_CALL_ACTIONTRACK_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_CALL_ACTIONTRACK_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_ACTIONTRACK_MANAGE', 'HELPDESK_STATUS_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_CHANGE_CLOSED', 'HELPDESK_CALL_CHANGE_CLOSED');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CALL_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CALL_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CALL_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CALL_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_PARTY_USER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CALL_MANAGE', 'HELPDESK_REQUEST_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE', 'HELPDESK_STATUS_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_CHANGE_CLOSED', 'HELPDESK_CHANGEREQUEST_CHANGE_CLOSED');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CHANGEREQUEST_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CHANGEREQUEST_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CHANGEREQUEST_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CHANGEREQUEST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CHANGEREQUEST_MANAGE', 'HELPDESK_PARTY_USER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_COMPLAIN_ACTIONTRACK_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_COMPLAIN_ACTIONTRACK_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_COMPLAIN_ACTIONTRACK_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_ACTIONTRACK_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_COMPLAIN_ACTIONTRACK_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE', 'HELPDESK_STATUS_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_CHANGE_CLOSED', 'HELPDESK_COMPLAIN_CHANGE_CLOSED');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_COMPLAIN_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_COMPLAIN_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_COMPLAIN_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_COMPLAIN_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_COMPLAIN_MANAGE', 'HELPDESK_PARTY_USER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_ROW_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE', 'HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_ATTACHMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_ATTACHMENT_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_ATTACHMENT_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_KB_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_KB_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_KB_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_MANAGE', 'HELPDESK_KB_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_USE', 'HELPDESK_ATTACHMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_KB_USE', 'HELPDESK_KB_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE', 'HELPDESK_PARTY_RESPONSIBILITY_USER_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE', 'HELPDESK_PARTY_RESPONSIBILITY_USER_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE', 'HELPDESK_PARTY_RESPONSIBILITY_USER_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE', 'HELPDESK_PARTY_RESPONSIBILITY_USER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_REQUEST_TYPE_MANAGE', 'HELPDESK_REQUEST_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_REQUEST_TYPE_MANAGE', 'HELPDESK_REQUEST_TYPE_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_REQUEST_TYPE_MANAGE', 'HELPDESK_REQUEST_TYPE_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_REQUEST_TYPE_MANAGE', 'HELPDESK_REQUEST_TYPE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_PARTY_USER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_CATEGORY_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_CATEGORY_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_CATEGORY_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_CATEGORY_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_MASTER_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_MASTER_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_MASTER_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_MASTER_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_PRIORITY_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_PRIORITY_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_PRIORITY_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_SERVICELEVEL_MANAGE', 'HELPDESK_SERVICELEVEL_PRIORITY_VIEW');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_STATUS_TYPE_MANAGE', 'HELPDESK_STATUS_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_STATUS_TYPE_MANAGE', 'HELPDESK_STATUS_TYPE_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_STATUS_TYPE_MANAGE', 'HELPDESK_STATUS_TYPE_MODIFY');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_STATUS_TYPE_MANAGE', 'HELPDESK_STATUS_TYPE_VIEW');
+
+-------------------------------------------------------------
+--- 		Call Type
+-------------------------------------------------------------
+INSERT INTO Call_Type VALUES('A', 'Call', 'Call');
+INSERT INTO Call_Type VALUES('B', 'Change Request', 'ChangeRequest');
+INSERT INTO Call_Type VALUES('C', 'Complain', 'Complain');
+
+-------------------------------------------------------------
+--- Party Responsibility Type
+-------------------------------------------------------------
+INSERT INTO Party_Responsibility_Type VALUES('A', 'Default Party Notify Person');
+INSERT INTO Party_Responsibility_Type VALUES('B', 'Call Warning Notify Person');
+
+-------------------------------------------------------------
+--- 		系统管理员账号
+-------------------------------------------------------------
+INSERT INTO Party(Party_Id, Party_Type_Id, Description) VALUES('AO', 'PARTY_GROUP', '源讯信息技术有限公司');
+INSERT INTO Party_Role VALUES('AO', 'ORGANIZATION_UNIT');
+INSERT INTO User_Login(Role, Enable, Current_Password, Name, User_Login_Id, Party_Id) VALUES('FULLADMIN', 'Y', 'admin', '系统管理员', 'admin', 'AO');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'SYSTEM_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CALL_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_ACTIONTRACK_TYPE_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CALL_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CALL_CHANGE_CLOSED');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_STATUS_TYPE_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CHANGEREQUEST_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CHANGEREQUEST_CHANGE_CLOSED');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_COMPLAIN_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_COMPLAIN_CHANGE_CLOSED');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CUSTOMER_CONFIG_TABLE_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_KB_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_PARTY_RESPONSIBILITY_USER_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_REQUEST_TYPE_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('admin', 'HELPDESK_SERVICELEVEL_MANAGE');
+INSERT INTO User_Login_Module_Group VALUES('admin', 'FULLADMIN_GROUP');
+INSERT INTO User_Login_Module_Group VALUES('admin', 'HELPDESK_OP_GROUP');
+
+-- Helpdesk工程师
+INSERT INTO User_Login(Role, Enable, Current_Password, Name, User_Login_Id, Party_Id) VALUES('INTERNALUSER', 'Y', 'helpdesk', 'Helpdesk 测试用户', 'helpdesk', 'AO');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_CALL_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_CALL_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_CHANGEREQUEST_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_CHANGEREQUEST_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_COMPLAIN_ACTIONTRACK_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_COMPLAIN_MANAGE');
+INSERT INTO User_Login_Security_Group VALUES('helpdesk', 'HELPDESK_KB_USE');
+INSERT INTO User_Login_Module_Group VALUES('helpdesk', 'HELPDESK_OP_GROUP');
+
+-- TimeSheet Permission
+INSERT INTO Module VALUES('2.2','PRM','','NULL','Y',10,'Project 日常业务','1');
+INSERT INTO Module VALUES('2.2.1','TimeSheet','','NULL','Y',1,'','2.2');
+INSERT INTO Module VALUES('2.2.1.1','TimeSheet','','editTimeSheet','Y',1,'','2.2.1');
+
+INSERT INTO Module_Group VALUES('PRM_OP_GROUP','PRM 操作模块',200);
+INSERT INTO Module_Group_Associate VALUES('PRM_OP_GROUP','2.2');
+
+-------
+DELETE FROM User_Login_Module_Group
+
+DELETE FROM Module_Group_Associate
+DELETE FROM Module_Group
+DELETE FROM Module
+
+DELETE FROM User_Login_Security_Group
+
+DELETE FROM Security_Group_Permission
+DELETE FROM Security_Group
+DELETE FROM Security_Permission
+
+DELETE FROM KB
+
+DELETE FROM CM_Status_History
+DELETE FROM CM_Action_History
+DELETE FROM Action_Type
+DELETE FROM CM_History
+DELETE FROM Call_Master
+
+DELETE FROM Request_Type
+DELETE FROM Status_Type
+DELETE FROM Call_Type
+
+DELETE FROM CustConfigItem
+DELETE FROM CustConfigRow
+DELETE FROM CustConfigTable
+DELETE FROM CustConfigColumn
+DELETE FROM CustConfigTableType
+
+DELETE FROM SLA_Priority
+DELETE FROM SLA_Category
+DELETE FROM SLA_MSTR
+
+DELETE FROM Attachment
+
+DELETE Proj_Ts_Det
+DELETE Proj_MSTR
+
+DELETE FROM User_Login
+
+DELETE FROM Party_Relationship
+DELETE FROM Party_Role
+DELETE FROM Party_Relationship_Type
+DELETE FROM Role_Type
+DELETE FROM Party
+DELETE FROM Party_Type

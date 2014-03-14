@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     If used with Struts1.1, you need to declare a Tiles plug-in.
+	 If used with Struts1.0.x, nothing special is required.
+-->
+
+
+<struts-config>
+	
+<!-- ========== Form Bean Definitions =================================== -->
+<form-beans>
+	<!-- Down was added by LYY 20041126 -->
+	  
+	<form-bean name="FindPRMForm" 
+		type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="departmentSelect" type="java.lang.String"/>
+	</form-bean>	  
+	      
+	<form-bean name="ProjectSelectForm" 
+		type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="CALLBACKNAME" type="java.lang.String"/>
+		<form-property name="projectSelect" type="java.lang.String"/>
+		<form-property name="eventSelect" type="java.lang.String"/>
+		<form-property name="ServiceTypeSelect" type="java.lang.String"/>
+		<form-property name="hiddenProjectCode" type="java.lang.String"/>
+		<form-property name="hiddenEventCode" type="java.lang.String"/>
+		<form-property name="FormAction" type="java.lang.String"/>
+		<form-property name="descriptionSelect" type="java.lang.String"/>
+		<form-property name="BOMSelect" type="java.lang.String"/>
+	</form-bean>
+	<form-bean name="ProjectCostMaintainForm" 
+		type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="FormAction" type="java.lang.String"/>
+		<form-property name="CALLBACKNAME" type="java.lang.String"/>
+		<form-property name="refNo" type="java.lang.String"/>
+		<form-property name="costDescription" type="java.lang.String"/>
+		<form-property name="typeSelect" type="java.lang.String"/>
+		<form-property name="ClaimTypeSelect" type="java.lang.String"/>
+		<form-property name="currencySelect" type="java.lang.String"/>
+		<form-property name="totalValue" type="java.lang.String"/>
+		<form-property name="exchangeRate" type="java.lang.String"/>
+		<form-property name="costDate" type="java.lang.String"/>
+		<form-property name="project" type="java.lang.String"/>
+		<form-property name="percentage" type="java.lang.String"/>
+		<form-property name="name" type="java.lang.String"/>
+		<form-property name="PayFor" type="java.lang.String"/>
+		<form-property name="takeOffTime" type="java.lang.String"/>
+		<form-property name="sameFlightPrice" type="java.lang.String"/>
+		<form-property name="takeOffTimeIn4" type="java.lang.String"/>
+		<form-property name="flightNoIn4" type="java.lang.String"/>
+		<form-property name="priceIn4" type="java.lang.String"/>
+		<form-property name="takeOffTimeInDay" type="java.lang.String"/>
+		<form-property name="flightNoInDay" type="java.lang.String"/>
+		<form-property name="priceInDay" type="java.lang.String"/>
+		<form-property name="bookDate" type="java.lang.String"/>
+		<form-property name="returnDate" type="java.lang.String"/>
+	</form-bean>
+	<form-bean name="ProjectListForm" 
+		type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="CALLBACKNAME" type="java.lang.String"/>
+		<form-property name="projectSelect" type="java.lang.String"/>
+		<form-property name="hiddenProjectCode" type="java.lang.String"/>
+		<form-property name="hiddenProjectName" type="java.lang.String"/>
+		<form-property name="FormAction" type="java.lang.String"/>
+		<form-property name="prjRadio" type="java.lang.String"/>
+	</form-bean>
+	<form-bean name="UserListForm" 
+		type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="CALLBACKNAME" type="java.lang.String"/>
+		<form-property name="userSelect" type="java.lang.String"/>
+		<form-property name="hiddenID" type="java.lang.String"/>
+		<form-property name="hiddenName" type="java.lang.String"/>
+		<form-property name="FormAction" type="java.lang.String"/>
+		<form-property name="selectRadio" type="java.lang.String"/>
+	</form-bean>
+	<!-- Up was added by LYY 20041126 -->  
+	
+	<!-- Down was added by Jackey Ding 2005-02-06 -->
+	<form-bean name="ProjectCostForm" type="com.aof.webapp.form.prm.report.ProjectCostForm"/>
+	<form-bean name="ARAgingRptForm" type="com.aof.webapp.form.prm.report.ARAgingRptForm"/>
+	<form-bean name="APAgingRptForm" type="com.aof.webapp.form.prm.report.APAgingRptForm"/>
+	<form-bean name="ARCustStatementRptForm" type="com.aof.webapp.form.prm.report.ARCustStatementRptForm"/>
+	<!-- Up was added by Jackey Ding 2005-02-06 -->
+	
+	<!-- Added by Bill Yu -->
+	<!-- at 2005/09/13 -->
+	<form-bean name="OutstandingAcceptanceRptForm" type="com.aof.webapp.form.prm.report.OutstandingAcceptanceRptForm"/>
+	<!-- at 2005/09/19 -->
+	<form-bean name="OutstandingTSRptForm" type="com.aof.webapp.form.prm.report.OutstandingTSRptForm"/>
+	<!-- at 2005/10/26 -->
+	<form-bean name="AirfareCostRptForm" type="com.aof.webapp.form.prm.report.AirfareCostRptForm"/>
+	<!-- at 2006/01/11 -->
+	<form-bean name="SettleSupplierInvoiceForm" type="com.aof.webapp.form.prm.payment.SettleSupplierInvoiceForm"/>
+	<!-- Added by Bill Yu-->
+	
+	<form-bean name="FindBillingInstructionForm" type="com.aof.webapp.form.prm.bill.FindBillingInstructionForm"/>
+	<form-bean name="EditBillingInstructionForm" type="com.aof.webapp.form.prm.bill.EditBillingInstructionForm"/>
+	<form-bean name="EditBillDownpaymentInstructionForm" type="com.aof.webapp.form.prm.bill.EditDownpaymentInstructionForm"/>
+	
+	<form-bean name="FindInvoiceForm" type="com.aof.webapp.form.prm.bill.FindInvoiceForm"/>
+	<form-bean name="EditInvoiceForm" type="com.aof.webapp.form.prm.bill.EditInvoiceForm"/>
+	
+	<form-bean name="FindEMSForm" type="com.aof.webapp.form.prm.bill.FindEMSForm"/>
+	<form-bean name="EditEMSForm" type="com.aof.webapp.form.prm.bill.EditEMSForm"/>
+	<form-bean name="EditInvoiceConfirmForm" type="com.aof.webapp.form.prm.bill.EditInvoiceConfirmForm"/>
+	<form-bean name="EditReceiptForm" type="com.aof.webapp.form.prm.bill.EditReceiptForm"/>
+	
+	<form-bean name="FindLostRecordForm" type="com.aof.webapp.form.prm.bill.FindLostRecordForm"/>
+	<form-bean name="EditLostRecordForm" type="com.aof.webapp.form.prm.bill.EditLostRecordForm"/>
+	
+	<form-bean name="FindPaymentInstructionForm" type="com.aof.webapp.form.prm.payment.FindPaymentInstructionForm"/>
+	<form-bean name="EditPaymentInstructionForm" type="com.aof.webapp.form.prm.payment.EditPaymentInstructionForm"/>
+	<form-bean name="EditPaymentDownpaymentInstructionForm" type="com.aof.webapp.form.prm.payment.EditPaymentDownpaymentInstructionForm"/>
+	
+	<form-bean name="FindPaymentInvoiceForm" type="com.aof.webapp.form.prm.payment.FindPaymentInvoiceForm"/>
+	<form-bean name="EditPaymentInvoiceForm" type="com.aof.webapp.form.prm.payment.EditPaymentInvoiceForm"/>
+	
+	<form-bean name="FindStepGroupForm" type="com.aof.webapp.form.prm.bid.FindStepGroupForm"/>
+	<form-bean name="EditStepActivityForm" type="com.aof.webapp.form.prm.bid.EditStepActivityForm"/>
+	<form-bean name="EditStepForm" type="com.aof.webapp.form.prm.bid.EditStepForm"/>
+	<form-bean name="EditStepGroupForm" type="com.aof.webapp.form.prm.bid.EditStepGroupForm"/>
+</form-beans>
+
+<!-- ========== Action Mapping Definitions ============================== -->
+<action-mappings>
+	<!-- =======================================================  -->
+	<!-- =======================================================  -->
+	<!--				PRM module Service					-->
+	<!-- =======================================================  --> 
+	<action    path="/findSalaryLevel"
+	       type="com.aof.webapp.action.prm.project.ListSalaryLevelAction" >
+		<forward name="success" path="prm.findSalaryLevel"/>
+	</action>
+	<action    path="/editSalaryLevel"
+	       type="com.aof.webapp.action.prm.project.EditSalaryLevelAction" >
+		<forward name="success" path="prm.editSalaryLevel"/>
+		<forward name="list" path="/findSalaryLevel.do" redirect="true"/>
+	</action>
+	<action    path="/findContractProfile"
+	       type="com.aof.webapp.action.prm.contract.FindContractProfileAction" >
+		<forward name="success" path="prm.findContractProfile"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/contract/listContractProfileDialog.jsp"/>
+	</action>
+	<action    path="/editContractProfile"
+	           type="com.aof.webapp.action.prm.contract.EditContractProfileAction" scope="request">
+		<forward name="view" path="prm.editContractProfile"/>
+		<forward name="list" path="/findContractProfile.do"/>        
+	</action>	
+	
+	<action    path="/findPurchaseOrder"
+	       type="com.aof.webapp.action.prm.contract.FindPOProfileAction" >
+		<forward name="success" path="prm.findPOProfile"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/contract/listPOProfileDialog.jsp"/>
+	</action>
+	<action    path="/editPOProfile"
+	           type="com.aof.webapp.action.prm.contract.EditPOProfileAction" scope="request">
+		<forward name="view" path="prm.editPOProfile"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/contract/findProject.jsp"/>
+		<forward name="list" path="/findPurchaseOrder.do"/>        
+	</action>	
+	
+	
+	<action    path="/listCustProject"
+	       type="com.aof.webapp.action.prm.project.ListCustProjectAction" >
+		<forward name="success" path="prm.listCustProject"/>
+	</action>
+	<action    path="/editCustProject"
+	           type="com.aof.webapp.action.prm.project.EditCustProjectAction" scope="request">
+		<forward name="view" path="prm.editCustProject"/>
+		<forward name="list" path="/listCustProject.do"/>        
+	</action>	
+	<!-- add the list project def for 4 type project edit -->
+	<action    path="/listBidProject"
+	       type="com.aof.webapp.action.prm.project.ListBidProjectAction" >
+		<forward name="success" path="prm.listBidProject"/>
+	</action>
+	<action    path="/editBidProject"
+	           type="com.aof.webapp.action.prm.project.EditBidProjectAction" scope="request">
+		<forward name="view" path="prm.editBidProject"/>
+		<forward name="list" path="/listBidProject.do"/>        
+	</action>
+	<action    path="/listContractProject"
+	       type="com.aof.webapp.action.prm.project.ListContractProjectAction" >
+		<forward name="success" path="prm.listContractProject"/>
+	</action>
+	<action    path="/editContractProject"
+	           type="com.aof.webapp.action.prm.project.EditContractProjectAction" scope="request">
+		<forward name="view" path="prm.editContractProject"/>
+		<forward name="list" path="/listContractProject.do"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/project/viewContractProjDialog.jsp"/>
+	</action>
+	
+	<action    path="/listPOProject"
+	       type="com.aof.webapp.action.prm.project.ListPOProjectAction" >
+		<forward name="success" path="prm.listPOProject"/>
+	</action>
+	<action    path="/editPOProject"
+	           type="com.aof.webapp.action.prm.project.EditPOProjectAction" scope="request">
+		<forward name="view" path="prm.editPOProject"/>
+		<forward name="list" path="/listPOProject.do"/>      
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/project/viewPOProjDialog.jsp"/>  
+	</action>
+	
+	<action    path="/listInternalProject"
+	       type="com.aof.webapp.action.prm.project.ListInternalProjectAction" >
+		<forward name="success" path="prm.listInternalProject"/>
+	</action>
+	<action    path="/editInternalProject"
+	           type="com.aof.webapp.action.prm.project.EditInternalProjectAction" scope="request">
+		<forward name="view" path="prm.editInternalProject"/>
+		<forward name="list" path="/listInternalProject.do"/>        
+	</action>
+	<action    path="/listSupportProject"
+	       type="com.aof.webapp.action.prm.project.ListSupportProjectAction" >
+		<forward name="success" path="prm.listSupportProject"/>
+	</action>
+	<action    path="/editSupportProject"
+	           type="com.aof.webapp.action.prm.project.EditSupportProjectAction" scope="request">
+		<forward name="view" path="prm.editSupportProject"/>
+		<forward name="list" path="/listSupportProject.do"/>        
+	</action>
+
+	<action    path="/listCustProjectType"
+	       type="com.aof.webapp.action.prm.project.ListCustProjectTypeAction" >
+		<forward name="success" path="prm.listCustProjectType"/>
+	</action>
+	<action    path="/editCustProjectType"
+	           type="com.aof.webapp.action.prm.project.EditCustProjectTypeAction" scope="request">
+		<forward name="view" path="prm.editCustProjectType"/>
+		<forward name="list" path="/listCustProjectType.do"/>        
+	</action>	
+	
+	<action    path="/listCurrencyType"
+	       type="com.aof.webapp.action.prm.master.ListCurrencyTypeAction" >
+		<forward name="success" path="prm.listCurrencyType"/>
+	</action>
+	<action    path="/editCurrencyType"
+	           type="com.aof.webapp.action.prm.master.EditCurrencyTypeAction" scope="request">
+		<forward name="view" path="prm.editCurrencyType"/>
+		<forward name="list" path="/listCurrencyType.do"/>        
+	</action>
+	
+	<action    path="/listExpenseType"
+	       type="com.aof.webapp.action.prm.expense.ListExpenseTypeAction" >
+		<forward name="success" path="prm.listExpenseType"/>
+	</action>
+	<action    path="/editExpenseType"
+	           type="com.aof.webapp.action.prm.expense.EditExpenseTypeAction" scope="request">
+		<forward name="view" path="prm.editExpenseType"/>
+		<forward name="list" path="/listExpenseType.do"/>        
+	</action>
+	
+	<action    path="/listCustProjectEvent"
+	       type="com.aof.webapp.action.prm.project.ListCustProjectEventAction" >
+		<forward name="success" path="prm.listCustProjectEvent"/>
+	</action>
+	<action    path="/editCustProjectEvent"
+	           type="com.aof.webapp.action.prm.project.EditCustProjectEventAction" scope="request">
+		<forward name="view" path="prm.editCustProjectEvent"/>
+		<forward name="list" path="/listCustProjectEvent.do"/>        
+	</action>
+
+	<action    path="/listCustProjectEventType"
+	       type="com.aof.webapp.action.prm.project.ListCustProjectEventTypeAction" >
+		<forward name="success" path="prm.listCustProjectEventType"/>
+	</action>
+	<action    path="/editCustProjectEventType"
+	           type="com.aof.webapp.action.prm.project.EditCustProjectEventTypeAction" scope="request">
+		<forward name="view" path="prm.editCustProjectEventType"/>
+		<forward name="list" path="prm.listCustProjectEventType"/>        
+	</action>
+	
+	<action path="/listTimeSheet"
+	       type="com.aof.webapp.action.prm.timesheet.ListTimeSheetAction" >
+		<forward name="success" path="prm.listTimeSheet"/>
+	</action>
+
+   <action path="/selMember"
+			type="com.aof.webapp.action.prm.SelMemberAction"
+			scope="request"
+			>
+		<forward name="view" path="/WEB-INF/jsp/prm/project/selMember.jsp"/>
+		<forward name="success" path="/WEB-INF/jsp/prm/project/selMember.jsp" contextRelative="true"/>
+	</action>
+
+   <action path="/addMaterial"
+			type="com.aof.webapp.action.prm.addMaterialAction"
+			scope="request"
+			>
+		<forward name="view" path="/WEB-INF/jsp/prm/project/addMaterial.jsp"/>
+		<forward name="success" path="/WEB-INF/jsp/prm/project/addMaterial.jsp" contextRelative="true"/>
+	</action>
+
+	<action path="/editFisCalendar"
+			type="com.aof.webapp.action.prm.master.EditFisCalendarAction"
+			scope="request">
+		   <forward name="view" path="prm.editFisCalendar"/>
+		   <forward name="success" path="prm.editFisCalendar" contextRelative="true"/>
+	</action>
+	
+	<action path="/listFisCalendar"
+			type="com.aof.webapp.action.prm.master.ListFisCalendarAction"
+			scope="request">
+		   <forward name="success" path="prm.listFisCalendar" contextRelative="true"/>
+	</action>
+
+	<action path="/editConsultantCost"
+			type="com.aof.webapp.action.prm.master.EditConsultantCostAction"
+			scope="request">
+		   <forward name="view" path="prm.editConsultantCost"/>
+		   <forward name="success" path="prm.editConsultantCost" contextRelative="true"/>
+	</action>
+
+	<action path="/assignProject"
+			type="com.aof.webapp.action.prm.AssignProjectAction"
+			scope="request"
+			>
+		<forward name="success" path="prm.assignProject" contextRelative="true"/>
+	</action>
+
+	<!-- Down was added by Jeffrey 20041210 -->   
+	<action path="/listTSForecast"
+	       type="com.aof.webapp.action.prm.timesheet.ListTSForecastAction" >
+		<forward name="success" path="prm.listTSForecast"/>
+	</action>
+	<action path="/editTSForecast"
+	       type="com.aof.webapp.action.prm.timesheet.EditTSForecastAction" >
+		<forward name="success" path="prm.editTSForecast" contextRelative="true"/>
+		<forward name="backToList" path="/listTSForecast.do" contextRelative="true"/>
+	</action>
+	<action path="/findPrjFCPage"
+	       type="com.aof.webapp.action.prm.projectmanager.FindPrjFCPageAction" >
+		<forward name="success" path="prm.findPrjFCPage"/>
+	</action>
+	<action path="/editPrjCTC"
+	       type="com.aof.webapp.action.prm.projectmanager.EditPrjCTCAction" >
+		<forward name="view" path="prm.editPrjCTC"/>
+		<forward name="list" path="/findPrjFCPage.do"/>
+	</action>
+
+	<action path="/findProjAccpPage"
+	       type="com.aof.webapp.action.prm.projectmanager.FindProjAccpPageAction" >
+		<forward name="success" path="prm.findProjAccpPage"/>
+	</action>
+	<action path="/editProjAccp"
+	       type="com.aof.webapp.action.prm.projectmanager.EditProjAccpAction" >
+		<forward name="view" path="prm.editProjAccp"/>
+		<forward name="list" path="/findProjAccpPage.do"/>
+	</action>
+
+	<action path="/findMOProjAccpPage"
+	       type="com.aof.webapp.action.prm.projectmanager.FindMOProjAccpPageAction" >
+		<forward name="success" path="prm.findMOProjAccpPage"/>
+	</action>
+	<action path="/editMOProjAccp"
+	       type="com.aof.webapp.action.prm.projectmanager.EditMOProjAccpAction" >
+		<forward name="view" path="prm.editMOProjAccp"/>
+		<forward name="list" path="/findMOProjAccpPage.do"/>
+	</action>
+
+	<action path="/findTSPage"
+	       type="com.aof.webapp.action.prm.expense.FindTimeSheetPageAction" >
+		<forward name="success" path="/WEB-INF/jsp/prm/expense/findTimeSheetPage.jsp"/>
+	</action>
+	<action path="/findExpSelfPage"
+	       type="com.aof.webapp.action.prm.expense.FindExpSelfPageAction" >
+		<forward name="success" path="prm.findExpSelfPage"/>
+	</action>
+	<action path="/findExpToApprovalPage"
+	       type="com.aof.webapp.action.prm.expense.FindExpToApprovalPageAction" >
+		<forward name="success" path="prm.findExpToApprovalPage"/>
+	</action>
+	<action path="/findExpToVerifyPage"
+	       type="com.aof.webapp.action.prm.expense.FindExpToVerifyPageAction" >
+		<forward name="success" path="prm.findExpToVerifyPage"/>
+	</action>
+	<action path="/findExpToClaimPage"
+	       type="com.aof.webapp.action.prm.expense.FindExpToClaimPageAction" >
+		<forward name="success" path="prm.findExpToClaimPage"/>
+	</action>
+	<action path="/editExpense"
+	       type="com.aof.webapp.action.prm.expense.EditExpenseAction" >
+		<forward name="view" path="prm.editExpense"/>
+		<forward name="list" path="/findExpSelfPage.do"/>
+		<forward name="showArAndApDetail" path="/WEB-INF/jsp/prm/expense/showExpenseDetailPage.jsp"/>
+	</action>
+	<action path="/verifyExpense"
+	       type="com.aof.webapp.action.prm.expense.VerifyExpenseAction" >
+		<forward name="view" path="prm.verifyExpense"/>
+		<forward name="list" path="/findExpToVerifyPage.do"/>
+	</action>
+	<action path="/approveExpense"
+	       type="com.aof.webapp.action.prm.expense.ApproveExpenseAction" >
+		<forward name="view" path="prm.approveExpense"/>
+		<forward name="list" path="/findExpToApprovalPage.do"/>
+	</action>
+	<action path="/claimExpense"
+	       type="com.aof.webapp.action.prm.expense.ClaimExpenseAction" >
+		<forward name="view" path="prm.claimExpense"/>
+		<forward name="list" path="/findExpToClaimPage.do"/>
+	</action>
+
+	<!-- Up was added by Jeffrey 20041210 --> 
+
+    <!-- Down was added by LYY 20041126 -->   	
+	<action path="/editTimeSheet"
+			type="com.aof.webapp.action.prm.timesheet.EditTimeSheetAction"
+			name="EditTimeSheetForm"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.editTimeSheet" contextRelative="true"/>
+		<forward name="backToListTimeSheet" path="/listTimeSheet.do" contextRelative="true"/>
+	</action>  	
+	<action path="/projectSelect"
+			type="com.aof.webapp.action.prm.ProjectSelectAction"
+			name="ProjectSelectForm"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/timesheet/projectSelect.jsp" contextRelative="true"/>
+	</action>
+	<action path="/findPRMPage"
+	        type="com.aof.webapp.action.prm.timesheet.FindPRMPageAction"
+	       	name="FindPRMForm"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.findPRMPage" contextRelative="true"/>
+	</action>	
+	
+	<action path="/listTSCAFUpdate"
+			type="com.aof.webapp.action.prm.timesheet.ListTSCAFUpdateAction"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.listTSCAFUpdate" contextRelative="true"/>
+	</action>
+	<action path="/listTSApproval"
+			type="com.aof.webapp.action.prm.timesheet.ListTSApprovalAction"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.listTSApproval" contextRelative="true"/>
+	</action>
+	<action path="/editTSApproval"
+			type="com.aof.webapp.action.prm.timesheet.EditTSApprovalAction"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.editTSApproval" contextRelative="true"/>
+		<forward name="backToList" path="/listTSApproval.do" contextRelative="true"/>
+	</action>
+	<action path="/editTSCAFUpdate"
+			type="com.aof.webapp.action.prm.timesheet.EditTSCAFUpdateAction"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.editTSCAFUpdate" contextRelative="true"/>
+		<forward name="backToList" path="/listTSCAFUpdate.do" contextRelative="true"/>
+	</action>
+	<action path="/projectCostMaintain"
+			type="com.aof.webapp.action.prm.expense.ProjectCostMaintainAction"
+			name="ProjectCostMaintainForm"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="list" path="/findCostSelfPage.do" contextRelative="true"/>
+		<forward name="success" path="prm.projectCostMaintain" contextRelative="true"/>
+		<forward name="airfare" path="prm.projectAirfareMaintain" contextRelative="true"/>
+	</action>
+	
+	<action path="/findCostSelfPage"
+			type="com.aof.webapp.action.prm.expense.FindCostSelfPageAction"
+			scope="request"
+			validate="false"
+			parameter="init">
+		<forward name="success" path="prm.FindCostSelfPage" contextRelative="true"/>
+	</action>
+	<action path="/projectList" 
+		type="com.aof.webapp.action.prm.ProjectListAction" 
+		name="ProjectListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" 
+			path="/WEB-INF/jsp/prm/projectList.jsp" 
+			contextRelative="true"/>
+	</action>
+	<action path="/PRMProjectList" 
+		type="com.aof.webapp.action.prm.PRMProjectListAction" 
+		name="ProjectListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" 
+			path="/WEB-INF/jsp/prm/prmprojectList.jsp" 
+			contextRelative="true"/>
+	</action>
+	<action path="/userList" 
+		type="com.aof.webapp.action.prm.UserListAction" 
+		name="UserListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" 
+			path="/WEB-INF/jsp/prm/alluserList.jsp" 
+			contextRelative="true"/>
+	</action>
+	<action path="/SalesUserList" 
+		type="com.aof.webapp.action.prm.SalesUserListAction" 
+		name="UserListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/salesUserList.jsp" contextRelative="true"/>
+	</action>	
+	<action path="/PRMUserList" 
+		type="com.aof.webapp.action.prm.PRMUserListAction" 
+		name="UserListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/prmuserList.jsp" contextRelative="true"/>
+	</action>
+	<action path="/CustomerList" 
+		type="com.aof.webapp.action.prm.CustomerListAction" 
+		scope="request"
+		parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/CustomerList.jsp" contextRelative="true"/>
+	</action>
+   	<!-- up was added by LYY 20041126 -->
+   	
+   	<action    path="/listProjCalendarType"
+	       type="com.aof.webapp.action.prm.master.ListProjCalendarTypeAction" >
+		<forward name="success" path="prm.listProjCalendarType"/>
+	</action>
+	
+	<action    path="/editProjCalendarType"
+	           type="com.aof.webapp.action.prm.master.EditProjCalendarTypeAction" scope="request">
+		<forward name="view" path="prm.editProjCalendarType"/>
+		<forward name="list" path="/listProjCalendarType.do"/>        
+	</action>
+		
+	<action path="/editProjCalendar" type="com.aof.webapp.action.prm.master.EditProjCalendarAction" >
+		<forward name="success" path="prm.editProjCalendar"/>
+	</action>
+	
+	<action name="FindBillingInstructionForm"
+			path="/FindBillingInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindBillingInstructionAction">
+		<forward name="success" path="prm.FindBillingInstruction" contextRelative="true"/>
+		<forward name="showDialog" path="/WEB-INF/jsp/prm/bill/showBillingDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditBillingInstructionForm"
+			path="/EditBillingInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditBillingInstructionAction">
+		<forward name="success" path="prm.EditBillingInstruction" contextRelative="true"/>
+		<forward name="list" path="/FindBillingInstruction.do" contextRelative="true"/>
+		<forward name="refresh" path="/EditBillingInstruction.do" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bill/showBillingDetailDialog.jsp" contextRelative="true"/>		
+	</action>
+
+	<action path="/findBillPendingList"
+	       type="com.aof.webapp.action.prm.bill.FindBillPendingListAction" >
+		<forward name="success" path="prm.findBillPendingList"/>
+		<forward name="gotoInstruction" path="/EditBillingInstruction.do"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+
+	<action path="/findBillingDetail" type="com.aof.webapp.action.prm.bill.FindBillingDetailAction" >
+		<forward name="viewDetail" path="/WEB-INF/jsp/prm/bill/BillingPendingDetailPage.jsp"/>
+	</action>
+	
+	<action name="FindInvoiceForm"
+			path="/findInvoice"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindInvoiceAction">
+		<forward name="success" path="prm.FindInvoiceAction" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bill/showInvoiceDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditInvoiceForm"
+			path="/editInvoice"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditInvoiceAction">
+		<forward name="success" path="prm.EditInvoice" contextRelative="true"/>
+		<forward name="list" path="/findInvoice.do" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bill/showInvoiceDetailDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="FindEMSForm"
+			path="/findEMS"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindEMSAction">
+		<forward name="success" path="prm.FindEMSAction" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bill/showEMSDialog.jsp" contextRelative="true"/>
+	</action>
+
+	<action name="EditEMSForm"
+			path="/editEMS"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditEMSAction">
+		<forward name="success" path="prm.EditEMS" contextRelative="true"/>
+		<forward name="list" path="/findEMS.do" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bill/showEMSDetailDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="FindInvoiceForm"
+			path="/findInvoiceConfirm"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindInvoiceConfirmAction">
+		<forward name="success" path="prm.FindInvoiceAction" contextRelative="true"/>
+	</action>
+
+	<action name="EditInvoiceConfirmForm"
+			path="/editInvoiceConfirm"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditInvoiceConfirmAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/bill/showInvoiceConfirmDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="FindInvoiceForm"
+			path="/findReceipt"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindReceiptAction">
+		<forward name="success" path="prm.FindInvoiceAction" contextRelative="true"/>
+	</action>
+	
+	<action name="EditReceiptForm"
+			path="/settleReceipt"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditReceiptAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/bill/showReceiptDialog.jsp" contextRelative="true"/>
+	</action>
+	
+
+	<action path="/dialogReceiptList" 
+		    type="com.aof.webapp.action.prm.bill.ReceiptDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/prm/bill/dialogReceipt.jsp" contextRelative="true"/>
+	</action>
+	
+	
+	<action name="FindBillingInstructionForm"
+			path="/FindDownpaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindDownpaymentInstruction">
+		<forward name="success" path="prm.FindDownpaymentInstruction" contextRelative="true"/>
+	</action>
+	
+	<action name="EditBillDownpaymentInstructionForm"
+			path="/EditDownpaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditDownpaymentInstructionAction">
+		<forward name="success" path="prm.EditDownpaymentInstruction" contextRelative="true"/>
+		<forward name="list" path="/FindDownpaymentInstruction.do" contextRelative="true"/>
+		<forward name="showDialog" path="/WEB-INF/jsp/prm/bill/showDownPaymentDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="FindLostRecordForm"
+			path="/findLost"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.FindLostRecordAction">
+		<forward name="success" path="prm.FindLostRecord" contextRelative="true"/>
+	</action>
+	
+	<action name="EditLostRecordForm"
+			path="/editLost"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bill.EditLostRecordAction">
+		<forward name="success" path="prm.EditLostRecordAction" contextRelative="true"/>
+		<forward name="list" path="/findLost.do" contextRelative="true"/>
+	</action>
+	
+	<action path="/editReceipt"
+			scope="request"
+			type="com.aof.webapp.action.prm.bill.EditReceiptMasterAction">
+		<forward name="success" path="prm.EditReceipt" contextRelative="true"/>
+		<forward name="view" path="prm.ViewReceipt" contextRelative="true"/>
+		<forward name="list" path="prm.ListReceipt" contextRelative="true"/>
+	</action>
+	
+
+	<action path="/listReceipt"
+			scope="request"
+			type="com.aof.webapp.action.prm.bill.ListReceiptAction">
+		<forward name="success" path="prm.ListReceipt" contextRelative="true"/>
+	</action>
+
+	<!-- ============= Pre-Sale By Angus =========================  -->
+	<action    path="/ListDeliveryType"
+	       type="com.aof.webapp.action.prm.presale.ListDeliveryTypeAction" >
+		<forward name="success" path="prm.ListDeliveryType"/>
+	</action>
+	
+	<action    path="/EditDeliveryType"
+	           type="com.aof.webapp.action.prm.presale.EditDeliveryTypeAction" scope="request">
+		<forward name="view" path="prm.EditDeliveryType"/>
+		<forward name="list" path="/ListDeliveryType.do"/>        
+	</action>
+	
+	<action    path="/ListPreSaleProject"
+	       type="com.aof.webapp.action.prm.presale.ListPreSaleProjectAction" >
+		<forward name="success" path="prm.ListPreSaleProject"/>
+	</action>
+	
+	<action    path="/EditPreSaleProject"
+	           type="com.aof.webapp.action.prm.presale.EditPreSaleProjectAction" scope="request">
+		<forward name="view" path="prm.EditPreSaleProject"/>
+		<forward name="list" path="/ListPreSaleProject.do"/>        
+	</action>
+	
+	<!-- ============= Payment By Angus =========================  -->
+	<action path="/payProjectList" 
+		type="com.aof.webapp.action.prm.payment.PayProjectListAction" 
+		name="ProjectListForm" scope="request" validate="false" 
+		parameter="init">
+		<forward name="success" 
+			path="/WEB-INF/jsp/prm/payment/payProjectList.jsp" 
+			contextRelative="true"/>
+	</action>
+	<action path="/findPaymentPendingList"
+	       type="com.aof.webapp.action.prm.payment.FindPaymentPendingListAction" >
+		<forward name="success" path="prm.findPaymentPendingList"/>
+		<forward name="gotoInstruction" path="/EditPaymentInstruction.do"/>
+	</action>
+
+	<action path="/findCheckBilling" type="com.aof.webapp.action.prm.payment.FindCheckBillingAction" >
+		<forward name="viewDetail" path="/WEB-INF/jsp/prm/payment/PaymentPendingDetailPage.jsp"/>
+	</action>
+	
+	<!--used in ConfirmPayment Page, Added by Bill at 2006/02/15-->
+	<action path="/findPaymentInvoice" type="com.aof.webapp.action.prm.payment.FindInvoiceDialogAction" >
+		<forward name="viewDetail" path="/WEB-INF/jsp/prm/payment/paymentInvoiceDetailPage.jsp"/>
+	</action>
+	<action path="/findInstruction" type="com.aof.webapp.action.prm.payment.FindInstructionDialogAction" >
+		<forward name="viewDetail" path="/WEB-INF/jsp/prm/payment/paymentInstructionDetailPage.jsp"/>
+	</action>
+	<!--End, by Bill-->
+	
+	<action path="/findPaymentDetail" type="com.aof.webapp.action.prm.payment.FindPaymentDetailAction" >
+		<forward name="viewDetail" path="/WEB-INF/jsp/prm/payment/PaymentPendingDetailPage.jsp"/>
+	</action>
+
+	<action name="FindPaymentInstructionForm"
+			path="/FindPaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.FindPaymentInstructionAction">
+		<forward name="success" path="prm.FindPaymentInstruction" contextRelative="true"/>
+		<forward name="showDialog" path="/WEB-INF/jsp/prm/payment/showPaymentDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditPaymentInstructionForm"
+			path="/EditPaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.EditPaymentInstructionAction">
+		<forward name="success" path="prm.EditPaymentInstruction" contextRelative="true"/>
+		<forward name="list" path="/FindPaymentInstruction.do" contextRelative="true"/>
+		<forward name="refresh" path="/EditPaymentInstruction.do" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/payment/showPaymentDetailDialog.jsp" contextRelative="true"/>		
+	</action>
+		
+	<action name="FindPaymentInstructionForm"
+			path="/FindPaymentDownpaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.FindPaymentDownpaymentInstructionAction">
+		<forward name="success" path="prm.FindPaymentDownpaymentInstruction" contextRelative="true"/>
+	</action>
+	
+	<action name="EditPaymentDownpaymentInstructionForm"
+			path="/EditPaymentDownpaymentInstruction"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.EditPaymentDownpaymentInstructionAction">
+		<forward name="success" path="prm.EditPaymentDownpaymentInstruction" contextRelative="true"/>
+		<forward name="list" path="/FindPaymentDownpaymentInstruction.do" contextRelative="true"/>
+		<forward name="showDialog" path="/WEB-INF/jsp/prm/payment/showPaymentDownPaymentDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="FindPaymentInvoiceForm"
+			path="/findPaymentInvoice"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.FindPaymentInvoiceAction">
+		<forward name="success" path="prm.FindPaymentInvoiceAction" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/payment/showPaymentInvoiceDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditPaymentInvoiceForm"
+			path="/editPaymentInvoice"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.EditPaymentInvoiceAction">
+		<forward name="success" path="prm.EditPaymentInvoice" contextRelative="true"/>
+		<forward name="list" path="/findPaymentInvoice.do" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/payment/showPaymentInvoiceDetailDialog.jsp" contextRelative="true"/>
+		<forward name="createCM" path="prm.createCostMaster" contextRelative="true"/>
+	</action>
+
+	<!-- 
+	<action path="/settleSupplierInvoice"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.EditPaymentInvoiceAction">
+		<forward name="createCM" path="prm.createCostMaster" contextRelative="true"/>
+	</action>
+	-->
+	
+	<action path="/listSupplierInvoice"
+			scope="request"
+	        type="com.aof.webapp.action.prm.payment.ListSupplierInvoiceAction">
+		<forward name="success" path="prm.ListSupplierInvoice" contextRelative="true"/>
+	</action>
+
+	<action path="/editSupplierInvoice"
+			scope="request"
+	        type="com.aof.webapp.action.prm.payment.EditSupplierInvoiceAction">
+		<forward name="success" path="prm.EditSupplierInvoice" contextRelative="true"/>
+		<forward name="list" path="prm.ListSupplierInvoice" contextRelative="true"/>
+		<forward name="view" path="prm.ViewSupplierInvoice" contextRelative="true"/>
+	</action>
+	
+	<action path="/dialogSupplierInvoiceList" 
+		    type="com.aof.webapp.action.prm.payment.PaymentMasterDialogAction" >
+		<forward name="success" path="/WEB-INF/jsp/prm/payment/dialogSupplierInvoice.jsp" contextRelative="true"/>
+	</action>
+		
+	<!-- ============== Vendor Maintenance By Angus =====================================  -->
+	<action 
+		path="/listVendorParty"
+		type="com.aof.webapp.action.party.ListVendorPartyAction" >
+		<forward name="success" path="system.listVendorParty"/>
+	</action>
+	<action    path="/editVendorParty"
+	           type="com.aof.webapp.action.party.EditVendorPartyAction" 
+	           scope="request" input="/WEB-INF/jsp/crm/supplier/editVendorParty.jsp">
+		<forward name="view" path="system.editVendorParty"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/supplier/dialogEditVendor.jsp"/>
+		<forward name="list" path="system.listVendorParty"/> 
+		<forward name="after_delete" path="/listVendorParty.do"/>       
+	</action>
+	<!-- =======================================================  -->
+	<!--				PAS Report module Service					  -->
+	<!-- =======================================================  --> 
+	<action
+		path="/pas.report.TSCAFPrint"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.CAFPrintExcelFormAction">
+    <forward name="success" path="prm.editTimeSheet" contextRelative="true"/>    
+	</action>   
+	<action
+		path="/pas.report.expenseprint"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ExpensePrintAction">
+	</action>
+	<action
+		path="/pas.report.Paymentprint"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.PaymentInstructionExcelFormAction">
+	</action>
+	<action
+		path="/pas.report.Billingprint"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.BillingInstructionExcelFormAction">
+	</action>
+	<action
+		path="/pas.report.Presaleprint"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.PresaleListExcelFormAction">
+	</action>
+	<action
+		path="/pas.report.CostByPMRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.CostByPMRptAction">
+		<forward name="success" path="prm.report.CostByPMRpt" contextRelative="true"/>
+	</action>
+	<action
+			path="/pas.report.ExpenseAnalysisRpt"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.report.ExpenseAnalysisRptAction">
+		<forward name="success" path="prm.report.ExpenseAnalysisRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	
+	<!-- down was added by angus  -->
+	<action
+		path="/pas.report.TSStatusSummaryRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.TSStatusSummaryRptAction">
+		<forward name="success" path="prm.report.TSStatusSummaryRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ProjectByPMRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ProjectByPMRptAction">
+		<forward name="success" path="prm.report.ProjectByPMRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ProjectOverBudgetRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ProjectOverBudgetRptAction">
+		<forward name="success" path="prm.report.ProjectOverBudgetRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.CAFStatusRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.CAFStatusRptAction">
+		<forward name="success" path="prm.report.CAFStatusRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.TSDetailRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.TSDetailRptAction">
+		<forward name="success" path="prm.report.TSDetailRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ResourceForecastRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ResourceForecastRptAction">
+		<forward name="success" path="prm.report.ResourceForecastRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ActualVSForecastRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ActualVSForecastRptAction">
+		<forward name="success" path="prm.report.ActualVSForecastRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ActualVSBudgetMDRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ActualVSBudgetMDRptAction">
+		<forward name="success" path="prm.report.ActualVSBudgetMDRpt" contextRelative="true"/>
+	</action>
+	
+	<action
+		path="/pas.report.PreSaleMDRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.PreSaleMDRptAction">
+		<forward name="success" path="prm.report.PreSaleMDRpt" contextRelative="true"/>
+	</action>
+	
+	<action
+		path="/pas.report.SalesPerformanceRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.SalesPerformanceRptAction">
+		<forward name="success" path="prm.report.SalesPerformanceRpt" contextRelative="true"/>
+	</action>
+	
+	<action
+		path="/ListSecurityPermission"
+        scope="request"
+        type="com.aof.webapp.action.prm.master.ListSecurityPermissionAction">
+		<forward name="success" path="prm.listSecurityPermission" contextRelative="true"/>
+	</action>
+	
+	<action
+		path="/listARTracking"
+		scope="request"
+        type="com.aof.webapp.action.prm.report.ListARTrackingAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/report/listARTracking.jsp" contextRelative="true"/>
+	</action>
+		
+	<action
+		path="/FindSecurityPermission"
+        scope="request"
+        type="com.aof.webapp.action.prm.master.FindSecurityPermissionAction">
+		<forward name="success" path="prm.findSecurityPermission" contextRelative="true"/>
+	</action>	
+	<action
+		path="/pas.report.ExpenseSummaryRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ExpenseSummaryRptAction">
+        <forward name="success" path="prm.report.ExpenseSummaryRpt" contextRelative="true"/>
+	</action>  
+	<action
+		path="/pas.report.InvoiceTrackingRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.InvoiceTrackingRptAction">
+        <forward name="success" path="prm.report.InvoiceTrackingRpt" contextRelative="true"/>
+	</action>  
+	<!-- up was added by angus -->
+	
+	<action
+		path="/pas.report.ForecastVarianceRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ForecastVarianceRptAction">
+		<forward name="success" path="prm.report.ForecastVarianceRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ProjectActualRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ProjectActualRptAction">
+		<forward name="success" path="prm.report.ProjectActualRpt" contextRelative="true"/>
+	</action>
+	<action
+		path="/pas.report.ProjectStatusRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.ProjectStatusRptAction">
+		<forward name="success" path="prm.report.ProjectStatusRpt" contextRelative="true"/>
+	</action>
+	
+	<action
+		path="/pas.report.CAFSummaryRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.CAFSummaryRptAction">
+		<forward name="success" path="prm.report.CAFSummaryRpt" contextRelative="true"/>
+	</action>
+	
+	<!-- Down was added by Cathleen Chen 2005-07-29 -->
+	<action
+		path="/pas.report.PresaleUpdateRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.SalesFunnelRptAction">
+		<forward name="success" path="prm.report.PresaleUpdateRpt" contextRelative="true"/>
+	</action>
+	
+	<!-- Down was added by Stanley 2005-09-27 -->
+	<action
+		path="/pas.report.PipelineCurrentRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.PipelineCurrentRptAction">
+		<forward name="success" path="prm.report.PipelineCurrentRpt" contextRelative="true"/>
+	</action>
+
+	<!-- Down was added by Jackey Ding 2005-02-05 -->
+	<action name="ProjectCostForm"
+			path="/pas.report.ProjectCostRpt"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.report.ProjectCostRptAction">
+		<forward name="success" path="prm.report.ProjectCostRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	
+	<!-- Up was added by Jackey Ding 2005-02-05 -->
+		<!-- Down was added by Will Li 2006-07-04 -->
+	<action path="/pas.report.ContractGeneralInfoRpt" scope="request" type="com.aof.webapp.action.prm.report.ContractGeneralInfoRptAction">
+		<forward name="success" path="prm.report.ContractGeneralInfoRpt" contextRelative="true"/>
+	</action>
+	<!-- Up was added by Will Li 2006-07-04 -->
+	
+	<!-- Down was added by Will Li 2006-08-22 -->
+	<action path="/pas.report.UtilizationByStaffRpt" scope="request" type="com.aof.webapp.action.prm.report.UtilizationByStaffRpt">
+		<forward name="list-success" path="prm.report.ListUtilizationByStaff" contextRelative="true"/>
+		<forward name="view-success" path="/WEB-INF/jsp/prm/report/DialogUtilizationByStaffRpt.jsp" contextRelative="true"/>
+	</action>
+	<!-- Up was added by Will Li 2006-08-22 -->
+	
+	<!-- Down was added by Will Li 2006-09-06 -->
+	<action path="/pas.report.ExpenseDetailRpt" scope="request" type="com.aof.webapp.action.prm.report.ExpenseDetailRptAction">
+		<forward name="success" path="prm.report.ExpenseDetailRpt" contextRelative="true"/>
+	</action>
+	<!-- Up was added by Will Li 2006-09-06 -->
+	<action path="/pas.report.APWeeklyRpt" scope="request" type="com.aof.webapp.action.prm.report.APWeeklyRptAction">
+		<forward name="success" path="prm.report.APWeeklyRpt" contextRelative="true"/>
+	</action>
+	
+	<!-- =======================================================  -->
+	<!--				AR/AP Report							  -->
+	<!-- =======================================================  -->
+	<action name="ARAgingRptForm"
+		    path="/pas.report.ARAgingRpt"
+            scope="request"
+            type="com.aof.webapp.action.prm.report.ARAgingRptAction">
+		<forward name="success" path="prm.report.ARAgingRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	
+	<action name="APAgingRptForm"
+		    path="/pas.report.APAgingRpt"
+            scope="request"
+            type="com.aof.webapp.action.prm.report.APAgingRptAction">
+		<forward name="success" path="prm.report.APAgingRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	
+	<action name="ARCustStatementRptForm"
+		    path="/pas.report.ARCustStatementRpt"
+            scope="request"
+            type="com.aof.webapp.action.prm.report.ARCustStatementRptAction">
+		<forward name="success" path="prm.report.ARCustStatementRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	
+	<!-- Added by Bill Yu -->
+	<!-- at 2005/09/13 -->
+	<action name="OutstandingAcceptanceRptForm"
+		    path="/pas.report.OutstandingAcceptanceRpt"
+            scope="request"
+            type="com.aof.webapp.action.prm.report.OutstandingAcceptanceRptAction">
+		<forward name="success" path="prm.report.OutstandingAcceptanceRpt" contextRelative="true"/>
+		<forward name="Export" path="/WEB-INF/jsp/prm/report/PopUp.html" contextRelative="true"/>
+	</action>
+	<!-- at 2005/09/19 -->
+	<action name="OutstandingTSRptForm"
+			path="/pas.report.OutstandingTSRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.OutstandingTSRptAction">
+		<forward name="success" path="prm.report.OutstandingTSRpt" contextRelative="true"/>
+	</action>
+	<!-- at 2005/10/19 -->
+	<action path="/pas.report.ResourceOTTrackingRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.ResourceOTTrackingRptAction">
+		<forward name="success" path="prm.report.ResourceOTTrackingRpt" contextRelative="true"/>
+	</action>
+	<action path="/pas.report.OutstandingReturnAirTicketRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.OutstandingReturnAirTicketRptAction">
+		<forward name="success" path="prm.report.OutstandingReturnAirTicketRpt" contextRelative="true"/>
+	</action>
+	<!-- at 2005/10/20 -->
+	<action path="/pas.report.ProjectRenewCheckingRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.ProjectRenewCheckingRptAction">
+		<forward name="success" path="prm.report.ProjectRenewCheckingRpt" contextRelative="true"/>
+	</action>
+	<!-- at 2005/10/26 -->
+	<action name="AirfareCostRptForm"
+			path="/pas.report.AirfareCostRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.AirfareCostRptAction">
+		<forward name="success" path="prm.report.AirfareCostRpt" contextRelative="true"/>
+	</action>
+	<!-- at 2006/01/06 -->
+	<action path="/pas.report.ExpenseStatisticsRpt"
+			scope="request"
+			type="com.aof.webapp.action.prm.report.ExpenseStatisticsRptAction">
+		<forward name="success" path="prm.report.ExpenseStatisticsRpt" contextRelative="true"/>
+	</action>
+	<!-- at 2006/01/09 -->
+	<action path="/settleSupplierInvoice"
+			name="SettleSupplierInvoiceForm"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.PaymentSettlementAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/payment/settleSupplierInvoice.jsp" contextRelative="true"/>
+	</action>
+	<!-- at 2006/01/16 -->
+	<action path="/ConfirmPayment"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.payment.ConfirmPaymentAction">
+		<forward name="success" path="prm.payment.ConfirmPayment" contextRelative="true"/>
+	</action>
+	<!-- at 2006/02/13-->
+	<action path="/POProjectList"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.POProjectListDialogAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/POProjectListDialog.jsp" contextRelative="true"/>
+	</action>
+	<!-- at 2006/03/15-->
+	<action path="/notifyCreateCustomer"
+			scope="request"
+			type="com.aof.webapp.action.prm.bid.NotifyCreateCustomerAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/bid/notifyCreateCustomer.jsp"/>
+	</action>
+	<!-- ends -->	
+	
+	<!-- =======================================================  -->
+	<!--				PAS DialogBox Service					  -->
+	<!-- =======================================================  -->    
+	
+	<!-- =======================================================  -->
+	<!--			PAS Beginning Balance Data Load      	      -->
+	<!-- =======================================================  -->    
+	<action path="/BeginningBalanceDataLoad"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.DataLoadAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/dataLoad.jsp" contextRelative="true"/>
+	</action>
+	
+	<!-- =======================================================  -->
+	<!--			 			 PAS Bid      	                  -->
+	<!-- =======================================================  -->    
+	<action name="FindStepGroupForm"
+			path="/FindStepGroups"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.FindStepGroupAction">
+		<forward name="view" path="prm.bid.findStepGroup" contextRelative="true"/>
+	</action>
+	
+	<action name="FindStepGroupForm"
+			path="/FindStepGroups"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.FindStepGroupAction">
+		<forward name="view" path="prm.bid.findStepGroup" contextRelative="true"/>
+	</action>
+	
+	<action name="EditStepActivityForm"
+			path="/EditStepActivity"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.EditStepActivityAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/bid/editStepActivityDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditStepForm"
+			path="/EditStep"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.EditStepAction">
+		<forward name="success" path="/WEB-INF/jsp/prm/bid/editStepDialog.jsp" contextRelative="true"/>
+	</action>
+	
+	<action name="EditStepGroupForm"
+			path="/EditStepGroup"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.EditStepGroupAction">
+		<forward name="success" path="prm.bid.EditStepGroup" contextRelative="true"/>
+	</action>
+	<action 
+			path="/ListSalesBid"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.FindBidMasterAction">
+		<forward name="view" path="prm.bid.findBidMaster" contextRelative="true"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/bid/bidMasterDialog.jsp" contextRelative="true"/>
+	</action>
+	<action 
+			path="/editBidMaster"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.EditBidMasterAction">
+		<forward name="success" path="prm.bid.maintBidMaster" contextRelative="true"/>
+		<forward name="list" path="/ListSalesBid.do"/> 
+		<forward name="view" path="/WEB-INF/jsp/prm/bid/viewBidMaster.jsp"/> 
+		<forward name="redirect" path = "/ListSalesBid.do"/>
+		<forward name="predel-success" path="/WEB-INF/jsp/prm/bid/DialogConfirmDelete.jsp"/>
+		<forward name="changestatus" path="/WEB-INF/jsp/prm/bid/DialogChangeStatus.jsp"/>
+	</action>
+	
+	<action 
+			path="/dialogBidMaster"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.DialogBidMasterAction">
+		<forward name="view" path="/WEB-INF/jsp/prm/bid/dialogBidMaster.jsp"/> 
+	</action>
+
+	<action 
+			path="/EditBidActDet"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.EditBidActDetAction">
+		<forward name="view" path="/WEB-INF/jsp/prm/bid/dialogEditBidActDet.jsp"/> 
+	</action>
+	<action 
+			path="/DialogBidActDet"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.bid.DialogBidActDetAction">
+		<forward name="view" path="/WEB-INF/jsp/prm/bid/dialogBidAct.jsp"/> 
+	</action>
+
+
+	<!-- down was added by chen yu   -->
+	<action
+		path="/pas.report.InvoiceReceiptSettleRpt"
+        scope="request"
+        type="com.aof.webapp.action.prm.report.InvoiceReceiptSettleRptAction">
+		<forward name="success" path="prm.report.InvoiceReceiptSettleRpt" contextRelative="true"/>
+	</action>
+	<action   
+		name="CustomerComplains"
+		 path="/CustomerComplains"
+	       type="com.aof.webapp.action.prm.project.CustomerComplainsAction" >
+		<forward name="success" path="prm.CustomerComplains"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/prm/project/CustomerComplains.jsp"/>
+	</action>
+	<action    path="/editCustComplains"
+	           type="com.aof.webapp.action.prm.project.EditCustComplainsAction" scope="request">
+		<forward name="view" path="prm.editCustComplains"/>
+		<forward name="list" path="/CustomerComplains.do"/>        
+	</action>
+			<action    path="/selectBackLog" scope="request"
+		forward="prm.report.selectBackLog"  />
+	<action    path="/viewBackLog"
+	           type="com.aof.webapp.action.prm.report.ViewBackLogAction" scope="request">
+		<forward name="view" path="prm.report.BackLog"/> 
+		<forward name="export" path="/updateBackLog.do"/>
+	</action>	
+		<action    path="/updateBackLog"
+	           type="com.aof.webapp.action.prm.report.UpdateBackLogAction" scope="request">
+		<forward name="view" path="/viewBackLog.do"/> 
+	</action>
+	
+		<!-- added by Will begin. 2006-06-06-->
+	<action path="/bookingRoomAction" parameter="command" scope="request" type="com.aof.webapp.action.prm.admin.BookingRoomAction">
+      <forward name="preview-success" 		path="prm.bookingRoom" />
+      <forward name="query-success"    		path="prm.bookingRoom" />
+      <forward name="list4Add-success"    	path="/WEB-INF/jsp/prm/admin/DialogEditBooking.jsp" />
+    </action>
+    <!-- added by Will end. -->
+    
+    <!-- added by Will begin. 2006-06-15-->
+    <!-- added by Will begin. 2006-06-15-->
+    <!-- Skill Set Configure -->
+	<action path="/skillAction" scope="request" type="com.aof.webapp.action.prm.skillset.SkillAction">
+      <forward name="view-success"    		path="prm.editSkill" />
+      <forward name="list-success"    		path="prm.listSkill" />
+      <forward name="query-success"    		path="/WEB-INF/jsp/prm/skillset/DialogStaffList.jsp" />
+      <forward name="viewCert-success"    	path="/WEB-INF/jsp/prm/skillset/DialogEditCert.jsp" />
+      <forward name="queryCert-success"    	path="/WEB-INF/jsp/prm/skillset/DialogListCert.jsp" />
+      <forward name="viewEx-success"    	path="/WEB-INF/jsp/prm/skillset/DialogEditEx.jsp" />
+      <forward name="queryEx-success"    	path="/WEB-INF/jsp/prm/skillset/DialogListEx.jsp" />
+      <forward name="viewComment-success"   path="/WEB-INF/jsp/prm/skillset/DialogEditComment.jsp" />
+      <forward name="queryComment-success"  path="/WEB-INF/jsp/prm/skillset/DialogListComment.jsp" />
+    </action>
+    <!-- added by Will end. -->
+		
+	<action path="/NewProjBOM"
+	        scope="request"
+			forward ="prm.project.findProjBOM"/> 
+	<action path="/SelectProjBOM"
+	        scope="request"
+			forward ="prm.project.selectProject"/> 
+
+	<action path="/BidChooseDialogue" 
+			type="com.aof.webapp.action.prm.BidChooseDialogueAction" 
+			name="ProjectListForm" scope="request" validate="false" 
+			parameter="init">
+	<forward name="success" path="/WEB-INF/jsp/prm/BidChooseDialogue.jsp" contextRelative="true"/>
+	</action>
+
+	<action path="/ProjectChooseDialogue" 
+			type="com.aof.webapp.action.prm.ProjectChooseDialogueAction" 
+			name="ProjectListForm" scope="request" validate="false" 
+			parameter="init">
+	<forward name="success" path="/WEB-INF/jsp/prm/ProjectChooseDialogue.jsp" contextRelative="true"/>
+	</action>
+	
+	<!-- added by Will begin -->
+	<action path="/BOMChooseDialogue" 
+			type="com.aof.webapp.action.prm.BOMChooseDialogueAction" 
+			scope="request" validate="false" 
+			parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/BOMChooseDialogue.jsp" contextRelative="true"/>
+	</action>
+	<!-- added by Will end -->
+	<action path="/TemplateChooseDialogue" 
+			type="com.aof.webapp.action.prm.TemplateChooseDialogueAction" 
+			scope="request" validate="false" 
+			parameter="init">
+		<forward name="success" path="/WEB-INF/jsp/prm/TemplateChooseDialogue.jsp" contextRelative="true"/>
+	</action>
+	
+<!-- 
+		<action 
+			path="/ListProjBOMReve"
+	        scope="request"
+	forward ="prm.project.listProjBOMReve"/> 
+	
+-->
+  	<action 
+			path="/findProjBOM"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.FindProjBOMAction"> 
+	<forward name="list" path="prm.project.listProjBOM"/>  
+	<forward name="listreve" path="prm.project.listProjBOMReve"/>  
+	<forward name="listcost" path="prm.project.listProjBOMCost"/>  
+	<forward name="listtype" path="prm.project.listProjType"/>  
+	<forward name="listsche" path="prm.project.listProjBOMSche"/>  
+	</action>
+
+  	<action 
+			path="/findProjBOMTask"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.FindProjBOMTaskAction"> 
+	<forward name="listtask" path="prm.project.listProjBOMTask"/>  
+	</action>
+	<action 
+			path="/editProjBOM"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.projectmanager.EditProjBOMAction">
+	<forward name="view" path="prm.project.editProjBOM"/> 
+	<forward name="redirect" path="/findProjBOM.do?formaction=list"/> 
+	<forward name="dialogueView" path="/WEB-INF/jsp/prm/project/ViewProjeBOMDialogue.jsp"/> 
+	
+	</action>		
+  	<action 
+			path="/editProjBOMReve"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjBOMReveAction"> 
+	<forward name="view" path="prm.project.updateProjBOM"/>  
+	</action>
+	
+	  	<action 
+			path="/editProjBOMCost"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjBOMCostAction"> 
+	<forward name="view" path="prm.project.editProjBOMCost"/>
+	<forward name="dialogView" path="/WEB-INF/jsp/prm/project/DialogSTAdditional.jsp"/>
+	</action>
+  	<action 
+			path="/editProjBOMSche"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjBOMScheAction"> 
+	<forward name="view" path="prm.project.editProjBOMSche"/>  
+	<forward name="redirect" path="/EditProjBOMTypeUL.do"/>  
+	</action>
+	<action 
+			path="/editProjType"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.projectmanager.EditProjBOMTypeAction">
+	<forward name="view" path="prm.project.editProjType"/> 
+	<forward name="new" path="prm.project.findProjBOM"/> 
+	</action>		
+	<action 
+			path="/EditProjBOMTypeUL"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.projectmanager.EditProjBOMTypeULAction">
+	<forward name="view" path="prm.project.editProjBOMTypeUl"/> 
+	</action>		
+	
+	<action 
+			path="/editProjBOMTask"
+	        scope="request"
+	        type="com.aof.webapp.action.prm.projectmanager.EditProjBOMTaskAction">
+	<forward name="view" path="prm.project.editProjBOMTask"/> 
+	</action>		
+
+  	<action 
+			path="/findProjType"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.FindProjBOMTypeAction"> 
+	<forward name="view" path="prm.project.listProjType"/>  
+	</action>
+	
+	<action 
+			path="/editProjBOMPrecal"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjBOMPrecalAction">
+		<forward name="view" path="/WEB-INF/jsp/prm/project/EditProjBOMPrecal.jsp"/>
+	</action>
+	<action 
+			path="/editProjBOMNode"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjBOMNodeAction">
+		<forward name="view" path="/WEB-INF/jsp/prm/project/addBomNode.jsp" contextRelative="true"/>
+		<forward name="edit" path="/WEB-INF/jsp/prm/project/editBomNode.jsp" contextRelative="true"/>
+	</action>
+
+	<action 
+			path="/findProjectTracking"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.FindProjectTrackingAction">
+		<forward name="success" path="prm.findProjectTracking" contextRelative="true"/>
+	</action>
+
+	<action 
+			path="/editProjectTracking"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.EditProjectTrackingAction">
+		<forward name="success" path="prm.editProjectTracking" contextRelative="true"/>
+		<forward name="list" path="/findProjectTracking.do" contextRelative="true"/>
+	</action>
+	
+	<action 
+			path="/findProjectTrackingtoApproval"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.FindProjectTrackingtoApprovalAction">
+		<forward name="success" path="prm.findProjectTrackingtoApproval" contextRelative="true"/>
+	</action>
+
+	<action 
+			path="/approveProjectTracking"
+	        scope="request"
+			type="com.aof.webapp.action.prm.projectmanager.ApproveProjectTrackingAction">
+		<forward name="success" path="prm.approveProjectTracking" contextRelative="true"/>
+		<forward name="list" path="/findProjectTrackingtoApproval.do" contextRelative="true"/>
+	</action>
+
+	<action 
+			path="/pas.report.ProjectManDayRpt"
+	        scope="request"
+			type="com.aof.webapp.action.prm.report.ProjectMandayTracking">
+		<forward name="success" path="pas.report.ProjectManDay" contextRelative="true"/>
+	</action>
+
+	<action path="/BOMProjectSelect" 
+			type="com.aof.webapp.action.prm.BOMProjectSelectAction" 
+			name="ProjectListForm" scope="request" validate="false" 
+			parameter="init">
+	<forward name="success" path="/WEB-INF/jsp/prm/BOMProjectSelect.jsp" contextRelative="true"/>
+	</action>
+
+</action-mappings>
+</struts-config>

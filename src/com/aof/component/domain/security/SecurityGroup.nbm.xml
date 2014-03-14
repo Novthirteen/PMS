@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.aof.component.domain.security.SecurityGroup" table="SECURITY_GROUP">
+		<cache usage="read-write"/>
+		<id name="groupId" column="GROUP_ID">
+			<generator class="assigned"/>
+		</id>
+		<property name="description" column="DESCRIPTION"/>
+		<set name="securityPermissions" table="SECURITY_GROUP_PERMISSION" lazy="true">
+			<key column="GROUP_ID"/>
+			<many-to-many class="com.aof.component.domain.security.SecurityPermission" column="PERMISSION_ID"/>
+		</set>
+	</class>
+	
+	<class name="com.aof.component.domain.security.SecurityPermission" table="SECURITY_PERMISSION" >
+		<cache usage="read-write"/>
+		<id name="permissionId" column="PERMISSION_ID">
+			<generator class="assigned"/>
+		</id>
+		<property name="description" column="DESCRIPTION"/>
+	</class>
+</hibernate-mapping>

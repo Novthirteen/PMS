@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.aof.component.prm.skillset.Skill" table="skill">
+	<id name="skillId" column="skill_id">
+		<generator class="native"/>
+	</id>
+	<many-to-one name="employee" class="com.aof.component.domain.party.UserLogin" column="employee_id"/>
+	<many-to-one name="skillCat" class="com.aof.component.prm.skillset.SkillCategory" column="cat_id"/>
+	<many-to-one name="skillLevel" class="com.aof.component.prm.skillset.SkillLevel" column="level_id"/>
+</class>
+
+<class name="com.aof.component.prm.skillset.SkillCategory" table="skill_cat">
+	<id name="catId" column="cat_id">
+		<generator class="assigned"/>
+	</id>
+	<property name="pcatId" column="p_cat_id" type="string"/>
+	<property name="catName" column="cat_name" type="string"/>
+	<property name="catDesc" column="cat_desc" type="string"/>
+</class>
+
+<class name="com.aof.component.prm.skillset.SkillLevel" table="skill_level">
+	<id name="levelId" column="level_id">
+		<generator class="assigned"/>
+	</id>
+	<property name="levelDesc" column="level_desc" type="string"/>
+	<property name="catId" column="cat_id" type="string"/>
+</class>
+
+<class name="com.aof.component.prm.skillset.SkillCert" table="skill_cert">
+	<id name="certId" column="cert_id">
+		<generator class="native"/>
+	</id>
+	<property name="certDesc" column="cert_desc" type="string"/>
+	<property name="dateGrant" column="date_grant"/>
+	<many-to-one name="employee" class="com.aof.component.domain.party.UserLogin" column="employee_id"/>
+</class>
+
+<class name="com.aof.component.prm.skillset.SkillEx" table="skill_ex">
+	<id name="exId" column="ex_id">
+		<generator class="native"/>
+	</id>
+	<property name="exDesc" column="ex_desc" type="string"/>
+	<many-to-one name="employee" class="com.aof.component.domain.party.UserLogin" column="employee_id"/>
+	<property name="exExp" column="ex_exp" type="string"/>
+</class>
+
+<class name="com.aof.component.prm.skillset.SkillComment" table="skill_comment">
+	<id name="commentId" column="comment_id">
+		<generator class="native"/>
+	</id>
+	<property name="commentDesc" column="comment_desc" type="string"/>
+	<many-to-one name="employee" class="com.aof.component.domain.party.UserLogin" column="employee_id"/>
+</class>
+
+</hibernate-mapping>

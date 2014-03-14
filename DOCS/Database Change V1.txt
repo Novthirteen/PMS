@@ -1,0 +1,2816 @@
+1. Change Table SLA_Category:
+	A. Add field slc_fullcdesc to store the full chinese description
+	B. Add field slc_fulledesc to store the full english description
+2. Add Table Proj_Calendar
+3. Add Table Proj_CalendarType
+	insert into Proj_CalendarType values ('CN','Chinese Normal Calendar')
+4. Change Table Proj_Ts_Det:
+	A. Add field ts_confirmDate (DateTime) to store the CAF Confirm Date
+	B. Add field ts_BillId (numeric) to store the Billing Order code
+	C. Add field ts_allowance (numeric (9,2)) to store the allowance
+5. Change Table Proj_SericeType:
+	A. Add field ST_CustAcceptance_Date (DateTime) to store the Acceptance Date from customer 
+	B. Add field ST_BillId (numeric) to store the Billing Order code
+	C. Add field ST_PayId (numeric) to store the Payment Order code
+	D. Add field ST_VendAcceptance_Date (DateTime) to store the Acceptance Date from vendor
+	E. Add field ST_EstimateDate (DateTime) to store the estimate acceptance Date
+6. Change Table Proj_Mstr:
+	A. Add field Proj_billaddr_id (varchar(50)) to store billing address
+7. Add Table Proj_Bill table
+8. Add Table Proj_Invoice table
+9. Add Table Proj_Payment table
+
+10.Change Table USER_LOGIN:
+	A. Add field PC_Type_Id (varchar(10)) to store the working calendar id
+
+
+11. Add Table Proj_Tr_Det
+12. Change Table Proj_Mstr:
+	A. Add field Proj_Allowance (numeric(9,2)) to store Allowance
+	B. Add field Proj_vendaddr (varchar(50)) to store vendor address
+13. Change Table ExpenseType:
+	A. Add field Enable to Exp_BillCode for the account code paid by customer
+	B. Add field Enable to Exp_BillAcc_Desc for the account description paid by customer
+	C. Add field Enable to Exp_Acc_Desc for the account description paid by company
+	
+--2005/03/31--
+14. Change Table Proj_Invoice:
+    A. Add field Inv_Billaddr (varchar(50)) to store bill address
+    B. Add field Inv_Amount (numeric(9,2)) to store the invoice amount
+    C. Add field Inv_Status (varchar(50)) to store the status of the invoice
+       possible status are below
+       a.undelivered
+       b.delivered(once the invoice has the EMS No mean it has been delivered, so this status seems not necessary)
+       c.comfirmed(the invoice comfirmed by customer)
+       d.canceled(the invoice canceled)
+    D. Add field Inv_Note (varchar(1024)) to store note 
+    E. Delete field Inv_EMS_Person
+    F. Delete field Inv_EMS_Date
+    G. Alert field Inv_EMS_No (varchar(50)) to Inv_EMS_Id (varchar(50))
+    H. Add field Inv_Curr_Id (varchar(255)) to store Currency
+    I. Add field Inv_Curr_Rate (float) to store Currency Rate
+    J. Add field Inv_InvoiceDate (datetime) to store invoice date
+    K. Add field Inv_InvoiceUser (varchar(50)) to store invoice user
+    
+    Alter Table Proj_Invoice 
+      	Add Inv_Billaddr varchar(50) NULL,
+      	    Inv_Amount numeric(9,2) NULL,
+		    Inv_Status varchar(50) NULL,
+		    Inv_Note varchar(1024) NULL,
+		    Inv_Curr_Id varchar(255) NULL,
+		    Inv_Curr_Rate float NULL,
+		    Inv_InvoiceDate datetime NULL,
+		    Inv_InvoiceUser varchar(50) NULL
+
+	Alter Table Proj_Invoice 
+		DROP column
+		     Inv_EMS_Person,
+		     Inv_EMS_Date
+	
+	Alter Table Proj_Invoice 
+		Alter Column Inv_EMS_No varchar(50) NULL
+	
+    
+15. Add table Proj_EMS
+	
+	CREATE TABLE [Proj_EMS] (
+		[EMS_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+		[EMS_Type] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[EMS_No] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[EMS_Date] [datetime] NULL ,
+		[EMS_Status] [varchar] (10) COLLATE Chinese_PRC_CI_AS NULL ,
+		[EMS_Note] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL ,
+		[EMS_Create_Date] [datetime] NULL ,
+		[EMS_Create_User] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[EMS_Department] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		CONSTRAINT [PK_Proj_EMS] PRIMARY KEY  CLUSTERED 
+		(
+			[EMS_Id]
+		)  ON [PRIMARY] 
+	) ON [PRIMARY]
+
+
+--2005/04/04--
+16. Change Table Proj_Bill:
+	A. Delete field Bill_Inv_No (numeric)
+	B. Add field Bill_Status (varchar(50)) to store status
+	C. Add field Bill_Note (varchar(2048)) to store note
+	
+	Alter Table Proj_Bill
+		Drop column Bill_Inv_No
+	
+	Alter Table Proj_Bill
+		Add Bill_Status varchar(50) NULL,
+		    Bill_Note varchar(2048) NULL
+	
+17. Change Table Proj_Invoice:
+	A. Add field Inv_Bill_Id (numeric) to store Bill_Id
+	
+	Alter Table Proj_Invoice
+		Add Inv_Bill_Id varchar NULL
+		
+--2005/04/11--
+--18. Add table Proj_Invoice_Confirm
+	
+	CREATE TABLE [Proj_Invoice_Confirm] (
+		[Confirm_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+		[Invoice_Id] [numeric](18, 0) NULL ,
+		[Contactor] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Res_Person] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Contact_Date] [datetime] NULL ,
+		[Pay_Amount] [numeric](18, 2) NULL ,
+		[Currency] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Pay_Date] [datetime] NULL ,
+		[Note] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL ,
+		[create_User] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[create_Date] [datetime] NULL ,
+		CONSTRAINT [PK_Proj_Invoice_Confirm] PRIMARY KEY  CLUSTERED 
+		(
+			[Confirm_Id]
+		)  ON [PRIMARY] 
+	) ON [PRIMARY]
+
+--19. Add table Proj_Receipt
+
+	CREATE TABLE [Proj_Receipt] (
+		[receipt_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+		[receipt_No] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[invoice_Id] [numeric](18, 0) NULL ,
+		[receive_Amount] [numeric](18, 2) NULL ,
+		[currency] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[receive_Date] [datetime] NULL ,
+		[note] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL ,
+		[create_User] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[create_Date] [datetime] NULL ,
+		CONSTRAINT [PK_Proj_Receipt] PRIMARY KEY  CLUSTERED 
+		(
+			[receipt_Id]
+		)  ON [PRIMARY] 
+	) ON [PRIMARY]
+
+--2005/04/13--
+--20. Add table Proj_AirFare_Cost
+
+	CREATE TABLE [Proj_AirFare_Cost] (
+		[costcode] [numeric](10, 0) NOT NULL ,
+		[currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[type] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[refno] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[costdescription] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[totalvalue] [float] NULL ,
+		[exchangerate] [float] NULL ,
+		[costdate] [datetime] NULL ,
+		[createuser] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[createdate] [datetime] NULL ,
+		[modifyuser] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[modifydate] [datetime] NULL ,
+		[claimtype] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL ,
+		[formcode] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[approvalDate] [datetime] NULL ,
+		[payfor] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[takeOffTime] [varchar] (10) COLLATE Chinese_PRC_CI_AS NULL ,
+		[sameFlightPrice] [float] NULL ,
+		[takeOffTimeIn4] [varchar] (10) COLLATE Chinese_PRC_CI_AS NULL ,
+		[FlightNoIn4] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[PriceIn4] [float] NULL ,
+		[takeOffTimeInDay] [varchar] (10) COLLATE Chinese_PRC_CI_AS NULL ,
+		[FlightNoInDay] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+		[PriceInDay] [float] NULL ,
+		CONSTRAINT [PK_Proj_AirFlight_Cost] PRIMARY KEY  CLUSTERED 
+		(
+			[costcode]
+		)  ON [PRIMARY] 
+	) ON [PRIMARY]
+	
+--21.
+-- set cust_id to proj_billaddr_id as default value of the table proj_mstr
+UPDATE Proj_Mstr
+SET Proj_billaddr_id = cust_id
+WHERE (Proj_billaddr_id IS NULL)
+
+--22 
+-- set zero to proj_allowance as default value of the table proj_mstr
+UPDATE Proj_Mstr
+SET Proj_Allowance = 0
+WHERE (Proj_Allowance IS NULL)
+
+--23
+-- initial the security
+INSERT INTO Security_Permission VALUES('PROCU_SUB_VIEW','其他采购费用查看权限');
+INSERT INTO Security_Permission VALUES('PROCU_SUB_ALL','部门其他采购费用查看权限');
+INSERT INTO Security_Permission VALUES('PROCU_SUB_CREATE','其他采购费用创建权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_ALL');
+
+--2005/04/15--
+--24 
+-- set China to PC_Type_Id as default value of the table proj_mstr
+update user_login set PC_Type_Id = 'China' where PC_Type_Id is null
+
+--2005/04/19--
+--25
+-- Change table Proj_AirFare_Cost
+-- 1. delete field currency
+-- 2. delete field type
+-- 3. delete field refno
+-- 4. delete field costdescription
+-- 5. delete field totalvalue
+-- 6. delete field exchangerate
+-- 7. delete field costdate
+-- 8. delete field createuser
+-- 9. delete field createdate
+-- 10. delete field modifyuser
+-- 11. delete field modifydate
+-- 12. delete field claimtype
+-- 13. delete field formcode
+-- 14. delete field approvalDate
+-- 15. delete field payfor
+-- 16. add field bookDate to store date of booking
+Alter Table Proj_AirFare_Cost
+		Drop column currency,
+		            type,
+		            refno,
+		            costdescription,
+		            totalvalue,
+		            exchangerate,
+		            costdate,
+		            createuser,
+		            createdate,
+		            modifyuser,
+		            modifydate,
+		            claimtype,
+		            formcode,
+		            approvalDate,
+		            payfor
+		            
+Alter Table Proj_AirFare_Cost 
+		Add bookDate datetime null
+		
+--2005/04/20--
+--26 Changetable Proj_Cost_Det 
+--   Add field proj_name to store project name
+Alter Table Proj_Cost_Det
+		Add proj_name varchar(255) NULL;
+		            
+--27 Change Table Call_Master
+--	Add field CM_Escalated to store if the call has been Escalated
+--	Add field CM_ReAssigned to store if the call has been Re-Assigned
+Alter Table Call_Master
+		Add CM_Escalated varchar(10) NULL,
+		CM_ReAssigned varchar(10) NULL;
+Update Call_Master set CM_Escalated='N', CM_ReAssigned='N';
+
+--2005/05/08--
+-- 28 Change Table Proj_Invoice
+--   Add field Inv_Type to store invoice type
+Alter Table Proj_Invoice
+		Add Inv_Type varchar(50) NULL;
+		
+--2005/05/09--
+-- 29 Remove spaces in ts_period field of proj_ts_mstr table
+update proj_ts_mstr set ts_period = substring(ts_period, 1 ,10) where datalength(ts_period) > 10
+
+--2005/05/10--
+-- 30 Change Table proj_bill
+Alter Table proj_bill
+	Alter column Bill_CreateUser varchar(255) NULL;
+	
+-- 31 Change Table proj_invoice
+Alter Table proj_invoice
+	Alter column inv_createuser varchar(255) NULL;
+Alter Table proj_invoice
+	Alter column Inv_Proj_Id varchar(255) NULL;
+Alter Table Proj_Invoice
+	Alter column Inv_EMS_Id numeric NULL;
+Alter Table Proj_Invoice
+	Alter column Inv_InvoiceUser varchar(255) NULL;
+	
+-- 32 Change Table proj_tr_det
+Alter Table proj_tr_det
+	Alter column Tr_Currency varchar(255) NULL;
+Alter Table proj_tr_det
+	Alter column Tr_Proj_Id varchar(255) NULL;
+Alter Table proj_tr_det
+	Alter column tr_staff varchar(255) NULL;	
+Alter Table proj_tr_det
+	Alter column tr_createuser varchar(255) NULL;	
+	
+-- 33 Change Table Proj_EMS
+Alter Table Proj_EMS
+	Alter column ems_create_user varchar(255) NULL;
+	
+-- 34 Change Table Proj_Invoice_Confirm
+Alter Table Proj_Invoice_Confirm
+	Alter column res_person varchar(255) NULL;
+Alter Table Proj_Invoice_Confirm
+	Alter column create_User varchar(255) NULL;
+Alter Table Proj_Invoice_Confirm
+	Alter column Currency varchar(255) NULL;
+	
+-- 35 Change Table Proj_Receipt
+Alter Table Proj_Receipt
+	Alter column Currency varchar(255) NULL;
+Alter Table Proj_Receipt
+	Alter column create_user varchar(255) NULL;
+	
+-- 36 Change Table Proj_Calendar
+Alter Table Proj_Calendar
+	Alter column pc_type_id varchar(10) NULL;
+	
+-- 37 Change Table Party_Responsibility_User
+Alter Table Party_Responsibility_User
+	Alter column TypeId char(1) NULL;
+
+-- 38 Change Table Proj_CTC
+Alter Table Proj_CTC
+	Alter column ctc_fm_ver numeric(19, 0) NULL;
+	
+-- 39 delete servietype
+update proj_ts_det set ts_servicetype = 37 where ts_servicetype = 21;
+delete from proj_servicetype where st_id = 21;
+
+-- 40 add foreign key
+-- Table Proj_Bill
+alter table [Proj_Bill]
+  add CONSTRAINT [FK_Proj_Bill_CustProfile] FOREIGN KEY 
+			(
+				[bill_addr]
+			) REFERENCES [CustProfile] (
+				[PARTY_ID]
+			),
+			CONSTRAINT [FK_Proj_Bill_Proj_Mstr] FOREIGN KEY 
+			(
+				[Bill_Proj_Id]
+			) REFERENCES [Proj_Mstr] (
+				[proj_id]
+			),
+			CONSTRAINT [FK_Proj_Bill_User_Login] FOREIGN KEY 
+			(
+				[bill_createuser]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			);
+
+-- Table Proj_Invoice
+alter table [Proj_Invoice]
+	add CONSTRAINT [FK_Proj_Invoice_User_Login] FOREIGN KEY 
+			(
+				[inv_createuser]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Proj_Mstr] FOREIGN KEY 
+			(
+				[Inv_Proj_Id]
+			) REFERENCES [Proj_Mstr] (
+				[proj_id]
+			),
+			CONSTRAINT [FK_Proj_Invoice_CustProfile] FOREIGN KEY 
+			(
+				[Inv_Billaddr]
+			) REFERENCES [CustProfile] (
+				[PARTY_ID]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Currency] FOREIGN KEY 
+			(
+				[Inv_Curr_Id]
+			) REFERENCES [Currency] (
+				[Curr_Id]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Proj_Bill] FOREIGN KEY 
+			(
+				[Inv_Bill_Id]
+			) REFERENCES [Proj_Bill] (
+				[bill_id]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Proj_EMS] FOREIGN KEY 
+			(
+				[Inv_EMS_Id]
+			) REFERENCES [Proj_EMS] (
+				[ems_id]
+			),
+			CONSTRAINT [FK_Proj_Invoice_User_Login_Inv_InvoiceUser] FOREIGN KEY 
+			(
+				[Inv_InvoiceUser]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			);
+			
+-- Table Proj_Tr_Det
+alter table [Proj_Tr_Det]
+	add CONSTRAINT [FK_Proj_Tr_Det_Currency] FOREIGN KEY 
+			(
+				[tr_currency]
+			) REFERENCES [Currency] (
+				[Curr_Id]
+			),
+			CONSTRAINT [FK_Proj_Tr_Det_Proj_Mstr] FOREIGN KEY 
+			(
+				[tr_proj_id]
+			) REFERENCES [Proj_Mstr] (
+				[proj_id]
+			),
+			CONSTRAINT [FK_Proj_Tr_Det_CustProfile] FOREIGN KEY 
+			(
+				[tr_party_id]
+			) REFERENCES [CustProfile] (
+				[PARTY_ID]
+			),
+			CONSTRAINT [FK_Proj_Tr_Det_User_Login_tr_staff] FOREIGN KEY 
+			(
+				[tr_staff]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			),
+			CONSTRAINT [FK_Proj_Tr_Det_User_Login_tr_createuser] FOREIGN KEY 
+			(
+				[tr_createuser]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			);
+			
+-- Table Proj_EMS
+alter table [Proj_EMS]
+	add CONSTRAINT [FK_Proj_EMS_User_Login] FOREIGN KEY 
+			(
+				[ems_create_user]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			),
+			CONSTRAINT [FK_Proj_EMS_PARTY] FOREIGN KEY 
+			(
+				[EMS_Department]
+			) REFERENCES [PARTY] (
+				[PARTY_ID]
+			);
+			
+-- Table Proj_Invoice_Confirm
+alter table [Proj_Invoice_Confirm]
+	add CONSTRAINT [FK_Proj_Invoice_Confirm_Proj_Invoice] FOREIGN KEY 
+			(
+				[invoice_id]
+			) REFERENCES [Proj_Invoice] (
+				[inv_id]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Confirm_User_Login_res_person] FOREIGN KEY 
+			(
+				[res_person]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Confirm_User_Login_create_User] FOREIGN KEY 
+			(
+				[create_User]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			),
+			CONSTRAINT [FK_Proj_Invoice_Confirm_Currency] FOREIGN KEY 
+			(
+				[Currency]
+			) REFERENCES [Currency] (
+				[Curr_Id]
+			);
+			
+-- Table Proj_Receipt
+alter table [Proj_Receipt]
+	add CONSTRAINT [FK_Proj_Receipt_Proj_Invoice] FOREIGN KEY 
+			(
+				[invoice_id]
+			) REFERENCES [Proj_Invoice] (
+				[inv_id]
+			),
+			CONSTRAINT [FK_Proj_Receipt_Currency] FOREIGN KEY 
+			(
+				[Currency]
+			) REFERENCES [Currency] (
+				[Curr_Id]
+			),
+			CONSTRAINT [FK_Proj_Receipt_User_Login] FOREIGN KEY 
+			(
+				[create_user]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			);
+			
+-- Table Proj_Exp_Cmts
+alter table [Proj_Exp_Cmts]
+	add CONSTRAINT [FK_Proj_Exp_Cmts_Proj_Exp_Mstr] FOREIGN KEY 
+			(
+				[em_id]
+			) REFERENCES [Proj_Exp_Mstr] (
+				[em_id]
+			);
+			
+-- Table Proj_Exp_Amt
+alter table [Proj_Exp_Amt]
+	add CONSTRAINT [FK_Proj_Exp_Amt_Proj_Exp_Mstr] FOREIGN KEY 
+			(
+				[em_id]
+			) REFERENCES [Proj_Exp_Mstr] (
+				[em_id]
+			),
+			CONSTRAINT [FK_Proj_Exp_Amt_ExpenseType] FOREIGN KEY 
+			(
+				[exp_id]
+			) REFERENCES [ExpenseType] (
+				[Exp_Id]
+			);
+
+-- Table Proj_Exp_Mstr
+alter table [Proj_Exp_Mstr]
+	add CONSTRAINT [FK_Proj_Exp_Mstr_Currency] FOREIGN KEY 
+			(
+				[em_Curr_Id]
+			) REFERENCES [Currency] (
+				[Curr_Id]
+			);
+			
+-- Table Proj_Payment
+-- 
+
+-- Table Proj_Calendar
+alter table Proj_Calendar
+	add CONSTRAINT [FK_Proj_Calendar_Proj_CalendarType] FOREIGN KEY 
+			(
+				[pc_type_id]
+			) REFERENCES [Proj_CalendarType] (
+				[pc_type_id]
+			);
+			
+-- Table USER_LOGIN
+alter table USER_LOGIN
+	add CONSTRAINT [FK_USER_LOGIN_Proj_CalendarType] FOREIGN KEY 
+			(
+				[PC_Type_Id]
+			) REFERENCES [Proj_CalendarType] (
+				[pc_type_id]
+			);
+			
+-- Table PARTY
+alter table PARTY
+	add CONSTRAINT [FK_PARTY_PARTY_TYPE] FOREIGN KEY 
+			(
+				[PARTY_TYPE_ID]
+			) REFERENCES [PARTY_TYPE] (
+				[PARTY_TYPE_ID]
+			);
+			
+-- Table CustProfile
+alter table CustProfile
+	add CONSTRAINT [FK_CustProfile_Customer_Account] FOREIGN KEY 
+			(
+				[cust_account]
+			) REFERENCES [Customer_Account] (
+				[Acc_Id]
+			),
+			CONSTRAINT [FK_CustProfile_Industry] FOREIGN KEY 
+			(
+				[cust_industry]
+			) REFERENCES [Industry] (
+				[ind_id]
+			);
+			
+-- Table Party_Responsibility_User
+alter table Party_Responsibility_User
+	add CONSTRAINT [FK_Party_Responsibility_User_Party_Responsibility_Type] FOREIGN KEY 
+			(
+				[TypeId]
+			) REFERENCES [Party_Responsibility_Type] (
+				[TypeId]
+			);
+			
+-- Table Proj_Mstr
+alter table Proj_Mstr
+	drop CONSTRAINT [FK41BD8646433AA687];
+
+alter table Proj_Mstr
+	add CONSTRAINT [FK_Proj_Mstr_CustProfile_cust_id] FOREIGN KEY 
+			(
+				[cust_id]
+			) REFERENCES [CustProfile] (
+				[PARTY_ID]
+			),
+			CONSTRAINT [FK_Proj_Mstr_Proj_Category] FOREIGN KEY 
+			(
+				[proj_category]
+			) REFERENCES [Proj_Category] (
+				[PC_Id]
+			),
+			CONSTRAINT [FK_Proj_Mstr_CustProfile_Proj_billaddr_id] FOREIGN KEY 
+			(
+				[Proj_billaddr_id]
+			) REFERENCES [CustProfile] (
+				[PARTY_ID]
+			),
+			CONSTRAINT [FK_Proj_Mstr_Proj_Mstr] FOREIGN KEY 
+			(
+				[parent_proj_id]
+			) REFERENCES [Proj_Mstr] (
+				[Proj_id]
+			);
+			
+-- Table Proj_CTC
+alter table Proj_CTC
+	add CONSTRAINT [FK_Proj_CTC_FMonth] FOREIGN KEY 
+			(
+				[ctc_fm_ver]
+			) REFERENCES [FMonth] (
+				[f_fm_cd]
+			);
+			
+-- Table Proj_ServiceType
+alter table Proj_ServiceType
+	add CONSTRAINT [FK_Proj_ServiceType_Proj_Mstr] FOREIGN KEY 
+			(
+				[st_proj_id]
+			) REFERENCES [Proj_Mstr] (
+				[proj_id]
+			),
+			CONSTRAINT [FK_Proj_ServiceType_Proj_Bill] FOREIGN KEY 
+			(
+				[ST_BillId]
+			) REFERENCES [Proj_Bill] (
+				[Bill_Id]
+			),
+			CONSTRAINT [FK_Proj_ServiceType_Proj_Payment] FOREIGN KEY 
+			(
+				[ST_PayId]
+			) REFERENCES [Proj_Payment] (
+				[Pay_Id]
+			);
+			
+-- Table Proj_TS_Det
+alter table Proj_TS_Det
+	add CONSTRAINT [FK_Proj_TS_Det_Proj_ServiceType] FOREIGN KEY 
+			(
+				[ts_servicetype]
+			) REFERENCES [Proj_ServiceType] (
+				[ST_Id]
+			),
+			CONSTRAINT [FK_Proj_TS_Det_Proj_Proj_Bill] FOREIGN KEY 
+			(
+				[ts_BillId]
+			) REFERENCES [Proj_Bill] (
+				[Bill_Id]
+			);
+			
+-- Table Proj_TS_Forecast_Det
+alter table Proj_TS_Forecast_Det
+	add CONSTRAINT [FK_Proj_TS_Forecast_Det_Proj_ServiceType] FOREIGN KEY 
+			(
+				[ts_servicetype]
+			) REFERENCES [Proj_ServiceType] (
+				[ST_Id]
+			);
+			
+-- 41. Change table proj_servicetype
+alter table proj_servicetype
+	alter column st_rate numeric(18, 5) null;
+alter table proj_servicetype
+	alter column ST_SCRate numeric(18, 5) null;
+	
+-- 42 update contract rate and sub contract rate to day rate
+update proj_servicetype set st_rate = st_rate * 8, st_scrate = st_scrate * 8
+where st_proj_id in (select proj_id from proj_mstr where contracttype = 'TM');
+
+-- 43 Change Table proj_ts_det
+alter table proj_ts_det
+	alter column ts_user_rate numeric(18, 8) null;
+	
+-- 44 update consultant cost rate to day rate
+update cons_cost set cost = cost * 8;
+
+-- 45 Change Table proj_tr_detail
+alter table proj_tr_det
+	alter column tr_Amount numeric(18, 8) null;
+
+-- 46 setup pre-sale menu
+insert into module values ('6.1','Pre-Sale','','NULL','Y',14,'Pre-sale管理业务','1');
+INSERT INTO Module VALUES('6.1.1','Pre-Sale Activity','','PreSaleProject','Y',1,'Pre-Sale Project Maintenance', '6.1');
+INSERT INTO Module VALUES('6.1.2','Deliverable Type','','ListDeliveryType','Y',2,'Deliverable Type maintenance', '6.1');
+
+-- 47 setup pre-sale security permission
+INSERT INTO Security_Group VALUES('PRM_PRESALE_MANAGE','PROJECT PRESALE维护权限');
+
+INSERT INTO Security_Permission VALUES('PROJ_PRESALE_VIEW','PRESALE 项目查看权限');
+INSERT INTO Security_Permission VALUES('PROJ_PRESALE_CREATE','PRESALE 项目创建权限');
+INSERT INTO Security_Permission VALUES('PROJ_PRESALE_ALL','PRESALE 项目部门查看权限');
+
+INSERT INTO Security_Permission VALUES('DELIV_TYPE_CREATE','PRESALE DELIVERABLE TYPE 创建权限');
+INSERT INTO Security_Permission VALUES('DELIV_TYPE_VIEW','PRESALE DELIVERABLE TYPE 查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_MANAGE', 'PROJ_PRESALE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_MANAGE', 'PROJ_PRESALE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_MANAGE', 'PROJ_PRESALE_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_MANAGE', 'DELIV_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_MANAGE', 'DELIV_TYPE_VIEW');
+
+-- 48 setup pre-sale deliveriable type table
+CREATE TABLE [Proj_DeliveryType] (
+	[Delivery_Type_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[Delivery_Type_Desc] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Proj_DeliveryType] PRIMARY KEY  CLUSTERED 
+	(
+		[Delivery_Type_Id]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+-- 49 setup pre-sale master table
+CREATE TABLE [PreSale_mstr] (
+	[ps_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[perspective_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[perspective_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[requestor_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[request_date] [datetime] NULL ,
+	[requirment_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[delivery_id] [numeric](18, 0) NULL ,
+	CONSTRAINT [PK_PreSale_mstr] PRIMARY KEY  CLUSTERED 
+	(
+		[ps_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_PreSale_mstr_CustProfile] FOREIGN KEY 
+	(
+		[perspective_id]
+	) REFERENCES [CustProfile] (
+		[PARTY_ID]
+	),
+	CONSTRAINT [FK_PreSale_mstr_Proj_DeliveryType] FOREIGN KEY 
+	(
+		[delivery_id]
+	) REFERENCES [Proj_DeliveryType] (
+		[Delivery_Type_Id]
+	),
+	CONSTRAINT [FK_PreSale_mstr_USER_LOGIN] FOREIGN KEY 
+	(
+		[requestor_id]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+-- 50 setup pre-sale detail table
+CREATE TABLE [Presale_det] (
+	[pd_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[ps_id] [numeric](18, 0) NULL ,
+	[assignee_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[action_date] [datetime] NULL ,
+	[hours] [numeric](18, 0) NULL ,
+	[description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Presale_det] PRIMARY KEY  CLUSTERED 
+	(
+		[pd_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Presale_det_PreSale_mstr] FOREIGN KEY 
+	(
+		[ps_id]
+	) REFERENCES [PreSale_mstr] (
+		[ps_id]
+	),
+	CONSTRAINT [FK_Presale_det_USER_LOGIN] FOREIGN KEY 
+	(
+		[assignee_id]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+-- 51 update pre-sale security permissions
+delete from security_group_permission where permission_id = 'PROJ_PRESALE_ALL'
+INSERT INTO Security_Group VALUES('PRM_PRESALE_ALL','PRESALE ALL查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_PRESALE_ALL', 'PROJ_PRESALE_ALL');
+
+insert into module_group values('PRE_SALE_GROUP','PRESALE 管理模块',340);
+insert into module_group_associate values ('PRE_SALE_GROUP','6.1');
+
+update module set request_path = 'ListPreSaleProject' where module_id = '6.1.1'
+
+-- 52 Payement pending list menu update
+update module set request_path = 'findPaymentPendingList' where module_id = '5.1.2.1'
+
+-- 53 setup vendor type table
+---------------------------
+CREATE TABLE [Vendor_Type] (
+	[Type_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[Type_Description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Vendor_Type] PRIMARY KEY  CLUSTERED 
+	(
+		[Type_Id]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+
+-- 54 setup vendor profile table
+--------------------------------
+CREATE TABLE [VendorProfile] (
+	[PARTY_ID] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[Category_type] [numeric](18, 0) NOT NULL ,
+	[CH_Name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_VendorProfile] PRIMARY KEY  CLUSTERED 
+	(
+		[PARTY_ID]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_VendorProfile_Vendor_Type] FOREIGN KEY 
+	(
+		[Category_type]
+	) REFERENCES [Vendor_Type] (
+		[Type_Id]
+	)
+) ON [PRIMARY]
+GO
+
+
+-- 55 vendor maintenance security permissions
+------------------------------------------
+INSERT INTO Security_Group VALUES('PRM_VENDOR_MANAGE','PROJECT VENDOR维护权限');
+
+
+-- 56 Vendor Maintenance 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJ_VENDOR_VIEW','VENDOR查看权限');
+INSERT INTO Security_Permission VALUES('PROJ_VENDOR_CREATE','VENDOR创建权限');
+INSERT INTO Security_Permission VALUES('PROJ_VENDOR_ALL','VENDOR全部查看权限');
+
+-- 57 VENDOR 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_VENDOR_MANAGE', 'PROJ_VENDOR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_VENDOR_MANAGE', 'PROJ_VENDOR_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_VENDOR_MANAGE', 'PROJ_VENDOR_ALL');
+
+-- 58 Supplier menu setup
+------------------------------------
+INSERT INTO Module VALUES('3.2.4','Supplier','','NULL','Y',4,'Supplier information administration', '3.2');
+INSERT INTO Module VALUES('3.2.4.1','Supplier','','listVendorParty','Y',2,'vendor information', '3.2.4');
+
+-- 59 Add Supplier into role type table
+-------------------------------------
+insert into role_type values ('SUPPLIER', 'SUPPLIER');
+
+-- 2005-05-21---------------------------
+-- 60 change table proj_ts_forecast_det
+Alter table [proj_ts_forecast_det]
+	Add ts_description varchar(2048) NULL;
+	
+-- 2005-5-23 -----------------------
+-- 61 update project payment table
+update module set request_path = 'FindPaymentInstruction' where module_id ='5.1.2.2'
+Alter table [proj_payment] Add Pay_Status varchar(50) NULL;
+Alter table [proj_payment] Add Pay_note varchar(2048) NULL;
+
+-- 2005-05-24 ------------------------
+-- 62 create table Sales_Cycle_Step
+CREATE TABLE [Sales_Cycle_Step] (
+	[scs_jd] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[step] [tinyint] NULL ,
+	[description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[percentage] [numeric](18, 2) NULL ,
+	CONSTRAINT [PK_Sales_Cycle_Step] PRIMARY KEY  CLUSTERED 
+	(
+		[scs_jd]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+-- 63 create table Sales_Sheet_Mstr
+CREATE TABLE [Sales_Sheet_Mstr] (
+	[ssm_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[cust_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[salesman] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[amount] [numeric](18, 2) NULL ,
+	[description] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL ,
+	[currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[exchange_rate] [float] NULL ,
+	[create_user] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[create_date] [datetime] NULL ,
+	CONSTRAINT [PK_Sales_Sheet_Mstr] PRIMARY KEY  CLUSTERED 
+	(
+		[ssm_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sales_Sheet_Mstr_Currency] FOREIGN KEY 
+	(
+		[currency]
+	) REFERENCES [Currency] (
+		[Curr_Id]
+	),
+	CONSTRAINT [FK_Sales_Sheet_Mstr_CustProfile] FOREIGN KEY 
+	(
+		[cust_id]
+	) REFERENCES [CustProfile] (
+		[PARTY_ID]
+	),
+	CONSTRAINT [FK_Sales_Sheet_Mstr_USER_LOGIN_CREATE_USER] FOREIGN KEY 
+	(
+		[create_user]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	),
+	CONSTRAINT [FK_Sales_Sheet_Mstr_USER_LOGIN_SALESMAN] FOREIGN KEY 
+	(
+		[salesman]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+-- 64 create table Sales_Sheet_Det
+CREATE TABLE [Sales_Sheet_Det] (
+	[ssd_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[ssm_id] [numeric](18, 0) NULL ,
+	[scs_jd] [numeric](18, 0) NULL ,
+	[description] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL ,
+	[achieve_date] [datetime] NULL ,
+	CONSTRAINT [PK_Sales_Sheet_Det] PRIMARY KEY  CLUSTERED 
+	(
+		[ssd_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sales_Sheet_Det_Sales_Cycle_Step] FOREIGN KEY 
+	(
+		[scs_jd]
+	) REFERENCES [Sales_Cycle_Step] (
+		[scs_jd]
+	),
+	CONSTRAINT [FK_Sales_Sheet_Det_Sales_Sheet_Mstr] FOREIGN KEY 
+	(
+		[ssm_id]
+	) REFERENCES [Sales_Sheet_Mstr] (
+		[ssm_id]
+	)
+) ON [PRIMARY]
+GO
+
+-- 65 sales funnel menu
+insert into module values ('7.1','Sales Funnel','','NULL','Y',15,'Sales Funnel管理业务','1');
+INSERT INTO Module VALUES('7.1.1','Sales Funnel Maintenance','','null','Y',1,'Sales Funnel Maintenance', '7.1')
+insert into module_group values('SALE_FUNNEL_GROUP','SALES FUNNEL 管理模块',350);
+insert into module_group_associate values ('SALE_FUNNEL_GROUP','7.1');
+
+-- 66 sales funnel security permissions
+INSERT INTO Security_Group VALUES('PRM_SALES_FUNNEL_MANAGE','SALES FUNNEL维护权限');
+
+INSERT INTO Security_Permission VALUES('SALES_FUNNEL_VIEW','SALES FUNNEL查看权限');
+INSERT INTO Security_Permission VALUES('SALES_FUNNEL_CREATE','SALES FUNNEL创建权限');
+INSERT INTO Security_Permission VALUES('SALES_FUNNEL_ALL','SALES FUNNEL全部查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_SALES_FUNNEL_MANAGE', 'SALES_FUNNEL_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_SALES_FUNNEL_MANAGE', 'SALES_FUNNEL_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_SALES_FUNNEL_MANAGE', 'SALES_FUNNEL_ALL');
+
+-- 67 update report visbale status
+update module set visbale = 'Y' where module_id in ('3.3.2.3','3.3.2.4')
+
+-- 68 update customer group permissions
+INSERT INTO Security_Group VALUES('CUST_GROUP_CREATE','CUST GROUP 创建权限');
+INSERT INTO Security_Group VALUES('CUST_GROUP_VIEW','CUST GROUP 查看权限');
+INSERT INTO Security_Group_Permission VALUES('CUST_GROUP_CREATE', 'CUST_ACCOUNT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('CUST_GROUP_VIEW', 'CUST_ACCOUNT_VIEW');
+
+-- 69 update presale permission into date entry group
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'PROJ_PRESALE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'PROJ_PRESALE_CREATE');
+update module set priority = '5' where module_id ='1.2.3.6' 
+insert into module values ('3.1.5','Pre-Sale Activity','','ListPreSaleProject','Y',5,'ListPreSaleProject','3.1');
+INSERT INTO Module VALUES('1.2.3.4','PreSale Deliverable Type','','ListDeliveryType','Y',4,'Presale Deliverable Type maintenance', '1.2.3');
+
+delete from MODULE_GROUP_ASSOCIATE where module_id = '6.1'
+delete from module_group where module_group_id ='PRE_SALE_GROUP'
+delete from USER_LOGIN_MODULE_GROUP where module_group_id ='PRE_SALE_GROUP'
+delete from module where module_id in ('6.1','6.1.1','6.1.2')
+
+-- AR/AP report
+INSERT INTO Module VALUES('3.3.3','AR/AP Report','','NULL','Y',3,'AR/AP Report', '3.3');
+insert into module values ('3.3.3.1','AR Agent Report','','pas.report.ARAgentRpt.do','Y',13,'AR Agent Report','3.3.3');
+insert into module values ('3.3.3.2','Customer Statement','','pas.report.ARCustStatementRpt','Y',14,'Customer statement','3.3.3');
+
+--AR AGENT RPT PERMISSIONS
+INSERT INTO Security_Permission VALUES('PAS_AR_AGING_VIEW','AR AGING RPT 查看权限');
+INSERT INTO Security_Permission VALUES('PAS_AR_AGING_ALL','AR AGING RPT 全部查看权限');
+INSERT INTO Security_Group VALUES('AR_AGING_MANAGE','AR AGING维护权限');
+INSERT INTO Security_Group_Permission VALUES('AR_AGING_MANAGE', 'PAS_AR_AGING_VIEW');
+INSERT INTO Security_Group_Permission VALUES('AR_AGING_MANAGE', 'PAS_AR_AGING_ALL');
+
+-- project evert category
+INSERT INTO Module VALUES('1.2.3.7','Project Event Category','','listCustProjectType','Y',6,'Project Event Category', '1.2.3');
+
+--CUSTOMER STATEMENT RPT PERMISSIONS
+INSERT INTO Security_Permission VALUES('PAS_AR_CS_VIEW','AR CUSTOMER STATEMENT RPT 查看权限');
+INSERT INTO Security_Permission VALUES('PAS_AR_CS_ALL','AR CUSTOMER STATEMENT RPT 全部查看权限');
+INSERT INTO Security_Group VALUES('AR_CS_MANAGE','AR CUSTOMER STATEMENT维护权限');
+INSERT INTO Security_Group_Permission VALUES('AR_CS_MANAGE', 'PAS_AR_CS_VIEW');
+INSERT INTO Security_Group_Permission VALUES('AR_CS_MANAGE', 'PAS_AR_CS_ALL');
+
+-- 2005-06-02 ------------------------
+-- 70 change table proj_receipt
+Alter table [proj_receipt]
+	Add curr_Rate float NULL;
+	
+update proj_receipt set curr_Rate = 1;
+--downpay menu				
+INSERT INTO Module VALUES('5.1.2.3','Payment Downpayment Instructions','','FindPaymentDownpaymentInstruction','Y',6,'payment downpaymentinstruction operations', '5.1.2');
+--PAYMENT DOWNPAYMENT
+---------------------------------
+INSERT INTO Security_Permission VALUES('PAYMENT_DOWNPAYMENT_CREATE','项目应付DOWNPAYMENT创建权限');
+INSERT INTO Security_Permission VALUES('PAYMENT_DOWNPAYMENT_VIEW','项目应付DOWNPAYMENT查看权限');
+INSERT INTO Security_Permission VALUES('PAYMENT_DOWNPAYMENT_ALL','部门项目应付DOWNPAYMENT查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PAYMENT_DOWNPAYMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PAYMENT_DOWNPAYMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PAYMENT_DOWNPAYMENT_ALL');
+
+--update table [proj_cost_mstr]
+Alter table [proj_cost_mstr]
+	Add vendorAddr varchar(50) NULL,
+	    payId numeric(9) NULL;
+	    
+-- 2005-06-21 ------------------------
+-- 71 create table Contract_Profile
+CREATE TABLE [Contract_Profile] (
+	[cp_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[cp_no] [varchar] (10) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_type] [char] (1) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cp_department] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_party_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_proj_manager] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cp_account_manager] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_total_contract_value] [numeric](18, 2) NOT NULL ,
+	[cp_contract_type] [varchar] (4) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_need_caf] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cp_start_date] [datetime] NULL ,
+	[cp_end_date] [datetime] NULL ,
+	[cp_allowance] [numeric](18, 2) NULL ,
+	[cp_signed_date] [datetime] NULL ,
+	[cp_create_date] [datetime] NOT NULL CONSTRAINT [DF_Contract_Profile_cp_create_date] DEFAULT (getdate()),
+	[cp_create_user] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[cp_bid_id] [numeric](18, 0) NULL ,
+	[cp_status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cp_currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cp_exchange_rate] [float] NULL ,
+	[cp_link_profile] [numeric](18, 0) NULL ,
+	CONSTRAINT [PK_Contract_Profile] PRIMARY KEY  CLUSTERED 
+	(
+		[cp_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Contract_Profile_Contract_Profile] FOREIGN KEY 
+	(
+		[cp_link_profile]
+	) REFERENCES [Contract_Profile] (
+		[cp_id]
+	),
+	CONSTRAINT [FK_Contract_Profile_PARTY_Department] FOREIGN KEY 
+	(
+		[cp_department]
+	) REFERENCES [PARTY] (
+		[PARTY_ID]
+	)
+) ON [PRIMARY]
+GO
+
+--72 init contract_profile table
+insert into contract_profile
+(cp_no, 
+cp_type, 
+cp_description, 
+cp_department,
+cp_party_id, 
+cp_proj_manager, 
+cp_account_manager,
+cp_total_contract_value,
+cp_contract_type,
+cp_need_caf,
+cp_start_date,
+cp_end_date,
+cp_allowance,
+cp_signed_date,
+cp_create_date,
+cp_create_user,
+cp_status,
+cp_currency,
+cp_exchange_rate)
+select 
+proj_contract_no,
+'C',
+proj_name,
+dep_id,
+cust_id,
+proj_pm_user,
+'CN01264',
+total_service_value,
+contracttype,
+proj_caf_flag,
+start_date,
+end_date,
+proj_allowance,
+getDate(),
+getDate(),
+'admin',
+'Signed',
+'RMB',
+1
+from proj_mstr
+where proj_category = 'C'
+and dep_id in ('014', '005', '006', '007')
+and parent_proj_id is null
+and proj_contract_no <> '6722C.01'
+and proj_contract_no <> 'EJV2004B2073';
+
+insert into contract_profile
+(cp_no, 
+cp_type, 
+cp_description, 
+cp_department,
+cp_party_id, 
+cp_proj_manager, 
+cp_account_manager,
+cp_total_contract_value,
+cp_contract_type,
+cp_need_caf,
+cp_start_date,
+cp_end_date,
+cp_allowance,
+cp_signed_date,
+cp_create_date,
+cp_create_user,
+cp_status,
+cp_currency,
+cp_exchange_rate)
+values(
+'6722C.01',
+'C',
+'Provision of SAP implementation',
+'007',
+'C000107',
+'CN01008',
+'CN01264',
+719210,
+'FP',
+'Y',
+'2003-10-10 00:00:00.000',
+'2005-12-31 00:00:00.000',
+0,
+getDate(),
+getDate(),
+'admin',
+'Signed',
+'RMB',
+1);
+
+Alter Table proj_mstr 
+	add proj_contract_id numeric(18, 0) NULL,
+	    pf_type char(1) NULL,
+	    proj_pa_id varchar(255) NULL;
+	
+alter table [proj_mstr]
+	add CONSTRAINT [FK_proj_mstr_Contract_profile] FOREIGN KEY 
+			(
+				[proj_contract_id]
+			) REFERENCES [Contract_profile] (
+				[cp_id]
+			),
+		CONSTRAINT [FK_proj_mstr_user_login_PA] FOREIGN KEY 
+			(
+				[proj_pa_id]
+			) REFERENCES [User_Login] (
+				[USER_LOGIN_ID]
+			);
+
+update proj_mstr set proj_contract_id = cp.cp_id
+from contract_profile as cp
+inner join proj_mstr as pm on cp.cp_no = pm.proj_contract_no;
+
+update proj_mstr set pf_type = 'C', proj_pa_id = 'CN01294';
+
+-- 2005-06-28 ------------------------
+--73 add table Prospect_Company
+CREATE TABLE [Prospect_Company] (
+	[prospect_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[chinese_name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[city] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[address] [varchar] (1024) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bank_no] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[industry] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cust_group] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[post_code] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[tele_no] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[fax_no] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Prospect_Company] PRIMARY KEY  CLUSTERED 
+	(
+		[prospect_id]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+--74 add table Contact_List
+CREATE TABLE [Contact_List] (
+	[cl_id] [numeric](18, 0) IDENTITY (1, 1) NOT FOR REPLICATION  NOT NULL ,
+	[cl_name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cl_chinese_name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cl_prospect_id] [numeric](18, 0) NULL ,
+	[cl_tele_no] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cl_email] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Contact_List] PRIMARY KEY  CLUSTERED 
+	(
+		[cl_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Contact_List_Prospect_Company] FOREIGN KEY 
+	(
+		[cl_prospect_id]
+	) REFERENCES [Prospect_Company] (
+		[prospect_id]
+	)
+) ON [PRIMARY]
+GO
+
+--75 add table Sales_Step_Group
+CREATE TABLE [Sales_Step_Group] (
+	[sg_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[sg_dep_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[sg_description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[sg_disable_flg] [char] (1) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Sales_Step_Group] PRIMARY KEY  CLUSTERED 
+	(
+		[sg_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sales_Step_Group_PARTY] FOREIGN KEY 
+	(
+		[sg_dep_id]
+	) REFERENCES [PARTY] (
+		[PARTY_ID]
+	)
+) ON [PRIMARY]
+GO
+
+--76 add table Sales_Step
+CREATE TABLE [Sales_Step] (
+	[step_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[step_sg_id] [numeric](18, 0) NULL ,
+	[step_seq_no] [tinyint] NULL ,
+	[step_description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[step_percentage] [tinyint] NULL ,
+	CONSTRAINT [PK_Sales_Step] PRIMARY KEY  CLUSTERED 
+	(
+		[step_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sales_Step_Sales_Step_Group] FOREIGN KEY 
+	(
+		[step_sg_id]
+	) REFERENCES [Sales_Step_Group] (
+		[sg_id]
+	)
+) ON [PRIMARY]
+GO
+
+--77 add table Sales_Activity
+CREATE TABLE [Sales_Activity] (
+	[act_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[act_step_id] [numeric](18, 0) NULL ,
+	[act_seq_no] [tinyint] NULL ,
+	[act_description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[act_critical_flg] [char] (1) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Sales_Activity] PRIMARY KEY  CLUSTERED 
+	(
+		[act_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sales_Activity_Sales_Step] FOREIGN KEY 
+	(
+		[act_step_id]
+	) REFERENCES [Sales_Step] (
+		[step_id]
+	)
+) ON [PRIMARY]
+GO
+
+--78 add table Bid_Mstr
+CREATE TABLE [Bid_Mstr] (
+	[bid_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[bid_description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bid_prospect_company_id] [numeric](18, 0) NULL ,
+	[bid_est_amt] [numeric](18, 2) NULL ,
+	[bid_dep_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bid_sales_person] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bid_status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bid_est_start_date] [datetime] NULL ,
+	[bid_est_end_date] [datetime] NULL ,
+	[bid_currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[bid_exchange_rate] [float] NULL ,
+	[bid_sg_id] [numeric](18, 0) NULL ,
+	[bid_post_date] [datetime] NULL ,
+	[bid_curr_step_id] [numeric](18, 0) NULL ,
+	CONSTRAINT [PK_Bid_Mstr] PRIMARY KEY  CLUSTERED 
+	(
+		[bid_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Bid_Mstr_Currency] FOREIGN KEY 
+	(
+		[bid_currency]
+	) REFERENCES [Currency] (
+		[Curr_Id]
+	),
+	CONSTRAINT [FK_Bid_Mstr_PARTY] FOREIGN KEY 
+	(
+		[bid_dep_id]
+	) REFERENCES [PARTY] (
+		[PARTY_ID]
+	),
+	CONSTRAINT [FK_Bid_Mstr_Prospect_Company] FOREIGN KEY 
+	(
+		[bid_prospect_company_id]
+	) REFERENCES [Prospect_Company] (
+		[prospect_id]
+	),
+	CONSTRAINT [FK_Bid_Mstr_Sales_Step] FOREIGN KEY 
+	(
+		[bid_curr_step_id]
+	) REFERENCES [Sales_Step] (
+		[step_id]
+	),
+	CONSTRAINT [FK_Bid_Mstr_Sales_Step_Group] FOREIGN KEY 
+	(
+		[bid_sg_id]
+	) REFERENCES [Sales_Step_Group] (
+		[sg_id]
+	),
+	CONSTRAINT [FK_Bid_Mstr_USER_LOGIN_Sales_Person] FOREIGN KEY 
+	(
+		[bid_sales_person]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+
+--79 add table Bid_Activity
+CREATE TABLE [Bid_Activity] (
+	[bid_id] [numeric](18, 0) NOT NULL ,
+	[act_id] [numeric](18, 0) NOT NULL ,
+	[action_date] [datetime] NULL ,
+	CONSTRAINT [PK_Bid_Activity] PRIMARY KEY  CLUSTERED 
+	(
+		[bid_id],
+		[act_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Bid_Activity_Bid_Mstr] FOREIGN KEY 
+	(
+		[bid_id]
+	) REFERENCES [Bid_Mstr] (
+		[bid_id]
+	),
+	CONSTRAINT [FK_Bid_Activity_Sales_Activity] FOREIGN KEY 
+	(
+		[act_id]
+	) REFERENCES [Sales_Activity] (
+		[act_id]
+	)
+) ON [PRIMARY]
+GO
+-- 2005-6-30
+-- 80 change table Proj_cost_mstr
+Alter table [Proj_cost_mstr]
+	Add payment_type varchar(255) NULL,
+	payment_status varchar(255) NULL;
+	
+	
+-- 2005-7-4
+-- 81 
+update [MODULE] set request_path = 'editFisCalendar' where module_id = '1.2.3.2';
+update [MODULE] set request_path = 'listFisCalendar' where module_id = '3.3.4';
+
+UPDATE Proj_Bill
+SET Bill_Status = 'WIP'
+WHERE (Bill_Status = 'Standing By');
+
+UPDATE Proj_Bill
+SET Bill_Status = 'Completed'
+WHERE (Bill_Status = 'Closed');
+
+-- 82 delete old master data menu
+delete from module where module_id like'3.2.%'
+
+-- 83 insert new master data menu
+INSERT INTO Module VALUES('3.2.1','Contract Profile','','NULL','Y',1,'Contract Profile administration', '3.2');
+INSERT INTO Module VALUES('3.2.1.1','Contract','','findContractProfile','Y',1,'Contract Profile Maintenance', '3.2.1');
+INSERT INTO Module VALUES('3.2.1.2','Purchase Order','','findPurchaseOrder','Y',2,'Purchase Order Maintenance', '3.2.1');
+INSERT INTO Module VALUES('3.2.2','Project Profile','','NULL','Y',2,'Project Profile administration', '3.2');
+INSERT INTO Module VALUES('3.2.2.1','Contract Project','','listContractProject','Y',1,'contract Project information administration', '3.2.2');
+INSERT INTO Module VALUES('3.2.2.2','Purchase Order Project','','listPOProject','Y',2,'PO Project information administration', '3.2.2');
+INSERT INTO Module VALUES('3.2.2.3','Internal Project','','listInternalProject','Y',3,'Internal Project information administration', '3.2.2');
+INSERT INTO Module VALUES('3.2.3','F&A','','NULL','Y',3,'Finance & Accounting Operations', '3.2');
+INSERT INTO Module VALUES('3.2.3.1','Exchange Rate','','listCurrencyType','Y',1,'Currency and Exchange Rate information', '3.2.3');
+INSERT INTO Module VALUES('3.2.3.4','Cost Rate','','editConsultantCost','Y',4,'Consultant Cost Rate information', '3.2.3');
+INSERT INTO Module VALUES('3.2.4','Customer','','NULL','Y',4,'Customer information administration', '3.2');
+INSERT INTO Module VALUES('3.2.4.3','Customer','','listCustParty','Y',2,'Customer information', '3.2.4');
+INSERT INTO Module VALUES('3.2.4.6','Customer Group','','listCustomerAccount','Y',4,'Customer Group information', '3.2.4');
+INSERT INTO Module VALUES('3.2.5','Supplier','','NULL','Y',5,'Supplier information administration', '3.2');
+INSERT INTO Module VALUES('3.2.5.1','Supplier','','listVendorParty','Y',2,'vendor information', '3.2.5');
+
+-- 84 insert PO / Contract Profile & PO Project permissions
+---------------------------------
+--CONTRACT PROFILE 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('CONTRACT_PROFILE_CREATE','合同项目档案创建权限');
+INSERT INTO Security_Permission VALUES('CONTRACT_PROFILE_VIEW','合同项目档案查看权限');
+INSERT INTO Security_Permission VALUES('CONTRACT_PROFILE_ALL','部门合同项目档案查看权限');
+-------------------------------------------------------------
+
+---------------------------------
+--PO PROFILE 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PO_PROFILE_CREATE','PO项目档案创建权限');
+INSERT INTO Security_Permission VALUES('PO_PROFILE_VIEW','PO项目档案查看权限');
+INSERT INTO Security_Permission VALUES('PO_PROFILE_ALL','部门PO项目档案查看权限');
+
+---------------------------------
+--PO Project 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PO_PROJECT_CREATE','项目应付发票创建权限');
+INSERT INTO Security_Permission VALUES('PO_PROJECT_VIEW','项目应付发票查看权限');
+INSERT INTO Security_Permission VALUES('PO_PROJECT_ALL','部门项目应付发票查看权限');
+-------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROJECT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROJECT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROJECT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CONTRACT_PROFILE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CONTRACT_PROFILE_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROFILE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROFILE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PO_PROFILE_ALL');
+----------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'CONTRACT_PROFILE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'CONTRACT_PROFILE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'CONTRACT_PROFILE_ALL');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'PO_PROFILE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'PO_PROFILE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'PO_PROFILE_ALL');
+
+-- 85 sales funnel menu
+INSERT INTO Module VALUES('1.2.6','Sales Funnel Setting','','FindStepGroups','Y',6,'Sales Funnel Activities, Steps & step Groups', '1.2');
+insert into module values ('3.1.6','Sales Bid Tracking','','ListSalesBid','Y',6,'Sales Bid Tracking','3.1');
+
+-- 86 SALES STEPS PERMISSIONS
+---------------------------------
+--STEPS * ACTIVITIES 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('SALES_STEPS_CREATE','SALES STEPS创建权限');
+INSERT INTO Security_Permission VALUES('SALES_STEPS_VIEW','SALES STEPS查看权限');
+INSERT INTO Security_Permission VALUES('SALES_STEPS_ALL','部门SALES STEPS查看权限');
+-------------------------------------------------------------
+INSERT INTO Security_Group VALUES('SALES_STEPS_MANAGE','SALES STEPS维护权限');
+
+---------------------------------
+	-- SALES STEPS 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('SALES_STEPS_MANAGE', 'SALES_STEPS_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SALES_STEPS_MANAGE', 'SALES_STEPS_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SALES_STEPS_MANAGE', 'SALES_STEPS_ALL');
+
+-- 87 separate customer maintain permissions from user_logine
+INSERT INTO Security_Group VALUES('PRM_CUSTOMER_MANAGE','PROJECT CUSTOMER维护权限');
+INSERT INTO Security_Permission VALUES('CUST_PARTY_CREATE','CUST PARTY创建权限');
+INSERT INTO Security_Permission VALUES('CUST_PARTY_VIEW','CUST PARTY查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_CUSTOMER_MANAGE', 'CUST_PARTY_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_CUSTOMER_MANAGE', 'CUST_PARTY_VIEW');
+
+-- 88 move "Cost Rate" from F&A to Admin=>project setting
+delete from Module where module_id ='3.2.3.4'
+INSERT INTO Module VALUES('1.2.3.8','Cost Rate','','editConsultantCost','Y',8,'Consultant Cost Rate information', '1.2.3');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'COST_RATE_CREATE');
+
+-- 89 update table vendorprofile with bank no and tax no
+Alter table [vendorprofile]
+	Add bank_no varchar(50) NULL,
+	    tax_no varchar(50) NULL;
+	    
+--2005-07-08-----------------------------------
+-- 90 add record PO in the table [proj_category
+insert into proj_category values('P', 'PO');
+
+-- 91 drop column pf_type in the table [proj_mstr]
+Alter table proj_mstr
+	drop column pf_type;
+
+-- 92 customer contact permission
+INSERT INTO Security_Group VALUES('CUSTOMER_CONTACT_MANAGE','CUSTOMER CONTACT维护权限');
+INSERT INTO Security_Permission VALUES('CUST_CONTACT_CREATE','CUST CONTACT 创建权限');
+INSERT INTO Security_Permission VALUES('CUST_CONTACT_VIEW','CUST CONTACT 查看权限');
+INSERT INTO Security_Group_Permission VALUES('CUSTOMER_CONTACT_MANAGE', 'CUST_CONTACT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('CUSTOMER_CONTACT_MANAGE', 'CUST_CONTACT_VIEW');
+
+--92 Sales Performance Report menu & permission
+insert into module values ('3.3.2.6','Sales Performance Report','','pas.report.SalesPerformanceRpt.do','Y',13,'Sales Performance Report','3.3.2');
+---------------------------------
+--Sales Performance Report 权限
+---------------------------------
+INSERT INTO Security_Group VALUES('SALES_PERFORMANCE_RPT_VIEW_MANAGE','SALES_PERFORMANCE 报表查看权限');
+INSERT INTO Security_Group VALUES('SALES_PERFORMANCE_RPT_ALL_MANAGE','SALES_PERFORMANCE 报表全部查看权限');
+INSERT INTO Security_Permission VALUES('SALES_PERFORMANCE_VIEW','SALES PERFORMANCE RPT 查看权限');
+INSERT INTO Security_Permission VALUES('SALES_PERFORMANCE_ALL','SALES PERFORMANCE RPT 全部查看权限');
+INSERT INTO Security_Group_Permission VALUES('SALES_PERFORMANCE_RPT_VIEW_MANAGE', 'SALES_PERFORMANCE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SALES_PERFORMANCE_RPT_ALL_MANAGE', 'SALES_PERFORMANCE_ALL');
+
+--2005-07-14-----------------------------------
+--93 add column legal_review_date int the table [contract_profile]
+Alter table contract_profile
+	Add cp_legal_review_date datetime NULL;
+	
+update contract_profile set cp_legal_review_date = cp_signed_date;
+	
+--94 CAF overall summary report menu and permissions
+insert into module values ('3.3.2.7','CAF Overall Summary Report','','pas.report.CAFSummaryRpt.do','Y',14,'CAF Overall Summary Report','3.3.2');
+INSERT INTO Security_Group VALUES('CAF_SUMMARY_MANAGE','CAF SUMMARY维护权限');
+INSERT INTO Security_Permission VALUES('CAF_SUMMARY_ALL',' CAF SUMMARY 部门查看权限');
+INSERT INTO Security_Permission VALUES('CAF_SUMMARY_VIEW','CAF SUMMARY 查看权限');
+INSERT INTO Security_Group_Permission VALUES('CAF_SUMMARY_MANAGE', 'CAF_SUMMARY_ALL');
+INSERT INTO Security_Group_Permission VALUES('CAF_SUMMARY_MANAGE', 'CAF_SUMMARY_VIEW');
+
+--95 add project master and user login into proj_cost_mstr table
+Alter table [proj_cost_mstr]
+	Add proj_id varchar(50) NULL,
+	    user_login_id varchar(255) NULL;	
+	    
+
+-- 96 for QAD helpdesk project
+update proj_mstr set proj_category ='C', proj_type = 'Service', proj_allowance = '0' where proj_id ='I050060001'
+
+-- 97 create permission list/query menu
+INSERT INTO Module VALUES('1.2.8','PAS Permisions List','','ListSecurityPermission','Y',8,'PAS Permisions List', '1.2');
+INSERT INTO Security_Group VALUES('PAS_PERMISSION_MANAGE','PAS PERMISSION 查看权限');
+INSERT INTO Security_Permission VALUES('PAS_PERMISSION_VIEW','PAS PERMISSION 查看权限');
+INSERT INTO Security_Group_Permission VALUES('PAS_PERMISSION_MANAGE', 'PAS_PERMISSION_VIEW');
+
+INSERT INTO Module VALUES('1.2.9','PAS Permisions Query','','FindSecurityPermission','Y',9,'PAS Permisions Query', '1.2');
+INSERT INTO Security_Group VALUES('PAS_PERMISSION_MANAGE','PAS PERMISSION 查看权限');
+
+INSERT INTO Security_Permission VALUES('PERMISSION_QUERY_VIEW','PERMISSION QUERY查看权限');
+INSERT INTO Security_Permission VALUES('PERMISSION_QUERY_ALL','PERMISSION ALL查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PAS_PERMISSION_MANAGE', 'PERMISSION_QUERY_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PAS_PERMISSION_MANAGE', 'PERMISSION_QUERY_ALL');
+
+-- 98 for modify duplicate contract proflie
+update proj_mstr set proj_contract_id = 179 where proj_contract_id = 97;
+delete contract_profile where cp_id = 97;
+update proj_mstr set proj_contract_id = 189 where proj_contract_id = 119;
+delete contract_profile where cp_id = 119;
+delete contract_profile where cp_id = 191;
+update proj_mstr set proj_contract_id = 181 where proj_contract_id = 135;
+delete contract_profile where cp_id = 135;
+update proj_mstr set proj_contract_id = 180 where proj_contract_id = 136;
+update contract_profile set cp_link_profile = 180 where cp_link_profile = 136;
+delete contract_profile where cp_id = 136;
+delete contract_profile where cp_id = 200;
+delete contract_profile where cp_id = 201;
+alter table contract_profile add unique(cp_no, cp_type);
+
+--99 modify signed date and legal review date in the table contract profile
+update contract_profile set cp_signed_date = cp_start_date, cp_legal_review_date = cp_start_date
+where cp_signed_date is not null;
+
+--100 modifty f_fmdate_to and f_fmdate_freeze date in the table fmonth
+update fmonth 
+set 
+f_fmdate_to = CONVERT(datetime, CONVERT(char(10), f_fmdate_to, 20) + ' 23:59:59.000'),
+f_fmdate_freeze = CONVERT(datetime, CONVERT(char(10), f_fmdate_freeze, 20) + ' 23:59:59.000');
+
+-101 add new table sys_log
+CREATE TABLE [Sys_Log] (
+	[log_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[user_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[event] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[access_time] [datetime] NULL ,
+	CONSTRAINT [PK_Sys_Log] PRIMARY KEY  CLUSTERED 
+	(
+		[log_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Sys_Log_USER_LOGIN] FOREIGN KEY 
+	(
+		[user_id]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+--102 add post payment menu
+INSERT INTO Module VALUES('5.1.2.4','Payment','','findPaymentInvoice','Y',7,'payment cost', '5.1.2');
+INSERT INTO Security_Group VALUES('PAYMENT_INVOICE_MANAGE','PAYMENT INVOICE维护权限');
+INSERT INTO Security_Permission VALUES('PAYMENT_INVOICE_CREATE','项目应付发票创建权限');
+INSERT INTO Security_Permission VALUES('PAYMENT_INVOICE_VIEW','项目应付发票查看权限');
+INSERT INTO Security_Permission VALUES('PAYMENT_INVOICE_ALL','部门项目应付发票查看权限');
+INSERT INTO Security_Group_Permission VALUES('PAYMENT_INVOICE_MANAGE', 'PAYMENT_INVOICE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PAYMENT_INVOICE_MANAGE', 'PAYMENT_INVOICE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PAYMENT_INVOICE_MANAGE', 'PAYMENT_INVOICE_ALL');
+
+
+--103 add status into prospect_company table
+Alter table [prospect_company]
+	Add status varchar(50) NULL
+	
+--104 add contract type into bid_mstr table
+Alter table [bid_mstr]
+	Add bid_contract_type varchar(50) NULL
+	
+-- 105 add receipt master permissions
+---------------------------------
+--RECEIPT MASTER 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('RECEIPT_MSTR_CREATE','收据主信息创建权限');
+INSERT INTO Security_Permission VALUES('RECEIPT_MSTR_VIEW','收据主信息查看权限');
+INSERT INTO Security_Group VALUES('RECEIPT_MSTR_MANAGE','RECEIPT MASTER 维护权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_RECEIPT_MANAGE', 'RECEIPT_MSTR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('RECEIPT_MSTR_MANAGE', 'RECEIPT_MSTR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('RECEIPT_MSTR_MANAGE', 'RECEIPT_MSTR_CREATE');
+
+delete from module where module_id ='5.1.3.4'
+INSERT INTO Module VALUES('5.1.4','Receipt','','NULL','Y',4,'Receipt operations', '5.1');
+INSERT INTO Module VALUES('5.1.4.1','Receipt','','listReceipt','Y',11,'Receipt master operations', '5.1.4');
+INSERT INTO Module VALUES('5.1.4.2','Receipt Settlement','','findReceipt','Y',12,'Receipt settlement operations', '5.1.4');
+
+--106 presale update report
+insert into module values ('3.3.2.8','Presale Update Report','','pas.report.PresaleUpdateRpt.do','Y',15,'Presale update Report','3.3.2');
+INSERT INTO Security_Group VALUES('PRESALE_UPDATE_RPT_VIEW_MANAGE','PRESALE UPDATE 报表查看权限');
+INSERT INTO Security_Group VALUES('PRESALE_UPDATE_RPT_ALL_MANAGE','PRESALE UPDATE 报表全部查看权限');
+	-- PRESALE UPDATE RPT 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PRESALE_UPDATE_RPT_ALL',' PRESALE UPDATE RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('PRESALE_UPDATE_RPT_VIEW','PRESALE UPDATE RPT 查看权限');
+---------------------------------
+	-- PRESALE UPDATE RPT 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRESALE_UPDATE_RPT_VIEW_MANAGE', 'PRESALE_UPDATE_RPT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRESALE_UPDATE_RPT_ALL_MANAGE', 'PRESALE_UPDATE_RPT_ALL');
+
+--107 add table proj_receipt_mstr
+CREATE TABLE [dbo].[Proj_Receipt_Mstr] (
+	[Receipt_No] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[Receipt_Amt] [numeric] (18,0) NULL ,
+	[Currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Exchange_Rate] [numeric](18, 0) NULL ,
+	[Create_User] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Receipt_Date] [datetime] NULL ,
+	[Create_Date] [datetime] NULL ,
+	[CustomerId] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Receipt_Status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+--108 add position into Contact_List table
+Alter table [Contact_List]
+	Add cl_position varchar(50) NULL
+	
+--109 add F&A ReceiptNo. and Note into proj_receipt_mstr table
+Alter table [proj_receipt_mstr] Add fa_receiptno varchar(50) NULL;
+Alter table [proj_receipt_mstr] Add receipt_note varchar(2048) NULL;
+
+--110 create table proj_payment_mstr 
+CREATE TABLE [dbo].[proj_payment_mstr] (
+	[pay_code] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[pay_type] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[pay_amount] [numeric](18, 2) NULL ,
+	[vendor_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[currency] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[exchange_rate] [numeric](18, 2) NULL ,
+	[create_user] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[create_date] [datetime] NULL ,
+	[pay_date] [datetime] NULL ,
+	[pay_status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[fa_payno] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[pay_note] [varchar] (2048) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+--111 add ReceiptType into proj_receipt_mstr table
+Alter table [proj_receipt_mstr] Add receipt_type varchar(50) NULL;
+
+--112 add bidNo into Bid_Mstr table
+Alter table [Bid_Mstr]
+	Add bid_no varchar(10) NOT NULL
+	
+--113 add supplier invoice master permissions
+---------------------------------
+--SUPPLIER INVOICE MASTER 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('SUPPLIER_INVOICE_MSTR_CREATE','供应商发票主信息创建权限');
+INSERT INTO Security_Permission VALUES('SUPPLIER_INVOICE_MSTR_VIEW','供应商发票主信息查看权限');
+INSERT INTO Security_Group VALUES('SUPPLIER_INVOICE_MSTR_MANAGE','SUPPLIER INVOICE MASTER 维护权限');
+INSERT INTO Security_Group_Permission VALUES('PAYMENT_INVOICE_MANAGE', 'SUPPLIER_INVOICE_MSTR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SUPPLIER_INVOICE_MSTR_MANAGE', 'SUPPLIER_INVOICE_MSTR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SUPPLIER_INVOICE_MSTR_MANAGE', 'SUPPLIER_INVOICE_MSTR_CREATE');
+
+INSERT INTO Module VALUES('5.1.2.5','Supplier Invoice','','listSupplierInvoice','Y',8,'Supplier Invoice', '5.1.2');
+
+--114 create table Bid_Act_Det 
+CREATE TABLE [dbo].[Bid_Act_Det] (
+	[bad_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[bidAct_id] [numeric](18, 0) NULL ,
+	[assignee_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[action_date] [datetime] NULL ,
+	[hours] [numeric](18, 0) NULL ,
+	[description] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+--115 add PK bidAct_id  in table Bid_Activity  
+ALTER TABLE [dbo].[Bid_Activity] WITH NOCHECK ADD 
+	CONSTRAINT [PK_Bid_Activity] PRIMARY KEY  CLUSTERED 
+	(
+		[bidAct_id]
+	)  ON [PRIMARY] 
+GO
+
+--116 change act_id and bid_id to FOREIGN KEY  in table Bid_Activity
+ALTER TABLE [dbo].[Bid_Activity] ADD 
+	CONSTRAINT [FK_Bid_Activity_Bid_Mstr] FOREIGN KEY 
+	(
+		[bid_id]
+	) REFERENCES [dbo].[Bid_Mstr] (
+		[bid_id]
+	),
+	CONSTRAINT [FK_Bid_Activity_Sales_Activity] FOREIGN KEY 
+	(
+		[act_id]
+	) REFERENCES [dbo].[Sales_Activity] (
+		[act_id]
+	)
+GO
+
+--117 add bidMaster into PreSaleMaster table
+Alter table [Presale_mstr] Add bid_id [numeric](18, 2) NULL;
+
+--118 add salesActivity into SalesActivity table
+Alter table [Presale_det] Add activity_id [numeric](18, 2) NULL;
+
+--119 create Proj_ExpenseType table
+CREATE TABLE [dbo].[proj_expensetype] (
+	[proj_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[expense_type_id] [numeric](10, 0) NOT NULL 
+) ON [PRIMARY]
+GO
+
+--120 add expense_note into proj_mstr table
+Alter table [proj_mstr] Add expense_note [varchar](2048) null;
+
+--121 create Proj_ARTracking Table
+CREATE TABLE [dbo].[proj_artracking] (
+	[id] [bigint] IDENTITY (1, 1) NOT NULL ,
+	[proj_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[create_date] [datetime] NULL ,
+	[create_user] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[note] [varchar] (4096) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+--122 menu and permissions for expense summary report
+--------------------------------------------------
+insert into module values ('3.3.2.9','Expense Summary Report','','pas.report.ExpenseSummaryRpt.do','Y',16,'Expense Summary Report','3.3.2');
+INSERT INTO Security_Group VALUES('EXPENSE_SUMMARY_RPT_VIEW_MANAGE','EXPENSE SUMMARY 报表查看权限');
+INSERT INTO Security_Group VALUES('EXPENSE_SUMMARY_RPT_ALL_MANAGE','EXPENSE SUMMARY 报表全部查看权限');
+
+INSERT INTO Security_Permission VALUES('PAS_EXPSUMMARY_REPORT_ALL','  EXPENSE SUMMARY RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('PAS_EXPSUMMARY_REPORT_VIEW','  EXPENSE SUMMARY RPT 查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('EXPENSE_SUMMARY_RPT_VIEW_MANAGE', 'PAS_EXPSUMMARY_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('EXPENSE_SUMMARY_RPT_ALL_MANAGE', 'PAS_EXPSUMMARY_REPORT_ALL');
+
+--123 add PA_confirm into proj_cost_mstr table
+Alter table [proj_cost_mstr] Add PA_confirm [datetime] null;
+
+--124 ADD NEW PERMISSION FOR PA TO CONFIRM IN AIRFARE
+INSERT INTO Security_Group VALUES('AIRFARE_PA_CONFIRM','PA CONFIRM AIRFARE 权限');
+INSERT INTO Security_Permission VALUES('AIRFARE_PA_CONFIRM',' PA CONFIRM AIRFARE 权限点');
+INSERT INTO Security_Group_Permission VALUES('AIRFARE_PA_CONFIRM', 'AIRFARE_PA_CONFIRM');
+
+--125 add contact person /tele, customer pm /tele into proj_mstr table
+
+Alter table [proj_mstr]
+	Add contact_person varchar(255) NULL,
+		contact_tele varchar(255) NULL,
+		cust_pm varchar(255) NULL,
+		cust_pm_tele varchar(255) NULL;
+		
+--126 add customer sat in contract profile
+Alter table [contract_profile]
+	Add cust_sat varchar(255) NULL;
+	
+--127 add mail flag for TS approval notification in contract profile
+Alter table [proj_mstr]
+	Add mail_flag varchar(255) NULL;
+
+--128 adjust receipt master/invoice/supplier invoice master/payment instruction status	
+ update proj_receipt_mstr
+ set receipt_status = 'Completed'
+ where  abs(receipt_amt-
+     		(	
+		select sum(pr.receive_amount) 
+	        from proj_receipt_mstr as m inner join proj_receipt as pr
+	        on pr.receipt_no = m.receipt_no 
+		where m.receipt_no = proj_receipt_mstr.receipt_no
+	        group by m.receipt_no,m.receipt_amt                 
+      		)
+	   )<1 and receipt_status <> 'Completed'
+	   
+ update proj_invoice
+ set inv_status = 'Completed'
+ where  abs(inv_amount -
+     		(	
+		select sum(pr.receive_amount) 
+	        from proj_invoice as m inner join proj_receipt as pr
+	        on m.inv_id = pr.invoice_id 
+		where m.inv_id = proj_invoice.inv_id
+	        group by m.inv_id,m.inv_amount                 
+      		)
+	   )<1 and inv_status <> 'Completed'
+
+ update proj_payment_mstr
+ set pay_status = 'Completed'
+ where  abs(pay_amount -
+     		(	
+		select sum(pcm.totalvalue) 
+	        from proj_payment_mstr as m inner join proj_cost_mstr as pcm
+	        on m.pay_code = pcm.pay_id 
+		where m.pay_code = proj_payment_mstr.pay_code 
+	        group by m.pay_code,m.pay_amount                 
+      		)
+	   )<1 and pay_status <> 'Completed'
+
+--not quite correct, need left join for those not being settled.
+ update proj_payment
+ set pay_status = 'Completed'
+ where  abs(pay_calamount -
+     		(	
+		select sum(pcm.totalvalue) 
+	        from proj_payment as m inner join proj_cost_mstr as pcm
+	        on m.pay_code = pcm.refno 
+		where m.pay_code = proj_payment.pay_code 
+	        group by m.pay_code,m.pay_calamount                 
+      		)
+	   )<1 and pay_status <> 'Completed'	   
+
+--129 add menu and permission for outstanding acceptance report
+insert into module values ('3.3.2.10','Outstanding Acceptance Report','','pas.report.OutstandingAcceptanceRpt.do','Y',17,'Outstanding Acceptance Report','3.3.2');
+INSERT INTO Security_Group VALUES('OUTSTANDING_ACCEPTANCE_RPT_VIEW_MANAGE','OUTSTANDING ACCEPTANCE 报表查看权限');
+INSERT INTO Security_Group VALUES('OUTSTANDING_ACCEPTANCE_RPT_ALL_MANAGE','OUTSTANDING ACCEPTANCE 报表全部查看权限');
+
+INSERT INTO Security_Permission VALUES('OUTSTANDING_ACCEPTANCE_RPT_ALL','  OUTSTANDING ACCEPTANCE RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('OUTSTANDING_ACCEPTANCE_RPT_VIEW','  OUTSTANDING ACCEPTANCE RPT 查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('OUTSTANDING_ACCEPTANCE_RPT_VIEW_MANAGE', 'OUTSTANDING_ACCEPTANCE_RPT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('OUTSTANDING_ACCEPTANCE_RPT_ALL_MANAGE', 'OUTSTANDING_ACCEPTANCE_RPT_ALL');
+
+--130 add caf_printdate for timesheet detail
+Alter table [proj_ts_det]
+	Add caf_printdate varchar(255) NULL;	
+	
+-- 131 new permission for Outstanding Time Sheet Approval Report
+insert into module values ('3.3.2.11','Outstanding TS Approval Report','','pas.report.OutstandingTSRpt.do','Y',18,'Outstanding Time Sheet Approval Report','3.3.2');
+INSERT INTO Security_Permission VALUES('OUTSTANDING_TS_RPT_ALL','  OUTSTANDING TS RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('OUTSTANDING_TS_RPT_VIEW','  OUTSTANDING TS RPT 查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'OUTSTANDING_TS_RPT_VIEW');
+INSERT INTO Security_Group VALUES('OUTSTANDING_TS_RPT_ALL_MANAGE','OUTSTANDING TS 报表全部查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'OUTSTANDING_TS_RPT_ALL');
+
+
+--132 new permission for lost_confirm
+
+INSERT INTO Security_Group VALUES('LOST_CONFIRM_MANAGE', 'LOST RECORD CONFIRM 权限');
+INSERT INTO Security_Permission VALUES('LOST_RECORD_CONFIRM','LOST RECORD CONFIRM 权限点');
+INSERT INTO Security_Group_Permission VALUES('LOST_CONFIRM_MANAGE', 'LOST_RECORD_CONFIRM');
+
+--133 add FAClaimeDate for Expense master
+Alter table [proj_exp_mstr]
+	Add FAConfirmDate samlldatetime NULL;	
+update proj_exp_mstr set faconfirmdate = em_receipt_date where em_status = 'claimed'
+
+--134 new menu and permissions for sales pipeline report
+insert into module values ('3.3.2.12','Sales Pipeline Report','','pas.report.PipelineCurrentRpt.do','Y',19,'Sales Pipeline Report','3.3.2');
+INSERT INTO Security_Permission VALUES('SALES_PIPELINE_RPT_ALL','  SALES PIPELINE RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('SALES_PIPELINE_RPT_VIEW','  SALES PIPELINE RPT 查看权限');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'SALES_PIPELINE_RPT_VIEW');
+INSERT INTO Security_Group VALUES('SALES_PIPELINE_RPT_ALL_MANAGE','SALES PIPELINE 报表全部权限');
+INSERT INTO Security_Group_Permission VALUES('SALES_PIPELINE_RPT_ALL_MANAGE', 'SALES_PIPELINE_RPT_ALL');
+INSERT INTO Security_Group_Permission VALUES('SALES_PIPELINE_RPT_ALL_MANAGE', 'SALES_PIPELINE_RPT_VIEW');
+
+--135 permissions for invoice tracking report
+INSERT INTO Security_Permission VALUES('INVOICE_TRACKING_RPT_ALL','  INVOICE TRACKING RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('INVOICE_TRACKING_RPT_VIEW','  INVOICE TRACKING RPT 查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'INVOICE_TRACKING_RPT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'INVOICE_TRACKING_RPT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'INVOICE_TRACKING_RPT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'INVOICE_TRACKING_RPT_ALL');
+
+--136 new menu and permissions for resource tracking report
+insert into module values ('3.3.3.8','Resource Overtime Tracking Report','','pas.report.ResourceOTTrackingRpt.do','Y',23,'','3.3.3');
+INSERT INTO Security_Permission VALUES('RESOURCE_OT_TRACKING_RPT_ALL','  RESOURCE OT TRACKINF 部门查看权限');
+INSERT INTO Security_Permission VALUES('RESOURCE_OT_TRACKING_RPT_VIEW','  RESOURCE OT TRACKINF 查看权限');
+INSERT INTO Security_Group VALUES('SL_MGR_RPT_MANAGE','SL MANAGER REPORT GROUP');
+INSERT INTO Security_Group_Permission VALUES('SL_MGR_RPT_MANAGE', 'RESOURCE_OT_TRACKING_RPT_ALL');
+INSERT INTO Security_Group_Permission VALUES('SL_MGR_RPT_MANAGE', 'RESOURCE_OT_TRACKING_RPT_VIEW');
+
+--137 flag of project that need to renew.
+alter table Proj_Mstr add renew_flag varchar(1) not null default 'N'
+
+--138 permissions for project renew checking report
+insert into module values ('3.3.1.8','Project Renew Checking Report','','pas.report.ProjectRenewCheckingRpt.do','Y',24,'','3.3.1');
+INSERT INTO Security_Permission VALUES('PROJECT_RENEW_CHECKING_RPT_ALL','  PROJECT RENEW RPT 部门查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_RENEW_CHECKING_RPT_VIEW','  PROJECT RENEW RPT 查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PROJECT_RENEW_CHECKING_RPT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PROJECT_RENEW_CHECKING_RPT_VIEW');
+
+--139 date of last time export
+alter table Proj_Cost_Mstr add export_date datetime
+
+--140 permissions for airfare cost report
+insert into module values ('3.3.1.9','Airfare Cost Report','','pas.report.AirfareCostRpt.do','Y',25,'','3.3.1');
+--INSERT INTO Security_Permission VALUES('AIRFARE_COST_RPT_ALL','  RESOURCE OT TRACKINF 部门查看权限');
+INSERT INTO Security_Permission VALUES('AIRFARE_COST_RPT_VIEW','  AIRFARE COST RPT 查看权限');
+--INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'AIRFARE_COST_RPT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'AIRFARE_COST_RPT_VIEW');
+
+-- 150 new table 'Consultant_group' for helpdest
+CREATE TABLE [Consultant_group] (
+	[group_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[description] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[supvisor] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	CONSTRAINT [PK_Consultant_group] PRIMARY KEY  CLUSTERED 
+	(
+		[group_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Consultant_group_USER_LOGIN] FOREIGN KEY 
+	(
+		[supvisor]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+-- 151 new table 'Consultant_Assign'for helpdest
+CREATE TABLE [Consultant_Assign] (
+	[row_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[group_id] [numeric](18, 0) NOT NULL ,
+	[consultant] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Consultant_Assign] PRIMARY KEY  CLUSTERED 
+	(
+		[row_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Consultant_Assign_Consultant_group] FOREIGN KEY 
+	(
+		[group_id]
+	) REFERENCES [Consultant_group] (
+		[group_id]
+	),
+	CONSTRAINT [FK_Consultant_Assign_USER_LOGIN] FOREIGN KEY 
+	(
+		[consultant]
+	) REFERENCES [USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+) ON [PRIMARY]
+GO
+
+--152
+insert into MODULE values('2.1.1.5','Group Maintenance','','helpdesk.maintainGroup.do','Y',7,'Group Maintenance','2.1.1')
+INSERT INTO Security_Group VALUES('HELPDESK_GROUP_MAINTAIN','HELPDESK GROUP 维护权限');
+INSERT INTO Security_Permission VALUES('HELPDESK_GROUP_CREATE','新建 HELPDESK GROUP');
+INSERT INTO Security_Permission VALUES('HELPDESK_GROUP_DELETE','删除 HELPDESK GROUP');
+INSERT INTO Security_Permission VALUES('HELPDESK_GROUP_BROWSE','查看 HELPDESK GROUP');
+INSERT INTO Security_Permission VALUES('HELPDESK_GROUP_UPDATE','修改 HELPDESK GROUP');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_GROUP_CREATE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_GROUP_DELETE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_GROUP_BROWSE');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_GROUP_UPDATE');
+
+--153
+insert into MODULE values('2.1.1.6','Group Member Assignment','','helpdesk.assignGroupMember.do','Y',8,'assign members for a group','2.1.1')
+INSERT INTO Security_Permission VALUES('HELPDESK_GROUP_ASSIGN','HELPDESK GROUP 人员分配');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_GROUP_ASSIGN');
+
+--2005/11/10--
+--154 add table  SALARY_LEVEL
+CREATE TABLE [SALARY_LEVEL] (
+	[sl_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[sl_level] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[sl_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[sl_status] [bit] NULL ,
+	CONSTRAINT [PK_SALARY_LEVEL] PRIMARY KEY  CLUSTERED 
+	(
+		[sl_id]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+--155 add column salary_level in table user_login to stroe user salary level
+Alter table [USER_LOGIN]
+	Add salary_level numeric(18, 0);
+	
+--156 add CONSTRAINT
+alter table [USER_LOGIN]
+	add CONSTRAINT [FK_USER_LOGIN_SALARY_LEVEL] FOREIGN KEY 
+			(
+				[salary_level]
+			) REFERENCES [SALARY_LEVEL] (
+				[sl_id]
+			);
+
+--157 call report
+insert into MODULE values('2.1.1.7','Call Assignment Report','','helpdesk.callAssignReport.do','Y',8,'call assignment report','2.1.1')
+INSERT INTO Security_Permission VALUES('HELPDESK_CALL_ASSIGN_RPT','HELPDESK CALL REPORT 查看权限');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_CALL_ASSIGN_RPT');
+
+--158 add column to Proj_AirFair_Cost
+alter table Proj_AirFare_Cost add destination varchar(200)
+
+--159 FA permission for "Excel" button in airfare cost report
+INSERT INTO Security_Permission VALUES('AIRFARE_RPT_FA_VIEW','Airfare Rpt FA Export 权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'AIRFARE_RPT_FA_VIEW');
+
+--160 add intern sign in User_Login
+alter table USER_LOGIN add intern varchar(2) not null default 'N'
+
+--170 add weekly call report for Helpdesk
+insert into module values ('2.1.1.8','Weekly Call Report','','helpdesk.weeklyCallRpt.do','Y',9,'Weekly Call Report','2.1.1');
+INSERT INTO Security_Permission VALUES('HELPDESK_WEEKLY_CALL_RPT','HELPDESK WEEKLY CALL REPORT 查看权限');
+INSERT INTO Security_Group_Permission VALUES('HELPDESK_GROUP_MAINTAIN', 'HELPDESK_WEEKLY_CALL_RPT');
+
+--171 add memu for rate level
+insert into module values ('3.2.3.2','Staff Rate Level','','findSalaryLevel','Y',2,'Staff Rate Level Maint.','3.2.3');
+INSERT INTO Security_Permission VALUES('SALARY_LEVEL_VIEW','STAFF RATE LEVEL MAINT. 查看权限'); 
+INSERT INTO Security_Permission VALUES('SALARY_LEVEL_CREATE','STAFF RATE LEVEL MAINT. 创建权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'SALARY_LEVEL_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'SALARY_LEVEL_VIEW');
+
+--172 add a column for FTE
+alter table user_login add FTE varchar(1) not null default 'N'
+
+--173 add location to ProjectReceiptMaster
+alter table Proj_Receipt_Mstr add location varchar(255) not null default 'Shanghai'
+
+--174 add a column for reportToId
+alter table user_login add reportToId varchar(255) not null default 'admin'
+
+--175 add 3 columns for SALARY_LEVEL
+alter table SALARY_LEVEL add 
+sl_rate numeric(18, 0) not null default 0.00,
+sl_curr_id varchar(255) not null default 'RMB',
+sl_party_id varchar(50) not null default '001'
+
+--176 alter cloumn fte to type
+ALTER TABLE USER_LOGIN DROP COLUMN FTE
+ALTER TABLE USER_LOGIN add TYPE varchar(255) not null default 'other'
+
+--177 initialization the column of salary_level in user_login
+update user_login set salary_level=null
+
+-- 178 add notifyCustomer column to Call_Master
+alter table call_master add notifyCustomer char(1) 
+
+-- 179 add column "pay_id" to payment master for hibernate configuration element "<set>" referenced by proj_payment
+alter table proj_payment_mstr add pay_id numeric(18,0)
+
+-- 180 new report ExpenseStatisticsReport
+insert into module values ('3.3.3.12','Expense Statistics Report','','pas.report.ExpenseStatisticsRpt.do','Y',26,'Expense Statistics','3.1.1')
+INSERT INTO Security_Permission VALUES('EXPENSE_STATISTICS_RPT_VIEW','Expense Statistics View Privileges');
+INSERT INTO Security_Group_Permission VALUES('PRM_EXP_FA_MANAGE', 'EXPENSE_STATISTICS_RPT_VIEW');
+
+-- 181 new report : InvoiceReceipSettleReport
+insert into module values 
+('3.3.3.11','Invoice Receipt Settlement Report','','pas.report.InvoiceReceiptSettleRpt.do','Y',26,'Invoice Receipt Settlement Report','3.3.3');
+INSERT INTO SECURITY_PERMISSION VALUES('INV_RECP_SET_VIEW','InvoiceReceiptSettlementReport 查看权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'INV_RECP_SET_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'INV_RECP_SET_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'INV_RECP_SET_VIEW');
+
+--182 change module name 
+update module set module_name='Salse Funnel Status Report'where module_id='3.3.4.2'
+
+--183 add create customer into "Admin" menu
+insert into module values ('1.2.10','Customer','','Null','Y',1,'Customer','1.2');
+insert into module values ('1.2.10.1','Customer','','listCustParty','Y',1,'Customer','1.2.10');
+insert into module values ('1.2.10.2','Customer Group','','listCustomerAccount','Y',1,'Customer Group','1.2.10');
+
+--184  add customer complain module   2006/1/20 by chen yu
+
+insert into module values 
+('3.1.2.4','Customer Complains to SL Manager','','CustomerComplains.do','Y',4,'Customer comlplain to SL Manager','3.1.2');
+INSERT INTO SECURITY_PERMISSION VALUES('CUST_CMPLN_TO_PM','customer complain 权限');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT2_MANAGE', 'CUST_CMPLN_TO_PM');
+
+
+CREATE TABLE [Cust_Complain] (
+		[CC_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+		[Proj_ID] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Dep_ID] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[PM_ID] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,	
+		[Create_User] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Create_Date] [datetime] NULL ,
+		[Description] [varchar] (5000) COLLATE Chinese_PRC_CI_AS NULL ,
+		[Type] [varchar] (100) COLLATE Chinese_PRC_CI_AS NULL ,
+  		[Solved] [varchar] (5) default 'YES' 
+		CONSTRAINT [PK_Cust_Complain] PRIMARY KEY  CLUSTERED 
+		(
+			[CC_Id]
+		)  ON [PRIMARY] 
+	) ON [PRIMARY]
+
+--185  add a colum last_update_Date for UserLogin
+
+Alter table [USER_LOGIN]
+	Add last_update_Date datetime;
+	
+--2006-1-25
+--186 add new module for payment confirmation
+insert into module values ('5.1.2.6','Payment Confirmation','','ConfirmPayment.do','Y',9,'Confirm Payment','5.1.2')
+
+--187 create table payment transaction
+create table Proj_Payment_Transaction(
+	pay_tran_id numeric(18,0) IDENTITY(1,1) not null,
+	invoice_id varchar(50), 
+	payment_id numeric(18,0),
+	pay_amount numeric(18,2) not null,
+	currency varchar(255) not null,
+	curr_rate float not null,
+	post_status varchar(255) not null,
+	post_date datetime,
+	pay_date datetime,
+	note varchar(1024),
+	create_user varchar(255) not null,
+	create_date datetime not null,
+	export_date datetime,
+	primary key(pay_tran_id),
+	CONSTRAINT FK_inv_id FOREIGN KEY(invoice_id) REFERENCES proj_payment_mstr(pay_code),
+	CONSTRAINT FK_payment_id FOREIGN KEY(payment_id) REFERENCES proj_payment(Pay_Id),
+	CONSTRAINT FK_create_user FOREIGN KEY(create_user) REFERENCES USER_LOGIN(USER_LOGIN_ID),
+	CONSTRAINT FK_currency FOREIGN KEY(currency) REFERENCES currency(Curr_Id))
+	
+--188 alter table Bid_Mstr
+alter table Bid_Mstr add bid_last_action_date datetime NULL;
+
+--189 CREATE TABLE Bid_Mstr_Status
+CREATE TABLE [Bid_Mstr_Status] (
+	[bms_id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[bid_id] [numeric](18, 0) NOT NULL ,
+	[bid_status] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[bid_action_date] [datetime] NOT NULL ,
+	CONSTRAINT [PK_Bid_Mstr_Status] PRIMARY KEY  CLUSTERED 
+	(
+		[bms_id]
+	)  ON [PRIMARY] ,
+	CONSTRAINT [FK_Bid_Mstr_Status_Bid_Mstr] FOREIGN KEY 
+	(
+		[bid_id]
+	) REFERENCES [Bid_Mstr] (
+		[bid_id]
+	)
+) ON [PRIMARY]
+GO 
+--================================================================================--
+-- vender no. V000047 and V000067 are duplicated
+-- vender no. V000011 and V000058 are duplicated
+-- vender no. V000004 and V000069 are duplicated
+
+-- 190 update proj_mstr table for po project
+update proj_mstr set proj_vendaddr = 'V000004' where proj_vendaddr = 'V000069';
+update proj_mstr set proj_vendaddr = 'V000011' where proj_vendaddr = 'V000058';
+update proj_mstr set proj_vendaddr = 'V000047' where proj_vendaddr = 'V000067';
+update Contract_Profile set cp_party_id = 'V000047' where cp_id = 410
+
+-- 191 update proj_payment_mstr for po project
+--update proj_payment_mstr set vendor_id = 'V000004' where vendor_id = 'V000069';
+--update proj_payment_mstr set vendor_id = 'V000011' where vendor_id = 'V000058';
+--update proj_payment_mstr set vendor_id = 'V000047' where vendor_id = 'V000067';
+
+-- 192 delete party_role 
+delete from party_role where party_id = 'V000069';
+delete from party_role where party_id = 'V000058';
+delete from party_role where party_id = 'V000067';
+
+-- 193 delete vendorprofile
+delete from vendorprofile where party_id = 'V000069';
+delete from vendorprofile where party_id = 'V000058';
+delete from vendorprofile where party_id = 'V000067';
+
+-- 194 delete party
+delete from party where party_id = 'V000069';
+delete from party where party_id = 'V000058';
+delete from party where party_id = 'V000067';
+
+-- delete from contract_profile
+update contract_profile set cp_party_id='V000004' where cp_party_id='V000069'
+update contract_profile set cp_party_id='V000047' where cp_party_id='V000067'
+
+--================================================================================--
+
+-- 195 delete expense payment transaction
+delete from proj_tr_det where tr_type='payment' and tr_category ='expense';
+
+-- 196 recalculate payment instruction amount
+update proj_payment set pay_calamount = virenceamount
+from (select tr_mstr_id, sum(tr_amount * tr_ex_rate) as virenceamount from proj_tr_det where tr_type='payment' and tr_mstr_id is not null group by tr_mstr_id) as virence
+inner join proj_payment on virence.tr_mstr_id = proj_payment.pay_id;
+
+-- 2006-1-26
+-- 197 remove column fa_payno, pay_id from proj_payment_mstr
+alter table proj_payment_mstr
+	drop column fa_payno;
+	
+-- 198 add column settle_status from proj_payment_mstr
+alter table proj_payment_mstr
+	add settle_status varchar(50) NULL;
+	
+-- 199 update proj_payment.pay_status = 'Draft'
+update proj_payment set pay_status = 'Draft';
+
+-- 200 drop column pay_inv_no and pay_amount from table proj_payment
+alter table proj_payment drop column pay_inv_no, pay_amount;
+
+-- 201 add column settle_amount for table proj_payment
+alter table proj_payment add settle_amount numeric(18, 2) NULL;
+
+-- 202 add module for AP Aging Report
+INSERT INTO Module VALUES('3.3.3.13','AP Aging Report','','pas.report.APAgingRpt.do','Y',28,'AP Agent Report','3.3.3');
+
+-- 203 add security permission
+INSERT INTO Security_Permission VALUES('PAS_AP_AGING_ALL',	'AP AGING RPT 全部查看权限');
+INSERT INTO Security_Permission VALUES('PAS_AP_AGING_VIEW',	'AP AGING RPT 查看权限');
+INSERT INTO Security_Group VALUES('AP_AGING_MANAGE',	'AP AGING维护权限');
+INSERT INTO Security_Group_Permission VALUES('AP_AGING_MANAGE',	'PAS_AP_AGING_ALL');
+INSERT INTO Security_Group_Permission VALUES('AP_AGING_MANAGE',	'PAS_AP_AGING_VIEW');
+
+--204 alter table ----added by chen yu  Feb/16
+
+Alter Table proj_mstr 
+	add VAT  char(1) default 'N'
+
+Alter Table proj_mstr 
+	add category  varchar(50) null default 'Project Implementation'
+
+Alter Table Contract_Profile
+	add SalesPerson1  varchar(50) null 
+
+Alter Table Contract_Profile 
+	add SalesPerson2  varchar(50) null 
+	
+-- 206 by angus (got from Bill on MSN)
+alter table proj_payment_mstr add po_proj_id varchar(255) references proj_mstr(proj_id)
+--alter table Proj_Payment_Transaction add post_date datetime
+--alter table Proj_Payment_Transaction add export_date datetime
+
+---207 by chen yu (Feb 17th)
+Alter Table bid_mstr
+	add secondary_Sales  varchar(50) null 
+Alter Table bid_mstr
+	add expected_end_date  datetime  null 
+	
+update sales_activity set act_critical_flg='Y'
+
+INSERT INTO SECURITY_PERMISSION VALUES('SALES_BID_VIEW_ALL','sales bid 查看权限')
+INSERT INTO SECURITY_GROUP VALUES('SALES_BID_VIEW_ALL','sales bid 查看权限')
+INSERT INTO SECURITY_GROUP_PERMISSION VALUES('SALES_BID_VIEW_ALL','SALES_BID_VIEW_ALL')
+	
+--208 by chen yu (Feb 20th)
+Alter Table custprofile
+	add account_code  varchar(50) null 
+
+Alter Table vendorprofile
+	add account_code  varchar(50) null 
+	
+--209 update data structure for AP module
+delete from proj_payment_transaction
+delete from proj_payment_mstr
+update proj_servicetype set st_payid=null
+update proj_tr_det set tr_mstr_id = null where tr_type='Payment'
+delete from proj_payment
+
+--210 delete tables about bid & sales by chen yu Feb 21th
+
+delete from bid_activity
+delete from bid_act_det
+delete from bid_mstr_status
+delete from bid_mstr
+delete from sales_activity
+delete from sales_step
+delete from sales_step_group
+update contract_profile set cp_bid_id = null where cp_bid_id is not null
+
+--211 create new table by ChenYu Feb 27th
+CREATE TABLE bid_unweighted_value
+	(
+	id numeric(18, 0) NOT NULL IDENTITY (1, 1),
+	bid_no varchar(50) NOT NULL,
+	bid_year char(4) NOT NULL,
+	value float(53) NULL
+	)  
+	
+--212 by chen yu Mar 2th
+Alter Table bid_mstr
+	add create_date  datetime  null 
+	
+--212 by chen yu Mar 9th
+
+Alter Table bid_mstr  drop constraint FK_Bid_Mstr_Prospect_Company
+Alter Table bid_mstr
+	alter column  bid_prospect_company_id  varchar(50)  null 
+update bid_mstr set bid_prospect_company_id=''
+Alter Table contact_list  drop constraint FK_Contact_List_Prospect_Company
+alter table contact_list drop column cl_prospect_id
+
+Alter Table contact_list
+	add   bid_id  numeric(9,0)
+
+--213  add two column to User_Login
+alter table user_login add join_day datetime
+alter table user_login add leave_day datetime
+------------------------------------------------------------------------------------------------------------------------------------
+--214 by angus 3.30
+Alter Table custprofile
+	add party_type  varchar(50) null
+------------------------
+	update custprofile set party_type = 'C' -- update all the existing records in custprofile as "Customer", for new prospect, value "P"
+------------------------
+
+--215 by gaga 3.30
+CREATE TABLE [dbo].[BackLog] (
+	[bl_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[project] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[bl_year] [int] NOT NULL ,
+	[bl_month] [int] NOT NULL ,
+	[amount] [numeric](18, 2) NOT NULL ,
+	[status] [char] (10) COLLATE Chinese_PRC_CI_AS NOT NULL 
+) ON [PRIMARY]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[BackLog_Mstr]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [BackLog_Mstr]
+GO
+
+CREATE TABLE [BackLog_Mstr] (
+	[blm_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[project] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[blm_year] [int] NOT NULL ,
+	[amount] [decimal](18, 2) NULL 
+) ON [PRIMARY]
+GO
+--------------------------
+CREATE            procedure backlogcheck
+
+(
+@cyear int,
+@cmonth INT,
+@bldate varchar(50),
+@stdate varchar(50),
+@eddate varchar(50),
+@dept varchar(255)
+)
+as
+declare @projid varchar(255)
+---------------------this is for parent department
+
+if(select count(distinct(party_to_id)) from party_relationship where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP')>1
+begin
+---------------------this is for insert new backlog record for tm && caf=y
+
+		insert into backlog(project,bl_year,bl_month,amount,status)
+		select pm2.proj_id,@cyear,@cmonth,0,'draft' from proj_mstr as pm2
+			 where pm2.proj_id in 
+			(select proj_id from proj_mstr as pm where pm.contracttype='tm' 
+			and pm.proj_caf_flag='y' and 
+			dep_id in (select distinct(party_to_id)  from party_relationship 
+			where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP')
+			and proj_category ='c'and (proj_status='wip' 
+			or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+			or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end))
+			and pm2.proj_id not in(select project from backlog where bl_year=@cyear and bl_month=@cmonth)
+/*		declare #cur cursor for	
+		select proj_id from proj_mstr as pm2 where pm2.proj_id in 
+			(select proj_id from proj_mstr as pm where pm.contracttype='tm' 
+			and pm.proj_caf_flag='y' and 
+			dep_id in (select distinct(party_to_id)  from party_relationship 
+			where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP')
+			and proj_category ='c'and (proj_status='wip' 
+			or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+			or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end))
+		open #cur
+		fetch #cur into  @projid
+		while (@@fetch_status=0)
+		begin
+		print @projid
+			if(select count(*)from backlog where project=@projid and bl_year=@cyear and bl_month=@cmonth)<1
+			begin
+			insert  into backlog(project,bl_year,bl_month,amount,status)
+			values(@projid,@cyear,@cmonth,0,'draft')
+			end
+
+		fetch  #cur into @projid
+		
+		end
+		
+		close #cur
+		deallocate #cur
+*/
+			---------------------this is for update BackLog
+
+		update backlog set amount=(select case when sum(tr_amount) is not null then ROUND(sum(tr_amount)/1000,0) 
+		else  0 end  from proj_tr_det as tr inner join proj_mstr as pm on pm.proj_id=tr.tr_proj_id
+ 		where  tr.tr_type='bill' and tr.tr_category='caf' and tr_date1<convert(datetime,@eddate) and project=tr.tr_proj_id 
+		and tr_date1>convert(datetime,@stdate) and pm.contracttype='tm' and pm.proj_caf_flag='y'and pm.proj_category='c'
+		and (pm.proj_status='wip' or pm.close_date >= case when (pm.proj_status='pc')then convert(datetime,@bldate) end 
+		or pm.close_date >= case when (proj_status='close')then convert(datetime,@bldate) end)
+		and pm.dep_id in
+		(select distinct(party_to_id)  from party_relationship where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP') )
+		where bl_year=@cyear and bl_month=@cmonth and project in(select proj_id from proj_mstr inner join proj_tr_det 
+		as tr2 on proj_id=tr2.tr_proj_id where  contracttype='tm' and proj_caf_flag='y'
+		and (proj_status='wip'or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+		or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end)
+		and dep_id in(select distinct(party_to_id)  from party_relationship 
+		where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP'))		
+
+
+end
+
+
+
+
+if (select count(distinct(party_to_id)) from party_relationship where party_from_id=@dept and relationship_type_id='GROUP_ROLLUP')<1
+begin
+---------------------this is for child department
+/*
+		declare #cur cursor for	
+		select proj_id from proj_mstr as pm2 where pm2.proj_id in (select proj_id from proj_mstr as pm  
+			where pm.contracttype='tm' 
+			and pm.proj_caf_flag='y' and dep_id =@dept
+			and (proj_category ='c'and proj_
+status='wip' 
+			or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+			or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end))
+
+		open #cur
+		fetch #cur into  @projid
+		while (@@fetch_status=0)
+		begin
+			if(select count(*)from backlog where project=@projid and bl_year=@cyear and bl_month=@cmonth)<1
+			begin
+
+			insert  into backlog(project,bl_year,bl_month,amount,status)
+
+			values(@projid,@cyear,@cmonth,0,'draft')
+			end
+			
+		fetch  #cur into @projid
+		end
+		
+		close #cur
+		deallocate #cur
+*/
+		insert into backlog(project,bl_year,bl_month,amount,status)
+		select pm2.proj_id,@cyear,@cmonth,0,'draft' from proj_mstr as pm2
+			 where pm2.proj_id in 
+			(select proj_id from proj_mstr as pm where pm.contracttype='tm' 
+			and pm.proj_caf_flag='y' and 
+			dep_id =@dept
+			and proj_category ='c'and (proj_status='wip' 
+			or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+			or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end))
+			and pm2.proj_id not in(select project from backlog where bl_year=@cyear and bl_month=@cmonth)
+		---------------------this is for update BackLog
+		update backlog set amount=(select case when sum(tr_amount) is not null then ROUND(sum(tr_amount)/1000,0) 
+
+		else  0 end  from proj_tr_det as tr inner join proj_mstr as pm on pm.proj_id=tr.tr_proj_id 
+ 		where pm.contracttype='tm' and pm.proj_caf_flag='y' and pm.proj_category='c'and project=tr.tr_proj_id and dep_id =@dept
+		and tr.tr_type='bill' and tr.tr_category='caf' and tr_date1<convert(datetime,@eddate) and tr_date1>convert(datetime,@stdate) 
+		and  (pm.proj_status='wip' 
+			or pm.close_date >= case when (pm.proj_status='pc')then convert(datetime,@bldate) end 
+			or pm.close_date >= case when (pm.proj_status='close')then convert(datetime,@bldate) end))
+		where bl_year=@cyear and bl_month=@cmonth and project in(select proj_id from proj_mstr 
+		inner join proj_tr_det as tr2 on proj_id=tr2.tr_proj_id where dep_id =@dept and proj_category='c'
+		 and tr2.tr_type='bill' and tr2.tr_category='caf'
+		and (proj_status='wip' or close_date >= case when (proj_status='pc')then convert(datetime,@bldate) end 
+		or close_date >= case when (proj_status='close')then convert(datetime,@bldate) end)
+		and contracttype='tm' and proj_caf_flag='y')		
+end
+
+
+
+
+--------------------------
+Alter TABLE [dbo].[Proj_Mstr] 
+	add close_date [datetime] NULL 
+
+update proj_mstr set close_date = end_date where proj_status ='close'
+--------------------------
+--Alter TABLE [dbo].[Proj_Tr_Det] 
+--	add [blid] [int] NULL 	default 0
+
+--216 menu for backlog report   (********************************)
+INSERT INTO Module VALUES('3.3.3.14','Backlog Report','','selectBackLog.do','Y',29,'Backlog report', '3.3.3')
+
+--217 load sales template
+-----------------
+insert sales_step_group values('014','ES','N');
+-----------------need to pay ATTENTION on step_sg_id
+insert sales_step values(7, 1, 'Stage 0: suspect/Lost/Drop', 0)
+insert sales_step values(7, 2, 'Stage 1: discussion', 10)
+insert sales_step values(7, 3, 'Stage 2: Proposal/without signal as prefered supplier', 30)
+insert sales_step values(7, 4, 'Stage 3: Best Few/with signal as prefered supplier', 60)
+insert sales_step values(7, 5, 'Stage 4: Negociation', 90)
+insert sales_step values(7, 6, 'Stage 5: Framework signed probable order', 95)
+insert sales_step values(7, 7, 'Stage 6: Backlog', 100)
+-----------------need to pay ATTENTION on act_step_id
+insert sales_activity values (27,1,'Activity 1: First Contact','Y')
+insert sales_activity values (28,1,'Activity 1: Request For Information','Y')
+insert sales_activity values (28,2,'Activity 2: Identify Internal Coach','Y')
+insert sales_activity values (28,3,'Activity 3: Identify Budget and Time','Y')
+insert sales_activity values (28,4,'Activity 4: Passed Rainbow (Mini)','Y')
+insert sales_activity values (29,1,'Activity 1: Indentify Internal Sponsor / Competitor','Y')
+insert sales_activity values (29,2,'Activity 2: Obtain and Confirm Customer Requirement / Scope Of Work','Y')
+insert sales_activity values (29,3,'Activity 3: Solution & Offer Review (Rainbow)','Y')
+insert sales_activity values (29,4,'Activity 4: Prepare Proposal /RFP','Y')
+insert sales_activity values (30,1,'Activity 1: Shortlisted','Y')
+insert sales_activity values (30,2,'Activity 2: Criteria to win the deal is clear','Y')
+insert sales_activity values (31,1,'Activity 1: Customer No. and Contract No. Ready','Y')
+insert sales_activity values (31,2,'Activity 2: Scope & Price Confirmed','Y')
+insert sales_activity values (31,3,'Activity 3: Contract Review','Y')
+insert sales_activity values (32,1,'Activity 1: Submit Contract Profile','Y')
+insert sales_activity values (32,2,'Activity 2: Confirm Contract Detail','Y')
+insert sales_activity values (32,3,'Activity 3: Receive LOI / MOU ?','Y')
+insert sales_activity values (33,1,'Activity 1: Contract Signed','Y')
+
+-- 218 new field in user_login for direct /indirect user account
+Alter table [user_login]
+	Add account_type varchar(50) NULL
+	update user_login set account_type = 'direct' 
+
+--219 
+Create Table bid_mstr_history(
+	bmh_id	int IDENTITY (1, 1)   NOT NULL ,
+	bid_id	varchar(10)  NULL ,
+	user_id	char(10)  NULL ,
+	modify_date	datetime  NULL ,
+	bid_est_start_date	datetime  NULL ,
+	bid_est_end_date	datetime  NULL ,
+	expected_end_date	datetime  NULL ,
+	status	varchar(50)  NULL 
+)
+
+GO
+ALTER TABLE bid_mstr_history ADD  PRIMARY KEY  clustered 
+   ( bmh_id )  ON [PRIMARY]
+   
+--220
+Alter table [proj_mstr]
+	Add contract_Group varchar(50) NULL
+update proj_mstr set contract_Group = 'Labor'
+
+--221 new menu for mo type contract acceptance
+INSERT INTO Module VALUES('3.1.2.4','MO Project Acceptance Update','','findMOProjAccpPage.do','Y',4,'MO Project Acceptance Update', '3.1.2');
+update module set module_name ='Contract Master' where module_id ='3.2.1'
+update module set module_name ='Project Master' where module_id ='3.2.2'
+
+--222	new field for contract profile
+Alter table [Contract_profile]
+	Add comments varchar(2056) NULL
+
+--223 new table for MO Transaction
+CREATE TABLE [dbo].[Proj_MOTr_Det] (
+	[Tr_Id] [numeric](18, 0) IDENTITY (1, 1) NOT NULL ,
+	[Tr_index] [numeric](18, 0) NOT NULL ,
+	[Tr_Type] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Category] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Rec_id] [numeric](18, 0) NULL ,
+	[Tr_Rec_Table] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Amount] [numeric](18, 8) NULL ,
+	[Tr_Currency] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Ex_Rate] [numeric](18, 4) NULL ,
+	[Tr_Mstr_Id] [numeric](18, 0) NULL ,
+	[Tr_Desc1] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Desc2] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Desc3] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Desc4] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Proj_Id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Party_Id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_Date] [datetime] NULL ,
+	[Tr_CreateDate] [datetime] NULL ,
+	[Tr_Date1] [datetime] NULL ,
+	[Tr_Date2] [datetime] NULL ,
+	[Tr_Num1] [numeric](18, 4) NULL ,
+	[Tr_Num2] [numeric](18, 4) NULL ,
+	[Tr_Num3] [numeric](18, 4) NULL ,
+	[Tr_Int1] [numeric](18, 0) NULL ,
+	[Tr_Int2] [numeric](18, 0) NULL ,
+	[Tr_Staff] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Tr_CreateUser] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[Proj_MOTr_Det] WITH NOCHECK ADD 
+	CONSTRAINT [PK_Proj_MOTr_Det] PRIMARY KEY  CLUSTERED 
+	(
+		[Tr_Id]
+	)  ON [PRIMARY] 
+
+ALTER TABLE [dbo].[Proj_MOTr_Det] ADD 
+	CONSTRAINT [FK_Proj_MOTr_Det_Currency] FOREIGN KEY 
+	(
+		[Tr_Currency]
+	) REFERENCES [dbo].[Currency] (
+		[Curr_Id]
+	),
+	CONSTRAINT [FK_Proj_MOTr_Det_Proj_Mstr] FOREIGN KEY 
+	(
+		[Tr_Proj_Id]
+	) REFERENCES [dbo].[Proj_Mstr] (
+		[proj_id]
+	),
+	CONSTRAINT [FK_Proj_MOTr_Det_User_Login_tr_createuser] FOREIGN KEY 
+	(
+		[Tr_CreateUser]
+	) REFERENCES [dbo].[USER_LOGIN] (
+		[USER_LOGIN_ID]
+	),
+	CONSTRAINT [FK_Proj_MOTr_Det_User_Login_tr_staff] FOREIGN KEY 
+	(
+		[Tr_Staff]
+	) REFERENCES [dbo].[USER_LOGIN] (
+		[USER_LOGIN_ID]
+	)
+
+
+--224	new field for project master
+Alter table [proj_mstr]
+	Add comments varchar(1600) NULL,
+	duration varchar(50) NULL
+ update proj_mstr set duration ='other'
+ 
+ --225	new field for project master
+ Alter table [proj_mstr]
+	Add CYTransport varchar(1) default 'N'
+
+update proj_mstr set CYTransport = 'N'
+
+update proj_mstr set CYTransport = 'Y' where proj_id in (
+select distinct(p.proj_id)
+from Proj_Mstr as p 
+left join Proj_ExpenseType as pet on pet.proj_id = p.proj_id
+where expense_type_id = 3
+)
+
+--226 air ticket return date in airfare cost table
+
+Alter table [proj_airfare_cost] 
+add [return_Date] [datetime] NULL 
+
+--227 security points for outstanding returned air ticket report
+INSERT INTO SECURITY_PERMISSION VALUES('OUTSTANDING_AIRTICKET_REPORT_VIEW','outstanding airticket rpt 查看权限')
+INSERT INTO SECURITY_GROUP VALUES('OUTSTANDING_AIRTICKET_REPORT_VIEW','outstanding airticket rpt 查看权限')
+INSERT INTO SECURITY_GROUP_PERMISSION VALUES('OUTSTANDING_AIRTICKET_REPORT_VIEW','OUTSTANDING_AIRTICKET_REPORT_VIEW')
+INSERT INTO Module VALUES('3.3.1.11','Outstanding Returned Air-Ticket Report','','pas.report.OutstandingReturnAirTicketRpt.do','Y',28,'Outstanding Returned Air-Ticket report', '3.3.1')
+update proj_airfare_cost set return_date ='2006-04-30' where costcode in 
+(select costcode from proj_cost_mstr where costdate <'2006-04-30')
+
+--228 update air ticket status in proj cost mstr table
+
+update proj_cost_mstr set payment_status = 'confirmed' where approvaldate is not null
+update proj_cost_mstr set payment_status = 'unconfirmed' where approvaldate is null
+
+--229 new column presale_pm in bid_mstr table
+
+Alter table [bid_mstr] 
+add [presale_pm] varchar (20)
+	
+--230 air ticket return date in airfare cost table
+
+Alter table [proj_cost_mstr] 
+add [pay_date] [datetime] NULL 
+
+--231 update the security table
+--2006/6/14--
+
+INSERT INTO Security_Group VALUES('MEETING_ROOM_BOOKING_MAINTANCE', '会议室资源管理权限');
+
+INSERT INTO Security_Permission VALUES('MEETING_ROOM_BOOKING_CREATE','创建会议室资源分配权限');
+
+INSERT INTO Security_Permission VALUES('MEETING_ROOM_BOOKING_VIEW','查看会议室资源分配权限');
+
+INSERT INTO Security_Group_Permission VALUES('MEETING_ROOM_BOOKING_MAINTANCE', 'MEETING_ROOM_BOOKING_CREATE');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'MEETING_ROOM_BOOKING_VIEW');
+
+--232 add bookingroom table
+
+CREATE TABLE [dbo].[bookingroom] (
+	[booking_id] [numeric](10, 0) IDENTITY (0, 1) NOT NULL ,
+	[booking_person] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[booking_date] [datetime] NULL ,
+	[booking_room] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[start_time] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[end_time] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--233 backlog permission
+INSERT INTO SECURITY_PERMISSION VALUES('BACKLOG_REPORT_VIEW','backlog rpt 查看权限')
+INSERT INTO SECURITY_PERMISSION VALUES('BACKLOG_REPORT_CREATE','backlog rpt 创建权限')
+INSERT INTO SECURITY_GROUP VALUES('BACKLOG_REPORT_VIEW','backlog rpt 查看权限组')
+INSERT INTO SECURITY_GROUP VALUES('BACKLOG_REPORT_CREATE','backlog rpt 创建权限组')
+INSERT INTO SECURITY_GROUP_PERMISSION VALUES('BACKLOG_REPORT_VIEW','BACKLOG_REPORT_VIEW')
+INSERT INTO SECURITY_GROUP_PERMISSION VALUES('BACKLOG_REPORT_CREATE','BACKLOG_REPORT_CREATE')
+
+
+--234 add skill table
+CREATE TABLE [dbo].[skill] (
+	[skill_id] [numeric](10, 0) IDENTITY (0, 1) NOT NULL ,
+	[employee_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cat_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[level_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--235 add skill_cat table
+CREATE TABLE [dbo].[skill_cat] (
+	[cat_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[p_cat_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cat_name] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cat_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--236 add skill_level table
+CREATE TABLE [dbo].[skill_level] (
+	[level_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[level_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cat_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--236 add skill_cert table
+CREATE TABLE [dbo].[skill_cert] (
+	[cert_id] [numeric](10, 0) IDENTITY (0, 1) NOT NULL ,
+	[employee_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[cert_desc] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL ,
+	[date_grant] [datetime] NULL 
+) ON [PRIMARY]
+GO
+
+--237 skill set permission
+INSERT INTO Security_Group VALUES('SKILL_SET_MANAGE', 'Skill Set管理权限')
+INSERT INTO SECURITY_PERMISSION VALUES('SKILL_SET_MAINTENANCE','修改和查看Skill Set权限')
+INSERT INTO SECURITY_PERMISSION VALUES('SKILL_SET_QUERY','查询Skill Set权限')
+INSERT INTO Security_Group_Permission VALUES('SKILL_SET_MANAGE', 'SKILL_SET_QUERY')
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'SKILL_SET_MAINTENANCE')
+
+--238 new menu for skill set
+INSERT INTO Module VALUES('1.2.10','Staff Skill-Set','','skillAction.do?formAction=list','Y',10,'View Staff Skill-Set Report', '1.2');
+
+--239 new menu for contract general information reports
+INSERT INTO Module VALUES('3.3.1.12','Contract General Information Reports','','pas.report.ContractGeneralInfoRpt.do','Y',29,'Contract General Information Report', '3.3.1');
+
+--240 permission control for sales to view sales pipeline report
+
+INSERT INTO Security_Group VALUES('SALES_PIPELINE_RPT_SALES_VIEW','SALES PIPELINE Sales view权限');
+INSERT INTO SECURITY_PERMISSION VALUES('SALES_PIPELINE_RPT_SALES','SALES PIPELINE Sales view权限')
+INSERT INTO Security_Group_Permission VALUES('SALES_PIPELINE_RPT_SALES_VIEW', 'SALES_PIPELINE_RPT_SALES');
+
+--241 add skill_comment table
+CREATE TABLE [dbo].[skill_comment] (
+	[comment_id] [numeric](10, 0) IDENTITY (0, 1) NOT NULL ,
+	[comment_desc] [varchar] (1000) COLLATE Chinese_PRC_CI_AS NULL ,
+	[employee_id] [varchar] (255) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--242 add skill_ex table
+CREATE TABLE [dbo].[skill_ex] (
+	[ex_id] [numeric](10, 0) IDENTITY (0, 1) NOT NULL ,
+	[ex_desc] [varchar] (1000) COLLATE Chinese_PRC_CI_AS NULL ,
+	[ex_exp] [varchar] (1000) COLLATE Chinese_PRC_CI_AS NULL ,
+	[employee_id] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+
+--243 new menu for utilization report by staff
+INSERT INTO Module VALUES('3.3.3.15','Utilization Report By Staff','','pas.report.UtilizationByStaffRpt.do','Y',30,'Utilization Report By Staff', '3.3.3');
+
+--244 new menu for expense analysis report
+INSERT INTO Module VALUES('3.3.3.16','Expense Detail Analysis Report','','pas.report.ExpenseDetailRpt.do','Y',31,'Expense Detail Analysis Report', '3.3.3');
+
+--245 new column added in party table
+Alter table [party] 
+add [is_sales] [varchar] (10) 
+
+alter table bid_mstr_history 
+add reason varchar(500) null
+
+update party set is_sales = 'N' 
+update party set is_sales = 'Y' where party_id ='011'
+
+--246 new column added in custprofile
+alter table custprofile 
+add status varchar(50) null
+
+insert into MODULE ( MODULE_ID, MODULE_NAME, MODULE_IMAGE, REQUEST_PATH, VISBALE, PRIORITY, DESCRIPTION, MODULE_PARENT_ID) values 
+    ( '3.2.3.3' , 'Propsect Customer Verification' , '' , 'listProspect.do' , 'Y' , 3, 'Verify Propsect Customer' , '3.2.3' ) 
+
+-- 247 AP Weekly Rpt Module
+insert into MODULE ( MODULE_ID, MODULE_NAME, MODULE_IMAGE, REQUEST_PATH, VISBALE, PRIORITY, DESCRIPTION, MODULE_PARENT_ID) values 
+    ( '3.3.4.4' , 'AP Weekly Report' , '' , 'pas.report.APWeeklyRpt.do' , 'Y' , 28, 'AP Weekly Report' , '3.3.4' ) 

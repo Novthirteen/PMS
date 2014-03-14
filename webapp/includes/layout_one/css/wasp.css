@@ -1,0 +1,241 @@
+
+TABLE {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+TR {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+TD {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+SELECT {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+INPUT {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+FORM {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+LI {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+P {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+TEXTAREA {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+A {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt;
+	COLOR: #3366cc
+}
+A:visited {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt;
+	COLOR: #666699
+}
+A:hover {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt;
+	COLOR: #6699cc
+}
+BODY {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; MARGIN: 0px
+}
+UL {
+	FONT-FAMILY: sans-serif
+}
+.wpsPortalBanner {
+	BACKGROUND-COLOR: #514e54; BACKGROUND-REPEAT: no-repeat
+}
+.wpsPortalBannerText {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsToolbar {
+	BACKGROUND-COLOR: #c4c0cb; COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsToolBarLink {
+	COLOR: #ffffff
+}
+.wpsToolBarLink:visited {
+	COLOR: #ffffff
+}
+.wpsToolBarLink:hover {
+	COLOR: #ffffff
+}
+.wpsNavbar {
+	BACKGROUND-COLOR: #ffffff; COLOR: #70687f; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsNavbarSeparator {
+	BACKGROUND-COLOR: #2c2932
+}
+.wpsTabs {
+	BACKGROUND-COLOR: #ffffff; COLOR: #70687f; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsTabs:visited {
+	BACKGROUND-COLOR: #ffffff; COLOR: #70687f; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsTabs:hover {
+	BACKGROUND-COLOR: #ffffff; COLOR: #70687f; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsTabs:active {
+	BACKGROUND-COLOR: #ffffff; COLOR: #70687f; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsSelectedTab {
+	BACKGROUND-COLOR: #2c2932; COLOR: #dedbe2; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsSelectedTab:visited {
+	BACKGROUND-COLOR: #2c2932; COLOR: #dedbe2; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsSelectedTab:hover {
+	BACKGROUND-COLOR: #2c2932; COLOR: #dedbe2; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsSelectedTab:active {
+	BACKGROUND-COLOR: #2c2932; COLOR: #dedbe2; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.wpsPortletTitle {
+	BACKGROUND-COLOR: #ebebeb; COLOR: #666666; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsPortletTopTitle {
+	BACKGROUND-COLOR: #b4d4d4; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsPortletBottomTitle {
+	BACKGROUND-COLOR: #ebebeb; COLOR: #ebebeb; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsEnrollBack {
+	BACKGROUND-COLOR: #ffffcc
+}
+.wpsTableAdminHead {
+	BACKGROUND-COLOR: #7a7a7a; COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsTaskManagerUnselected {
+	BACKGROUND-COLOR: #999999; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsAdminHeadSeparator {
+	BACKGROUND-COLOR: #999999
+}
+.wpsTaskIconText {
+	COLOR: #333333; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsDialogIconText {
+	COLOR: #666666; FONT-FAMILY: sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.wpsDialogDisabledIconText {
+	COLOR: #cfc5c5; FONT-FAMILY: sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.wpsPortletBack {
+	BACKGROUND-COLOR: #ffffff
+}
+.wpsEditBack {
+	BACKGROUND-COLOR: #ffffff
+}
+.wpsConfigureBack {
+	BACKGROUND-COLOR: #ffffff
+}
+.wpsPortletColorBack {
+	BACKGROUND-COLOR: #cccccc
+}
+.wpsPortletHead {
+	COLOR: black; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsEditHead {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsPortletText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsEditText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsPortletSmText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 8pt
+}
+.wpsEditSmText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 8pt
+}
+.wpsPortletTinyText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 8pt
+}
+.wpsPortletBody {
+	
+}
+.wpsEditField {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsButtonText {
+	COLOR: black; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsTableHead {
+	BACKGROUND-COLOR: #999999; COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsTableText {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; align: center
+}
+.wpsTableRow {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsTableNrmRow {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsTableShdRow {
+	BACKGROUND-COLOR: #ececec; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsTableHeadLink {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsTableHeadLink:visited {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsTableHeadLink:hover {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.wpsLabelText {
+	COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsDescriptionText {
+	COLOR: #999999; FONT-FAMILY: sans-serif; FONT-SIZE: 9pt
+}
+.wpsFieldErrorText {
+	COLOR: #c83030
+}
+.wpsFieldWarningText {
+	COLOR: #000000
+}
+.wpsFieldSuccessText {
+	COLOR: #999999
+}
+.wpsFieldInfoText {
+	COLOR: #999999
+}
+.wpsInlineHelpText {
+	COLOR: #666666
+}
+.weekday_header {
+	BACKGROUND-COLOR: #999999; COLOR: #000000; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 10pt
+}
+.other_month_header {
+	BACKGROUND-COLOR: #e4e3e3; COLOR: #7e7001; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 9pt; HEIGHT: 20px
+}
+.current_month_header {
+	BACKGROUND-COLOR: #cbdbf3; COLOR: #000000; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 9pt; HEIGHT: 20px
+}
+.other_month_cell {
+	BACKGROUND-COLOR: #f0f0f0; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 9pt
+}
+.current_month_cell {
+	BACKGROUND-COLOR: #ffffff; COLOR: black; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 9pt
+}
+.current_day_header {
+	BACKGROUND-COLOR: #92b5e6; COLOR: #000000; FONT-FAMILY: Arial, sans-serif; FONT-SIZE: 10pt; HEIGHT: 20px
+}
+A.current_day_header:link {
+	BACKGROUND-COLOR: transparent; COLOR: #000000
+}
+A.other_month_header:link {
+	BACKGROUND-COLOR: transparent; COLOR: #0000ff
+}
+A.current_month_header:link {
+	BACKGROUND-COLOR: transparent; COLOR: #0050c9
+}
+.wpsPlaceName {
+	COLOR: #ebebeb; FONT-FAMILY: sans-serif; FONT-SIZE: 18pt; FONT-WEIGHT: bold
+}

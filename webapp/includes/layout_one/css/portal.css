@@ -1,0 +1,85 @@
+BODY, TABLE, TR, TD {
+  font-size: x-small;
+  font-family: Verdana, Helvetica, Arial, Sans-Serif;
+  color: #FFFFFF;
+}
+      
+BODY {
+  background-color: C0C0C0;
+}
+      
+A:link {
+  color: #3C3C3C;
+}
+      
+A:hover {
+  color: #3C3C3C;
+}
+      
+A:visited {
+  color: #3C3C3C;
+}
+      
+.Frame {
+  background-color: #808080;
+}
+      
+.WinHidden {
+  background-color: #E9E9E9;
+  display: 'none';
+}
+  
+.Win {
+  background-color: #E9E9E9;
+}
+      
+.Title, A.Title, .Frame .Title, .Frame A.Title {
+  font-size: x-small;
+  font-weight: bold; 
+  text-decoration: none;
+  color: #D2D2D2;
+}
+      
+A.Title:hover, .Frame A.Title:hover{
+  color: #D2D2D2;
+  text-decoration: underline;
+}
+      
+A.Title:visited, .Frame A.Title:visited {
+  color: #D2D2D2;
+}
+      
+.ContentHeader, .Frame .ContentHeader {
+  font-size: 8pt;
+  color: #3C3C3C;
+  font-weight: bold;
+  text-decoration: none;
+}
+      
+.Edit, .Frame .Edit {
+  font-size: 8pt;
+}
+ 
+.Content, .Frame .Content {
+  font-size: 8pt;
+  color: #3C3C3C;
+  font-weight: none;
+  text-decoration: none;
+}
+ 
+.Header, .Frame .Header {
+  font-size: 10pt;
+  color: #3C3C3C;
+  font-weight: bold;
+  text-decoration: none;
+} 
+.select {
+border: 1px #000000 solid;
+letter-spacing: normal;
+text-indent: 9pt;
+vertical-align: baseline;
+word-spacing: normal;
+clip:   rect(   );
+font-size: 9pt
+; background-color: #FCF5EF
+}

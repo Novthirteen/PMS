@@ -1,0 +1,80 @@
+.footer11grey {
+    COLOR: #999999;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+.footer11black {
+    COLOR: #000000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+A.footer11link, A.footer11link:link, A.footer11link:active, A.footer11link:visited, A.footer11link:Hover {
+    COLOR: #4e3ea3;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: underline
+}
+
+.heading24red {
+    COLOR: #000000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 24px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+.heading18red {
+    COLOR: #CC0000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 18px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+
+A.link13purple, A.link13purple:link, A.link13purple:active, A.link13purple:visited, A.link13purple:Hover  {
+    COLOR: #4e3ea3;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: underline
+}
+
+.heading16red {
+    COLOR: #CC0000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 16px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+
+
+.text13black {
+    COLOR: #000000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}
+
+.text13blackbold {
+    COLOR: #000000;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+
+.link
+    COLOR: #4E3EA3;
+    FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none
+}

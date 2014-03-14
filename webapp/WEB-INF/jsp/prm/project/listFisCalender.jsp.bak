@@ -1,0 +1,85 @@
+<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page import="com.aof.component.prm.project.*"%>
+<%@ page import="com.aof.core.security.Security"%>
+<%@ page import="com.aof.util.Constants"%>
+<%@ page import="com.aof.core.persistence.hibernate.*"%>
+<%@ page import="net.sf.hibernate.*"%>
+
+<%@ page import="java.util.*"%>
+<%@ taglib uri="/WEB-INF/app.tld"    prefix="app" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<jsp:useBean id="AOFSECURITY" type="com.aof.core.security.Security" scope="session" />
+
+<%
+if (AOFSECURITY.hasEntityPermission("FISCAL_CALENDAR", "_CREATE", session)) {
+%>
+<br>
+
+<form Action="listFisCalender.do" method="post" name="listForm">
+<TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
+  <TR>
+    <TD width='100%'>
+      <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+        <tr>
+          <TD align=left width='90%' class="wpsPortletTopTitle">
+           Fiscal Calender
+          </TD>
+        </tr>
+      </table>
+    </TD>
+  </TR>
+  <TR>
+    <TD width='100%'>
+		<IFRAME frameBorder=0 id=CalFrame marginHeight=0 
+			marginWidth=0 noResize 
+			scrolling=no src="includes/date/calendar.htm" 
+			style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
+		</IFRAME>
+	</td>
+  </tr>	
+<TR>
+    <td>
+		<table border="0" cellpadding="1" cellspacing="1" width=100%>
+			<tr bgcolor="#e9eee9">
+				<td class="lblbold" align="center">&nbsp;Period&nbsp;</td>
+				<td class="lblbold" align="center">&nbsp;Start Date&nbsp;</td>
+				<td class="lblbold" align="center">&nbsp;End Date&nbsp;</td>
+				<td class="lblbold" align="center">&nbsp;Close Date&nbsp;</td>
+				<td class="lblbold" align="center">&nbsp;Total Working Hours&nbsp;</td>
+				
+			</tr>
+			<%
+				List list = (List)request.getAttribute("QryList");
+				
+				if (list != null && list.iterator().hasNext()) {
+					Iterator iterator = list.iterator();
+					
+					while(iterator.hasNext()) {
+						FMonth fm = (FMonth)iterator.next();
+			%>
+			<tr>
+			<td class="tabletext" align="center"><%=fm.getYear()%>-<%=fm.getMonthSeq()+1%></td>
+			<td class="tabletext" align="center"><%=fm.getDateFrom()%></td>
+			<td class="tabletext" align="center"><%=fm.getDateTo()%></td>
+			<td class="tabletext" align="center"><%=fm.getDateFreeze()%></td>
+			<td class="tabletext" align="center"><%=fm.getDescription()%></td>
+			</tr>
+			<%
+					}
+				}
+			%>
+		</table>
+      </td>
+  	</tr>
+</table> 
+  
+</form>  
+
+<%
+}else{
+	out.println("!!你没有相关访问权限!!");
+}
+%>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PAS"
+  id="myeclipse.1170906938457"
+  context-root="/PAS"
+  j2ee-spec="1.4"
+  archive="PAS.war">
+  <attributes>
+    <attribute name="webrootdir" value="&lt;prjroot&gt;" />
+  </attributes>
+</project-module>
+

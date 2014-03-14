@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<class name="com.aof.component.domain.party.UserLogin" table="USER_LOGIN">
+		<cache usage="read-write"/>
+		<id column="USER_LOGIN_ID" name="userLoginId">
+			<generator class="assigned"/>
+		</id>
+		<property column="NAME" name="name" type="java.lang.String"/>
+		<property column="locale" name="locale"/>
+		<property column="CURRENT_PASSWORD" name="current_password" type="java.lang.String"/>
+		<property column="ENABLE" name="enable" type="java.lang.String"/>
+		<property column="TELE_CODE" name="tele_code" type="java.lang.String"/>
+		<property column="MOBILE_CODE" name="mobile_code" type="java.lang.String"/>
+		<property column="TITLE" name="title" type="java.lang.String"/>
+		<property column="EMAIL_ADDR" name="email_addr" type="java.lang.String"/>
+		<property column="NOTE" name="note" type="java.lang.String"/>		
+		<property column="ROLE" name="role" type="java.lang.String"/>
+		<property column="INTERN" name="intern" type="java.lang.String"/>
+		<property column="type" name="type" type="java.lang.String"/>
+		<property column="last_update_Date" name="last_update_Date" type="date"/>
+		<property column="join_day" name="joinDay" type="date"/>
+		<property column="leave_day" name="leaveDay" type="date"/>
+		<property column="account_type" name="accountType" type="java.lang.String"/>
+		<many-to-one class="com.aof.component.domain.party.UserLogin" column="reportToId" name="reporToPerson"/>
+		<many-to-one class="com.aof.component.domain.party.Party" column="PARTY_ID" name="party"/>
+		<set lazy="true" name="moduleGroups" table="USER_LOGIN_MODULE_GROUP" order-by = "MODULE_GROUP_ID asc">
+			<key column="USER_LOGIN_ID"/>
+			<many-to-many class="com.aof.component.domain.module.ModuleGroup" column="MODULE_GROUP_ID"/>
+		</set>
+		<set lazy="true" name="securityGroups" table="USER_LOGIN_SECURITY_GROUP" order-by = "GROUP_ID asc">
+			<key column="USER_LOGIN_ID"/>
+			<many-to-many class="com.aof.component.domain.security.SecurityGroup" column="GROUP_ID"/>
+		</set>
+		<many-to-one class="com.aof.component.prm.master.ProjectCalendarType" column="PC_Type_Id" name="projectCalendarType"/>
+		<many-to-one class="com.aof.component.prm.project.SalaryLevel" column="salary_level" name="salaryLevel"/>
+	</class>
+	<class name="com.aof.component.domain.party.Party" table="PARTY">
+		<cache usage="read-write"/>
+		<id column="PARTY_ID" length="50" name="partyId" type="java.lang.String">
+			<generator class="assigned"/>
+		</id>
+		<many-to-one class="com.aof.component.domain.party.PartyType" column="PARTY_TYPE_ID" name="partyType"/>
+		<property column="DESCRIPTION" name="description"/>
+		<property column="ADDRESS" name="address"/>
+		<property column="TELE_CODE" name="teleCode"/>
+		<property column="FAX_CODE" name="faxCode"/>
+		<property column="POST_CODE" name="postCode"/>
+		<property column="CITY" name="city"/>
+		<property column="PROVINCE" name="province"/>
+		<property column="LINK_MAN" name="linkMan"/>
+		<property column="NOTE" name="note"/>
+		<property column="CHS_Name" name="chnName"/>
+		<property column="is_sales" name="isSales" type="java.lang.String"/>
+		<set lazy="true" name="partyRoles" table="PARTY_ROLE">
+			<key column="PARTY_ID"/>
+			<many-to-many class="com.aof.component.domain.party.RoleType" column="ROLE_TYPE_ID"/>
+		</set>
+	    <set lazy="true" name="relationships" table="PARTY_RELATIONSHIP">
+	        <key column="PARTY_FROM_ID"/>
+	        <composite-element class="com.aof.component.domain.party.PartyRelationship">
+	            <many-to-one class="com.aof.component.domain.party.Party" column="PARTY_TO_ID" name="partyTo"/>
+	            <many-to-one class="com.aof.component.domain.party.RoleType" column="ROLE_FROM_ID" name="roleFrom"/>
+	            <many-to-one class="com.aof.component.domain.party.RoleType" column="ROLE_TO_ID" name="roleTo"/>
+	            <many-to-one class="com.aof.component.domain.party.PartyRelationshipType" column="RELATIONSHIP_TYPE_ID" name="relationshipType"/>
+	            <property column="NOTE" name="note"/>
+	        </composite-element>
+	    </set>
+		<joined-subclass name="com.aof.component.crm.customer.CustomerProfile" table="CustProfile">
+			<key column="PARTY_ID"/>
+			<property name="ChineseName" column="CH_Name" type="string"/>
+			<many-to-one class="com.aof.component.crm.customer.CustT2Code" column="T2_Code" name="T2Code"/>
+			<many-to-one class="com.aof.component.crm.customer.CustomerAccount" column="cust_account" name="Account"/>
+			<many-to-one class="com.aof.component.crm.customer.Industry" column="cust_industry" name="Industry"/>
+			<property column="party_type" name="type"/>
+			<property name="AccountCode" column="account_code" type="string"/>
+			<property name="status" column="status" type="string"/>
+		</joined-subclass>
+		<joined-subclass name="com.aof.component.crm.vendor.VendorProfile" table="VendorProfile">
+			<key column="PARTY_ID"/>
+			<property name="ChineseName" column="CH_Name" type="string"/>
+			<property name="bankNo" column="bank_no" type="string"/>
+			<property name="taxNo" column="tax_no" type="string"/>
+			<property name="AccountCode" column="account_code" type="string"/>
+			<many-to-one class="com.aof.component.crm.vendor.VendorType" column="category_Type" name="CategoryType"/>
+		</joined-subclass>
+	</class>
+	<class name="com.aof.component.domain.party.PartyType" table="PARTY_TYPE">
+		<id column="PARTY_TYPE_ID" name="partyTypeId">
+			<generator class="assigned"/>
+		</id>
+		<property column="DESCRIPTION" name="description"/>
+	</class>
+	<class name="com.aof.component.domain.party.PartyRelationshipType" table="PARTY_RELATIONSHIP_TYPE">
+		<id column="RELATIONSHIP_TYPE_ID" name="relationshipTypeId">
+			<generator class="assigned"/>
+		</id>
+		<property column="DESCRIPTION" name="description"/>
+	</class>
+	<class name="com.aof.component.domain.party.RoleType" table="ROLE_TYPE">
+		<id column="ROLE_TYPE_ID" name="roleTypeId">
+			<generator class="assigned"/>
+		</id>
+		<property column="DESCRIPTION" name="description"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+<class name="com.aof.component.prm.payment.ProjectPayment" table="Proj_Payment">
+	<id name="Id" column="pay_id" type="long">
+		<generator class="native"/>
+	</id>
+	<property name="PaymentCode" column="pay_code" type="string"/>
+	<property name="Type" column="pay_type" type="string"/>
+	<property name="CalAmount" column="pay_calamount" type="double"/>
+	<property name="settledAmount" column="settle_amount" type="double"/>
+	<many-to-one class="com.aof.component.prm.project.ProjectMaster" column="pay_proj_id" name="Project"/>
+	<many-to-one class="com.aof.component.crm.vendor.VendorProfile" column="Pay_Addr" name="PayAddress"/>
+	<property name="CreateDate" column="pay_createdate" type="timestamp"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="pay_createuser" name="CreateUser"/>
+	<set name="details" inverse="false" lazy="true" where="tr_type='Payment'">
+		<key column="Tr_Mstr_Id"/>
+		<one-to-many class="com.aof.component.prm.payment.PaymentTransactionDetail"/>
+	</set>
+	<!-- 
+	<set name="invoices" cascade="save-update" inverse="true" lazy="false">
+		<key column="pay_id"/>
+		<one-to-many class="com.aof.component.prm.expense.ProjectCostMaster"/>
+	</set>
+	-->
+	<set name="settleRecords" inverse="false" lazy="false">
+		<key column="payment_id"/>
+		<one-to-many class="com.aof.component.prm.payment.ProjPaymentTransaction"/>
+	</set>
+	<property name="Status" column="Pay_Status" type="string"/>
+	<property name="Note" column="Pay_Note" type="string"/>
+</class>
+
+<class name="com.aof.component.prm.payment.ProjectPaymentMaster" table="proj_payment_mstr">
+	<id name="payCode" column="pay_code" type="string" >
+		<generator class="assigned"/>
+	</id>
+	<!-- <property name="faPaymentNo" column="fa_payno" type="string"/>-->
+	<property name="note" column="pay_note" type="string"/>		
+	<property name="payType" column="pay_type" type="string"/>
+	<property name="payAmount" column="pay_amount" type="double"/>
+	<many-to-one class="com.aof.component.prm.project.CurrencyType" column="Currency" name="currency"/>
+	<property name="exchangeRate" column="Exchange_Rate" type="float"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="create_user" name="createUser"/>
+	<property name="createDate" column="create_date" type="timestamp"/>
+	<property name="payDate" column="pay_date" type="timestamp"/>
+	<many-to-one class="com.aof.component.prm.project.ProjectMaster" column="po_proj_id" name="poProjId"/>
+	<many-to-one class="com.aof.component.crm.vendor.VendorProfile" column="vendor_id" name="vendorId"/>
+	<property name="payStatus" column="pay_status" type="string"/>
+	<property name="settleStatus" column="settle_status" type="string"/>
+	<!--
+	<set name="invoicePayments" cascade="save-update" inverse="true" lazy="false">
+		<key column="refno"/>
+		<one-to-many class="com.aof.component.prm.expense.ProjectCostMaster"/>
+	</set>
+	-->
+	<set name="settleRecords" inverse="false" lazy="false">
+		<key column="invoice_id"/>
+		<one-to-many class="com.aof.component.prm.payment.ProjPaymentTransaction"/>
+	</set>
+</class>
+
+<class name="com.aof.component.prm.payment.ProjPaymentTransaction" table="Proj_Payment_Transaction">
+	<id name="id" column="pay_tran_id" type="long" >
+		<generator class="native"/>
+	</id>
+	<many-to-one class="com.aof.component.prm.payment.ProjectPayment" column="payment_id" name="payment"/>
+	<many-to-one class="com.aof.component.prm.payment.ProjectPaymentMaster" column="invoice_id" name="invoice"/>
+	<property name="amount" column="pay_amount" type="double"/>
+	<many-to-one class="com.aof.component.prm.project.CurrencyType" column="Currency" name="currency"/>
+	<property name="currRate" column="curr_rate" type="float"/>
+	<property name="postStatus" column="post_status" type="string"/>
+	<property name="postDate" column="post_date" type="timestamp"/>
+	<property name="payDate" column="pay_date" type="timestamp"/>
+	<property name="note" column="note" type="string"/>
+	<many-to-one class="com.aof.component.domain.party.UserLogin" column="create_user" name="createUser"/>
+	<property name="createDate" column="create_date" type="timestamp"/>
+	<property name="exportDate" column="export_date" type="timestamp"/>
+</class>
+
+</hibernate-mapping>

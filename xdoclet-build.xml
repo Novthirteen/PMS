@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="XDoclet Generator" default="_generation_">
+<path id="xdoclet.classpath">
+<fileset dir="d:/software/MyEclipse/eclipse/plugins/com.genuitec.jboss.ide.eclipse.xdoclet.core_3.8.1">
+<include name="*.jar"/>
+</fileset><pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/classes"/>
+<pathelement location="C:/Program Files/Java/jre1.5.0/lib/rt.jar"/>
+<pathelement location="I:/Tomcat/bin/bootstrap.jar"/>
+<pathelement location="I:/Tomcat/common/lib/servlet-api.jar"/>
+<pathelement location="I:/Tomcat/common/lib/jsp-api.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/struts-legacy.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/struts.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jakarta-oro.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-validator.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-logging.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-lang.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-fileupload.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-digester.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-collections.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-beanutils.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/castor-0.9.4.3.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/cglib2.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-dbcp.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-pool.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/commons-resources.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/dom4j.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/ecs-1.4.2.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/hibernate2.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jdom.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/log4j.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/odmg.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/xalan.jar"/>
+<pathelement location="D:/Software/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/dom.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jaxen-full.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jaxp-api.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jdbc2_0-stdext.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/jstl.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/mail.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/sax.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/saxpath.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/standard.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/xercesImpl.jar"/>
+<pathelement location="I:/work/helpdesk/HelpDesk/webapp/WEB-INF/lib/struts-el.jar"/>
+</path>
+<target name="_generation_" depends=""/>
+</project>

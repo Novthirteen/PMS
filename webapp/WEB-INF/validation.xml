@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+
+<form-validation>
+
+<!--
+     This is a blank Validator form file with a commented examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+ 	<formset>
+ 		 <form name="callForm">
+             <field
+                property="contactInfo_companyName"
+                depends="required">
+                	<arg0 key="helpdesk.call.customer"/>
+             </field>
+             <field
+                property="contactInfo_contactName"
+                depends="required">
+                	<arg0 key="helpdesk.call.contact"/>
+             </field>
+             
+             <field
+                property="contactInfo_email"
+                depends="email">
+                	<arg0 key="helpdesk.call.email"/>
+             </field>
+ 		 	
+ 		 	 <field
+                property="requestType_id"
+                depends="required">
+                	<arg0 key="helpdesk.call.requestType"/>
+             </field>
+             
+             <field
+                property="priority_id"
+                depends="required">
+                	<arg0 key="helpdesk.call.priority"/>
+             </field>
+             
+             <field
+                property="assignedParty_partyId"
+                depends="required">
+                	<arg0 key="helpdesk.call.assignmentGroup"/>
+             </field>
+             
+ 		 	 <field
+                property="subject"
+                depends="required,maxlength">
+                	<arg0 key="all.subject"/>
+					<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+						<var>
+							<var-name>maxlength</var-name>
+							<var-value>122</var-value>
+						</var>
+             </field>
+             <field
+                property="desc"
+                depends="required,maxlength">
+                	<arg0 key="all.body"/>
+                	<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+					<var>
+						<var-name>maxlength</var-name>
+						<var-value>4000</var-value>
+					</var>
+             </field>
+             
+        </form>
+		<form name="callActionTrackForm">
+					<field
+                property="date"
+                depends="required,date"
+                >
+            <arg0 key="helpdesk.call.actionTrack.date"/>
+            <var>
+							<var-name>datePattern</var-name>
+							<var-value>yyyy-MM-dd</var-value>
+						</var>
+          </field>
+          <field
+                property="cost"
+                depends="float"
+                >
+             <arg0 key="helpdesk.call.actionTrack.spentHours"/>
+                
+          </field>
+	 		 		<field
+                property="subject"
+                depends="required,maxlength">
+            <arg0 key="helpdesk.call.actionTrack.subject"/>
+						<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+						<var>
+							<var-name>maxlength</var-name>
+							<var-value>122</var-value>
+						</var>
+          </field>
+          
+          <field
+                property="desc"
+                depends="required,maxlength">
+        	<arg0 key="helpdesk.call.actionTrack.body"/>
+        	<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+						<var>
+							<var-name>maxlength</var-name>
+							<var-value>4000</var-value>
+						</var>
+          </field>
+             
+             
+        </form>
+ 		<form name="callQueryForm">
+ 			<field
+                property="requestDate1"
+                depends="date"
+                >
+            <arg0 key="helpdesk.call.query.header.requestDate"/>
+            <var>
+				<var-name>datePattern</var-name>
+				<var-value>yyyy-MM-dd</var-value>
+			</var>
+          </field>
+          <field
+                property="requestDate2"
+                depends="date"
+                >
+            <arg0 key="helpdesk.call.query.header.requestDate"/>
+            <var>
+				<var-name>datePattern</var-name>
+				<var-value>yyyy-MM-dd</var-value>
+			</var>
+          </field>
+          <field
+                property="responseHour"
+                depends="integer"
+                >
+            <arg0 key="helpdesk.call.exceed.response"/>
+          </field>
+          <field
+                property="solveHour"
+                depends="integer"
+                >
+            <arg0 key="helpdesk.call.exceed.solved"/>
+          </field>
+          <field
+                property="closeHour"
+                depends="integer"
+                >
+            <arg0 key="helpdesk.call.exceed.close"/>
+          </field>
+          
+ 		</form>
+		<form name="tableTypeForm">
+ 			<field 
+ 					property="name"
+          depends="required,maxlength">
+                	<arg0 key="helpdesk.custconfig.tabletype.name"/>
+                	<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+					<var>
+						<var-name>maxlength</var-name>
+						<var-value>255</var-value>
+					</var>
+       </field>
+ 		</form>
+ 		<form name="statusTypeForm">
+	 		<field 
+ 					property="callType_type"
+          depends="required">
+                	<arg0 key="helpdesk.statusType.callType"/>
+      </field>
+	 		<field 
+ 					property="level"
+          depends="required,integer,intRange">
+                	<arg0 key="helpdesk.statusType.level"/>
+                	<arg1 name="intRange" key="${var:min}" resource="false"/>
+                	<arg2 name="intRange" key="${var:max}" resource="false"/>
+					<var>
+						<var-name>min</var-name>
+						<var-value>1</var-value>
+					</var>
+					<var>
+						<var-name>max</var-name>
+						<var-value>999</var-value>
+					</var>
+      </field>
+ 			<field 
+ 					property="desc"
+          depends="required,maxlength">
+                	<arg0 key="helpdesk.statusType.desc"/>
+                	<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+					<var>
+						<var-name>maxlength</var-name>
+						<var-value>255</var-value>
+					</var>
+       </field>
+       
+ 		</form>
+ 		<form name="uploadForm">
+ 			<field 	property="title"
+	          depends="required,maxlength">
+                	<arg0 key="helpdesk.attachment.upload.titleField"/>
+                	<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+					<var>
+						<var-name>maxlength</var-name>
+						<var-value>255</var-value>
+					</var>
+			</field>
+ 		</form>
+
+
+		<form name="slaMasterForm">
+	 	  <field property="desc" depends="required,maxlength">
+            <arg0 key="helpdesk.servicelevel.master.desc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+		</form>
+		
+		<form name="slaCategoryForm">
+	 	  <field property="engDesc" depends="required,maxlength">
+            <arg0 key="helpdesk.servicelevel.category.engDesc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+	 	  <field property="chsDesc" depends="required,maxlength">
+            <arg0 key="helpdesk.servicelevel.category.chsDesc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+		</form>
+		
+		<form name="slaPriorityForm">
+	 	  <field property="engDesc" depends="required,maxlength">
+            <arg0 key="helpdesk.servicelevel.priority.engDesc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+	 	  <field property="chsDesc" depends="required,maxlength">
+            <arg0 key="helpdesk.servicelevel.priority.chsDesc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+          <field property="responseWarningTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.responseWarningTime.label"/>
+          </field>
+          <field property="responseTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.responseTime.label"/>
+          </field>
+          <field property="solveWarningTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.solveWarningTime.label"/>
+          </field>
+          <field property="solveTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.solveTime.label"/>
+          </field>
+          <field property="closeWarningTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.closeWarningTime.label"/>
+          </field>
+          <field property="closeTime" depends="integer">
+             <arg0 key="helpdesk.servicelevel.priority.closeTime.label"/>
+          </field>
+        </form>
+        
+        <form name="kbForm">
+          <field property="subject" depends="required,maxlength">
+            <arg0 key="helpdesk.kb.subject.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+          <field property="category_id" depends="required">
+            <arg0 key="helpdesk.kb.category.label"/>
+          </field>
+          <field property="problemDesc" depends="required,maxlength">
+            <arg0 key="helpdesk.kb.problemdesc.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>400</var-value>
+			</var>
+          </field>
+          <field property="solution" depends="required">
+            <arg0 key="helpdesk.kb.solution.label"/>
+          </field>
+        </form>
+        
+        <form name="partyResponsibilityUserForm">
+          <field property="party_partyId" depends="required">
+            <arg0 key="helpdesk.partyresponsibilityuser.party.label"/>
+          </field>
+          <field property="user_userLoginId" depends="required">
+            <arg0 key="helpdesk.partyresponsibilityuser.user.label"/>
+          </field>
+        </form>
+
+        <form name="requestTypeForm">
+          <field property="callType_type" depends="required">
+            <arg0 key="helpdesk.call.requesttype.calltype.label"/>
+          </field>
+          <field property="description" depends="required,maxlength">
+            <arg0 key="helpdesk.call.requesttype.description.label"/>
+			<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+			<var>
+			  <var-name>maxlength</var-name>
+			  <var-value>127</var-value>
+			</var>
+          </field>
+        </form>
+ 	</formset>
+
+
+</form-validation>

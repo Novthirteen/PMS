@@ -1,0 +1,21 @@
+.topSVBox {
+	BACKGROUND-COLOR:#00346B; COLOR: #FFFFFF; 
+	FONT-FAMILY: sans-serif; FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+.boxSVtop {
+background-color: #7D8A9C;
+padding-top: 1px;
+padding-bottom: 1px;
+padding-right: 4px;
+padding-left: 4px;
+border-color: #000000;
+border-style: solid;
+border-width: 0px 0px 0px 0px;
+}
+.boxSVbottom {
+background-color: #FFFFFF;
+padding: 4px;
+border-color: #000000;
+border-style: solid;
+border-width: 0px 0px 0px 0px;
+}

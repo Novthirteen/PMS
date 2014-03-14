@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Sat Nov 13 13:09:55 CST 2004                         -->
+<hibernate-mapping package="com.aof.component.helpdesk">
+
+    <class name="ActionType" table="ACTION_TYPE">
+        <id name="actionid" column="ActionId" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="actiondesc" column="ActionDesc" type="java.lang.String" />
+		<property name="actiondisabled" column="ActionDisabled" type="boolean" not-null="true" />
+        <many-to-one name="callType" column="CallType" class="CallType"  not-null="true" />
+    </class>
+	<class name="Attachment" table="Attachment">
+        <id name="id" column="Attach_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+ 		<property name="deleted" column="deleted" type="boolean"  not-null="true" />
+        <property name="groupid" column="Attach_GroupID" type="java.lang.String"  not-null="true" />
+        <property name="name" column="Attach_Name" type="java.lang.String"  not-null="true" />
+        <property name="mime" column="Attach_MIME" type="java.lang.String"  not-null="true" />
+        <property name="size" column="Attach_Size" type="java.lang.Integer"  not-null="true" />
+        <property name="title" column="title" type="java.lang.String"  not-null="true" />
+	<!--<property name="content" column="Attach_Content" type="binary"  not-null="true" />-->
+        <many-to-one name="createUser" column="Attach_CUser" class="com.aof.component.domain.party.UserLogin" />
+        <property name="createDate" column="Attach_CDate" type="java.util.Date"  not-null="true" />
+    </class>
+    <class name="DetailAttachment" table="Attachment" polymorphism="explicit">
+	    <id name="id" column="Attach_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+		<property name="deleted" column="deleted" type="boolean"  not-null="true" />
+        <property name="groupid" column="Attach_GroupID" type="java.lang.String"  not-null="true" />
+        <property name="name" column="Attach_Name" type="java.lang.String"  not-null="true" />
+        <property name="mime" column="Attach_MIME" type="java.lang.String"  not-null="true" />
+        <property name="size" column="Attach_Size" type="java.lang.Integer"  not-null="true" />
+        <property name="title" column="title" type="java.lang.String"  not-null="true" />
+        <property name="content" column="Attach_Content" type="binary"  not-null="true" />
+        <many-to-one name="createUser" column="Attach_CUser" class="com.aof.component.domain.party.UserLogin" />
+        <property name="createDate" column="Attach_CDate" type="java.util.Date"  not-null="true" />
+	</class>
+    <class name="CallActionHistory" table="CM_Action_History">
+        <id name="id" column="CMAH_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="subject" column="CMAH_Subject" type="java.lang.String" />
+        <property name="desc" column="CMAH_Desc" type="java.lang.String" />
+        <property name="attachGroupID" column="CMAH_Attachment_ID" type="java.lang.String" />
+        <property name="cost" column="CMAH_Cost" type="java.lang.Float" />
+        <property name="date" column="CMAH_Date" type="java.util.Date" />
+        <component name="modifyLog" class="ModifyLog">
+        	<property name="createDate" column="CMAH_CDate" type="java.util.Date" />
+	        <property name="modifyDate" column="CMAH_MDate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="CMAH_CUser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="CMAH_MUser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+        <many-to-one name="actionType" column="CMAH_Type" class="ActionType" />
+        <many-to-one name="callMaster" column="CM_ID" class="CallMaster"  not-null="true" />
+    </class>
+	<class name="CallHistory" table="CM_History">
+        <id name="callHistoryID" column="CMAH_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="desc" column="CMAH_Desc" type="java.lang.String" />
+        <component name="modifyLog" class="ModifyLog">
+	        <property name="createDate" column="CMAH_CDate" type="java.util.Date" />
+	        <property name="modifyDate" column="CMAH_MDate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="CMAH_CUser" class="com.aof.component.domain.party.UserLogin" />
+	        <many-to-one name="modifyUser" column="CMAH_MUser" class="com.aof.component.domain.party.UserLogin" />
+	    </component>
+        <many-to-one name="oldRequestType" column="old_request_type" class="com.aof.component.helpdesk.servicelevel.SLACategory" />
+        <many-to-one name="newReqeustType" column="new_reqeust_type" class="com.aof.component.helpdesk.servicelevel.SLACategory" />
+        <many-to-one name="oldPriority" column="old_priority" class="com.aof.component.helpdesk.servicelevel.SLAPriority" />
+        <many-to-one name="newPriority" column="new_priority" class="com.aof.component.helpdesk.servicelevel.SLAPriority" />
+        <many-to-one name="call" column="CM_ID" class="CallMaster" />
+        <many-to-one name="newParty" column="new_Party_ID" class="com.aof.component.domain.party.Party" />
+	    <many-to-one name="oldParty" column="old_party_id" class="com.aof.component.domain.party.Party" />
+        <many-to-one name="newUser" column="new_User_Login_ID" class="com.aof.component.domain.party.UserLogin" />
+		<many-to-one name="oldUser" column="old_user_login_id" class="com.aof.component.domain.party.UserLogin" />
+    </class>
+	<class name="CallMaster" table="Call_Master">
+        <id name="callID" column="CM_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one  name="type" column="CM_Type" class="com.aof.component.helpdesk.CallType" />
+        <property name="type2" column="CM_Type2" type="java.lang.String" />
+        <property name="subject" column="CM_Subject" type="java.lang.String" />
+        <property name="desc" column="CM_Desc" type="java.lang.String" />
+        <many-to-one  name="status" column="CM_Status" class="com.aof.component.helpdesk.StatusType" />
+        <property name="acceptedDate" column="CM_Accepted_Date" type="java.util.Date" />
+        <property name="targetResponseDate" column="CM_Target_Date" type="java.util.Date" />
+        <property name="targetSolvedDate" column="CM_Solved_Date" type="java.util.Date" />
+        <property name="targetClosedDate" column="CM_Closed_Date" type="java.util.Date" />
+        <property name="responseDate" column="response_Date" type="java.util.Date" />
+        <property name="solvedDate" column="solved_Date" type="java.util.Date" />
+        <property name="closedDate" column="closed_Date" type="java.util.Date" />
+        <property name="sumCost" column="sum_cost" type="float" />
+        <property name="ticketNo" column="ticket_number" type="java.lang.String" />
+        <property name="escalated" column="CM_Escalated" type="java.lang.String" />
+        <property name="reAssigned" column="CM_ReAssigned" type="java.lang.String" />
+        <property name="attachGroupID" column="AttachmentID" type="java.lang.String" />
+        <property name="notifyCustomer" column="notifyCustomer" type="java.lang.String" />
+        <component name="contactInfo" class="ContactInfo">
+        	<property name="companyName" column="CM_Customer" type="java.lang.String" />
+	        <property name="contactName" column="CM_Contact" type="java.lang.String" />
+	        <property name="teleCode" column="CM_Tele_Code" type="java.lang.String" />
+	        <property name="email" column="CM_Email" type="java.lang.String" />
+	        <property name="fax" column="CM_Fax" type="java.lang.String" />
+	        <property name="mobileCode" column="CM_Mobile_Code" type="java.lang.String" />
+	        <property name="province" column="CM_Province" type="java.lang.String" />
+        </component>
+        <component name="modifyLog" class="ModifyLog">
+        	<property name="createDate" column="CM_CDate" type="java.util.Date" />
+	        <property name="modifyDate" column="CM_MDate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="CM_CUser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="CM_MUser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+        <many-to-one name="company" column="CM_Company_ID" class="com.aof.component.domain.party.Party" />
+        <many-to-one name="contact" column="CM_Contact_ID" class="com.aof.component.domain.party.UserLogin" />
+        <many-to-one name="solveUser" column="solved_user" class="com.aof.component.domain.party.UserLogin" />
+        <many-to-one name="requestType" column="SLC_ID" class="com.aof.component.helpdesk.servicelevel.SLACategory" />
+        <many-to-one name="priority" column="SLP_ID" class="com.aof.component.helpdesk.servicelevel.SLAPriority" />
+        <many-to-one name="assignedParty" column="CM_Assigned_Party" class="com.aof.component.domain.party.Party" />
+        <many-to-one name="assignedUser" column="CM_Assigned_User" class="com.aof.component.domain.party.UserLogin" />
+        <many-to-one name="requestType2" column="request_type" class="com.aof.component.helpdesk.RequestType" />
+        <many-to-one name="problemType" column="problem_type" class="com.aof.component.helpdesk.ProblemType"/>
+     </class>
+	 <class name="CallStatusHistory" table="CM_Status_History">
+        <id name="Id" column="CMSH_ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="statusOld" column="CMSH_Status_Old" class="com.aof.component.helpdesk.StatusType" />
+        <many-to-one name="statusNew" column="CMSH_Status_New" class="com.aof.component.helpdesk.StatusType" />
+        <property name="desc" column="CMSH_Desc" type="java.lang.String" />
+        <component name="modifyLog" class="ModifyLog">
+        	<property name="createDate" column="CMSH_CDate" type="java.util.Date" />
+	        <property name="modifyDate" column="CMSH_MDate" type="java.util.Date" />
+	        <many-to-one name="createUser" column="CMSH_CUser" class="com.aof.component.domain.party.UserLogin" />
+ 	        <many-to-one name="modifyUser" column="CMSH_MUser" class="com.aof.component.domain.party.UserLogin" />
+        </component>
+ 		<many-to-one name="callActionHistory" column="CMAH_ID" class="CallActionHistory"  not-null="true" />
+    </class>
+	<class name="CustConfigColumn" table="custConfigColumn">
+        <id name="id" column="column_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="column_name" type="java.lang.String"  not-null="true" />
+        <property name="type" column="column_type" type="java.lang.Integer"  not-null="true" />
+        <property name="index" column="column_index" type="java.lang.Integer"  not-null="true" />
+        <many-to-one name="tableType" column="table_type" class="CustConfigTableType"  not-null="true" />
+    </class>
+	<class name="CallType" table="Call_Type">
+        <id name="type" column="type" type="java.lang.String">
+            <generator class="native"/>
+        </id>
+        <property name="typedesc" column="typedesc" type="java.lang.String"  not-null="true" />
+        <property name="name" column="name" type="java.lang.String"  not-null="true" />
+    </class>
+	<class name="CustConfigItem" table="custConfigItem">
+    	<id name="id" column="item_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="column" column="column_id" class="CustConfigColumn"/>
+        <many-to-one name="row" column="row_id" class="CustConfigRow"/>
+         <property name="content" column="content" type="java.lang.String"  not-null="true" />
+    </class>
+    <class name="CustConfigSimpleItem" table="custConfigItem">
+    	<id name="id" column="item_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="column" column="column_id" class="CustConfigColumn"/>
+        <property name="content" column="content" type="java.lang.String"  not-null="true" />
+    </class>
+	<class name="CustConfigTable" table="custConfigTable">
+        <id name="id" column="table_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="company" column="cust_id" class="com.aof.component.domain.party.Party"  not-null="true" />
+        <many-to-one name="tableType" column="table_type" class="CustConfigTableType"  not-null="true" />
+       <!--  <property name="description" column="table_desc" type="java.lang.String" />-->
+    </class>
+	<class name="CustConfigTableType" table="CustConfigTableType">
+		<id name="id" column="type_id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="name" column="type_name" type="java.lang.String"  not-null="true" />
+		<property name="disabled" column="disabled" type="java.lang.Boolean"  not-null="true" />
+		<component name="modifyLog" class="ModifyLog">
+			<property name="createDate" column="type_cdate" type="java.util.Date" />
+			<property name="modifyDate" column="type_mdate" type="java.util.Date" />
+			<many-to-one name="createUser" column="type_cuser" class="com.aof.component.domain.party.UserLogin" />
+			<many-to-one name="modifyUser" column="type_muser" class="com.aof.component.domain.party.UserLogin" />
+		</component>
+		<list name="columns" inverse="true" cascade="all-delete-orphan">
+			<key column="table_type"/>
+			<index column="column_index" />
+			<one-to-many class="CustConfigColumn"/>
+		</list>
+	</class>
+	<class name="RequestType" table="Request_Type">
+        <id name="id" column="Id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="description" column="Description" type="java.lang.String" />
+		<property name="disabled" column="Disabled" type="boolean" not-null="true" />
+        <many-to-one name="callType" column="CallType" class="CallType" not-null="true" />
+    </class>
+	<class name="StatusType" table="Status_Type">
+        <id name="id" column="status_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="level" column="status_level" type="java.lang.Integer"  not-null="true" />
+        <property name="disabled" column="status_disabled" type="java.lang.Boolean"  not-null="true" />
+        <property name="desc" column="status_desc" type="java.lang.String"  not-null="true" />
+ 		<property name="flag" column="status_flag" type="java.lang.Integer"  not-null="true" />
+        <many-to-one name="callType" column="status_type" class="CallType"  not-null="true" />
+    </class>
+	<class name="ProblemType" table="Problem_Type">
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="native"/>
+		</id>
+		<property name="desc" column="description" type="java.lang.String" not-null="true"/>
+	</class>
+	<class name="CustConfigRow" table="custConfigRow">
+        <id name="id" column="row_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="table" column="table_id" class="CustConfigTable"  not-null="true" />
+        <map  name="items" inverse="true" cascade="all-delete-orphan">
+    		<key column="row_id"/>
+    		<index column="column_id" type="integer"/>
+    		<one-to-many class="CustConfigItem"/>
+		</map>
+    </class>
+    <class name="ConsultantAssign" table="Consultant_Assign">
+        <id name="id" column="row_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="groupID" column="group_id" class="com.aof.component.helpdesk.ConsultantGroup" />
+        <many-to-one name="consultant" column="consultant" class="com.aof.component.domain.party.UserLogin" />
+    </class>
+    <class name="ConsultantGroup" table="Consultant_group">
+        <id name="id" column="group_id" type="java.lang.Integer" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+		<property name="description" column="description" type="java.lang.String" />
+        <many-to-one name="supvisor" column="supvisor" class="com.aof.component.domain.party.UserLogin" />
+    </class>
+</hibernate-mapping>

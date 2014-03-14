@@ -1,0 +1,1794 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     If used with Struts1.1, you need to declare a Tiles plug-in.
+	 If used with Struts1.0.x, nothing special is required.
+-->
+
+
+<struts-config>
+	
+<!-- ========== Form Bean Definitions =================================== -->
+<form-beans>
+    <form-bean name="EditRequestForm" type="com.aof.webapp.form.EditRequestForm"/>
+    <form-bean name="tableForm" type="com.shcnc.struts.form.BeanActionForm" >
+    	<form-property name="id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="tableType_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="company_partyId" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    </form-bean>
+    <form-bean name="callForm" type="com.shcnc.struts.form.BeanActionForm" >
+    	<form-property name="callID" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="subject" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="desc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="status_desc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="requestType2_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="type_type" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="type_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="requestType2_description" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	
+    	<form-property name="acceptedDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<!--<set-property property="direction" value="form" />-->
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="targetResponseDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="targetSolvedDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="targetClosedDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="attachGroupID" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+		<form-property name="contactInfo_companyName" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_contactName" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_teleCode" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_email" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_fax" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_mobileCode" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="contactInfo_province" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="modifyLog_createDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="modifyLog_modifyUser_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="modifyLog_modifyDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    		<set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+    	</form-property>
+    	<form-property name="modifyLog_createUser_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="company_partyId" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="company_note" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="company_description" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="contact_userLoginId" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="contact_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="requestType_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="requestType_chsDesc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="requestType_engDesc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="problemType_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="problemType_desc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="problemType" type="java.lang.String"
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="priority_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="priority_chsDesc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="priority_engDesc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="assignedParty_partyId" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+     	</form-property>
+     	<form-property name="assignedParty_description" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+     	</form-property>
+     	<form-property name="assignedUser_userLoginId" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+     	</form-property>
+     	<form-property name="assignedUser_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+     	</form-property>
+     	<form-property name="ticketNo" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+     	</form-property>
+     	<form-property name="notifyCustomer" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="form" />
+     	</form-property>
+    </form-bean>
+
+    <form-bean name="callActionTrackForm" type="com.shcnc.struts.form.BeanActionForm" >
+    	<form-property name="id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="actionType_actionid" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="subject" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="desc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="cost" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="date" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="attachGroupID" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="callMaster_callID" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="callMaster_status_id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />  
+    	</form-property>
+    	<form-property name="callMaster_ticketNo" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="callMaster_type_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="callMaster_type_type" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="modifyLog_createDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="modifyLog_modifyUser_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="modifyLog_modifyDate" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="direction" value="form" />
+    	</form-property>
+    	<form-property name="modifyLog_createUser_name" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="form" />
+    	</form-property>
+    	
+    </form-bean>    
+    
+    <form-bean name="statusTypeForm" type="com.shcnc.struts.form.BeanActionForm" >
+    	<form-property name="id" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="callType_type" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    		<set-property property="identity" value="true" />
+    	</form-property>
+    	<form-property name="callType_typedesc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="level" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="desc" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="disabled" type="java.lang.Boolean" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    	<form-property name="flag" type="java.lang.String" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+    </form-bean>    
+    
+    <form-bean name="actionTypeForm" type="com.shcnc.struts.form.BeanActionForm">
+      <form-property name="actionid" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>
+      <form-property name="actiondesc" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>  
+      <form-property name="actiondisabled" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>   
+      <form-property name="callType_type" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true" />
+      </form-property>       
+    </form-bean>
+
+    <!-- SLA Forms -->
+    <form-bean name="slaMasterForm" type="com.shcnc.struts.form.BeanActionForm">
+      <form-property name="id" type="java.lang.String" 
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>
+      <form-property name="active" type="java.lang.String" initial="N"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>
+      <form-property name="desc" type="java.lang.String" 
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+      </form-property>
+      <form-property name="party_partyId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+      </form-property>
+    </form-bean>
+
+    <form-bean name="slaCategoryForm"
+		type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="master_id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="chsDesc"  type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="engDesc"  type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="parentId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+   	  <form-property name="modifyLog_createDate" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+    	  <set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+      </form-property>
+      <form-property name="modifyLog_modifyUser_name" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+      </form-property>
+      <form-property name="modifyLog_modifyDate" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+    	  <set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+      </form-property>
+      <form-property name="modifyLog_createUser_name" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+      </form-property>
+    </form-bean>
+
+    <form-bean name="slaPriorityForm"
+		type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="category_id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="chsDesc"  type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="engDesc"  type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="responseTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="solveTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="closeTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="responseWarningTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">  
+       </form-property>
+       <form-property name="solveWarningTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">  
+       </form-property>
+       <form-property name="closeWarningTime" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">  
+       </form-property>
+   	  <form-property name="modifyLog_createDate" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+    	  <set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+      </form-property>
+      <form-property name="modifyLog_modifyUser_name" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+      </form-property>
+      <form-property name="modifyLog_modifyDate" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+    	  <set-property property="formatter" value="com.shcnc.struts.form.TimeFormatter" />
+      </form-property>
+      <form-property name="modifyLog_createUser_name" type="java.lang.String" 
+    	  className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+      </form-property>
+    </form-bean>
+
+    <!-- KB Form -->
+    <form-bean name="kbForm" type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="published" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="category_id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+       <form-property name="customer_partyId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+       <!--
+       <form-property name="call_callID" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	  <set-property property="direction" value="form" />
+       </form-property>
+       -->
+       <form-property name="subject" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="problemDesc" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="solution" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <!--
+       <form-property name="keyword" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       -->
+       <form-property name="problemAttachGroupId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="solutionAttachGroupId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+    </form-bean>
+
+ 	<form-bean name="partyResponsibilityUserForm" type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="party_partyId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+       <form-property name="user_userLoginId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+       <form-property name="type_typeId" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+ 	</form-bean>
+
+ 	<form-bean name="requestTypeForm" type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="callType_type" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+          <set-property property="identity" value="true"/>
+          <set-property property="emptyVal" value="skip"/>
+       </form-property>
+       <form-property name="description" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+    	<form-property name="disabled" type="java.lang.Boolean" 
+    		className="com.shcnc.struts.form.BeanFormPropertyConfig">
+    	</form-property>
+ 	</form-bean>
+
+ 	<form-bean name="problemTypeForm" type="com.shcnc.struts.form.BeanActionForm">
+       <form-property name="id" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+       <form-property name="desc" type="java.lang.String"
+          className="com.shcnc.struts.form.BeanFormPropertyConfig">
+       </form-property>
+ 	</form-bean>
+
+	<form-bean name="slaMasterQueryForm" type="com.aof.webapp.form.helpdesk.SLAMasterQueryForm"/>
+    <form-bean name="PartysubForm" type="com.aof.webapp.form.helpdesk.PartysubForm" />
+
+    <form-bean name="ParlistForm" type="com.aof.webapp.form.helpdesk.ParlistForm" />
+    <form-bean name="UserlistForm" type="com.aof.webapp.form.helpdesk.UserlistForm" />
+
+    <form-bean name="uploadForm" type="com.aof.webapp.form.helpdesk.UploadForm" />
+    <form-bean name="callQueryForm" type="com.aof.webapp.form.helpdesk.CallQueryForm" />
+    <form-bean name="rowForm" type="com.aof.webapp.form.helpdesk.RowForm" />
+    <form-bean name="tableTypeForm" type="com.aof.webapp.form.helpdesk.TableTypeForm" />
+    <form-bean name="tableTypeQueryForm" type="com.aof.webapp.form.helpdesk.TableTypeQueryForm" />
+    <form-bean name="statusTypeQueryForm" type="com.aof.webapp.form.helpdesk.StatusTypeQueryForm" />
+    <form-bean name="baseQueryForm" type="com.shcnc.struts.form.BaseQueryForm" /> 
+    <form-bean name="KnowledgeBaseQueryForm" type="com.aof.webapp.form.helpdesk.KnowledgeBaseQueryForm"/>
+	<form-bean name="partyResponsibilityUserQueryForm" type="com.aof.webapp.form.helpdesk.PartyResponsibilityUserQueryForm"/>
+	<form-bean name="requestTypeQueryForm" type="com.aof.webapp.form.helpdesk.RequestTypeQueryForm"/>
+	<form-bean name="customerQueryForm" type="com.aof.webapp.form.helpdesk.CustomerQueryForm"/>
+    <form-bean name="GetUserForm" type="com.aof.webapp.form.helpdesk.GetUserForm" />
+    <form-bean name="tableQueryForm" type="com.aof.webapp.form.helpdesk.TableQueryForm" />
+    <form-bean name="uploadExcelForm" type="com.aof.webapp.form.helpdesk.UploadExcelForm" />
+    <form-bean name="problemTypeRequestForm" type="com.aof.webapp.form.helpdesk.ProblemTypeQueryForm"/>
+
+</form-beans>
+<!-- ========== Action Mapping Definitions ============================== -->
+<action-mappings>
+
+	<!-- =======================================================  -->
+	<!--				Helpdesk module Service					  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		parameter="view"
+        path="/helpdesk.viewSLAMaster"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_VIEW"/>
+        <forward name="success" path="helpdesk.viewSLAMaster"/>
+    </action>
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		parameter="list"
+		path="/helpdesk.listSLAMaster"
+		input="helpdesk.listSLAMaster"
+		name="slaMasterQueryForm"
+		type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+		scope="request"
+		validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_VIEW"/>
+	</action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newSLAMaster"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_CREATE"/>
+        <forward name="editpage" path="helpdesk.newSLAMaster"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editSLAMaster"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editSLAMaster"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertSLAMaster"
+        input="helpdesk.newSlaMaster"
+        name="slaMasterForm"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateSLAMaster"
+        input="helpdesk.editSLAMaster"
+        name="slaMasterForm"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_MODIFY"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/SLA/saveSlaMasterOK.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteSLAMaster"
+        type="com.aof.webapp.action.helpdesk.SLAMasterAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_MASTER_DELETE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/>
+    </action>
+
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+    	path="/helpdesk.showSLACategoryTreeDialog"
+    	type="com.aof.webapp.action.helpdesk.SLACategoryTreeDialogAction">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_VIEW"/>
+    	<forward name="jsp" path="helpdesk.showSLACategoryTree"/>
+    </action>
+
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newSLACategory"
+        type="com.aof.webapp.action.helpdesk.SLACategoryAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_CREATE"/>
+        <forward name="editpage" path="helpdesk.newSLACategory"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editSLACategory"
+        type="com.aof.webapp.action.helpdesk.SLACategoryAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editSLACategory"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertSLACategory"
+        input="helpdesk.newSlaCategory"
+        name="slaCategoryForm"
+        type="com.aof.webapp.action.helpdesk.SLACategoryAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_CREATE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/SLA/saveSlaCategoryOK.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateSLACategory"
+        input="helpdesk.editSLACategory"
+        name="slaCategoryForm"
+        type="com.aof.webapp.action.helpdesk.SLACategoryAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_MODIFY"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/SLA/saveSlaCategoryOK.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteSLACategory"
+        type="com.aof.webapp.action.helpdesk.SLACategoryAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_CATEGORY_DELETE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/>
+    </action>
+
+    <action 
+		className="com.aof.webapp.action.SecureActionMapping"    
+        path="/helpdesk.showSLAPriorityDialog" 
+        type="com.aof.webapp.action.helpdesk.SLAPriorityDialogAction"> 
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_VIEW"/>
+    	<forward name="jsp" path="helpdesk.showSLAPriorityList"/>
+    </action>
+
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newSLAPriority"
+        type="com.aof.webapp.action.helpdesk.SLAPriorityAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_CREATE"/>
+        <forward name="editpage" path="helpdesk.newSLAPriority"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editSLAPriority"
+        type="com.aof.webapp.action.helpdesk.SLAPriorityAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editSLAPriority"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertSLAPriority"
+        input="helpdesk.newSLAPriority"
+        name="slaPriorityForm"
+        type="com.aof.webapp.action.helpdesk.SLAPriorityAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_CREATE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/SLA/saveSlaPriorityOK.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateSLAPriority"
+        input="helpdesk.editSLAPriority"
+        name="slaPriorityForm"
+        type="com.aof.webapp.action.helpdesk.SLAPriorityAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_MODIFY"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/SLA/saveSlaPriorityOK.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteSLAPriority"
+        type="com.aof.webapp.action.helpdesk.SLAPriorityAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_SERVICELEVEL_PRIORITY_DELETE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/>
+    </action>
+
+	<!-- =======================================================  -->
+	<!--		Helpdesk module Knowledge Base Service			  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+	  	attribute="KnowledgeBaseQueryForm"
+	  	name="KnowledgeBaseQueryForm"
+        parameter="list"
+        path="/helpdesk.listKnowledgeBase"
+        input="helpdesk.listKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_KB_VIEW"/>
+        <forward name="listPage" path="helpdesk.listKnowledgeBase" />
+    </action>  
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="create"
+        path="/helpdesk.createKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="view"
+        path="/helpdesk.viewKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_VIEW"/>
+        <forward name="success" path="helpdesk.viewKnowledgeBase"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_CREATE"/>
+        <forward name="editpage" path="helpdesk.newKnowledgeBase"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertKnowledgeBase"
+        input="helpdesk.newKnowledgeBase"
+        name="kbForm"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editKnowledgeBase"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateKnowledgeBase"
+        input="helpdesk.editKnowledgeBase"
+        name="kbForm"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_MODIFY"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteKnowledgeBase"
+        type="com.aof.webapp.action.helpdesk.kb.KnowledgeBaseAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_KB_DELETE"/>
+    </action>
+
+	<!-- =======================================================  -->
+	<!--		Helpdesk module Call Action Type Service		  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="list"
+        path="/helpdesk.listActionType"
+        type="com.aof.webapp.action.helpdesk.ActionTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_ACTIONTRACK_TYPE_VIEW"/>
+        <forward name="success" path="helpdesk.listActionType"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newActionType"
+        type="com.aof.webapp.action.helpdesk.ActionTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_ACTIONTRACK_TYPE_CREATE"/>
+        <forward name="editpage" path="helpdesk.newActionType"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editActionType"
+        type="com.aof.webapp.action.helpdesk.ActionTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_ACTIONTRACK_TYPE_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editActionType"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertActionType"
+        input="helpdesk.newActionType"
+        name="actionTypeForm"
+        type="com.aof.webapp.action.helpdesk.ActionTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_ACTIONTRACK_TYPE_CREATE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/> 
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateActionType"
+        input="helpdesk.editActionType"
+        name="actionTypeForm"
+        type="com.aof.webapp.action.helpdesk.ActionTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_ACTIONTRACK_TYPE_MODIFY"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/> 
+    </action>         
+
+	<!-- =======================================================  -->
+	<!--		Helpdesk module Call Request Type Service		  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="list"
+        path="/helpdesk.listRequestType"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        input="helpdesk.listRequestType"
+        name="requestTypeQueryForm"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_VIEW"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newRequestType"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_CREATE"/>
+        <forward name="editpage" path="helpdesk.newRequestType"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editRequestType"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_MODIFY"/>
+        <forward name="editpage" path="helpdesk.editRequestType"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertRequestType"
+        input="helpdesk.newRequestType"
+        name="requestTypeForm"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_CREATE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/> 
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="update"
+        path="/helpdesk.updateRequestType"
+        input="helpdesk.editRequestType"
+        name="requestTypeForm"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_MODIFY"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/> 
+    </action>         
+
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteRequestType"
+        type="com.aof.webapp.action.helpdesk.RequestTypeAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_REQUEST_TYPE_DELETE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/> 
+    </action>
+
+	<!-- =======================================================  -->
+	<!--			Helpdesk module Call Service				  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newCall"
+        type="com.aof.webapp.action.helpdesk.CallAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CALL_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertCall" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="insert"
+        path="/helpdesk.insertCall"
+        input="helpdesk.insertCall"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CALL_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editCall"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CALL_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateCall" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="update"
+        path="/helpdesk.updateCall"
+        scope="request"
+        input="helpdesk.updateCall"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CALL_MODIFY"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newCallActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CALL_ACTIONTRACK_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertCallActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editCallActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="true" >
+		<set-property property="permission" value="HELPDESK_CALL_ACTIONTRACK_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateCallActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="insert"
+        path="/helpdesk.insertCallActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.insertCallActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CALL_ACTIONTRACK_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="update"
+        path="/helpdesk.updateCallActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.updateCallActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CALL_ACTIONTRACK_MODIFY"/>
+	</action>        
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="delete"
+        path="/helpdesk.deleteCallActionTrack"
+        scope="request"
+        validate="false"
+        input="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=insertCallActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CALL_ACTIONTRACK_DELETE"/>
+	</action>        
+
+	<!-- =======================================================  -->
+	<!--		Helpdesk module Change Request Service			  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newChangeRequest"
+        type="com.aof.webapp.action.helpdesk.CallAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertChangeRequest" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="insert"
+        path="/helpdesk.insertChangeRequest"
+        input="helpdesk.insertChangeRequest"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editChangeRequest"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateChangeRequest" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="update"
+        path="/helpdesk.updateChangeRequest"
+        scope="request"
+        input="helpdesk.updateChangeRequest"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_MODIFY"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newChangeRequestActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_ACTIONTRACK_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertChangeRequestActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editChangeRequestActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="true" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_ACTIONTRACK_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateChangeRequestActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="insert"
+        path="/helpdesk.insertChangeRequestActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.insertChangeRequestActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_ACTIONTRACK_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="update"
+        path="/helpdesk.updateChangeRequestActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.updateChangeRequestActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_ACTIONTRACK_MODIFY"/>
+	</action>        
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="delete"
+        path="/helpdesk.deleteChangeRequestActionTrack"
+        scope="request"
+        validate="false"
+        input="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=insertChangeRequestActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_CHANGEREQUEST_ACTIONTRACK_DELETE"/>
+	</action>        
+
+	<!-- =======================================================  -->
+	<!--			Helpdesk module Complain Service			  -->
+	<!-- =======================================================  -->    
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newComplain"
+        type="com.aof.webapp.action.helpdesk.CallAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_COMPLAIN_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertComplain" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="insert"
+        path="/helpdesk.insertComplain"
+        input="helpdesk.insertComplain"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editComplain"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateComplain" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callForm"
+        name="callForm"
+        parameter="update"
+        path="/helpdesk.updateComplain"
+        scope="request"
+        input="helpdesk.updateComplain"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_MODIFY"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newComplainActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_ACTIONTRACK_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertComplainActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editComplainActionTrack"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction"
+        validate="true" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_ACTIONTRACK_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateComplainActionTrack" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="insert"
+        path="/helpdesk.insertComplainActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.insertComplainActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_ACTIONTRACK_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="update"
+        path="/helpdesk.updateComplainActionTrack"
+        scope="request"
+        validate="true"
+        input="helpdesk.updateComplainActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_ACTIONTRACK_MODIFY"/>
+	</action>        
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callActionTrackForm"
+        name="callActionTrackForm"
+        parameter="delete"
+        path="/helpdesk.deleteComplainActionTrack"
+        scope="request"
+        validate="false"
+        input="/WEB-INF/jsp/helpdesk/callAction/editCallActionTrack.jsp?action=insertComplainActionTrack"
+        type="com.aof.webapp.action.helpdesk.CallActionTrackAction" >
+		<set-property property="permission" value="HELPDESK_COMPLAIN_ACTIONTRACK_DELETE"/>
+	</action>        
+
+    <action 
+        path="/helpdesk.showDialog"
+        type="com.aof.webapp.action.helpdesk.DialogAction">
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/showDialog.jsp"/>
+    </action>
+    <action 
+        path="/helpdesk.confirmDeleteDialog"
+        forward="helpdesk.confirmDelete"/>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newAttachment"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.AttachmentAction">
+		<set-property property="permission" value="HELPDESK_ATTACHMENT_CREATE"/>
+		<forward name="jsp" path="helpdesk.upload"/>
+	</action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="uploadForm"
+        name="uploadForm"
+        parameter="insert"
+        path="/helpdesk.insertAttachment"
+        input="helpdesk.upload"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.AttachmentAction">
+		<set-property property="permission" value="HELPDESK_ATTACHMENT_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteAttachment"
+        type="com.aof.webapp.action.helpdesk.AttachmentAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_ATTACHMENT_DELETE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="list"
+        path="/helpdesk.listAttachment"
+        type="com.aof.webapp.action.helpdesk.AttachmentAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_ATTACHMENT_VIEW"/>
+        <forward name="defaultListPage" path="helpdesk.listAttach" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="view"
+        path="/helpdesk.viewAttachment"
+        type="com.aof.webapp.action.helpdesk.AttachmentAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_ATTACHMENT_VIEW"/>
+    </action>
+      
+      
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		attribute="uploadExcelForm"
+		name="uploadExcelForm"
+		parameter="new"
+		path="/helpdesk.newUploadExcel"
+		scope="request"
+		type="com.aof.webapp.action.helpdesk.UploadExcelAction" >
+		<set-property property="permission" value="HELPDESK_CUSTOMER_USER_LOAD"/>
+		<forward name="jsp" path="helpdesk.uploadExcel"/>
+	</action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="uploadExcelForm"
+        name="uploadExcelForm"
+        parameter="insert"
+        path="/helpdesk.insertUploadExcel"
+        input="helpdesk.uploadExcel"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.UploadExcelAction">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_USER_LOAD"/>
+    </action>
+
+
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callQueryForm"
+        input="helpdesk.queryCall"
+        name="callQueryForm"
+        parameter="find"
+        path="/helpdesk.findCall"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CALL_VIEW"/>
+	</action>
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="callQueryForm"
+        input="helpdesk.queryCall"
+        name="callQueryForm"
+        parameter="report"
+        path="/helpdesk.reportCall"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.CallAction" >
+		<set-property property="permission" value="HELPDESK_CALL_VIEW"/>
+	</action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="query"
+        path="/helpdesk.queryCall"
+        type="com.aof.webapp.action.helpdesk.CallAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CALL_VIEW"/>
+        <forward name="queryPage" path="helpdesk.queryCall"/>
+    </action>
+
+    <!-- custConfigTable begins     -->
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="list"
+        attribute="tableQueryForm"
+        name="tableQueryForm"
+        path="/helpdesk.listTable"
+        type="com.aof.webapp.action.helpdesk.TableAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW"/>
+        <forward name="listTable" path="helpdesk.listTable" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="tableForm"
+        name="tableForm"
+        parameter="insert"
+        path="/helpdesk.insertTable"
+        type="com.aof.webapp.action.helpdesk.TableAction"
+        input="helpdesk.newTable"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_CREATE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newTable"
+        type="com.aof.webapp.action.helpdesk.TableAction">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_CREATE"/>
+	  	<forward name="editPage" path="helpdesk.newTable" />
+	</action>
+    <!--
+    <action
+        parameter="update"
+        path="/updateTable"
+        type="com.aof.webapp.action.TableAction" />
+    -->
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteTable"
+        type="com.aof.webapp.action.helpdesk.TableAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_DELETE"/>
+	</action>        
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="view"
+        path="/helpdesk.viewTable"
+        type="com.aof.webapp.action.helpdesk.TableAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_VIEW"/>
+        <forward name="viewTable" path="helpdesk.viewTable" />
+    </action>
+
+    <!--<action
+        parameter="insert"
+        path="/insertColumn"
+        type="com.aof.webapp.action.ColumnAction"
+        validate="false" />
+    <action
+        parameter="update"
+        path="/updateColumn"
+        type="com.aof.webapp.action.ColumnAction"
+        validate="false" />
+    <action
+        parameter="edit"
+        path="/editColumn"
+        type="com.aof.webapp.action.ColumnAction"
+        validate="false" />
+    <action
+        parameter="delete"
+        path="/deleteColumn"
+        type="com.aof.webapp.action.ColumnAction"
+        validate="false" />-->
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newRow"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.RowAction">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_ROW_CREATE"/>
+        <forward name="editPage" path="helpdesk.newRow" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deleteRow"
+        type="com.aof.webapp.action.helpdesk.RowAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_ROW_DELETE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editRow"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.RowAction">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_ROW_MODIFY"/>
+        <forward name="editPage" path="helpdesk.editRow" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="rowForm"
+        name="rowForm"
+        parameter="insert"
+        path="/helpdesk.insertRow"
+        scope="request"
+        input="helpdesk.newRow"
+        type="com.aof.webapp.action.helpdesk.RowAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_ROW_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="rowForm"
+        name="rowForm"
+        parameter="update"
+        path="/helpdesk.updateRow"
+        scope="request"
+        input="helpdesk.editRow"
+        type="com.aof.webapp.action.helpdesk.RowAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_ROW_MODIFY"/>
+    </action>
+	<!--table type-->         
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		attribute="tableTypeQueryForm"
+	  	name="tableTypeQueryForm"
+        parameter="list"
+        path="/helpdesk.listTableType"
+        scope="request"
+        input="helpdesk.listTableType"
+        type="com.aof.webapp.action.helpdesk.TableTypeAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_VIEW"/>
+        <forward name="listPage" path="helpdesk.listTableType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newTableType"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.TableTypeAction"
+        validate="false" >
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertTableType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="edit"
+        path="/helpdesk.editTableType"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.TableTypeAction"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateTableType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+    	attribute="tableTypeForm"
+        name="tableTypeForm"
+        parameter="insert"
+        path="/helpdesk.insertTableType"
+        scope="request"
+        input="system.insertTableType"
+        type="com.aof.webapp.action.helpdesk.TableTypeAction"
+        validate="true">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+     	attribute="tableTypeForm"
+      	name="tableTypeForm"
+        parameter="update"
+        path="/helpdesk.updateTableType"
+        scope="request"
+        input="system.updateTableType"
+        type="com.aof.webapp.action.helpdesk.TableTypeAction"
+        validate="true">
+		<set-property property="permission" value="HELPDESK_CUSTOMER_CONFIG_TABLE_TYPE_MODIFY"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+     	attribute="statusTypeQueryForm"
+      	name="statusTypeQueryForm"
+        parameter="list"
+        path="/helpdesk.listStatusType"
+        type="com.aof.webapp.action.helpdesk.StatusTypeAction" 
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_STATUS_TYPE_VIEW"/>
+        <forward name="listPage" path="helpdesk.listStatusType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+	    attribute="statusTypeForm"
+    	name="statusTypeForm"
+        parameter="new"
+        path="/helpdesk.newStatusType"
+        type="com.aof.webapp.action.helpdesk.StatusTypeAction" 
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_STATUS_TYPE_CREATE"/>
+        <forward name="editPage" path="helpdesk.insertStatusType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+	    attribute="statusTypeForm"
+    	name="statusTypeForm"
+        parameter="edit"
+        path="/helpdesk.editStatusType"
+        type="com.aof.webapp.action.helpdesk.StatusTypeAction" 
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_STATUS_TYPE_MODIFY"/>
+        <forward name="editPage" path="helpdesk.updateStatusType" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="statusTypeForm"
+        name="statusTypeForm"
+        parameter="insert"
+        path="/helpdesk.insertStatusType"
+        scope="request"
+        input="helpdesk.insertStatusType"
+        type="com.aof.webapp.action.helpdesk.StatusTypeAction" 
+        validate="true">
+		<set-property property="permission" value="HELPDESK_STATUS_TYPE_CREATE"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="statusTypeForm"
+        name="statusTypeForm"
+        parameter="update"
+        path="/helpdesk.updateStatusType"
+        scope="request"
+        input="helpdesk.updateStatusType"
+        type="com.aof.webapp.action.helpdesk.StatusTypeAction" 
+        validate="true">
+		<set-property property="permission" value="HELPDESK_STATUS_TYPE_MODIFY"/>
+    </action>
+
+    <!-- =======================================================  -->
+	<!--				PartyUser Dialog       					  -->
+	<!-- =======================================================  --> 
+    <action 
+		className="com.aof.webapp.action.SecureActionMapping"    
+    	forward="/WEB-INF/jsp/helpdesk/puquery/partyqry.jsp" 
+    	path="/helpdesk.EnterQuery">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+    </action>
+    <action 
+		className="com.aof.webapp.action.SecureActionMapping"    
+    	forward="/WEB-INF/jsp/helpdesk/puquery/ParQry.jsp" 
+    	path="/helpdesk.PartyCondition">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="PartysubForm"
+        input="/WEB-INF/jsp/helpdesk/puquery/ParQry.jsp"
+        name="PartysubForm"
+        path="/helpdesk.Partysub"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.puquery.Partysub">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+        <forward name="OK" path="/WEB-INF/jsp/helpdesk/puquery/PartyResult.jsp" contextRelative="true" />
+        <forward name="CUSTOM" path="/WEB-INF/jsp/helpdesk/puquery/Custom.jsp" contextRelative="true" />
+        <forward name="PARTYGET" path="/WEB-INF/jsp/helpdesk/puquery/EnterSelParty.jsp" contextRelative="true" />
+    </action> 
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="ParlistForm"
+        input="/WEB-INF/jsp/helpdesk/puquery/PartyResult.jsp"
+        name="ParlistForm"
+        path="/helpdesk.Parlist"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.puquery.Parlist">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+        <forward name="LIST" path="/WEB-INF/jsp/helpdesk/puquery/PartyResult.jsp" />
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        attribute="UserlistForm"
+        input="/WEB-INF/jsp/helpdesk/puquery/UserResult.jsp"
+        name="UserlistForm"
+        path="/helpdesk.PUserlist"
+        scope="request"
+        type="com.aof.webapp.action.helpdesk.puquery.PUserlist"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+        <forward name="LIST" path="/WEB-INF/jsp/helpdesk/puquery/UserResult.jsp" />
+    </action>
+      <action
+         attribute="GetUserForm"
+         input="/WEB-INF/jsp/helpdesk/puquery/GetUser.jsp"
+         name="GetUserForm"
+         path="/helpdesk.GetUserAction"
+         scope="request"
+         type="com.aof.webapp.action.helpdesk.puquery.GetUserAction">
+         <forward
+            name="LIST"
+            path="/WEB-INF/jsp/helpdesk/puquery/GetUser.jsp"
+            contextRelative="true" />
+      </action>
+      <action
+         path="/helpdesk.EnterSelAction"
+         type="com.aof.webapp.action.helpdesk.puquery.EnterSelAction"
+         validate="false">
+         <forward
+            name="OK"
+            path="/WEB-INF/jsp/helpdesk/puquery/EnterSelParty.jsp"
+            contextRelative="true" />
+      </action>
+    <!-- =======================================================  -->
+	<!--				Party Responsibility User				  -->
+	<!-- =======================================================  --> 
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		parameter="list"
+		path="/helpdesk.listPartyResponsibilityUser"
+		input="helpdesk.listPartyResponsibilityUser"
+		name="partyResponsibilityUserQueryForm"
+		type="com.aof.webapp.action.helpdesk.party.PartyResponsibilityUserAction"
+		scope="request"
+		validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_RESPONSIBILITY_USER_VIEW"/>
+	</action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="new"
+        path="/helpdesk.newPartyResponsibilityUser"
+        type="com.aof.webapp.action.helpdesk.party.PartyResponsibilityUserAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_RESPONSIBILITY_USER_CREATE"/>
+        <forward name="editpage" path="helpdesk.newPartyResponsibilityUser"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="insert"
+        path="/helpdesk.insertPartyResponsibilityUser"
+        input="helpdesk.newPartyResponsibilityUser"
+        name="partyResponsibilityUserForm"
+        type="com.aof.webapp.action.helpdesk.party.PartyResponsibilityUserAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_RESPONSIBILITY_USER_CREATE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/>
+    </action>
+    <action
+		className="com.aof.webapp.action.SecureActionMapping"    
+        parameter="delete"
+        path="/helpdesk.deletePartyResponsibilityUser"
+        type="com.aof.webapp.action.helpdesk.party.PartyResponsibilityUserAction"
+        scope="request"
+        validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_RESPONSIBILITY_USER_DELETE"/>
+        <forward name="success" path="/WEB-INF/jsp/helpdesk/actionSuccess.jsp"/>
+    </action>
+      <action path="/helpdesk.Custom" type="com.aof.webapp.action.helpdesk.puquery.Custom">
+         <forward
+            name="OK"
+            path="/WEB-INF/jsp/helpdesk/puquery/Custom.jsp"
+            contextRelative="true" />
+      </action>
+      
+      <!-- Modification on 11/08/2005 : by Bill Yu-->
+      <action path="/helpdesk.maintainGroup"
+              scope="request"
+              type="com.aof.webapp.action.helpdesk.GroupMaintainAction">
+		  <forward name="create" path="helpdesk.createGroup" contextRelative="true"/>
+		  <forward name="list" path="helpdesk.listGroup" contextRelative="true"/>
+      </action>
+      
+      <!-- Modification on 11/08/2005 : by Bill Yu-->
+      <action path="/helpdesk.assignGroupMember"
+              scope="request"
+              type="com.aof.webapp.action.helpdesk.AssignGroupMemberAction">
+          <forward name="list" path="helpdesk.assignGroup" contextRelative="true"/>
+		  <forward name="assignment" path="helpdesk.assignGroupMember" contextRelative="true"/>
+      </action>
+      
+      <!-- Modification on 11/08/2005 : by Bill Yu-->
+      <action path="/helpdesk.callAssignReport"
+              scope="request"
+              type="com.aof.webapp.action.helpdesk.CallAssignRptAction">
+          <forward name="success" path="helpdesk.callAssignRpt" contextRelative="true"/>
+      </action>
+
+    <!-- =======================================================  -->
+	<!--				Customer (for Configure Data)			  -->
+	<!-- =======================================================  --> 
+	<action
+		className="com.aof.webapp.action.SecureActionMapping"    
+		parameter="list"
+		path="/helpdesk.listCustomer"
+		input="helpdesk.listCustomer"
+		name="customerQueryForm"
+		type="com.aof.webapp.action.helpdesk.party.CustomerAction"
+		scope="request"
+		validate="false">
+		<set-property property="permission" value="HELPDESK_PARTY_USER_VIEW"/>
+	</action>
+	
+
+	<!-- =======================================================  -->
+	<!--				CRM Module Service						  -->
+	<!-- =======================================================  -->
+	<action    path="/editIndustry"
+	           type="com.aof.webapp.action.crm.customer.EditIndustryAction" scope="request">
+		<forward name="view" path="crm.editIndustry"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditIndustry.jsp"/>
+		<forward name="list" path="/listIndustry.do"/>        
+	</action>
+	<action    path="/listIndustry"
+	       type="com.aof.webapp.action.crm.customer.ListIndustryAction" >
+		<forward name="success" path="crm.listIndustry"/>
+	</action>
+	<action path="/editCustomerAccount"
+	           type="com.aof.webapp.action.crm.customer.EditCustomerAccountAction" scope="request">
+		<forward name="view" path="crm.editCustomerAccount"/>
+		<forward name="dialogView" path="/WEB-INF/jsp/crm/customer/dialogEditCustomerAccount.jsp"/>
+		<forward name="list" path="/listCustomerAccount.do"/>        
+	</action>
+	<action path="/listCustomerAccount"
+	       type="com.aof.webapp.action.crm.customer.ListCustomerAccountAction" >
+		<forward name="success" path="crm.listCustomerAccount"/>
+	</action>
+
+</action-mappings>
+
+<controller 
+	processorClass="com.aof.webapp.action.SecureRequestProcessor"
+	maxFileSize="3000K"
+	tempDir="C:\AOApp\webapp\upload"
+/>
+</struts-config>

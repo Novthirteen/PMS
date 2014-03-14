@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+
+<!--
+ *  Copyright (c) 2001-2003 Atos Origin
+-->
+
+<project name="Atos Origin Project Main Build" default="deploy" basedir=".">
+
+
+    <!-- ================================================================== -->
+    <!-- Install Atos Origin Components 		                    -->
+    <!-- ================================================================== -->
+
+    <target name="init-properties">
+    <!-- Allow any user specific values to override the defaults -->
+    <property file="${user.home}/build.properties"/>
+    <!-- Allow project-level defaults for this build -->
+    <property file="../build.properties"/>
+    <!-- Allow module-level defaults for this build -->
+    <property file="build.properties"/>
+    
+    <property environment="env"/>
+    <property name="name"           value="aof"/>
+    <property name="src.dir"        value="src"/>
+    <property name="etc.dir"        value="etc"/>
+
+    <property name="webapp.dir"     value="./webapp"/>
+    <property name="walib.dir"      value="${webapp.dir}/WEB-INF/lib"/>
+    <property name="waclasses.dir"  value="${webapp.dir}/WEB-INF/classes"/>
+    <property name="doc.dir"        value="docs"/>
+    <property name="build.dir"      value="build"/>
+
+
+    <property name="lib.dir"        value="lib"/>
+
+
+	<property name="mappingFile" value="etc/mapping.xml" />
+	<property name="DDLFile" value="entitydef/ddl/create.sql" />
+	<property name="lib.dir"        value="lib"/>
+	<property name="lib.dir"        value="lib"/>
+	<property name="lib.dir"        value="lib"/>
+	
+	
+    </target>
+
+
+
+
+    <!-- ================================================================== -->
+    <!-- Removes all created files and directories                          -->
+    <!-- ================================================================== -->
+    <target name="clean" depends="clean-lib">
+        <!--<delete dir="${build.dir}" />-->
+        <!--<delete dir="${doc.dir}/api" />-->
+    </target>
+
+    <target name="clean-lib" depends="init-properties">
+        <!--<delete dir="${walib.dir}" />-->
+        <delete dir="${waclasses.dir}" />
+    </target>
+
+    <!-- ================================================================== -->
+    <!-- Makes sure the needed directory structure is in place              -->
+    <!-- ================================================================== -->
+    <target name="prepare" depends="clean-lib, init">
+        <!--<delete dir="${dest.dir}" />-->
+        <delete dir="${build.dir}/jar" />
+        <delete dir="${report.dir}" />
+        <mkdir dir="${dest.dir}" />
+        <mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/jar" />
+		<mkdir dir="${build.dir}/ejb" />
+		<mkdir dir="${build.dir}/ejb/META-INF" />
+		<mkdir dir="${build.dir}/j2ee" />	
+		<mkdir dir="${build.dir}/j2ee/META-INF" />
+        <mkdir dir="${lib.dir}" />
+        <mkdir dir="${waclasses.dir}" />
+        <mkdir dir="${walib.dir}" />
+        <mkdir dir="${report.dir}"/>
+    </target>
+
+
+	<!-- ================================================================== -->
+    <!-- Compilation of the common application components                   -->
+    <!-- ================================================================== -->
+    <target name="java" >
+    	<antcall target="GenerateJava"/>
+    </target>
+    <target name="ddl" >
+    	<antcall target="GenerateDDL"/>
+    </target>
+
+    <target name="jar" >
+    	<antcall target="build-jar"/>
+    </target>
+    <target name="jar-all" >
+    	<antcall target="GenerateJava"/>
+    	<antcall target="build-jar"/>
+    	<antcall target="GenerateDDL"/>
+    </target>    
+
+    <target name="junit" depends="init">
+    	<antcall target="junitreport"/>
+    </target>
+	<target name="junit-all">
+    	<antcall target="build-jar"/>
+    	<antcall target="junitreport"/>
+	</target>
+
+       
+    <target name="build-all" depends="init">
+    	<antcall target="jar"/>
+    	<antcall target="war"/>
+    	<antcall target="ear"/>
+    </target>
+
+
+    <target name="init" depends="init-properties">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Init Class Path                --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+        <path id="local.class.path">
+            <pathelement location="properties"/>
+            <pathelement location="classes"/>
+			<pathelement path="${aof.etc.dir}"/>
+            
+            <fileset dir="${lib.aof.dir}" includes="*.jar"/>
+            <fileset dir="${lib.dir}/compile" includes="*.jar"/>
+            <fileset dir="${lib.dir}/common" includes="*.jar"/>
+            <fileset dir="${lib.dir}/common" includes="*.zip"/>
+            <fileset dir="${lib.dir}/compile" includes="*.jar"/>
+            <fileset dir="${lib.dir}/compile" includes="*.zip"/>
+            
+            
+        </path>
+        <path id="build.class.path">
+            <pathelement location="properties"/>
+            <pathelement location="classes"/>
+			<pathelement path="${aof.etc.dir.build}"/>
+            
+            <fileset dir="${lib.aof.dir}" includes="*.jar"/>
+            <fileset dir="${lib.dir}/compile" includes="*.jar"/>
+            <fileset dir="${lib.dir}/common" includes="*.jar"/>
+            <fileset dir="${lib.dir}/common" includes="*.zip"/>
+            <fileset dir="${lib.dir}/compile" includes="*.jar"/>
+            <fileset dir="${lib.dir}/compile" includes="*.zip"/>
+            
+            
+        </path>        
+		<path id="classpath" >
+			<pathelement location="classes"/>
+			<pathelement location="properties"/>
+			<pathelement path="${aof.etc.dir}"/>
+			<fileset dir="${lib.compile.dir}"	includes="**/*.jar,*.zip" />
+			<fileset dir="${lib.common.dir}"	includes="**/*.jar,*.zip" />
+			<fileset dir="${lib.aof.dir}"		includes="**/*.jar" />
+		</path>    
+    </target>
+
+	    
+	        
+    <target name="classes" depends="prepare">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Compile System                 --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+        <javac debug="on" classpathref="local.class.path" srcdir="${src.dir}" destdir="${build.dir}/jar"/>
+        <!-- also copy all .xml, .bsh & .logic files to classpath directory -->
+        <copy todir="${build.dir}/jar">
+            <fileset dir="${src.dir}" includes="**/*.properties,**/*.xml,**/*.bsh,**/*.logic" />
+        </copy>
+        <copy todir="${dest.dir}">
+            <fileset dir="${build.dir}/jar" includes="**/*.properties,**/*.xml,**/*.bsh,**/*.logic,**/*.class" />
+        </copy>
+    </target>
+	
+	<target name="GenerateJava"  depends="init">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Generate Java                  --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+	
+	  	<java classname="net.sf.hibernate.tool.hbm2java.CodeGenerator" fork="true"> 
+      		<classpath refid="local.class.path"/> 
+      		<arg line="--output=${src.dir} ${src.dir}/com/aof/component/domain/mapping/Order.nbm.xml"/> 
+      	</java> 	
+	  	<java classname="net.sf.hibernate.tool.hbm2java.CodeGenerator" fork="true"> 
+      		<classpath refid="local.class.path"/> 
+      		<arg line="--output=${src.dir} ${src.dir}/com/aof/component/domain/mapping/Inventory.nbm.xml"/> 
+      	</java> 	
+	  	<java classname="net.sf.hibernate.tool.hbm2java.CodeGenerator" fork="true"> 
+      		<classpath refid="local.class.path"/> 
+      		<arg line="--output=${src.dir} ${src.dir}/com/aof/component/domain/mapping/OrderExtend.nbm.xml"/> 
+      	</java> 	
+	</target>
+	
+	<target name="GenerateDDL" depends="init">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Generate DDL                   --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+	  	<java classname="net.sf.hibernate.tool.hbm2ddl.SchemaExport" fork="true"> 
+      		<classpath refid="build.class.path"/>
+      		<arg line="
+		${src.dir}/com/aof/component/domain/party/Party.nbm.xml 
+		${src.dir}/com/aof/component/domain/module/Module.nbm.xml 
+		${src.dir}/com/aof/component/domain/security/SecurityGroup.nbm.xml	   "/> 
+      		<!--${src.dir}/com/aof/component/domain/mapping/Order.nbm.xml-->
+      		<!--${src.dir}/com/aof/component/domain/mapping/Inventory.nbm.xml--> 
+      		<!--${src.dir}/com/aof/component/domain/mapping/OrderExtend.nbm.xml -->
+      	</java> 	
+    </target>
+    
+    <target name="prepare-docs" depends="init">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Delete JavaDocs                --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+		<delete dir="${doc.dir}" />
+        <mkdir dir="${doc.dir}" />
+		<mkdir dir="${doc.dir}/api" />
+    </target>
+        
+        
+        
+    <!-- ================================================================== -->
+    <!-- Build JavaDoc                                                      -->
+    <!-- ================================================================== -->
+    <target name="docs" depends="prepare-docs">
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Build JavaDoc                  --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+        <javadoc classpathref="local.class.path" packagenames="com.aof.*" sourcepath="${src.dir}" destdir="${doc.dir}/api"/>
+    </target>    
+    
+
+
+    <!-- ================================================================== -->
+    <!-- Generate JUnit Report                                              -->
+    <!-- ================================================================== -->
+	<target name="junitreport" depends="init"> 
+	    <echo>+-- =========================================== --+</echo>
+	    <echo>+--              Generate JUnit Report          --+</echo>
+	    <echo>+-- =========================================== --+</echo>
+        <junit printsummary="on" 
+                fork="true" 
+                haltonfailure="false" 
+                failureproperty="tests.failed" 
+                showoutput="true"> 
+
+  			<jvmarg value="-Daof.dir=C:\AOApp"/>
+                  
+            <classpath refid="local.class.path"/> 
+            <formatter type="xml"/> 
+            <batchtest fork="yes" todir="${report.dir}"> 
+                <fileset dir="${build.dir}/jar/"> 
+                    <include name="**/*Test*.*"/> 
+                    <exclude name="**/*AllTests*.*"/>
+                </fileset> 
+            </batchtest>
+        </junit>  
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}"> 
+                <include name="TEST-*.xml"/> 
+            </fileset> 
+            <report format="frames" todir="${report.dir}"/> 
+        </junitreport>   
+    </target>     
+
+
+    <!-- ================================================================== -->
+    <!-- Send Mail                                                          -->
+    <!-- ================================================================== -->
+	<target name="mail" depends="init">					
+	    
+	    <taskdef name="mimemail" classname="org.apache.tools.ant.taskdefs.optional.net.MimeMail"/>
+	      <tstamp/>
+	      <mimemail messageMimeType="text/html"
+	                   messageFile="overview-summary.html"
+	                   tolist="Jeffery.liang@atosorigin.com"
+	                   mailhost="172.16.236.10"
+	                   subject="JUnit Test Results: ${TODAY}"
+	                   from="Jeffery.liang@atosorigin.com">
+	        <fileset dir="${report.dir}">
+	          <include name="TESTS-*.xml;*.html"/>
+	        </fileset>
+	      </mimemail>
+	        <!--
+			<mail mailhost="smtp.163.net" mailport="25" subject="Test Report">
+			  <from address="xpingxu@163.net"/>
+			  <to address="xingping.xu@atosorigin.com"/>
+			  <message>TestReport</message>
+			  <fileset dir="${report.dir}">
+			    <include name="**/*.xml"/>
+			  </fileset>
+			</mail>
+			 -->
+	</target>
+
+
+    <!-- ================================================================== -->
+    <!-- Build the JAR                                                     -->
+    <!-- ================================================================== -->
+
+	
+	<target name="compile" depends="init">
+	  <javac srcdir="src" destdir="classes">
+		<classpath refid="classpath"/>
+	  </javac>
+	</target>
+
+
+    <target name="build-jar" depends="classes">
+        <jar jarfile="${lib.dir}/${name}/${name}.jar" basedir="${build.dir}/jar" />
+    </target>
+    <target name="jar-deploy" depends="jar">
+    	<copy file="${lib.dir}/${name}/${name}.jar" tofile="${walib.dir}/${name}.jar" />
+    </target>
+    
+
+
+
+
+
+
+    <!-- ================================================================== -->
+    <!-- Build the WARs                                                     -->
+    <!-- ================================================================== -->
+    <target name="war" depends="jar-deploy,prepare">
+        <jar jarfile="${lib.dir}/${name}/${name}.war" basedir="${webapp.dir}" />
+    </target>
+
+
+    <!-- ================================================================== -->
+    <!-- Build the EJB jar and EAR                                          -->
+    <!-- ================================================================== -->
+    <target name="meta-info" depends="jar,war">
+	<!--
+        <copy file="${etc.dir}/application.xml" tofile="${build.dir}/j2ee/META-INF/application.xml" />			  
+        -->
+    </target>
+    <target name="ejb" depends="meta-info">
+        <jar jarfile="${build.dir}/j2ee/${name}-ejb.jar" basedir="${build.dir}/ejb" />
+    </target>
+    <target name="ear" depends="ejb">
+        <jar jarfile="${lib.dir}/${name}/${name}.ear" basedir="${build.dir}/j2ee" />
+    </target>
+	
+
+
+
+
+    <!-- ================================================================== -->
+    <!-- Deploy the app                                                     -->
+    <!-- ================================================================== -->
+    <target name="deploy" depends="init-properties">
+	<echo message="deploy the system files" />
+        <copy file="${lib.dir}/${name}/${name}.jar" toDir="${walib.dir}" />
+    </target>
+    <target name="int-deploy" depends="">
+        <condition property="copy.dirs.exist">
+            <and>
+                <available file="${classes.dir}" type="dir"/>
+                <available file="${lib.dir}" type="dir"/>
+            </and>
+        </condition>
+        <antcall target="deploy-copy" />
+    </target>
+    <target name="deploy-copy" depends="" if="copy.dirs.exist">
+        <copy file="${lib.dir}/${name}.jar" toDir="${walib.dir}" />
+    </target>
+
+
+</project>

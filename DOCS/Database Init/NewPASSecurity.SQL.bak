@@ -1,0 +1,475 @@
+-- TimeSheet Permission
+insert into module values ('3.1','Data Entry','','NULL','Y',10,'Data entry for Time Sheet, Project Expense','1');
+insert into module values ('3.1.1','Time Sheet','','NULL','Y',1,'Time Sheet Records Maintenance','3.1');
+insert into module values ('3.1.1.1','Time Sheet Entry','','findPRMPage.do?SecId=1','Y',1,'Actual Time Sheet data entry','3.1.1');
+insert into module values ('3.1.1.2','Time Sheet Forecast','','findPRMPage.do?SecId=2','Y',2,'Time Sheet Forecast data entry','3.1.1');
+insert into module values ('3.1.1.3','Time Sheet Approval','','findPRMPage.do?SecId=3','Y',3,'This is used by project manager to approve his projects related Time sheet data','3.1.1');
+insert into module values ('3.1.1.4','TimeSheet CAF Update','','findPRMPage.do?SecId=4','Y',4,'This is used by PMA to update CAF data', '3.1.1');
+insert into module values ('3.1.2','Project Management','','NULL','Y',2,'Project Management Operation','3.1');
+insert into module values ('3.1.2.1','Forecast To Complete','','findPrjFCPage.do?SecId=1','Y',1,'Monthly Update your project cost forecast to complete','3.1.2');
+insert into module values ('3.1.2.2','Project Member Assignment','','assignProject','Y',2,'Assign prject members in your project','3.1.2');
+insert into module values ('3.1.2.3','Acceptance Status Update','','findProjAccpPage','Y',3,'update the acceptance status for customer and company','3.1.2');
+insert into module values ('3.1.3','Project Expense','','NULL','Y',3,'Project Expense Claims Processes','3.1');
+insert into module values ('3.1.3.1','Expense Entry','','findExpSelfPage.do','Y',1,'Expense data entry','3.1.3');
+insert into module values ('3.1.3.2','Expense Verify','','findExpToVerifyPage.do','Y',2,'This is used by PMA to verify the expense amount','3.1.3');
+insert into module values ('3.1.3.3','Expense Approval','','findExpToApprovalPage.do','Y',3,'This is used by PM to approve the expense forms','3.1.3');
+insert into module values ('3.1.3.4','Expense Pay-Out','','findExpToClaimPage.do','Y',4,'This is used by F&A to pay-out expenses','3.1.3');
+insert into module values ('3.1.3.5','Other Cost Entry','','findCostSelfPage.do?Type=Expense','Y',5,'This is used by PMA to entry other cost data','3.1.3');
+insert into module values ('3.1.4','Procurement/SubContract','','findCostSelfPage.do?Type=ExtCost','Y',4,'This is used by PMA to entry procu/sub cost data','3.1');
+
+
+insert into module_group values('PRM_OP_GROUP','PRM 操作模块',300);
+insert into module_group_associate values ('PRM_OP_GROUP','3.1');
+
+-- TimeSheet Permission
+insert into module values ('3.2','Master Data','','NULL','Y',11,'Project Master Data Administration','1');
+INSERT INTO Module VALUES('3.2.1','Project','','NULL','Y',1,'Project information administration', '3.2');
+INSERT INTO Module VALUES('3.2.1.2','External Project','','listContractProject','Y',2,'External Project information administration', '3.2.1');
+INSERT INTO Module VALUES('3.2.1.3','Internal Project','','listInternalProject','Y',3,'Internal Project information administration', '3.2.1');
+INSERT INTO Module VALUES('3.2.2','F&A','','NULL','Y',2,'Finance & Accounting Operations', '3.2');
+INSERT INTO Module VALUES('3.2.2.1','Exchange Rate','','listCurrencyType','Y',1,'Currency and Exchange Rate information', '3.2.2');
+INSERT INTO Module VALUES('3.2.2.4','Cost Rate','','editConsultantCost','Y',4,'Consultant Cost Rate information', '3.2.2');
+INSERT INTO Module VALUES('3.2.3','Customer','','NULL','Y',3,'Customer information administration', '3.2');
+INSERT INTO Module VALUES('3.2.3.3','Customer','','listCustParty','Y',2,'Customer information', '3.2.3');
+INSERT INTO Module VALUES('3.2.3.6','Customer Group','','listCustomerAccount','Y',4,'Customer Group information', '3.2.3');
+
+insert into module_group values('PRM_ADM_GROUP','PRM 管理模块',310);
+insert into module_group_associate values ('PRM_ADM_GROUP','3.2');
+
+insert into module values ('3.3','Report','','NULL','Y',11,'Project related report','1');
+INSERT INTO Module VALUES('3.3.1','F&A Report','','NULL','Y',1,'F&A related Report', '3.3');
+insert into module values ('3.3.1.1','Cost By Project','','pas.report.CostByPMRpt.do','Y',1,'Cost by project manager Report','3.3.1');
+insert into module values ('3.3.1.2','Project Cost vs Budget','','pas.report.ProjectOverBudgetRpt.do','Y',2,'Project Cost vs Budget Report','3.3.1');
+insert into module values ('3.3.1.3','Revenue Calculation','','pas.report.ForecastVarianceRpt.do','Y',3,'Revenue Calculation Report','3.3.1');
+insert into module values ('3.3.1.4','Project Status','','pas.report.ProjectStatusRpt.do','Y',4,'Project Status Report','3.3.1');
+insert into module values ('3.3.1.5','Utilization Report','','pas.report.TSStatusSummaryRpt.do','Y',5,'Utilization Report', '3.3.1');
+insert into module values ('3.3.1.6','Project Cost Query', '', 'pas.report.ProjectCostRpt.do', 'Y', 6, 'Project Cost Query report', '3.3.1');
+insert into module values ('3.3.1.7','Expense Analysis','','pas.report.ExpenseAnalysisRpt.do','Y',7,'Expense Analysis Report','3.3.1');
+insert into module values ('3.3.1.8','Outstanding CAF Status Report','','pas.report.CAFStatusRpt.do','Y',8,'Outstanding CAF Report','3.3.1');
+insert into module values ('3.3.1.9','Detailed Time Sheet Query','','pas.report.TSDetailRpt.do','Y',9,'Time Sheet Details Report','3.3.1');
+insert into module values ('3.3.1.10','Resource Forecast Report','','pas.report.ResourceForecastRpt.do','Y',10,'Resource Forecast Report','3.3.1');
+insert into module values ('3.3.1.11','Resource Actual vs Forecast Report','','pas.report.ActualVSForecastRpt.do','Y',11,'Resource Actual vs Forecast Report','3.3.1');
+insert into module values ('3.3.1.12','Man-Day Actual vs Budget Report','','pas.report.ActualVSBudgetMDRpt.do','Y',12,'Man-Day Actual vs Budget Report','3.3.1');
+insert into module values ('3.3.2','Fiscal Calendar','','listFisCalender','Y',2,'View Fiscal Calendar','3.3');
+insert into module_group values('PRM_RPT_GROUP','PRM 报表模块',320);
+insert into module_group_associate values ('PRM_RPT_GROUP','3.3');
+
+insert into module values ('4.1','Contact','','NULL','Y',12,'CRM管理业务','1');
+INSERT INTO Module VALUES('4.1.1','Customer','','NULL','Y',1,'', '4.1');
+INSERT INTO Module VALUES('4.1.1.1','Customer Contact','','listCustUserLogin','Y',1,'Customer Contact information administration', '4.1.1');
+
+insert into module_group values('CRM_ADM_GROUP','CRM 管理模块',320);
+insert into module_group_associate values ('CRM_ADM_GROUP','4.1');
+
+insert into module values ('5.1','AR/AP','','NULL','Y',13,'应收应付管理业务','1');
+INSERT INTO Module VALUES('5.1.1','Billing','','NULL','Y',1,'billing operations', '5.1');
+INSERT INTO Module VALUES('5.1.1.1','Billing Pending List','','findBillPendingList','Y',2,'billing pending list operations', '5.1.1');
+INSERT INTO Module VALUES('5.1.1.2','Billing Instructions','','FindBillingInstruction','Y',3,'billing instruction operations', '5.1.1');
+INSERT INTO Module VALUES('5.1.2','Payment','','NULL','Y',2,'payment operations', '5.1');
+INSERT INTO Module VALUES('5.1.2.1','Payment Pending List','','NULL','Y',4,'payment pending list operations', '5.1.2');
+INSERT INTO Module VALUES('5.1.2.2','Payment Instructions','','NULL','Y',5,'payment instruction operations', '5.1.2');
+INSERT INTO Module VALUES('5.1.3','Invoice','','NULL','Y',3,'Invoice operations', '5.1');
+INSERT INTO Module VALUES('5.1.3.1','Invoice Maintenance','','findInvoice','Y',6,'Invoice information maintenance', '5.1.3');
+INSERT INTO Module VALUES('5.1.3.2','EMS Maintenance','','findEMS','Y',7,'EMS information operations', '5.1.3');
+INSERT INTO Module VALUES('5.1.3.3','Invoice Confirmation','','findInvoiceConfirm','Y',8,'Invoice Confirmation operations', '5.1.3');
+INSERT INTO Module VALUES('5.1.3.4','Receipt','','findReceipt','Y',9,'Receipt operations', '5.1.3');
+insert into module_group values('FO_ADM_GROUP','FO 管理模块',330);
+insert into module_group_associate values ('FO_ADM_GROUP','5.1');
+-------------------------------------------------------------
+--权限组
+-------------------------------------------------------------
+
+INSERT INTO Security_Group VALUES('PRM_DATA_MANAGE','PAS员工有关类型主数据维护权限');
+INSERT INTO Security_Group VALUES('PRM_PM_MANAGE','PAS_PM维护权限');
+INSERT INTO Security_Group VALUES('PRM_TS_PA_MANAGE','PAS_TS_PA维护权限');
+INSERT INTO Security_Group VALUES('PRM_RESOURCE_ASSIGN_MANAGE','PAS资源分配权限');
+INSERT INTO Security_Group VALUES('PRM_ACCEPTANCE_MANAGE','PAS_ACCEPTANCE维护权限');
+INSERT INTO Security_Group VALUES('PRM_EXP_PA_MANAGE','PAS_EXPENSE_PA维护权限');
+INSERT INTO Security_Group VALUES('PRM_EXP_FA_MANAGE','PAS_EXPENSE_FA维护权限');
+INSERT INTO Security_Group VALUES('PRM_OC_PA_MANAGE','PAS OTHER_COST_PA维护权限');
+INSERT INTO Security_Group VALUES('PRM_PS_PA_MANAGE','PAS_PROCU_SUB_PA维护权限');
+INSERT INTO Security_Group VALUES('PRM_PROJ_FA_MANAGE','PAS PROJECT_F&A维护权限');
+INSERT INTO Security_Group VALUES('PRM_MSTR_FA_MANAGE','PAS_MASTER_FA维护权限');
+INSERT INTO Security_Group VALUES('PRM_PM_RPT1_MANAGE','PAS_PM一般报表维护权限');
+INSERT INTO Security_Group VALUES('PRM_PM_RPT2_MANAGE','PAS PM特指报表维护权限');
+INSERT INTO Security_Group VALUES('PRM_MGE_RPT_MANAGE','PAS全部报表维护权限');
+INSERT INTO Security_Group VALUES('PRM_PA_RPT_MANAGE','PAS_PA报表维护权限');
+INSERT INTO Security_Group VALUES('PRM_BILLING_MANAGE','PROJECT BILLING维护权限');
+INSERT INTO Security_Group VALUES('PRM_PAYMENT_MANAGE','PROJECT PAYMENT维护权限');
+INSERT INTO Security_Group VALUES('PRM_INVOICE_MANAGE','PROJECT INVOICE维护权限');
+INSERT INTO Security_Group VALUES('PRM_EMS_MANAGE','PROJECT EMS维护权限');
+INSERT INTO Security_Group VALUES('PRM_RECEIPT_MANAGE','PROJECT RECEIPT维护权限');
+
+-------------------------------------------------------------
+--权限
+-------------------------------------------------------------
+
+---------------------------------
+--系统管理功能(只有系统管理员可以使用这部分功能)
+---------------------------------
+INSERT INTO Security_Permission VALUES('INTERNAL_DEPARMENT_CREATE','用户部门创建权限');
+INSERT INTO Security_Permission VALUES('INTERNAL_DEPARMENT_VIEW','用户部门查看权限');
+
+---------------------------------
+-- Staff 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('TIME_SHEET_CREATE','项目Time Sheet创建权限');
+INSERT INTO Security_Permission VALUES('TIME_SHEET_VIEW','项目Time Sheet查看权限');
+INSERT INTO Security_Permission VALUES('TIME_SHEET_FORECAST_CREATE','项目Time Sheet forecast 创建权限');
+INSERT INTO Security_Permission VALUES('TIME_SHEET_FORECAST_VIEW','项目Time Sheet forecast 查看权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_SELF_VIEW','本人费用查看权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_CREATE','费用创建权限');
+INSERT INTO Security_Permission VALUES('CUST_PROJECT_SELECT','项目选择权限');
+
+---------------------------------
+-- PM 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('TIME_SHEET_APPROVAL','项目Time Sheet审批权限');
+INSERT INTO Security_Permission VALUES('CUST_PROJECT_CTC_CREATE','项目CTC创建权限');
+INSERT INTO Security_Permission VALUES('CUST_PROJECT_CTC_VIEW','项目CTC查看权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_APPROVAL','费用审批权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_APPROVAL_VIEW','审批费用查看权限');
+
+
+---------------------------------
+-- TS PA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('TIME_SHEET_ALL','项目Time Sheet所有数据更新权限');
+INSERT INTO Security_Permission VALUES('TIME_SHEET_CAF','项目Time Sheet CAF数据更新权限');
+
+---------------------------------
+-- RESOURCE ASSIGN 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('CUST_PROJECT_MEMBER_CREATE','项目成员创建权限');
+INSERT INTO Security_Permission VALUES('CUST_PROJECT_MEMBER_ALL','本部门项目成员管理权限');
+
+---------------------------------
+-- ACCEPTANCE 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJECT_ACCP_CREATE','项目Acceptance创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_ACCP_VIEW','项目Acceptance查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_ACCP_ALL','部门项目Acceptance查看权限');
+
+---------------------------------
+-- EXPENSE PA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('EXPENSE_VERIFY','费用审核权限');
+
+
+---------------------------------
+-- EXPENSE CLAIM FA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('EXPENSE_CLAIM','费用报销权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_TYPE_CREATE','费用类型创建权限');
+INSERT INTO Security_Permission VALUES('EXPENSE_TYPE_VIEW','费用类型查看权限');
+
+---------------------------------
+-- OTHER COST PA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('OTHER_COST_VIEW','其他费用查看权限');
+INSERT INTO Security_Permission VALUES('OTHER_COST_ALL','部门其他费用查看权限');
+INSERT INTO Security_Permission VALUES('OTHER_COST_CREATE','其他费用创建权限');
+
+---------------------------------
+-- PROCUMENT/SUBCONTRACT PA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROCU_SUB_VIEW','其他采购费用查看权限');
+INSERT INTO Security_Permission VALUES('PROCU_SUB_ALL','部门其他采购费用查看权限');
+INSERT INTO Security_Permission VALUES('PROCU_SUB_CREATE','其他采购费用创建权限');
+
+---------------------------------
+-- PROJECT FA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('CUST_INT_PROJECT_CREATE','Internal项目创建权限');
+INSERT INTO Security_Permission VALUES('CUST_INT_PROJECT_VIEW','Internal项目查看权限');
+INSERT INTO Security_Permission VALUES('CUST_CONT_PROJECT_CREATE','Contract项目创建权限');
+INSERT INTO Security_Permission VALUES('CUST_CONT_PROJECT_VIEW','Contract项目查看权限');
+
+INSERT INTO Security_Permission VALUES('PROJECT_EVENT_CREATE','项目活动类型创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_EVENT_VIEW','项目活动类型查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_EVENT_TYPE_CREATE','项目EVENT TYPE创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_EVENT_TYPE_VIEW','项目EVENT TYPE查看权限');
+
+INSERT INTO Security_Permission VALUES('FISCAL_CALENDAR_CREATE','财务年度日历创建权限');
+INSERT INTO Security_Permission VALUES('FISCAL_CALENDAR_VIEW','财务年度日历查看权限');
+
+INSERT INTO Security_Permission VALUES('PROJECT_TYPE_CREATE','项目活动类型分类创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_TYPE_VIEW','项目活动类型分类查看权限');
+
+---------------------------------
+-- MASTER FA 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('ADMIN_CURRENCY_CREATE','币种创建权限');
+INSERT INTO Security_Permission VALUES('ADMIN_CURRENCY_VIEW','币种查看权限');
+INSERT INTO Security_Permission VALUES('COST_RATE_CREATE','员工单位时间成本创建权限');
+INSERT INTO Security_Permission VALUES('INDUSTRY_CREATE','客户行业创建权限');
+INSERT INTO Security_Permission VALUES('INDUSTRY_VIEW','客户行业查看权限');
+INSERT INTO Security_Permission VALUES('CUST_ACCOUNT_CREATE','客户创建权限');
+INSERT INTO Security_Permission VALUES('CUST_ACCOUNT_VIEW','客户查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_CALENDAR_CREATE','工作日历创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_CALENDAR_VIEW','工作日历查看权限');
+
+---------------------------------
+-- MANAGER REPORT 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PAS_PM_REPORT_ALL','部门项目报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_PM_REPORT_VIEW','项目报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_UTL_REPORT_VIEW','Utilization报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_TS_DETAIL_VIEW','TS Detail报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_CAF_REPORT_VIEW','OUTSTANDING CAF Status报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_RESOURCE_FORECAST_VIEW','Resource Forecast 报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_ACTUAL_FORECAST_VIEW','Resource Actual vs Forecast 报告查看权限');
+
+INSERT INTO Security_Permission VALUES('PAS_COST_VS_BUDGET_REPORT_VIEW','COST VS BUDGET 报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_REVENUE_REPORT_VIEW','REVENUE报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_PROJ_STATUS_REPORT_VIEW','PROJECT STATUS报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_COST_QUERY_REPORT_VIEW','PROJECT COST QUERY报告查看权限');
+INSERT INTO Security_Permission VALUES('PAS_EXP_ANALYSIS_REPORT_VIEW','EXPENSE ANALYSIS报告查看权限');
+INSERT INTO Security_Permission VALUES('MANDAY_ACTUAL_VS_BUDGET_REPORT_VIEW','MAN-DAY ACTUAL VS BUDGET报告查看权限');
+
+---------------------------------
+--BILLING 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJECT_BILLING_CREATE','项目应收创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_BILLING_VIEW','项目应收查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_BILLING_ALL','部门项目应收查看权限');
+
+---------------------------------
+--PAYMENT 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJECT_PAYMENT_CREATE','项目应付创建权限');
+INSERT INTO Security_Permission VALUES('PROJECT_PAYMENT_VIEW','项目应付查看权限');
+INSERT INTO Security_Permission VALUES('PROJECT_PAYMENT_ALL','部门项目应付查看权限');
+
+
+---------------------------------
+--INVOICE 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJ_INVOICE_CREATE','项目应收发票创建权限');
+INSERT INTO Security_Permission VALUES('PROJ_INVOICE_VIEW','项目应收发票查看权限');
+INSERT INTO Security_Permission VALUES('PROJ_INVOICE_ALL','部门项目应收发票查看权限');
+
+---------------------------------
+--EMS 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJ_EMS_CREATE','项目应收EMS创建权限');
+INSERT INTO Security_Permission VALUES('PROJ_EMS_VIEW','项目应收EMS查看权限');
+INSERT INTO Security_Permission VALUES('PROJ_EMS_ALL','部门项目应收EMS查看权限');
+
+---------------------------------
+--RECEIPT 权限
+---------------------------------
+INSERT INTO Security_Permission VALUES('PROJ_RECEIPT_CREATE','项目应收收据创建权限');
+INSERT INTO Security_Permission VALUES('PROJ_RECEIPT_VIEW','项目应收收据查看权限');
+INSERT INTO Security_Permission VALUES('PROJ_RECEIPT_ALL','部门项目应收收据查看权限');
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+	--权限组的权限定义
+-------------------------------------------------------------
+-------------------------------------------------------------
+
+	--系统权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'INTERNAL_DEPARMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'INTERNAL_DEPARMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'SECURITY_PERMISSION_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'SECURITY_PERMISSION_VIEW');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'USER_LOGIN_CREATE');
+INSERT INTO Security_Group_Permission VALUES('SYSTEM_MANAGE', 'USER_LOGIN_VIEW');
+----------------------
+
+	--STAFF 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'TIME_SHEET_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'TIME_SHEET_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'TIME_SHEET_FORECAST_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'TIME_SHEET_FORECAST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'EXPENSE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'EXPENSE_SELF_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_DATA_MANAGE', 'CUST_PROJECT_SELECT');
+
+
+ 
+	--PM 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'TIME_SHEET_APPROVAL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'CUST_PROJECT_CTC_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'CUST_PROJECT_CTC_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'CUST_PROJECT_MEMBER_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'PROJECT_ACCP_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'PROJECT_ACCP_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'EXPENSE_APPROVAL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_MANAGE', 'EXPENSE_APPROVAL_VIEW');
+
+
+
+	--TS PA 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_ALL');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_FORECAST_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_FORECAST_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'EXPENSE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'EXPENSE_SELF_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_TS_PA_MANAGE', 'TIME_SHEET_CAF');
+
+
+	--RESOURCE ASSIGN 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_RESOURCE_ASSIGN_MANAGE', 'CUST_PROJECT_MEMBER_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_RESOURCE_ASSIGN_MANAGE', 'CUST_PROJECT_MEMBER_CREATE');
+
+	--ACCEPTANCE 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_ACCEPTANCE_MANAGE', 'PROJECT_ACCP_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_ACCEPTANCE_MANAGE', 'PROJECT_ACCP_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_ACCEPTANCE_MANAGE', 'PROJECT_ACCP_ALL');
+
+	--EXPENSE VERIFY PA 权限
+----------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_EXP_PA_MANAGE', 'EXPENSE_VERIFY');
+
+	-- EXPENSE CLAIM FA 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_EXP_FA_MANAGE', 'EXPENSE_CLAIM');
+INSERT INTO Security_Group_Permission VALUES('PRM_EXP_FA_MANAGE', 'EXPENSE_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_EXP_FA_MANAGE', 'EXPENSE_TYPE_VIEW');
+
+
+
+	-- OTHER COST PA 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_OC_PA_MANAGE', 'OTHER_COST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_OC_PA_MANAGE', 'OTHER_COST_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_OC_PA_MANAGE', 'OTHER_COST_ALL');
+
+	-- PROCUMENT/SUBCONTRACT PA 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PS_PA_MANAGE', 'PROCU_SUB_ALL');
+	
+	-- PROJECT FA 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CUST_INT_PROJECT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CUST_INT_PROJECT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CUST_CONT_PROJECT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'CUST_CONT_PROJECT_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_EVENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_EVENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_EVENT_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_EVENT_TYPE_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'FISCAL_CALENDAR_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'FISCAL_CALENDAR_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_TYPE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PROJ_FA_MANAGE', 'PROJECT_TYPE_VIEW');
+
+
+	-- MASTER FA 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'ADMIN_CURRENCY_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'ADMIN_CURRENCY_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'COST_RATE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'INDUSTRY_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'INDUSTRY_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'CUST_ACCOUNT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'CUST_ACCOUNT_VIEW');
+
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'PROJECT_CALENDAR_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_MSTR_FA_MANAGE', 'PROJECT_CALENDAR_VIEW');
+
+
+	-- MANAGER REPORT 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_PM_REPORT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'FISCAL_CALENDAR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_PM_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_UTL_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_TS_DETAIL_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_CAF_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_RESOURCE_FORECAST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_ACTUAL_FORECAST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_COST_VS_BUDGET_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_REVENUE_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_PROJ_STATUS_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_COST_QUERY_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'PAS_EXP_ANALYSIS_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_MGE_RPT_MANAGE', 'MANDAY_ACTUAL_VS_BUDGET_REPORT_VIEW');
+
+---------------------------------
+	-- 一般报表权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_PM_REPORT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'FISCAL_CALENDAR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_UTL_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_TS_DETAIL_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_RESOURCE_FORECAST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_ACTUAL_FORECAST_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_CAF_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_COST_VS_BUDGET_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_PROJ_STATUS_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_COST_QUERY_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'PAS_EXP_ANALYSIS_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT1_MANAGE', 'MANDAY_ACTUAL_VS_BUDGET_REPORT_VIEW');
+
+
+---------------------------------
+	-- 特指报表权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT2_MANAGE', 'PAS_PM_REPORT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT2_MANAGE', 'FISCAL_CALENDAR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT2_MANAGE', 'PAS_PM_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PM_RPT2_MANAGE', 'PAS_REVENUE_REPORT_VIEW');
+
+
+
+---------------------------------
+	-- PA报表权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PAS_PM_REPORT_ALL');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'FISCAL_CALENDAR_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PAS_UTL_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PAS_TS_DETAIL_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PAS_CAF_REPORT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PA_RPT_MANAGE', 'PAS_EXP_ANALYSIS_REPORT_VIEW');
+
+---------------------------------
+	-- BILLING 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_BILLING_MANAGE', 'PROJECT_BILLING_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_BILLING_MANAGE', 'PROJECT_BILLING_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_BILLING_MANAGE', 'PROJECT_BILLING_ALL');
+
+---------------------------------
+	-- PAYMENT 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PROJECT_PAYMENT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PROJECT_PAYMENT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_PAYMENT_MANAGE', 'PROJECT_PAYMENT_ALL');
+---------------------------------
+	-- INVOICE 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_INVOICE_MANAGE', 'PROJ_INVOICE_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_INVOICE_MANAGE', 'PROJ_INVOICE_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_INVOICE_MANAGE', 'PROJ_INVOICE_ALL');
+---------------------------------
+	-- EMS 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_EMS_MANAGE', 'PROJ_EMS_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_EMS_MANAGE', 'PROJ_EMS_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_EMS_MANAGE', 'PROJ_EMS_ALL');
+
+	-- EMS 权限
+---------------------------------
+INSERT INTO Security_Group_Permission VALUES('PRM_RECEIPT_MANAGE', 'PROJ_RECEIPT_CREATE');
+INSERT INTO Security_Group_Permission VALUES('PRM_RECEIPT_MANAGE', 'PROJ_RECEIPT_VIEW');
+INSERT INTO Security_Group_Permission VALUES('PRM_RECEIPT_MANAGE', 'PROJ_RECEIPT_ALL');
+
