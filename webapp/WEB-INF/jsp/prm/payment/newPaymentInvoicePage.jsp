@@ -223,8 +223,8 @@ function onCurrSelect(){
 
 <form name="newForm" action="editPaymentInvoice.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="new">
-	<input type="hidden" name="invoiceType" value="<%=Constants.PAYMENT_INVOICE_TYPE_NORMAL%>">
+	<input type="hidden" name="formAction" id="formAction" value="new">
+	<input type="hidden" name="invoiceType" id="invoiceType" value="<%=Constants.PAYMENT_INVOICE_TYPE_NORMAL%>">
 	<TABLE width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>
 		Payment Settlement 
@@ -250,7 +250,7 @@ function onCurrSelect(){
 					<tr>
 					  	<td class="lblbold" align=right>Payment Code:</td>
 				  	  <td class="lblLight"><div style="display:inline" id="labelPayCode"><%=pp != null && pp.getPaymentCode() != null ? pp.getPaymentCode() : ""%></div>
-					  		<input type="hidden" name="payId" value="<%=pp != null && pp.getId() != null ? String.valueOf(pp.getId()) : ""%>">                       	  </td>
+					  		<input type="hidden" name="payId" id="payId" value="<%=pp != null && pp.getId() != null ? String.valueOf(pp.getId()) : ""%>">                       	  </td>
 					  	<td class="lblbold" align=right width="17%">Project:</td>
 					  	<td><%=pp.getProject()==null?"":pp.getProject().getProjName()%></td>
 					</tr>
@@ -259,7 +259,7 @@ function onCurrSelect(){
 						<td class="lblbold" align=right width="14%">Pay To:</td>
 					  <td class="lblLight" width="35%">							
 							<div style="display:inline" id="labelPayAddress"><%=pp.getPayAddress()==null?"":pp.getPayAddress().getDescription()%></div>
-							<input type="hidden" name="payAddressId" value="<%=""%>">		
+							<input type="hidden" name="payAddressId" id="payAddressId" value="<%=""%>">		
 						</td>
 						<td class="lblbold" align=right width="17%">Payment Amount:</td>
 						<td class="lblLight" width="34%">
@@ -278,7 +278,7 @@ function onCurrSelect(){
 					<tr>						
 						<td class="lblbold" align=right width="14%">Remain Amount:</td>
 					  <td class="lblLight" width="35%" ><%=UtilFormat.format(pp.getRemainingAmount(pp.getId()))%>							
-					  <input type="hidden" name="amt" value="<%=UtilFormat.format(pp.getRemainingAmount(pp.getId()))%>">
+					  <input type="hidden" name="amt" id="amt" value="<%=UtilFormat.format(pp.getRemainingAmount(pp.getId()))%>">
 						</td>						
 						<td class="lblbold" align=right width="17%">Status:</td>
 						<td class="lblLight" width="34%"><%=pp.getStatus()==null?"":pp.getStatus()%></td>
@@ -304,7 +304,7 @@ function onCurrSelect(){
 	    
 		<tr>
 		  <td class="lblbold" align=right>Supplier Invoice Code:</td>
-		  <input type="hidden" name="siCode" value="<%=ppm.getPayCode()==null?"":ppm.getPayCode()%>">
+		  <input type="hidden" name="siCode" id="siCode" value="<%=ppm.getPayCode()==null?"":ppm.getPayCode()%>">
 		  <td><div style="display:inline" id="labelSICode"><%=ppm.getPayCode()==null?"":ppm.getPayCode()%></div>
 		      <a href="javascript:void(0)" onclick="showSupplierInvoiceDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a> </td>
 		  <td align=right font="bold" class="lblbold" width='23%'>Payment Type:&nbsp;</td>
@@ -330,15 +330,10 @@ function onCurrSelect(){
 		  <td align=left><div style="display:inline" id="labelPayDate"><%=ppm.getPayDate()==null?"":ppm.getPayDateString()%></div></td>
 		</tr>							
 	</table>
-<input type="hidden" name='siRemainAmount' value="<%=ppm.getRemainAmount()%>">
-<input type='hidden' name='refno' value=''>
-<input type='hidden' name='payno' value=''>
-<input type='hidden' name='formAction' value='newCM'>
-<input type='hidden' name='' value=''>
-<input type='hidden' name='' value=''>
-<input type='hidden' name='' value=''>
-<input type='hidden' name='' value=''>
-<input type='hidden' name='' value=''>
+<input type="hidden" name="siRemainAmount" id="siRemainAmount" value="<%=ppm.getRemainAmount()%>">
+<input type="hidden" name="refno" id="refno" value=''>
+<input type="hidden" name="payno" id="payno" value=''>
+<input type="hidden" name="formAction" id="formAction" value='newCM'>
 <table width='100%'>
 	<tr>
 		<td align=left colspan="4"  class="wpsPortletTopTitle">Settlement:</td>
@@ -346,10 +341,10 @@ function onCurrSelect(){
 	<tr>
 	  <td width="17%" align=right class="lblbold" font="bold">Settle Amount:</td>
 	  <td width="24%" align=left>
-	    <input type="text" name="settleAmount" size="30" value="<%=UtilFormat.format(new Double(pcm.getTotalvalue()))%>" style="TEXT-ALIGN: right" class="lbllgiht"  onblur="checkDeciNumber2(this,1,1,'Amount',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+	    <input type="text" name="settleAmount" id="settleAmount" size="30" value="<%=UtilFormat.format(new Double(pcm.getTotalvalue()))%>" style="TEXT-ALIGN: right" class="lbllgiht"  onblur="checkDeciNumber2(this,1,1,'Amount',-9999999999,9999999999); addComma(this, '.', '.', ',');">
 	  </td>
 	  <td width="31%" align=right class="lblbold">Currency:</td>
-	  <td width="28%" class="lblLight"><select name="cmCurrency" onchange="javascript:onCurrSelect()">
+	  <td width="28%" class="lblLight"><select name="cmCurrency" id="cmCurrency" onchange="javascript:onCurrSelect()">
           <%
 									Float defaultCurrRate1 = null;
 									for (int i0 = 0; i0 < currencyList.size(); i0++) {
@@ -371,7 +366,7 @@ function onCurrSelect(){
 	<tr>
 	  <td class="lblbold" align=right>Posted Payment Code: </td>
 	  <td class="lblLight"><div style="display:inline" id="pcmFormCode"><%=pcm.getFormCode()==null?"":pcm.getFormCode()%></div>
-	  <input type='hidden' name='pcmId' value='<%=pcm.getCostcode()==null?"":pcm.getCostcode().toString()%>'></td>
+	  <input type='hidden' name="pcmId" id="pcmId" value='<%=pcm.getCostcode()==null?"":pcm.getCostcode().toString()%>'></td>
 	  <td align=right class="lblbold" font="bold"  colspan="2"><input type="button" class="button" name="Save" value="Save" onclick='OnSettleCheck();'>&nbsp;&nbsp;&nbsp;&nbsp;
           <input name="Cancel" type="button" class="button" value="Close" onclick="self.close();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </td>

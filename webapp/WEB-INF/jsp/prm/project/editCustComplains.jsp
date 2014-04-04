@@ -185,7 +185,7 @@ if(action == null){
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-	    <input type="hidden" name="FormAction" >
+	    <input type="hidden" name="FormAction" id="FormAction" >
 	    
 	  <%
     if(cc!= null){
@@ -221,7 +221,7 @@ if(action == null){
 	          <span class="lblbold">Project:&nbsp;</span>
 	        </td>
 	        <td align="left">  
-	        <input  name="DataId"  type=hidden value="<%= DataId.longValue()%>">     
+	        <input  name="DataId" id="DataId"  type="hidden" value="<%= DataId.longValue()%>">     
 	          <%=ProjName%>       
 	        </td>
 	        <td  align="right" >   
@@ -318,7 +318,7 @@ if(action == null){
 	        <td class="lblbold" align="right">Project:</td>
 				<td class="lblLight" align="left">
 					<input  name="ProjName"  >
-					<input type=hidden type="text" name="ProjCode" size="25"  style="TEXT-ALIGN: right" class="lbllgiht">
+					<input type="hidden" type="text" name="ProjCode" id="ProjCode" size="25"  style="TEXT-ALIGN: right" class="lbllgiht">
 					
 					<a href="javascript:void(0)" onclick="showProjctDialog();event.returnValue=false;">
 					<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
@@ -328,8 +328,8 @@ if(action == null){
 	          </td>
 	           <td align="left" colspan="3">
 	          <input type="text" name="pmName"  readonly >  
-	          <input type=hidden type="text" name="pmId">        
-	        <input type=hidden type="text" name="departmentId">
+	          <input type="hidden" type="text" name="pmId" id="pmId">        
+	        <input type="hidden" type="text" name="departmentId" id="departmentId">
 	        </td>
 	        </tr>
 	        

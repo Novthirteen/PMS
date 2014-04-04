@@ -62,12 +62,12 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <title>Project Selection</title>
 <form action="PRMProjectList.do?UserId=<%=UserId%>&DataPeriod=<%=DataPeriod%>" name=frm method="POST">
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DataPeriod" value="<%=DataPeriod%>">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DataPeriod" id="DataPeriod" value="<%=DataPeriod%>">
 <!--
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
 -->
-<input type="hidden" name="FormAction">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center >
 	<CAPTION align=center class=pgheadsmall><bean:message key="prm.timesheet.projectSelect.title"/></CAPTION>
 	<tr><td align='center' colspan=5>

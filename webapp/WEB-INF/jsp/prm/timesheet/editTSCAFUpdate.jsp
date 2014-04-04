@@ -174,8 +174,8 @@ function cascadeCAFCheck() {
 
 </script>
 <Form action="editTSCAFUpdate.do" name="EditTSCAFUpdateForm" method="post">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall><bean:message key="prm.timesheet.cafUpdate.title"/></CAPTION>
 <tr>
@@ -276,7 +276,7 @@ function cascadeCAFCheck() {
 						for (col=col; col < MaxCol; col++) {
 							tsId = " ";
 							DisplayText = DisplayText+"<td colspan=4>0.0</td>";
-							temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
+							temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
 							if (projectMaster != null && projectMaster.getPaidAllowance() != null && projectMaster.getPaidAllowance().floatValue() != 0) {
 								temp_line = temp_line+"<td><input type=text class=inputBox name=TSAllowance"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24)'></td>";
 							} else {
@@ -332,9 +332,9 @@ function cascadeCAFCheck() {
 						
 						temp_line = temp_line+"<tr class='"+rowClass+"' align='left' bgcolor='#e9eee9'><td>CAF</td>";
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject().getProjId()%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject().getProjId()%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
 						<%
 						CurrPart = NewPart;
 						CurrProj = NewProj;
@@ -344,7 +344,7 @@ function cascadeCAFCheck() {
 					while (!DayArray[col].equals(NewDate)) {
 						tsId = " ";
 						DisplayText = DisplayText+"<td colspan=4>0.0</td>";
-						temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
+						temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
 						if (projectMaster != null && projectMaster.getPaidAllowance() != null && projectMaster.getPaidAllowance().floatValue() != 0) {
 							temp_line = temp_line+"<td><input type=text class=inputBox name=TSAllowance"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24)'></td>";
 						} else {
@@ -389,7 +389,7 @@ function cascadeCAFCheck() {
 						fConfirm = "";
 						cafDisable = "";
 					}
-					temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2 value='"+ts.getTsHoursConfirm().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()' "+fRead+"></td>";
+					temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2 value='"+ts.getTsHoursConfirm().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()' "+fRead+"></td>";
 					if (projectMaster != null && projectMaster.getPaidAllowance() != null && projectMaster.getPaidAllowance().floatValue() != 0) {
 						String defaultValue = (ts.getTsHoursConfirm() != null && ts.getTsHoursConfirm().floatValue() != 0) ? "1.0" : "0.0";
 						String tsAllowance = ts.getTSAllowance() != null ? ts.getTSAllowance().toString() : defaultValue;
@@ -408,7 +408,7 @@ function cascadeCAFCheck() {
 				for (col=col; col < MaxCol; col++) {
 					tsId = " ";
 					DisplayText = DisplayText+"<td colspan=4>0.0</td>";
-					temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
+					temp_line = temp_line+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-99,24);CalcTot()'></td>";
 					if (projectMaster != null && projectMaster.getPaidAllowance() != null && projectMaster.getPaidAllowance().floatValue() != 0) {
 						temp_line = temp_line+"<td><input type=text class=inputBox name=TSAllowance"+row+" size=2  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24)'></td>";
 					} else {
@@ -462,11 +462,11 @@ function cascadeCAFCheck() {
 	</td>
 </tr>
 </table>
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DepartmentId" value="<%=DepartmentId%>">
-<input type="hidden" name="DataId" value="<%=DataPeriod%>">
-<input type="hidden" name="LastDataId" value="<%=LastDataPeriod%>">
-<input type="hidden" name="NextDataId" value="<%=NextDataPeriod%>">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DepartmentId" id="DepartmentId" value="<%=DepartmentId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataPeriod%>">
+<input type="hidden" name="LastDataId" id="LastDataId" value="<%=LastDataPeriod%>">
+<input type="hidden" name="NextDataId" id="NextDataId" value="<%=NextDataPeriod%>">
 
 </form>
 <%

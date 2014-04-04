@@ -58,7 +58,7 @@ function SearchResult() {
 <tr>
 	<td>
 		<Form action="pas.report.ProjectRenewCheckingRpt.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<table width=100%>
 			<tr>
 				<td colspan=6 valign="bottom"><hr color=red></hr></td>

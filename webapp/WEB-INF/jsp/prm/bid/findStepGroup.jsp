@@ -50,7 +50,7 @@
 	<tr>
 		<td>
 			<form name="queryForm" action="FindStepGroups.do" method="post">
-				<input type="hidden" name="formAction" value="query">
+				<input type="hidden" name="formAction" id="formAction" value="query">
 				
 				<TABLE width="100%">
 					<tr>
@@ -132,7 +132,7 @@
 	  				</logic:iterate>
 	  				<tr>
 						<td width="100%" colspan="4" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-						<input type=hidden name="offSet" value="<%=offSet%>">
+						<input type="hidden" name="offSet" id="offset" value="<%=offSet%>">
 							<%
 								int RecordSize = result.size();
 								int l = 0;

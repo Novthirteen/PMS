@@ -53,8 +53,8 @@ String action = (String)request.getAttribute("formaction");
 ProjPlanBomMaster master = (ProjPlanBomMaster)request.getAttribute("master");
 ProjectMaster pm = master.getProject();
 %>
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
-<input type="hidden" name="formaction" value="edit">
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>">
+<input type="hidden" name="formaction" id="formaction" value="edit">
 <table border="0" cellpadding="4" cellspacing="0" align ="center">
     <tr>
     <td colspan=3>&nbsp;</td>
@@ -98,7 +98,12 @@ double totalMD[] = new double[stList.size()];
 		
 		for(int i=0;i<stList.size();i++){
 			ProjPlanType type = (ProjPlanType)stList.get(i);
-			out.print("<td class=lblbold align=center width='10%'>"+type.getDescription()+"("+type.getSTRate()+")<input type=hidden name=servicetypeid value="+type.getId()+"><input type=hidden name=strate value="+type.getSTRate()+"></td>");
+		%>
+		<td class=lblbold align=center width='10%'><%=type.getDescription()+"("+type.getSTRate()+")"%>
+			<input type="hidden" name="servicetypeid" Id="servicetypeid" value="<%=type.getId()%>">
+			<input type="hidden" name="strate" Id="strate" value="<%=type.getSTRate()%>">
+		</td>
+		<%
 		}
 		%>
 		<td class="lblbold" align='center' nowrap>SubTotal(ManDay)</td>
@@ -144,10 +149,10 @@ double totalMD[] = new double[stList.size()];
 		<td id='bom_desc' bgcolor="<%=bgcolor%>" nowrap>
 			<input type="text" size="1" readonly style="border:0px;margin-left:'<%=level*10%>px';background-color:<%=bgcolor%>">
 			<%=ppb.getStepdesc()%>
-			<input type="hidden" name="bom_id" value="<%=ppb.getId()%>">
+			<input type="hidden" name="bom_id" id="bom_id" value="<%=ppb.getId()%>">
 		</td>
 		<td bgcolor="<%=bgcolor%>" align="center">
-			<input type="text" name="document" value="<%if(ppb.getDocument()!=null)out.println(ppb.getDocument());%>" readonly style="border:0px;background-color:<%=bgcolor%>">
+			<input type="text" name="document" id="document" value="<%if(ppb.getDocument()!=null)out.println(ppb.getDocument());%>" readonly style="border:0px;background-color:<%=bgcolor%>">
 		</td>
 		<%
 		double subTotalMD = 0;
@@ -165,23 +170,23 @@ double totalMD[] = new double[stList.size()];
 				}
 				subTotalMD += day;
 				%>
-				<input type="hidden" name="hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
+				<input type="hidden" name="hid_id<%=i%>" id="hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
 				<%}	else{
 				%>	
-				<input type="hidden" name="hid_id<%=i%>" value="-1">
+				<input type="hidden" name="hid_id<%=i%>" id="hid_id<%=i%>" value="-1">
 				<%}%>	
 			<!--
 			<input type="text"  size="5" name="st<%=i%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>" style="text-align:right;background-color:#ffffff" onchange="javascript:fnMDCal(this)">
 			-->
-			<input type="hidden" name="st<%=i%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>">
+			<input type="hidden" name="st<%=i%>" id="st<%=i%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>">
 			<%
 			if((master.getReveConfirm()!=null)&&(master.getReveConfirm().equalsIgnoreCase("confirm"))){
 			%>
-			<input type="text"  size="5" name="<%=ppb.getRanking()%>" value="<%=day%>" readonly style="text-align:right;background-color:<%=bgcolor%>;border=0px">
+			<input type="text"  size="5" name="<%=ppb.getRanking()%>" id="<%=ppb.getRanking()%>" value="<%=day%>" readonly style="text-align:right;background-color:<%=bgcolor%>;border=0px">
 			<%
 			}else{
 			%>
-			<input type="text"  size="5" name="<%=ppb.getRanking()%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>" <% if(!isNode) out.print("readonly");%> style="text-align:right;background-color:<% if(isNode){out.print("#ffffff");}else{out.print(bgcolor+";border=0px");}%>" onchange="javascript:fnMDCal(this)">
+			<input type="text"  size="5" name="<%=ppb.getRanking()%>" id="<%=ppb.getRanking()%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>" <% if(!isNode) out.print("readonly");%> style="text-align:right;background-color:<% if(isNode){out.print("#ffffff");}else{out.print(bgcolor+";border=0px");}%>" onchange="javascript:fnMDCal(this)">
 			<%
 			}
 			%>
@@ -189,7 +194,7 @@ double totalMD[] = new double[stList.size()];
 		<%
 		}
 		%>
-		<td bgcolor="<%=bgcolor%>" align="center"><input type="text" name="sub"  row="<%=i%>" oldvalue="<%=subTotalMD%>" value="<%=subTotalMD%>" readonly style="border:0px;background-color:<%=bgcolor%>;text-align:right"></td>
+		<td bgcolor="<%=bgcolor%>" align="center"><input type="text" name="sub" id="sub" row="<%=i%>" oldvalue="<%=subTotalMD%>" value="<%=subTotalMD%>" readonly style="border:0px;background-color:<%=bgcolor%>;text-align:right"></td>
 		<td class="lblbold" bgcolor="#ffffff" width="1%">&nbsp;</td>
 	</tr>
 	<%
@@ -203,12 +208,12 @@ double totalMD[] = new double[stList.size()];
 		double allTotal =0;
 		for(int col=0;col<stList.size();col++) {
 		%>
-		<td align="center"><input type="text" size="5" name="total" class="lblbold" col="<%=col%>" oldvalue="<%=totalMD[col]%>" value="<%=totalMD[col]%>" style="border:0px;background-color:#ffffff;text-align:right"></td>
+		<td align="center"><input type="text" size="5" name="total" id="total" class="lblbold" col="<%=col%>" oldvalue="<%=totalMD[col]%>" value="<%=totalMD[col]%>" style="border:0px;background-color:#ffffff;text-align:right"></td>
 		<%
 		allTotal += totalMD[col];
 		}
 		%>
-		<td align="center"><input type="text" name="allTotal" class="lblbold" oldvalue="<%=allTotal%>" value="<%=allTotal%>" style="border:0px;background-color:#ffffff;text-align:right"></td>
+		<td align="center"><input type="text" name="allTotal" id="allTotal" class="lblbold" oldvalue="<%=allTotal%>" value="<%=allTotal%>" style="border:0px;background-color:#ffffff;text-align:right"></td>
 		<td class="lblbold" bgcolor="#ffffff" width="1%">&nbsp;</td>
 	</tr>
 </table>
@@ -292,17 +297,17 @@ double totalMD[] = new double[stList.size()];
 											costTotal += cost;
 										%>
 							          	<tr>
-							          		<input type="hidden" id="currRate<%=i%>" value="<%=(type.getCurrency().getCurrRate()).floatValue()%>">
-							          		<input type="hidden" id="tax<%=i%>" value="<%=taxFlag%>">
+							          		<input type="hidden" name="currRate<%=i%>" id="currRate<%=i%>" value="<%=(type.getCurrency().getCurrRate()).floatValue()%>">
+							          		<input type="hidden" name="tax<%=i%>" id="tax<%=i%>" value="<%=taxFlag%>">
 								          	<td nowrap><p align="left"><%=type.getDescription()%> (<%=taxDesc%>)</td>
-								          	<td><p align="center"><input type="text"  size="5" name="currency" value="<%=type.getCurrency().getCurrName()%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="12" id="serviceRate<%=i%>" value="<%=numFormater.format(sr)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="12" id="costRate<%=i%>" value="<%=numFormater.format(type.getSl().getRate())%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="8" id="manday<%=i%>" value="<%=totalMD[i]%>" oldvalue="<%=totalMD[i]%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="16" id="revenue<%=i%>" value="<%=numFormater.format(revenue)%>" oldvalue="<%=numFormater.format(revenue)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="16" id="cost<%=i%>" value="<%=numFormater.format(cost)%>" oldvalue="<%=numFormater.format(cost)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="16" id="marginValue<%=i%>" value="<%=numFormater.format(marginValue)%>" oldvalue="<%=numFormater.format(marginValue)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
-								          	<td><p align="center"><input type="text"  size="8" id="margin<%=i%>" value="<%=numFormater.format(margin*100) + "%"%>" oldvalue="<%=numFormater.format(margin*100) + "%"%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="5" name="currency" id="currency" value="<%=type.getCurrency().getCurrName()%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="12" name="serviceRate<%=i%>" id="serviceRate<%=i%>" value="<%=numFormater.format(sr)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="12" name="costRate<%=i%>" id="costRate<%=i%>" value="<%=numFormater.format(type.getSl().getRate())%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="8" name="manday<%=i%>" id="manday<%=i%>" value="<%=totalMD[i]%>" oldvalue="<%=totalMD[i]%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="16" name="revenue<%=i%>" id="revenue<%=i%>" value="<%=numFormater.format(revenue)%>" oldvalue="<%=numFormater.format(revenue)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="16" name="cost<%=i%>" id="cost<%=i%>" value="<%=numFormater.format(cost)%>" oldvalue="<%=numFormater.format(cost)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="16" name="marginValue<%=i%>" id="marginValue<%=i%>" value="<%=numFormater.format(marginValue)%>" oldvalue="<%=numFormater.format(marginValue)%>" readonly style="text-align:right;background-color:#ffffff;border=0px"></td>
+								          	<td><p align="center"><input type="text"  size="8" name="margin<%=i%>" id="margin<%=i%>" value="<%=numFormater.format(margin*100) + "%"%>" oldvalue="<%=numFormater.format(margin*100) + "%"%>" readonly style="text-align:center;background-color:#ffffff;border=0px"></td>
 							          	</tr>
 					         			 <%
 					         			 }
@@ -316,11 +321,11 @@ double totalMD[] = new double[stList.size()];
 					         			 %>
 					         			 <tr>
 					         				<td class="bottomBox" colspan="4"><p align="right">Total:</td>
-					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="10" id="dayTotal" value="<%=dayTotal%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
-					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" id="revenueTotal" value="<%=numFormater.format(revenueTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
-					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" id="costTotal" value="<%=numFormater.format(costTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
-					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" id="marginValueTotal" value="<%=numFormater.format(marginValueTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
-					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="12" id="marginTotal" value="<%=numFormater.format(marginTotal*100) + "%"%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
+					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="10" name="dayTotal" id="dayTotal" value="<%=dayTotal%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
+					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" name="revenueTotal" id="revenueTotal" value="<%=numFormater.format(revenueTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
+					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" name="costTotal" id="costTotal" value="<%=numFormater.format(costTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
+					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="16" name="marginValueTotal" id="marginValueTotal" value="<%=numFormater.format(marginValueTotal)%>" readonly style="text-align:right;background-color:#e9eee9;border=0px"></td>
+					         			 	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="marginTotal" id="marginTotal" value="<%=numFormater.format(marginTotal*100) + "%"%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
 					         			 </tr>
 					                </table>
 					            </td>
@@ -343,7 +348,7 @@ double totalMD[] = new double[stList.size()];
 		<input type="submit" class="button" value="Confirm" onclick="document.frm1.formaction.value='confirm'"/>		
 		<%}%>
 		<input type="button" class="button" value="Back to List" onclick="location.replace('findProjBOM.do?formaction=listreve')">
-		<input type="hidden" name="dpt">
+		<input type="hidden" name="dpt" id="dpt">
 	</td></tr>
 </table>
 

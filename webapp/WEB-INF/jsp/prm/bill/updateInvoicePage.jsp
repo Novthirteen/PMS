@@ -115,23 +115,23 @@ function FnCancel() {
 	 Float defaultCurrRate = null;
 %>
 <form name="form1" action="editInvoice.do" method="post">
-	<input type="hidden" name="formAction" value="">
-	<input type="hidden" name="process" value="<%=request.getParameter("process")%>">
-	<input type="hidden" name="invoiceId" value="<%=pi.getId()%>">
-	<input type="hidden" name="invoice" value="<%=Invoice%>">
-	<input type="hidden" name="project" value="<%=Project%>">
-	<input type="hidden" name="billAddress" value="<%=BillAddress%>">
-	<input type="hidden" name="status" value="<%=Status%>">
-	<input type="hidden" name="department" value="<%=Department%>">
+	<input type="hidden" name="formAction" id="formAction" value="">
+	<input type="hidden" name="process" id="process" value="<%=request.getParameter("process")%>">
+	<input type="hidden" name="invoiceId" id="invoiceId" value="<%=pi.getId()%>">
+	<input type="hidden" name="invoice" id="invoice" value="<%=Invoice%>">
+	<input type="hidden" name="project" id="project" value="<%=Project%>">
+	<input type="hidden" name="billAddress" id="billAddress" value="<%=BillAddress%>">
+	<input type="hidden" name="status" id="status" value="<%=Status%>">
+	<input type="hidden" name="department" id="department" value="<%=Department%>">
 </form>
 <form name="updateForm" action="editInvoice.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="update">
-	<input type="hidden" name="process" value="<%=request.getParameter("process")%>">
-	<input type="hidden" name="invoiceId" value="<%=pi.getId()%>">
-	<input type="hidden" name="confirmId" value="">
-	<input type="hidden" name="receiptId" value="">
-	<input type="hidden" name="invoiceType" value="<%=Constants.INVOICE_TYPE_NORMAL%>">
+	<input type="hidden" name="formAction" id="formAction" value="update">
+	<input type="hidden" name="process" id="process" value="<%=request.getParameter("process")%>">
+	<input type="hidden" name="invoiceId" id="invoiceId" value="<%=pi.getId()%>">
+	<input type="hidden" name="confirmId" id="confirmId" value="">
+	<input type="hidden" name="receiptId" id="receiptId" value="">
+	<input type="hidden" name="invoiceType" id="invoiceType" value="<%=Constants.INVOICE_TYPE_NORMAL%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<%
@@ -233,7 +233,7 @@ function FnCancel() {
 							<div style="display:inline" id="labelBillAddress">
 								<%=pi.getBillAddress().getDescription() != null ? pi.getBillAddress().getDescription() : ""%>
 							</div>
-							<input type="hidden" name="billAddressId" value="<%=pi.getBillAddress().getPartyId()%>">	
+							<input type="hidden" name="billAddressId" id="billAddressId" value="<%=pi.getBillAddress().getPartyId()%>">	
 							<%
 								if (canUpdate) {
 							%>
@@ -331,7 +331,7 @@ function FnCancel() {
 									}
 								%>
 							</div>
-							<input type="hidden" name="emsId" value="<%=pi.getEMS() != null ? pi.getEMS().getId() + "" : ""%>">	
+							<input type="hidden" name="emsId" id="emsId" value="<%=pi.getEMS() != null ? pi.getEMS().getId() + "" : ""%>">	
 							<%
 								if (canUpdate && AOFSECURITY.hasEntityPermission("PROJ_EMS", "_VIEW", session)) {
 							%>

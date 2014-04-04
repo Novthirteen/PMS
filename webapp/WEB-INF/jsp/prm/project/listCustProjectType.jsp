@@ -63,11 +63,11 @@ function fnSubmit1(start) {
 <tr>	
 	<td>
 		<form name="frm" action="listCustProjectType.do" method="post">
-			<input type=hidden name="offset" value="<%=offset%>">
+			<input type="hidden" name="offset" Id="offset" value="<%=offset%>">
 		    Event Category Code:
-			<input type="text" name="textcode" value="" class="">
+			<input type="text" name="textcode" Id="textcode" value="" class="">
 			Event Category Name:
-			<input type="text" name="text" value="" class="">
+			<input type="text" name="text" Id="text" value="" class="">
 		    Open:
 		    <select name="textstatus" >
 	    <option value=""></option>

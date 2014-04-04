@@ -84,17 +84,13 @@ try{
 		<script language="javascript">
 function showCustomerGroupDialog()
 {
-//	var code,desc,pid;
-//	pid=document.getElementById("prospectCompanyId").value;
-
 		v = window.showModalDialog(
 			"system.showDialog.do?title=helpdesk.servicelevel.category.dialog.title&crm.dialogCustomerGroupList.do?",
 			null,
 			'dialogWidth:500px;dialogHeight:550px;status:no;help:no;scroll:no');
 		if (v != null) {
 			document.getElementById("account").innerHTML = v.split("|")[1];
-			document.getElementById("AccountId").value = v.split("|")[0];
-			//alert(document.getElementById("AccountId").value)			
+			document.getElementById("AccountId").value = v.split("|")[0];	
 	}
 }
 
@@ -184,15 +180,15 @@ function showIndustryDialog()
 	  		<TR>
 	    		<TD width='100%'>
 	    			<form action="editProspect.do" method="post" name="EditForm">
-    					<input type="hidden" name="action" value=<%=action%>>
-						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value=<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>>
-						<input type="hidden" name="role" value="CUSTOMER">
-						<input type="hidden" name="openType" value="dialogView">
-						<input type="hidden" name="firstVisit" value="false">
-						<input type="hidden" name="flag" value=<%=flag%>>
-						<input type="hidden" name="prospectCompanyId" value=<%=prospectCompanyId%>>
-						<input type="hidden" name="id" value=<%=id%>>
-						<input type="hidden" name="pid" value=<%=PartyId%>>
+    					<input type="hidden" name="action" id = "action" value=<%=action%>>
+						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value=<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>>
+						<input type="hidden" name="role" id = "role" value="CUSTOMER">
+						<input type="hidden" name="openType" id = "openType" value="dialogView">
+						<input type="hidden" name="firstVisit" id = "firstVisit" value="false">
+						<input type="hidden" name="flag" id = "flag" value=<%=flag%>>
+						<input type="hidden" name="prospectCompanyId" id = "prospectCompanyId" value=<%=prospectCompanyId%>>
+						<input type="hidden" name="id" id = "id" value=<%=id%>>
+						<input type="hidden" name="pid" id = "pid" value=<%=PartyId%>>
     					<table border=0 width='100%' cellspacing='0' cellpadding='2' >
 					      	<tr>
 					      		<td>&nbsp;</td>
@@ -221,10 +217,10 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						  <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="description" size="30" value="">
+						          	<input type="text" class="inputBox" name="description" id="description" size="30" value="">
 						   <%}else{
 						   %>        	
-						   			<input type="text" class="inputBox" name="description" size="30" value="<%=CustParty1.getDescription()== null ? "" : CustParty1.getDescription()%>">
+						   			<input type="text" class="inputBox" name="description" id="description" size="30" value="<%=CustParty1.getDescription()== null ? "" : CustParty1.getDescription()%>">
 						    <%}%>
 						        </td>
 						    </tr>
@@ -234,9 +230,9 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						    <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="ChineseName" size="30"  value="">
+						          	<input type="text" class="inputBox" name="ChineseName" id="ChineseName" size="30"  value="">
 						      <%}else{%>
-	   						      	<input type="text" class="inputBox" name="ChineseName" size="30"  value="<%=CustParty1.getChineseName() == null ? "" :CustParty1.getChineseName()%>">
+	   						      	<input type="text" class="inputBox" name="ChineseName" id="ChineseName" size="30"  value="<%=CustParty1.getChineseName() == null ? "" :CustParty1.getChineseName()%>">
 	   						   <%}%>   	
 						        </td>
 					      	</tr>
@@ -274,9 +270,9 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						    <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="address" size="30" value="">
+						          	<input type="text" class="inputBox" name="address" id="address" size="30" value="">
 						   <%}else{%>        	
-						   			<input type="text" class="inputBox" name="address" size="30" value="<%=CustParty1.getAddress()== null ? "" : CustParty1.getAddress()%>">
+						   			<input type="text" class="inputBox" name="address" id="address" size="30" value="<%=CustParty1.getAddress()== null ? "" : CustParty1.getAddress()%>">
 						    <%}%>
 						          	
 						        </td>
@@ -287,9 +283,9 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						     <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="postcode" size="30"  value="">
+						          	<input type="text" class="inputBox" name="postcode" id="postcode" size="30"  value="">
 						   <%}else{%>        	
-						   			<input type="text" class="inputBox" name="postcode" size="30"  value="<%=CustParty1.getPostCode()== null ? "" : CustParty1.getPostCode()%>">
+						   			<input type="text" class="inputBox" name="postcode" id="postcode" size="30"  value="<%=CustParty1.getPostCode()== null ? "" : CustParty1.getPostCode()%>">
 						    <%}%>
 						          	
 						        </td>
@@ -301,9 +297,9 @@ function showIndustryDialog()
 						    
 						        <td>
 						   <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="telecode" size="30" value="">
+						          	<input type="text" class="inputBox" name="telecode" id="telecode" size="30" value="">
 						   <%}else{%>        	
-						   			<input type="text" class="inputBox" name="telecode" size="30" value="<%=CustParty1.getTeleCode()== null ? "" : CustParty1.getTeleCode()%>">
+						   			<input type="text" class="inputBox" name="telecode" id="telecode" size="30" value="<%=CustParty1.getTeleCode()== null ? "" : CustParty1.getTeleCode()%>">
 						    <%}%>
 						          	
 						        </td>
@@ -314,9 +310,9 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						   <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="faxNo" size="30"  value="">
+						          	<input type="text" class="inputBox" name="faxNo" id="faxNo" size="30"  value="">
 						   <%}else{%>        	
-						   			<input type="text" class="inputBox" name="faxNo" size="30"  value="<%=CustParty1.getFaxCode()== null ? "" : CustParty1.getFaxCode()%>">
+						   			<input type="text" class="inputBox" name="faxNo" id="faxNo" size="30"  value="<%=CustParty1.getFaxCode()== null ? "" : CustParty1.getFaxCode()%>">
 						    <%}%>
 						          	
 						        </td>
@@ -327,9 +323,9 @@ function showIndustryDialog()
 						        </td>
 						        <td align="left">
 						    <%if (CustParty1 == null) {%>
-						          	<input type="text" class="inputBox" name="bankNo" size="30"  value="">
+						          	<input type="text" class="inputBox" name="bankNo" id="bankNo" size="30"  value="">
 						   <%}else{%>        	
-						   			<input type="text" class="inputBox" name="bankNo" size="30"  value="<%=CustParty1.getAccountCode()== null ? "" : CustParty1.getAccountCode()%>">
+						   			<input type="text" class="inputBox" name="bankNo" id="bankNo" size="30"  value="<%=CustParty1.getAccountCode()== null ? "" : CustParty1.getAccountCode()%>">
 						    <%}%>
 						          	
 						        </td>

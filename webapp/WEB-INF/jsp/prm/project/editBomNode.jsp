@@ -46,9 +46,9 @@ else{
 <br>
 <table width=100% align=center Frame=box rules=none bordercolordark=black bordercolorlight=white bgcolor=white>
 <CAPTION align="center" class=pgheadsmall>Edit Task </CAPTION>
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
-<input type="hidden" name="formaction" value="editSave">
-<input type="hidden" name="bomid" value="<%=bom.getId()%>">
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>">
+<input type="hidden" name="formaction" id="formaction" value="editSave">
+<input type="hidden" name="bomid" id="bomid" value="<%=bom.getId()%>">
 
 	<tr bgcolor="#e9eee9">
 	<td class="lblbold" align="center">Parent Node:</td>

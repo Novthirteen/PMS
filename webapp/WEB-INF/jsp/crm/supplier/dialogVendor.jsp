@@ -60,8 +60,8 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <form action="crm.dialogVendorList.do" method="POST" name=frm>
 <title>Customer Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id = "pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id = "FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Supplier Select</CAPTION>
 </table>

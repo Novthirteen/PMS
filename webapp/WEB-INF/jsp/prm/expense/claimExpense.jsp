@@ -138,10 +138,10 @@ function CalcTot()
 }
 </script>
 <form name="frm" method="post">
-<input type="hidden" name="FormAction" value="<%=action%>">
-<input type="hidden" name="SecId" value="<%=SecId%>">
-<input type="hidden" name="DataId" value="<%=findmaster.getId().toString()%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+<input type="hidden" name="SecId" id="SecId" value="<%=SecId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=findmaster.getId().toString()%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  Expense Pay-Out Maintenance </CAPTION>
 <tr>
@@ -153,10 +153,10 @@ function CalcTot()
 			<tr>
 				<td class="lblbold" align=right>Form Code :</td><td class="lblLight"><%=findmaster.getFormCode()%></td>
 				<td class="lblbold" align=right>Deparment :</td><td class="lblLight"><%=findmaster.getExpenseUser().getParty().getDescription()%></td>
-				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=findmaster.getExpenseUser().getName()%><input type="hidden" name="UserId" value="<%=findmaster.getExpenseUser().getUserLoginId()%>"></td>
+				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=findmaster.getExpenseUser().getName()%><input type="hidden" name="UserId" id="UserId" value="<%=findmaster.getExpenseUser().getUserLoginId()%>"></td>
 				<td class="lblbold" align=right>Status:</td>
 				<td class="lblLight"><%=findmaster.getStatus()%>
-				<input type=hidden name="FormStatus" value="<%=findmaster.getStatus()%>">&nbsp;</td>
+				<input type="hidden" name="FormStatus" id="FormStatus" value="<%=findmaster.getStatus()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="lblbold" align=right>Entry Period:</td>
@@ -207,7 +207,7 @@ function CalcTot()
 					if (!findmaster.getClaimType().equals("CY") || !et.getExpDesc().equals("Allowance")) {
 					ExpLevel= et.getExpSeq().length();
 				%>
-				<td class="lblbold" align="center"><%=et.getExpDesc()%><input type="hidden" name="ExpType" value="<%=et.getExpId()%>"></td>
+				<td class="lblbold" align="center"><%=et.getExpDesc()%><input type="hidden" name="ExpType" id="ExpType" value="<%=et.getExpId()%>"></td>
 				<%
 					}
 				}
@@ -235,7 +235,7 @@ function CalcTot()
 			while(itDate.hasNext()){
 				Date fd = (Date)itDate.next();%>
 				<tr bgcolor="#e9eee9">
-				<td class="lblbold"><%=Date_formater.format(fd)%><input type=hidden name=DateId value="<%=Date_formater.format(fd)%>"></td>
+				<td class="lblbold"><%=Date_formater.format(fd)%><input type="hidden" name="DateId" id="DateId" value="<%=Date_formater.format(fd)%>"></td>
 				<%itExpType = ExpTypeList.iterator();
 				RowTotal = 0;
 				while(itExpType.hasNext()){
@@ -312,7 +312,7 @@ function CalcTot()
 							}
 						} 
 				%>
-					<td align="left" class="lblbold"><%=AmtStr%><input type=hidden name="AmtRecId" value="<%=RecId%>"></td>
+					<td align="left" class="lblbold"><%=AmtStr%><input type="hidden" name="AmtRecId" id="AmtRecId" value="<%=RecId%>"></td>
 				<%
 					}
 				}
@@ -383,7 +383,7 @@ function CalcTot()
 							}
 						} 
 				%>
-					<td align="left" class="lblbold"><input name="AmtRecValue" type=text class=inputBox size=8 value="<%=AmtStr%>" <%=fRead%> onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()"></td>
+					<td align="left" class="lblbold"><input type="text" name="AmtRecValue" id="AmtRecValue" class=inputBox size=8 value="<%=AmtStr%>" <%=fRead%> onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()"></td>
 				<%
 					}
 				}
@@ -402,10 +402,10 @@ function CalcTot()
 					<input TYPE="button" class="button" name="PrintForm" value="Excel Form" onclick="fnExportForm()">
 					<input type="button" value="Back to List" name="Back" class="button" onclick="location.replace('findExpToClaimPage.do');">
 					<input type="button" class="button" name="ViewTS" value="View TimeSheet" onclick="showTsDialog();">
-					<input type="hidden" name="ExUserId" value="<%=findmaster.getExpenseUser().getName()%>">
-					<input type="hidden" name="ProjectId" value="<%=findmaster.getProject().getProjId()%>">
-					<input type="hidden" name="ProjectNm" value="<%=findmaster.getProject().getProjName()%>">
-					<input type="hidden" name="DatePeriod" value="<%=Date_formater.format((Date)DateList.iterator().next())%>">
+					<input type="hidden" name="ExUserId" id="ExUserId" value="<%=findmaster.getExpenseUser().getName()%>">
+					<input type="hidden" name="ProjectId" id="ProjectId" value="<%=findmaster.getProject().getProjId()%>">
+					<input type="hidden" name="ProjectNm" id="ProjectNm" value="<%=findmaster.getProject().getProjName()%>">
+					<input type="hidden" name="DatePeriod" id="DatePeriod" value="<%=Date_formater.format((Date)DateList.iterator().next())%>">
 				</td>
 			</tr>
 			<%if(request.getAttribute("deleteErrorString") != null)

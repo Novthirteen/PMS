@@ -60,9 +60,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 		if(master!=null)
 		pm = master.getProject();
 		%>
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
-<input type="hidden" name="formaction" value="edit">
-<input type="hidden" name="mFlag" value="false">
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>">
+<input type="hidden" name="formaction" id="formaction" value="edit">
+<input type="hidden" name="mFlag" id="mFlag" value="false">
 <table border="0" cellpadding="4" cellspacing="0" align ="center" width="400">
 		<CAPTION class=pgheadsmall>Project BOM(Schedule Confirm)</CAPTION>
 		<tr ><td colspan=10>&nbsp;</td></tr>
@@ -81,7 +81,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	    <%}%>
 	    <td class="lblbold"  align="right">Version:</td>
 	    <td class=""  align="left">
-	    	<select name="version" onchange="javascript:FnViewHistory()">
+	    	<select name="version" id="version" onchange="javascript:FnViewHistory()">
 	    <%
 	    for(int i=0;i<VersionList.size();i++)
 	    {
@@ -130,9 +130,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 			ProjPlanType type = (ProjPlanType)stList.get(i);
 %>
 		<td class=lblbold align=center ><font color="red">subTotal</font>
-			<input type=hidden name=p_servicetypeid value="<%=type.getId()%>">
-			<input type=hidden name=p_strate value="<%=type.getSTRate()%>">
-			<input type=hidden name=p_costrate value="<%if(type.getSl()!=null) out.println(type.getSl().getRate());%>">
+			<input type="hidden" name="p_servicetypeid" Id="p_servicetypeid" value="<%=type.getId()%>">
+			<input type="hidden" name="p_strate" Id="p_strate" value="<%=type.getSTRate()%>">
+			<input type="hidden" name="p_costrate" Id="p_costrate" value="<%if(type.getSl()!=null) out.println(type.getSl().getRate());%>">
 		</td>
 <%
 			Iterator it = type.getChildren().iterator();
@@ -140,9 +140,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 				ProjPlanType child = (ProjPlanType)it.next();
 		%>
 		<td class=lblbold align=center ><%=child.getDescription()%>
-			<input type=hidden name=c_servicetypeid value="<%=child.getId()%>">
-			<input type=hidden name=c_strate value="<%=child.getSTRate()%>">
-			<input type=hidden name=c_costrate value="<%if(child.getSl()!=null) out.println(child.getSl().getRate());%>">
+			<input type="hidden" name="c_servicetypeid" Id="c_servicetypeid" value="<%=child.getId()%>">
+			<input type="hidden" name="c_strate" Id="c_strate" value="<%=child.getSTRate()%>">
+			<input type="hidden" name="c_costrate" Id="c_costrate" value="<%if(child.getSl()!=null) out.println(child.getSl().getRate());%>">
 		</td>
 		<%}%>
 		<td class=lblbold align=center>Sum
@@ -177,9 +177,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 		<td id='bom_desc' style="margin-left:'<%=level*10%>px'" nowrap>
 			<input size="1" type="text" readonly style="border:0px;margin-left:'<%=level*10%>px';background-color:#e9eee9">
 			<%=ppb.getStepdesc()%>
-			<input type="hidden" name="bom_id" value="<%=ppb.getId()%>">
-			<input type="hidden" name="bom_ranking" value="<%=ppb.getRanking()%>">
-			<input type="hidden" name="bom_stepdesc" value="<%=ppb.getStepdesc()%>">
+			<input type="hidden" name="bom_id" id="bom_id" value="<%=ppb.getId()%>">
+			<input type="hidden" name="bom_ranking" id="bom_ranking" value="<%=ppb.getRanking()%>">
+			<input type="hidden" name="bom_stepdesc" id="bom_stepdesc" value="<%=ppb.getStepdesc()%>">
 		</td>
 		<%
 			int colcount = -1; //actual col count from the very first service type
@@ -199,11 +199,11 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 				oldSum +=pday;
 		%>
 		<td align="center">
-			<input type="text"  size="5" name="st<%=i%>-<%=j%>" group="<%=j%>" parentnode="true" col="0" row="<%=i%>" colcount="<%=colcount%>" oldvalue="<%=pday%>" value="<%=pday%>" childsize="<%=parent.getChildren().size()%>" readonly style="text-align:right;border:0px;background-color:#e9eee9" >
+			<input type="text"  size="5" name="st<%=i%>-<%=j%>" id="st<%=i%>-<%=j%>" group="<%=j%>" parentnode="true" col="0" row="<%=i%>" colcount="<%=colcount%>" oldvalue="<%=pday%>" value="<%=pday%>" childsize="<%=parent.getChildren().size()%>" readonly style="text-align:right;border:0px;background-color:#e9eee9" >
 		<%if(tempDis){		%>
-			<input type="hidden" name="p_hid_id<%=i%>" value="<%=pday%>" >
+			<input type="hidden" name="p_hid_id<%=i%>" id="p_hid_id<%=i%>" value="<%=pday%>" >
 		<%			}else{		%>	
-			<input type="hidden" name="p_hid_id<%=i%>" value="0">
+			<input type="hidden" name="p_hid_id<%=i%>" id="p_hid_id<%=i%>" value="0">
 		<%		}		%>	
 		</td>
 		<%
@@ -226,7 +226,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 					
 		%>
 		<td align="center">
-			<input type="text"  size="5" name="<%=ppb.getRanking()%>" group="<%=j%>" row="<%=i%>" col=<%=col%> childcol="<%=childcol%>" colcount="<%=colcount%>" oldvalue="<%=deFormat.format(day)%>" value="<%=deFormat.format(day)%>" childsize="<%=ppt.getParent().getChildren().size()%>" 
+			<input type="text"  size="5" name="<%=ppb.getRanking()%>" id="<%=ppb.getRanking()%>" group="<%=j%>" row="<%=i%>" col=<%=col%> childcol="<%=childcol%>" colcount="<%=colcount%>" oldvalue="<%=deFormat.format(day)%>" value="<%=deFormat.format(day)%>" childsize="<%=ppt.getParent().getChildren().size()%>" 
 			<%if(isLeaf){%>
 			style="text-align:right;background-color:#ffffff;border-color:#7F9DB9"" onchange="javascript:fnReCal(this);ChangeDuration(this,1);fnChangeFlag()"
 			<%}else{%>
@@ -235,33 +235,33 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 			>
 		<%if(tempDis){
 		%>
-			<input type="hidden" name="c_hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
+			<input type="hidden" name="c_hid_id<%=i%>" id="c_hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
 		<%
 				}else{
 		%>	
-			<input type="hidden" name="c_hid_id<%=i%>" value="-1"><!--used to insert  bomst  -->
+			<input type="hidden" name="c_hid_id<%=i%>" id="c_hid_id<%=i%>" value="-1"><!--used to insert  bomst  -->
 		<%
 				}
 		%>	
-			<input type="hidden" name="st<%=i%>" value="<%=deFormat.format(day)%>" >
+			<input type="hidden" name="st<%=i%>" id="st<%=i%>" value="<%=deFormat.format(day)%>" >
 		</td>
 		<%
 				}
 				%>
 		<td align="center">
-			<input type="text" size="5" name="sum<%=i%>" group="<%=j%>" stop="1" replace="<%if(pday!=now_day)out.println("OK");else out.println(deFormat.format(now_day));%>" value="<%if(pday==now_day)out.println("OK");else out.println(deFormat.format(now_day));%>" readonly style="border:0px;background-color:#e9eee9;text-align:right"/>
+			<input type="text" size="5" name="sum<%=i%>" id="sum<%=i%>" group="<%=j%>" stop="1" replace="<%if(pday!=now_day)out.println("OK");else out.println(deFormat.format(now_day));%>" value="<%if(pday==now_day)out.println("OK");else out.println(deFormat.format(now_day));%>" readonly style="border:0px;background-color:#e9eee9;text-align:right"/>
 		</td>
 				<%
 			}
 		%>
 		<td align="center"><%=deFormat.format(oldSum)%></td>
-		<td align="center" class="lblbold"><input type="text" name="rowSum<%=i%>" size="5" value="<%=deFormat.format(sumRow)%>" readonly style="border:0px;background-color:#e9eee9;font-weight: bold"></td>
+		<td align="center" class="lblbold"><input type="text" name="rowSum<%=i%>" id="rowSum<%=i%>" size="5" value="<%=deFormat.format(sumRow)%>" readonly style="border:0px;background-color:#e9eee9;font-weight: bold"></td>
 		<td nowrap >
 			<p align="center">
-			<input type="hidden" name="dt<%=i%>" 
+			<input type="hidden" name="dt<%=i%>" id="dt<%=i%>"
 			value="<%if(ppb.getStart_time()!=null){out.println(df.format(ppb.getStart_time()));}
 						else {out.println(df.format(Calendar.getInstance().getTime()));}%>" />
-			<input type="text" size="10" name="date<%=ppb.getRanking()%>" col="0" hid="<%=i%>"
+			<input type="text" size="10" name="date<%=ppb.getRanking()%>" id="date<%=ppb.getRanking()%>" col="0" hid="<%=i%>"
 			value="<%if(ppb.getStart_time()!=null){out.println(df.format(ppb.getStart_time()));}
 						else {out.println(df.format(Calendar.getInstance().getTime()));}%>" 
 			<%if(!isLeaf) out.print("readonly");%> 
@@ -278,10 +278,10 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	    </td>
 		<td nowrap >
 			<p align="center">
-			<input type="hidden" name="dt<%=i%>" 
+			<input type="hidden" name="dt<%=i%>" id="dt<%=i%>" 
 			value="<%if(ppb.getEnd_time()!=null){out.println(df.format(ppb.getEnd_time()));}
 						else {out.println(df.format(Calendar.getInstance().getTime()));}%>" />
-			<input type="text" size="10" name="date<%=ppb.getRanking()%>" col="1" hid="<%=i%>"
+			<input type="text" size="10" name="date<%=ppb.getRanking()%>" id="date<%=ppb.getRanking()%>" col="1" hid="<%=i%>"
 			value="<%if(ppb.getEnd_time()!=null){out.println(df.format(ppb.getEnd_time()));}
 						else {out.println(df.format(Calendar.getInstance().getTime()));}%>" 
 			<%if(!isLeaf) out.print("readonly");%> 
@@ -292,7 +292,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 			<input type="text" name="pre" id="pre<%=i%>" size="5"  row="<%=i%>" value="<%if(ppb.getPredecessor()!=null) out.println(ppb.getPredecessor());%>" style="text-align:center;background-color:#ffffff;border-color:#7F9DB9" onChange="fnPredecessor(this);fnChangeFlag()">
 		</td>
 		<td align="center" nowrap>
-			<input size="30" type="text" name="document"  value="<%if(ppb.getDocument()!=null)out.println(ppb.getDocument());%>" readonly style="background-color:#e9eee9;border:0px">
+			<input size="30" type="text" name="document" id="document" value="<%if(ppb.getDocument()!=null)out.println(ppb.getDocument());%>" readonly style="background-color:#e9eee9;border:0px">
 		</td>
 	</tr>
 	
@@ -301,9 +301,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	<tr align="right">
 		<table align="right">
 			<tr>
-				<td><input type="text" value="" name="totalReve" style="border:0px;background-color:#ffffff;text-align:right"></td>
-				<td><input type="text" name="totalCost" style="border:0px;background-color:#ffffff;text-align:right"></td>
-				<td><input type="text" name="totalMargin" style="border:0px;background-color:#ffffff;text-align:right"></td>
+				<td><input type="text" value="" name="totalReve" id="totalReve" style="border:0px;background-color:#ffffff;text-align:right"></td>
+				<td><input type="text" name="totalCost" id="totalCost" style="border:0px;background-color:#ffffff;text-align:right"></td>
+				<td><input type="text" name="totalMargin" id="totalMargin" style="border:0px;background-color:#ffffff;text-align:right"></td>
 			</tr>
 		</table>
 	</tr>

@@ -87,8 +87,8 @@ if (true|| AOFSECURITY.hasEntityPermission("CUST_PARTY", "_VIEW", session)) {
 %>
 <form action="crm.dialogProspectList.do" method="POST" name=frm>
 <title>Customer / Prosepect Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id = "pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id = "FormAction">
 <table width=100% align=center >
 	<CAPTION class=pgheadsmall>Customer / Prospect Selection</CAPTION>
 	<tr><td align='center' colspan=5>
@@ -162,16 +162,16 @@ if (true|| AOFSECURITY.hasEntityPermission("CUST_PARTY", "_VIEW", session)) {
 				<td width=45%>&nbsp;&nbsp;<%=cp.getDescription()%></td>
 				<td width=20%><%=cp.getAccount().getDescription()%></td>
 				<td width=20%><%=cp.getType().equals("C") ? "Customer" : "Prospect"%>
-			<input type="hidden" name="chineseName" value="<%=cp.getChineseName()%>">
-			<input type="hidden" name="city" value="<%=cp.getCity()%>">
-			<input type="hidden" name="address" value="<%=cp.getAddress()%>">
-			<input type="hidden" name="industry" value="<%=cp.getIndustry().getDescription()%>">
-			<input type="hidden" name="industryId" value="<%=cp.getIndustry().getId()%>">
-			<input type="hidden" name="customerGroup" value="<%=cp.getAccount().getDescription()%>">
-			<input type="hidden" name="customerGroupId" value="<%=cp.getAccount().getAccountId()%>">
-			<input type="hidden" name="postCode" value="<%=cp.getPostCode()%>">
-			<input type="hidden" name="teleNo" value="<%=cp.getTeleCode()%>">
-			<input type="hidden" name="faxNo" value="<%=cp.getFaxCode()%>">
+			<input type="hidden" name="chineseName" id = "chineseName" value="<%=cp.getChineseName()%>">
+			<input type="hidden" name="city" id = "city" value="<%=cp.getCity()%>">
+			<input type="hidden" name="address" id = "address" value="<%=cp.getAddress()%>">
+			<input type="hidden" name="industry" id = "industry" value="<%=cp.getIndustry().getDescription()%>">
+			<input type="hidden" name="industryId" id = "industryId" value="<%=cp.getIndustry().getId()%>">
+			<input type="hidden" name="customerGroup" id = "customerGroup" value="<%=cp.getAccount().getDescription()%>">
+			<input type="hidden" name="customerGroupId" id = "customerGroupId" value="<%=cp.getAccount().getAccountId()%>">
+			<input type="hidden" name="postCode" id = "postCode" value="<%=cp.getPostCode()%>">
+			<input type="hidden" name="teleNo" id = "teleNo" value="<%=cp.getTeleCode()%>">
+			<input type="hidden" name="faxNo" id = "faxNo" value="<%=cp.getFaxCode()%>">
 			</td>
 			</tr>
 			<%}%>

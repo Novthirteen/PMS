@@ -166,9 +166,9 @@ function showProjctDialog() {
 	<caption class="pgheadsmall">Airfare Cost Report</caption> 
 	<tr>
 		<td>
-				<input type="hidden" name="formAction">
-				<input type="hidden" name="recordPerPage" value="<%=recordPerPage%>">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="formAction" id="formAction">
+				<input type="hidden" name="recordPerPage" id="recordPerPage" value="<%=recordPerPage%>">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<table width=100% >
 					<tr>
 						<td colspan="16" valign="bottom"><hr color=red></hr></td>

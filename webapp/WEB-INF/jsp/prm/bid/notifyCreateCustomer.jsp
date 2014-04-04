@@ -141,8 +141,8 @@ if (AOFSECURITY.hasEntityPermission("SALES_FUNNEL", "_CREATE", session)) {
 	</td>
 	<td align="left"  class="lblbold">
 		<div style="display:inline" id="labelSendTo">&nbsp;</div>
-			<input type="hidden" name="emailAddr" value=""> 
-			<input type="hidden" name="targetName" value="">
+			<input type="hidden" name="emailAddr" id="emailAddr" value=""> 
+			<input type="hidden" name="targetName" id="targetName" value="">
 			<a href="javascript:showDialogPerson()"><img align="absmiddle"
 			alt="<bean:message key="helpdesk.call.select" />"
 			src="images/select.gif" border="0" /></a>
@@ -153,7 +153,7 @@ if (AOFSECURITY.hasEntityPermission("SALES_FUNNEL", "_CREATE", session)) {
 	<td/>
 </tr>
 </table>
-<input type="hidden" name="formAction" value="">
+<input type="hidden" name="formAction" id="formAction" value="">
 </form>
 <%	
 	Hibernate2Session.closeSession();

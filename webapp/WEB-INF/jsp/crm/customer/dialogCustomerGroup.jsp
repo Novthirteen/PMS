@@ -70,8 +70,8 @@ try{
 %>
 <form action="crm.dialogCustomerGroupList.do" method="POST" name=frm>
 <title>Customer Group Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Customer Group Selection</CAPTION>
 </table>

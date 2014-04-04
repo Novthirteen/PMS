@@ -57,7 +57,7 @@ if (AOFSECURITY.hasEntityPermission("ADMIN_CURRENCY", "_VIEW", session)) {
 </table>
 
 <form name="CurrencyListForm" action="editCurrencyType.do" method="post">
-<input type="hidden" name="FormAction" value="batchUpdate">
+<input type="hidden" name="FormAction" id="FormAction" value="batchUpdate">
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
     <TD width='100%'>
@@ -108,16 +108,16 @@ if (AOFSECURITY.hasEntityPermission("ADMIN_CURRENCY", "_VIEW", session)) {
 			                        
                 <td> 
                   <p ><a href="editCurrencyType.do?DataId=<bean:write name="p" property="currId"/>"><bean:write name="p" property="currId"/></a> 
-                  <input type="hidden" name="currId" value="<bean:write name="p" property="currId"/>">
+                  <input type="hidden" name="currId" id="currId" value="<bean:write name="p" property="currId"/>">
                 </td>
                 <td>
                     <div class="tabletext">
-                    <p ><input type="text" class="inputBox" name="currName" value="<bean:write name="p" property="currName"/>" size="30">
+                    <p ><input type="text" class="inputBox" name="currName" id="currName" value="<bean:write name="p" property="currName"/>" size="30">
                     </div>   
                 </td>
                 <td>
                     <div class="tabletext">
-                    <p ><input type="text" class="inputBox" name="currRate" value="<bean:write name="p" property="currRate"/>" size="30">
+                    <p ><input type="text" class="inputBox" name="currRate" id="currRate" value="<bean:write name="p" property="currRate"/>" size="30">
                     </div>   
                 </td>
 				</tr>

@@ -174,15 +174,15 @@ function BackToList() {
 
 </script>
 <Form action="projectSelect.do?UserId=<%=UserId%>&DataPeriod=<%=DataPeriod%>&SelectType=TSForecast" name="ProjectSelectForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="editTSForecast.do" name="EditTimeSheetForm" method="post">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="hiddenProjectCode">
-<input type="hidden" name="hiddenEventCode">
-<input type="hidden" name="hiddenServiceType">
-<input type="hidden" name="hiddenDescription">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="hiddenProjectCode" id="hiddenProjectCode">
+<input type="hidden" name="hiddenEventCode" id="hiddenEventCode">
+<input type="hidden" name="hiddenServiceType" id="hiddenServiceType">
+<input type="hidden" name="hiddenDescription" id="hiddenDescription">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  TimeSheet Forecast Maintenance </CAPTION>
 <tr>
@@ -270,7 +270,7 @@ function BackToList() {
 					if (!NewPart.equals(CurrPart)) {
 						for (col=col; col < MaxCol; col++) {
 							tsId = "";
-							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId+"'><input type=text class=inputBox name=RecordVal"+row+" size=3 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
+							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId+"'><input type=text class=inputBox name=RecordVal"+row+" size=3 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
 						}
 						count = 0;
 						if (!CurrPart.equals("") && col == MaxCol) {
@@ -298,10 +298,10 @@ function BackToList() {
 							}
 						}
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject() != null ? ts.getProject().getProjId() : ""%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent() != null ? ts.getProjectEvent().getPeventId().toString() : ""%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType() != null ? ts.getTSServiceType().getId().toString() : ""%>">
-						<input type="hidden" name="description" value = "<%=ts.getDescription()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject() != null ? ts.getProject().getProjId() : ""%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent() != null ? ts.getProjectEvent().getPeventId().toString() : ""%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType() != null ? ts.getTSServiceType().getId().toString() : ""%>">
+						<input type="hidden" name="description" id="description" value = "<%=ts.getDescription()%>">
 						<%
 						CurrPart = NewPart;
 						CurrProj = NewProj;
@@ -310,18 +310,18 @@ function BackToList() {
 					}
 					while ((col < MaxCol) && !DayArray[col].equals(NewDate)) {
 						tsId = " ";
-						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
+						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
 						col++;
 					}
 					tsId = ts.getTsId().toString();
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='"+ts.getTsHoursUser().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='"+ts.getTsHoursUser().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
 					col++;
 					out.println(DisplayText);
 				}
 				DisplayText ="";
 				for (col=col; col < MaxCol; col++) {
 					tsId = " ";
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=3  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+dayRead[count++]+"></td>";
 				}
 				DisplayText = DisplayText+"<td align=right class=lblbold id=tTot"+row+">0</td>";
 				out.println(DisplayText);
@@ -376,11 +376,11 @@ function BackToList() {
 	</td>
 </tr>
 </table>
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DepartmentId" value="<%=DepartmentId%>">
-<input type="hidden" name="DataId" value="<%=DataPeriod%>">
-<input type="hidden" name="LastDataId" value="<%=LastDataPeriod%>">
-<input type="hidden" name="NextDataId" value="<%=NextDataPeriod%>">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DepartmentId" id="DepartmentId" value="<%=DepartmentId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataPeriod%>">
+<input type="hidden" name="LastDataId" id="LastDataId" value="<%=LastDataPeriod%>">
+<input type="hidden" name="NextDataId" id="NextDataId" value="<%=NextDataPeriod%>">
 </form>
 <%
 request.removeAttribute("QryList");

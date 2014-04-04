@@ -243,8 +243,8 @@ try {
 	<caption align=center class=pgheadsmall>Skill Set View</caption>
 	<tr><td>
 		<form name="listForm" action="skillAction.do" method="post">
-			<input type="hidden" name="formAction" value="list">
-			<input type="hidden" name="command" value="">
+			<input type="hidden" name="formAction" id="formAction" value="list">
+			<input type="hidden" name="command" id="command" value="">
 			<table width="100%">
 				<tr><td colspan=5><hr color=red></hr></td></tr>
 				<tr>

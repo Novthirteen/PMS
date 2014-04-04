@@ -71,7 +71,7 @@ function CalcTot()
 </script>
 
 <form name="frm" method="post">
-<input type="hidden" name="FormAction" value="Update">
+<input type="hidden" name="FormAction" id="FormAction" value="Update">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  Project Percentage To Complete Forecast </CAPTION>
 <tr>
@@ -86,7 +86,7 @@ function CalcTot()
 				<td class="lblbold" align=right>Customer:</td><td class="lblLight"><%=CustProject.getCustomer().getDescription()%>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="lblbold" align=right>Project :</td><td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" value="<%=CustProject.getProjId()%>"></td>
+				<td class="lblbold" align=right>Project :</td><td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" id="projectId" value="<%=CustProject.getProjId()%>"></td>
 				<td class="lblbold" align=right>Contranct No:</td><td class="lblLight"><%=CustProject.getContractNo()%>&nbsp;</td>	
 				<td class="lblbold" align=right>Start Date :</td>
 				<td class="lblLight"><%=CustProject.getStartDate()%></td>	
@@ -114,7 +114,7 @@ function CalcTot()
 				while(itDate.hasNext()){
 					FMonth fm = (FMonth)itDate.next();%>
 					<td class="lblbold" align="center"><%=fm.getDescription()%></td>
-					<input type=hidden name=FMId value="<%=fm.getId()%>">
+					<input type="hidden" name="FMId" Id="FMId" value="<%=fm.getId()%>">
 				<%}
 				Iterator itCTC = CTCResult.iterator();
 				ProjectPercentageToComplete ctc = null;
@@ -145,7 +145,7 @@ function CalcTot()
 						}
 						if (ctc != null) {
 							if (ctc.getFiscalMonth().getId().equals(fm.getId()) && ctc.getType().equals(CTCType[i])) {%>
-								<td><input type=hidden name="RecId<%=i%>" value="<%=ctc.getId()%>"><input type=text class=inputBox name="RecordVal<%=i%>" size=10 value="<%=ctc.getAmount()%>" onblur="CalcTot()" <%=fRead%>></td>
+								<td><input type="hidden" name="RecId<%=i%>" Id="RecId<%=i%>" value="<%=ctc.getId()%>"><input type=text class=inputBox name="RecordVal<%=i%>" size=10 value="<%=ctc.getAmount()%>" onblur="CalcTot()" <%=fRead%>></td>
 							<%
 								if (itCTC.hasNext()) {
 									ctc = (ProjectPercentageToComplete)itCTC.next();
@@ -157,7 +157,7 @@ function CalcTot()
 							NullData = true;
 						}
 						if (NullData) {%>
-						<td><input type=hidden name="RecId<%=i%>" value=""><input type=text class=inputBox name="RecordVal<%=i%>" size=10 value="0" onblur="CalcTot()" <%=fRead%>></td>
+						<td><input type="hidden" name="RecId<%=i%>" Id="RecId<%=i%>" value=""><input type=text class=inputBox name="RecordVal<%=i%>" size=10 value="0" onblur="CalcTot()" <%=fRead%>></td>
 						<%}
 					}
 					%>

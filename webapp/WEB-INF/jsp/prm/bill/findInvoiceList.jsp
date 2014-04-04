@@ -141,8 +141,8 @@ if ((process.equals("maintenance") && AOFSECURITY.hasEntityPermission("PROJ_INVO
 			<%
 				}
 			%>
-				<input type="hidden" name="formAction" value="query">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="formAction" id="formAction" value="query">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=8><hr color=red></hr></td>
@@ -150,15 +150,15 @@ if ((process.equals("maintenance") && AOFSECURITY.hasEntityPermission("PROJ_INVO
 					
 					<tr>
 						<td class="lblbold">Invoice Code:</td>
-						<td class="lblLight"><input type="text" name="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="invoice" id="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Project:</td>
-						<td class="lblLight"><input type="text" name="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Bill Address:</td>
-						<td class="lblLight"><input type="text" name="billAddress" size="15" value="<%=BillAddress != null ? BillAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="billAddress" id="billAddress" size="15" value="<%=BillAddress != null ? BillAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 					</tr>
 					<tr>
 						<td class="lblbold">Bill Code:</td>
-						<td class="lblLight"><input type="text" name="billing" size="15" value="<%=Billing != null ? Billing : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="billing" id="billing" size="15" value="<%=Billing != null ? Billing : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Status:</td>
 						<td class="lblLight">						
 							<select name="status">
@@ -236,15 +236,15 @@ if ((process.equals("maintenance") && AOFSECURITY.hasEntityPermission("PROJ_INVO
 				</table>
 			</form>
 			<form name="editForm" action="editInvoice.do" method="post">
-				<input type="hidden" name="process" value="<%=process%>">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="invoiceId" value="">
-				<input type="hidden" name="billing" value="">
-				<input type="hidden" name="invoice" value="">
-				<input type="hidden" name="project" value="">
-				<input type="hidden" name="billAddress" value="">
-				<input type="hidden" name="status" value="">
-				<input type="hidden" name="department" value="">
+				<input type="hidden" name="process" id="process" value="<%=process%>">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="invoiceId" id="invoiceId" value="">
+				<input type="hidden" name="billing" id="billing" value="">
+				<input type="hidden" name="invoice" id="invoice" value="">
+				<input type="hidden" name="project" id="project" value="">
+				<input type="hidden" name="billAddress" id="billAddress" value="">
+				<input type="hidden" name="status" id="status" value="">
+				<input type="hidden" name="department" id="department" value="">
 			</form>
 		</td>
 	</tr>

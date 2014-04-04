@@ -93,9 +93,9 @@ function FnDetail() {
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
 <table width="100%" cellpadding="1" border="0" cellspacing="1">
-<input type="hidden" name="FormAction1" >
-<input type="hidden" name="FormAction" value="update">
-<input type="hidden" name="flag" value="<%=flag%>">
+<input type="hidden" name="FormAction1" id="FormAction1" >
+<input type="hidden" name="FormAction" id="FormAction" value="update">
+<input type="hidden" name="flag" id="flag" value="<%=flag%>">
 <tr>
 				<td colspan=6 valign="bottom"><hr color=red></hr></td>
 			</tr>
@@ -165,23 +165,23 @@ function FnDetail() {
 			FMonth fm=(FMonth)it.next();
 			%>
 			<tr bgcolor="#e9eee9">
-     			<td class="lblbold"><input type="hidden" name="Mon<%=i%>"  value="<%=fm.getMonthSeq()%>"><%=fm.getMonthSeq()+1%></td>
-				<td class="lblbold"><input type="text" name="startDate<%=i%>"  value="<%=fm.getDateFrom()%>">             
+     			<td class="lblbold"><input type="hidden" name="Mon<%=i%>"  id="Mon<%=i%>" value="<%=fm.getMonthSeq()%>"><%=fm.getMonthSeq()+1%></td>
+				<td class="lblbold"><input type="text" name="startDate<%=i%>" id="startDate<%=i%>"  value="<%=fm.getDateFrom()%>">             
 				<A href="javascript:ShowCalendar(document.EditForm.dimg<%=i%>,document.EditForm.startDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                 </td>
-				<td class="lblbold"><input type="text" name="endDate<%=i%>"  value="<%=fm.getDateTo()%>">
+				<td class="lblbold"><input type="text" name="endDate<%=i%>" id="endDate<%=i%>"  value="<%=fm.getDateTo()%>">
 				<A href="javascript:ShowCalendar(document.EditForm.dim<%=i%>,document.EditForm.endDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dim<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                
 				</td>
-				<td class="lblbold"><input type="text" name="closeDate<%=i%>"  value="<%=fm.getDateFreeze()%>">
+				<td class="lblbold"><input type="text" name="closeDate<%=i%>" id="closeDate<%=i%>"  value="<%=fm.getDateFreeze()%>">
 				<A href="javascript:ShowCalendar(document.EditForm.img<%=i%>,document.EditForm.closeDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=img<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                
 				</td>
-				<td class="lblbold"><input type="text" name="description<%=i%>" value="<%=fm.getDescription()%>"></td>
-				<input type="hidden" name="Id<%=i%>" value="<%=fm.getId()%>">
+				<td class="lblbold"><input type="text" name="description<%=i%>" id="description<%=i%>" value="<%=fm.getDescription()%>"></td>
+				<input type="hidden" name="Id<%=i%>" id="Id<%=i%>" value="<%=fm.getId()%>">
 			</tr>
 			 
 			 
@@ -190,23 +190,23 @@ function FnDetail() {
 			else{
 			%>
 			<tr bgcolor="#e9eee9">
-     			<td class="lblbold"><input type="hidden" name="Mon<%=i%>"  value="<%=i-1%>"><%=i%></td>
-				<td class="lblbold"><input type="text" name="startDate<%=i%>"  >             
+     			<td class="lblbold"><input type="hidden" name="Mon<%=i%>" id="Mon<%=i%>"  value="<%=i-1%>"><%=i%></td>
+				<td class="lblbold"><input type="text" name="startDate<%=i%>" id="startDate<%=i%>"  >             
 				<A href="javascript:ShowCalendar(document.EditForm.dimg<%=i%>,document.EditForm.startDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                 </td>
-				<td class="lblbold"><input type="text" name="endDate<%=i%>" >
+				<td class="lblbold"><input type="text" name="endDate<%=i%>" id="endDate<%=i%>" >
 				<A href="javascript:ShowCalendar(document.EditForm.dim<%=i%>,document.EditForm.endDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dim<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                 
 				</td>
-				<td class="lblbold"><input type="text" name="closeDate<%=i%>">
+				<td class="lblbold"><input type="text" name="closeDate<%=i%>" id="closeDate<%=i%>">
 				<A href="javascript:ShowCalendar(document.EditForm.img<%=i%>,document.EditForm.closeDate<%=i%>,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=img<%=i%> src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
                 
 				</td>
-				<td class="lblbold"><input type="text" name="description<%=i%>"></td>
-				<input type="hidden" name="Id<%=i%>"  value="0">
+				<td class="lblbold"><input type="text" name="description<%=i%>" id="description<%=i%>"></td>
+				<input type="hidden" name="Id<%=i%>" id="Id<%=i%>"  value="0">
 			</tr>
 			<%}
 			i++;
@@ -231,7 +231,7 @@ function FnDetail() {
 
 <form Action="editFisCalendar.do" method="post" name="EditForm">
 <table width="100%" cellpadding="1" border="0" cellspacing="1">
-<input type="hidden" name="FormAction" value="update">
+<input type="hidden" name="FormAction" id="FormAction" value="update">
 <tr>
 	<td>
 		<table cellspacing="5" cellpadding="5" width=100%>

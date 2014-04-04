@@ -79,9 +79,6 @@ function showDialog_staff(i) {
 	    document.getElementById("staffName").value=v.split("|")[1];
 	    document.getElementById("staff").value=v.split("|")[0]+":"+v.split("|")[1];
 	    labelStaff.innerHTML=v.split("|")[0] + ":" + v.split("|")[1];
-	    //document.getElementById("projId").value=v.split("|")[2];
-	    //document.getElementById("projName").value=v.split("|")[3];
-	    
 	}
 }
 /*
@@ -221,10 +218,10 @@ try{
 %>
 
 <Form action="projectList.do" name="ProjectListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <html:form action="projectCostMaintain.do" method="post">
 <IFRAME frameBorder=0 id=CalFrame marginHeight=0 
@@ -232,11 +229,11 @@ try{
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="FormAction">
-<input type="hidden" name="hiddenNumber">
-<input type="hidden" name="Type" value="<%=Type%>">
-<input type="hidden" name="CostType" value="<%=costType%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="hiddenNumber" id="hiddenNumber">
+<input type="hidden" name="Type" id="Type" value="<%=Type%>">
+<input type="hidden" name="CostType" id="CostType" value="<%=costType%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 	<!-- Left Spacer -->
@@ -359,11 +356,11 @@ try{
 						<td class="lblbold" nowrap>Cost <bean:message key="prm.projectCostMaintain.typeLable"/>:&nbsp</td>
 						<td class="lblbold" nowrap>&nbsp;
 							<%if(!isPA){%>
-								<html:select property = "typeSelect" size="1">
+								<html:select property = "typeSelect" styleId = "typeSelect" size="1">
 								<html:optionsCollection name="typeSelectArr" value="key" label="value" />
 								</html:select>							
 							<%}else{%>
-								<html:select property = "typeSelect" size="1" styleClass="hid">
+								<html:select property = "typeSelect" styleId = "typeSelect" size="1" styleClass="hid">
 								<html:optionsCollection name="typeSelectArr" value="key" label="value" />
 								</html:select>	
 								<%= pcm!=null?pcm.getProjectCostType().getTypename():""%>
@@ -374,7 +371,7 @@ try{
 						<td class="lblbold" nowrap>&nbsp;
 						<%String cncy="";%>
 
-							<html:select property = "ClaimTypeSelect" size="1">
+							<html:select property = "ClaimTypeSelect" styleId = "ClaimTypeSelect" size="1">
 
 								<option value="CN" <%if(findmaster!=null && findmaster.getClaimType().equals("CN") ) out.print("selected");%>>Company</option>
 								<option value="CY" <%if(findmaster!=null && findmaster.getClaimType().equals("CY")) out.print("selected");%>>Customer</option>
@@ -385,11 +382,11 @@ try{
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.currencyLable"/>:&nbsp</td>
 						<td class="lblbold" nowrap>&nbsp;
 							<%if(!isPA){%>
-								<html:select property = "currencySelect"  onchange = "javascript:onCurrSelect()" size="1">
+								<html:select property = "currencySelect" styleId = "currencySelect"  onchange = "javascript:onCurrSelect()" size="1">
 								<html:optionsCollection name="currencySelectArr" value="key" label="value" />
 								</html:select>
 							<%}else{%>
-								<html:select property = "currencySelect"  onchange = "javascript:onCurrSelect()" size="1" styleClass="hid">
+								<html:select property = "currencySelect" styleId = "currencySelect"  onchange = "javascript:onCurrSelect()" size="1" styleClass="hid">
 								<html:optionsCollection name="currencySelectArr" value="key" label="value" />
 								</html:select>
 								<%= pcm!=null ?pcm.getCurrency().getCurrName():""%>
@@ -398,9 +395,9 @@ try{
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.exchangeRateLable"/>(RMB):&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="exchangeRate" size="30"/>
+								<html:text property="exchangeRate" size="30" styleId="exchangeRate"/>
 							<%}else{%>
-								<html:text property="exchangeRate" size="30" styleClass="hid"/>
+								<html:text property="exchangeRate" size="30" styleId="exchangeRate" styleClass="hid"/>
 								<%=pcm.getExchangerate()%>
 							<%}%>
 						</td>
@@ -411,7 +408,7 @@ try{
 							<div style="display:inline" id="labelPayFor">
 								<%=vendor%>
 							</div>
-							<input type=hidden name="payFor" value="<%=payFor%>">
+							<input type="hidden" name="payFor" id="payFor" value="<%=payFor%>">
 							<%if(!isPA){%>
 								<a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;">
 								<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
@@ -420,9 +417,9 @@ try{
 						<td class="lblbold" nowrap width=20%>Cost Description:&nbsp</td>
 						<td class="lblbold" width=30%>&nbsp;
 							<%if(!isPA){%>
-								<html:text property="costDescription" size="30"/>
+								<html:text property="costDescription" size="30" styleId="costDescription"/>
 							<%}else{%>
-								<html:text property="costDescription" size="30" styleClass="hid"/>
+								<html:text property="costDescription" size="30" styleId="costDescription" styleClass="hid"/>
 								<%=pcm.getCostdescription()%>
 							<%}%>
 						</td>
@@ -461,20 +458,20 @@ try{
 						<td class="lblbold" nowrap width=20%>Flight No.:&nbsp</td>
 						<td class="lblbold" nowrap width=30%>&nbsp;
 							<%if(!isPA){%>
-								<html:text property="refNo" size="30"/>
+								<html:text property="refNo" size="30" styleId="refNo"/>
 							<%}else{%>
-								<html:text property="refNo" size="30" styleClass="hid"/>
+								<html:text property="refNo" size="30" styleId="refNo" styleClass="hid"/>
 								<%=pcm.getRefno()%>
 							<%}%>
 						</td>
 						<td class="lblbold" nowrap>Issue Date:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="bookDate" size="30"/>
+								<html:text property="bookDate" size="30" styleId="bookDate"/>
 							<A href="javascript:ShowCalendar(document.ProjectCostMaintainForm.dimg1,document.ProjectCostMaintainForm.bookDate,null,0,330)" 
 								onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg1 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 							<%}else{%>
-								<html:text property="bookDate" size="30" styleClass="hid"/>
+								<html:text property="bookDate" size="30" styleId="bookDate" styleClass="hid"/>
 								<%=formater.format(pcm.getBookDate())%>
 							<%}%>
 						</td>
@@ -483,20 +480,20 @@ try{
 						<td class="lblbold" nowrap>Flight Date(YYYY-MM-DD):&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="costDate" size="30"/>
+								<html:text property="costDate" size="30" styleId="costDate"/>
 								<A href="javascript:ShowCalendar(document.ProjectCostMaintainForm.dimg2,document.ProjectCostMaintainForm.costDate,null,0,330)" 
 									onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg2 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 							<%}else{%>
-								<html:text property="costDate" size="30" styleClass="hid"/>
+								<html:text property="costDate" size="30" styleId="costDate" styleClass="hid"/>
 								<%=formater.format(pcm.getCostdate())%>
 							<%}%>
 						</td>
 						<td class="lblbold" nowrap>Flight time:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="takeOffTime" size="30"/>
+								<html:text property="takeOffTime" size="30" styleId="takeOffTime"/>
 							<%}else{%>
-								<html:text property="takeOffTime" size="30" styleClass="hid"/>
+								<html:text property="takeOffTime" size="30" styleId="takeOffTime" styleClass="hid"/>
 								<%=pcm.getTakeOffTime()%>
 							<%}%>
 						</td>
@@ -505,9 +502,9 @@ try{
 						<td class="lblbold" nowrap>Price:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
+								<html:text property="totalValue" styleId="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
 							<%}else{%>
-								<html:text property="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
+								<html:text property="totalValue" styleId="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
 								<%=pcm.getTotalvalue()%>
 							<%}%>
 						</td>
@@ -515,9 +512,9 @@ try{
 						<td>&nbsp;
 							<%if(!isPA){
 							  if (destination==null||destination.equals("")){%>
-								<input type="text" name="destination" value="<%=pcm!=null ? pcm.getDestination():""%>" size="30">
+								<input type="text" name="destination" id="destination" value="<%=pcm!=null ? pcm.getDestination():""%>" size="30">
 							<%}else{%>
-							<input type="text" name="destination" value="<%=destination%>" size="30">
+							<input type="text" name="destination" id="destination" value="<%=destination%>" size="30">
 							<%}
 							}else{%>
 							<%=pcm!=null ? pcm.getDestination():""%>
@@ -532,9 +529,9 @@ try{
 						<td class="lblbold" nowrap>Price of Same Flight:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="sameFlightPrice" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
+								<html:text property="sameFlightPrice" styleId="sameFlightPrice" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
 							<%}else{%>
-								<html:text property="sameFlightPrice" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
+								<html:text property="sameFlightPrice" styleId="sameFlightPrice" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
 								<%=pcm.getSameFlightPrice()%>
 							<%}%>
 						</td>
@@ -555,18 +552,18 @@ try{
 						<td class="lblbold" nowrap>Flight No.:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="flightNoIn4" size="30"/>
+								<html:text property="flightNoIn4" styleId="flightNoIn4" size="30"/>
 							<%}else{%>
-								<html:text property="flightNoIn4" size="30" styleClass="hid"/>
+								<html:text property="flightNoIn4" styleId="flightNoIn4" size="30" styleClass="hid"/>
 								<%=pcm.getFlightNoIn4()%>
 							<%}%>
 						</td>
 						<td class="lblbold" nowrap>Flight No.:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="flightNoInDay" size="30"/>
+								<html:text property="flightNoInDay" styleId="flightNoInDay" size="30"/>
 							<%}else{%>
-								<html:text property="flightNoInDay" size="30" styleClass="hid"/>
+								<html:text property="flightNoInDay" styleId="flightNoInDay" size="30" styleClass="hid"/>
 								<%=pcm.getFlightNoInDay()%>
 							<%}%>
 						</td>
@@ -575,18 +572,18 @@ try{
 						<td class="lblbold" nowrap>Flight time:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="takeOffTimeIn4" size="30"/>
+								<html:text property="takeOffTimeIn4" styleId="takeOffTimeIn4" size="30"/>
 							<%}else{%>
-								<html:text property="takeOffTimeIn4" size="30" styleClass="hid"/>
+								<html:text property="takeOffTimeIn4" styleId="takeOffTimeIn4" size="30" styleClass="hid"/>
 								<%=pcm.getTakeOffTimeIn4()%>
 							<%}%>
 						</td>
 						<td class="lblbold" nowrap>Flight time:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="takeOffTimeInDay" size="30"/>
+								<html:text property="takeOffTimeInDay" styleId="takeOffTimeInDay" size="30"/>
 							<%}else{%>
-								<html:text property="takeOffTimeInDay" size="30" styleClass="hid"/>
+								<html:text property="takeOffTimeInDay" styleId="takeOffTimeInDay" size="30" styleClass="hid"/>
 								<%=pcm.getTakeOffTimeInDay()%>
 							<%}%>
 						</td>
@@ -595,18 +592,18 @@ try{
 						<td class="lblbold" nowrap>Price:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="priceIn4" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
+								<html:text property="priceIn4" styleId="priceIn4" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
 							<%}else{%>
-								<html:text property="priceIn4" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
+								<html:text property="priceIn4" styleId="priceIn4" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
 								<%=pcm.getPriceIn4()%>
 							<%}%>
 						</td>
 						<td class="lblbold" nowrap>Price:&nbsp</td>
 						<td class="lblbold">&nbsp;
 							<%if(!isPA){%>
-								<html:text property="priceInDay" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
+								<html:text property="priceInDay" styleId="priceInDay" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
 							<%}else{%>
-								<html:text property="priceInDay" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
+								<html:text property="priceInDay" styleId="priceInDay" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');" styleClass="hid"/>
 								<%=pcm.getPriceInDay()%>
 							<%}%>
 						</td>
@@ -660,7 +657,7 @@ try{
 	</td>
 	</tr>
 </table>
-<input type="hidden" name="DataId" value="<%=DataId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataId%>">
 </html:form>
 <script language="javascript">
 	if (document.getElementById("totalValue").value == "") {

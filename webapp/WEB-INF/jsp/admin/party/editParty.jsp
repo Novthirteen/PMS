@@ -72,7 +72,7 @@ if(action == null){
     	action="update";
 %>
 	<form action="editParty.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
+    <input type="hidden" name="action" id="action" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -83,7 +83,7 @@ if(action == null){
           <span class="tabletext"><bean:message key="System.Party.partyId"/>:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" value="<%=CustParty.getPartyId()%>">
+          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" id="PartyId" value="<%=CustParty.getPartyId()%>">
         </td>
         <td align="right">
           <span class="tabletext"><bean:message key="System.Party.description"/>:&nbsp;</span>
@@ -96,7 +96,7 @@ if(action == null){
         <td align="right">
           <span class="tabletext"><bean:message key="System.Party.SLParentPartyId"/>:&nbsp;</span>
         </td>
-        <input type="hidden" name="OldSLParentpartyId" value="<%=SLParentpartyId%>">
+        <input type="hidden" name="OldSLParentpartyId" id="OldSLParentpartyId" value="<%=SLParentpartyId%>">
         <td align="left">
 			<select name="SLParentpartyId">
 			<option value="None">None</option>
@@ -119,7 +119,7 @@ if(action == null){
         <td align="right">
           <span class="tabletext"><bean:message key="System.Party.LocParentPartyId"/>:&nbsp;</span>
         </td>
-        <input type="hidden" name="OldLocParentpartyId" value="<%=LocParentpartyId%>">
+        <input type="hidden" name="OldLocParentpartyId" id="OldLocParentpartyId" value="<%=LocParentpartyId%>">
         <td align="left">
 			<select name="LocParentpartyId">
 			<option value="None">None</option>
@@ -159,7 +159,7 @@ if(action == null){
         	<input type="text" class="inputBox" name="note" value="<%=CustParty.getNote()%>" size="30">
         </td>
       </tr>
-	  <input type="hidden" name="role" value="ORGANIZATION_UNIT">
+	  <input type="hidden" name="role" id="role" value="ORGANIZATION_UNIT">
 	  <tr>
 	  <td/>
 	  		<td class="lblbold" align="left">
@@ -185,7 +185,7 @@ if(action == null){
 	}else{
 %>
 	<form action="editParty.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
+    <input type="hidden" name="action" id="action" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -254,7 +254,7 @@ if(action == null){
 			<input type="text" class="inputBox" name="note" size="30">
         </td>
       </tr>
-	  <input type="hidden" name="role" value="ORGANIZATION_UNIT">
+	  <input type="hidden" name="role" id="role" value="ORGANIZATION_UNIT">
 	  <tr>
       <td/>
       	<td class="lblbold" align="left">

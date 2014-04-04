@@ -57,9 +57,9 @@ try{
 
 		<form name="editForm" action="skillAction.do" method="post">
 		
-			<input type="hidden" name="formAction" value="ex">
-			<input type="hidden" name="command" value="">
-			<input type="hidden" name="recordCount" value="<%=valueList.size()%>">
+			<input type="hidden" name="formAction" id="formAction" value="ex">
+			<input type="hidden" name="command" id="command" value="">
+			<input type="hidden" name="recordCount" id="recordCount" value="<%=valueList.size()%>">
 			
 			<table width=102% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Edit Projects Experience</CAPTION>
@@ -74,7 +74,7 @@ try{
 						SkillEx tmpValue = (SkillEx)valueList.get(i);					
 				%>
 				<tr>
-					<input type="hidden" name="certId" value="<%=tmpValue.getExId()%>">
+					<input type="hidden" name="certId" id="certId" value="<%=tmpValue.getExId()%>">
 			        <td bgcolor="#e9eef9" align="center">
 			        	<textarea rows="3" cols="60"  style="border:0px;background-color:#e9eef9" readonly><%=tmpValue.getExDesc() == null ? "" : tmpValue.getExDesc()%></textarea>
 			        </td>

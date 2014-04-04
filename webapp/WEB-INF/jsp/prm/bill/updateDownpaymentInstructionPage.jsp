@@ -72,19 +72,19 @@ numFormater.setMinimumFractionDigits(2);
 DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <form name="rptForm" action="pas.report.Billingprint.do" method="post">
-	<input type="hidden" name="action" value="ExportToExcel">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
-	<input type="hidden" name="category" value="<%=Constants.TRANSACATION_CATEGORY_DOWN_PAYMENT%>">
+	<input type="hidden" name="action" id="action" value="ExportToExcel">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="category" id="category" value="<%=Constants.TRANSACATION_CATEGORY_DOWN_PAYMENT%>">
 </form>
 <form name="createInvoiceForm" action="editInvoice.do" method="post">
-	<input type="hidden" name="formAction" value="view">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="view">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
 </form>
 <form name="updateForm" action="EditDownpaymentInstruction.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="update">
-	<input type="hidden" name="billType" value="<%=Constants.BILLING_TYPE_DOWN_PAYMENT%>">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="update">
+	<input type="hidden" name="billType" id="billType" value="<%=Constants.BILLING_TYPE_DOWN_PAYMENT%>">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>
@@ -160,7 +160,7 @@ DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 							<%
 								if (canUpdate) {
 							%>
-							<input type=hidden name="billAddr" value="<%=pb.getBillAddress().getPartyId()%>">
+							<input type="hidden" name="billAddr" id="billAddr" value="<%=pb.getBillAddress().getPartyId()%>">
 							<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 							<%

@@ -298,7 +298,7 @@ function OnSubmit() {
 					if (!NewPart.equals(CurrPart)) {
 						for (col=col; col < MaxCol; col++) {
 							tsId = " ";
-							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
+							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5 value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
 						}
 						if (CurrPart != "" && col == MaxCol) {
 							DisplayText = DisplayText+"<td align=right class=lblbold id=tTot"+row+">0</td></tr>";
@@ -346,9 +346,9 @@ function OnSubmit() {
 							DisplayText = DisplayText+"<tr class='"+rowClass+"' align='right' bgcolor='#e9eee9'><td><input class='checkboxstyle' type=checkbox name='"+(delDisable.trim().length() == 0 ? "chk" : "")+"' value='"+row+"' onclick='javascript:checkTopBox(document.EditTimeSheetForm.chkAll,document.EditTimeSheetForm.chk)' " + delDisable+"></td><td class='bottom' align='left' nowrap>"+ts.getProject().getProjId()+":"+ts.getProject().getProjName()+"</td><td class='bottom' align='left' nowrap>"+ts.getProject().getCustomer().getDescription()+"</td><td class='bottom' align='left' nowrap>"+ts.getProjectEvent().getPeventName()+"</td><td class='bottom' align='center' nowrap>"+ts.getTSServiceType().getDescription()+"</td>"+StatusDisply+"<td class='bottom' align='center' nowrap>"+ts.getProject().getCAFFlag()+"</td>"+"<td class='bottom' align='center' nowrap>"+cafNO+"</td>";
 						}
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject().getProjId()%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject().getProjId()%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
 						<%
 						CurrPart = NewPart;
 						CurrProj = NewProj;
@@ -365,7 +365,7 @@ function OnSubmit() {
 					}
 					while (!DayArray[col].equals(NewDate)) {
 						tsId = " ";
-						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
+						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
 						col++;
 					}
 					tsId = ts.getTsId().toString();
@@ -375,7 +375,7 @@ function OnSubmit() {
 					} else {
 						fCAF = "";
 					}
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='"+ts.getTsHoursUser().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='"+ts.getTsHoursUser().toString()+"' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
 
 					totalCount = totalCount + ts.getTsHoursUser().floatValue();
 					rowCount = rowCount + ts.getTsHoursUser().floatValue();
@@ -386,7 +386,7 @@ function OnSubmit() {
 				DisplayText ="";
 				for (col=col; col < MaxCol; col++) {
 					tsId = " ";
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'><input type=text class=inputBox name=RecordVal"+row+" size=5  value='0.0' onblur='checkDeciNumber2(this,1,1,this.name,-24,24);CalcTot()' "+fRead+"></td>";
 				}
 				DisplayText = DisplayText+"<td align=right class=lblbold id=tTot"+row+">0</td></tr>";
 				out.println(DisplayText);

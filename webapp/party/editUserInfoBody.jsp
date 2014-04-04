@@ -83,7 +83,7 @@ if (!AOFSECURITY.hasEntityPermission("USER_LOGIN_PASSWORD", "_EDIT", session)) {
 	<%}else{%>
 	<form name="form1" action="./editUserInfo.jsp" method="post" onSubmit="return checkrd();">
 	<%}%>
-    <input type="hidden" name="action" value="<%=action%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -101,7 +101,7 @@ if (!AOFSECURITY.hasEntityPermission("USER_LOGIN_PASSWORD", "_EDIT", session)) {
           <span class="tabletext">User Login:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" value="<%=ul.getUserLoginId()%>">
+          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" id="userLoginId" value="<%=ul.getUserLoginId()%>">
         </td>
       </tr>
       <tr>

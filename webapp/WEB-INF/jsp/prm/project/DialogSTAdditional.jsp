@@ -56,9 +56,9 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	<BODY>
 		<form name="iForm" action="editProjBOMCost.do" method="post">
 		
-			<input type="hidden" name="formaction" value="dialog">
-			<input type="hidden" name="command" value="">
-			<input type="hidden" name="masterid" value="<%=masterid%>">
+			<input type="hidden" name="formaction" id="formaction" value="dialog">
+			<input type="hidden" name="command" id="command" value="">
+			<input type="hidden" name="masterid" id="masterid" value="<%=masterid%>">
 			
 			<table border="0" cellpadding="4" cellspacing="0" align ="center" width="100%">
 				<CAPTION class=pgheadsmall>Edit Service Type Additional Information</CAPTION>
@@ -77,11 +77,11 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	          		ProjPlanType type = (ProjPlanType)valueList.get(i);
 				%>
 	          	<tr>
-	          		<input type="hidden" name="stId" value="<%=type.getId()%>">
-		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="serviceType" value="<%=type.getDescription()%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
-		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="indirectRate" value="<%=numFormater.format(type.getIndirectRate())%>" style="text-align:right;background-color:#ffffff"></td>
-		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="nhrRevenue" value="<%=numFormater.format(type.getNhrRevenue())%>" style="text-align:right;background-color:#ffffff"></td>
-		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="codingSubContr" value="<%=numFormater.format(type.getCodingSubContr())%>" style="text-align:right;background-color:#ffffff"></td>
+	          		<input type="hidden" name="stId" id="stId" value="<%=type.getId()%>">
+		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="serviceType" id="serviceType" value="<%=type.getDescription()%>" readonly style="text-align:center;background-color:#e9eee9;border=0px"></td>
+		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="indirectRate" id="indirectRate" value="<%=numFormater.format(type.getIndirectRate())%>" style="text-align:right;background-color:#ffffff"></td>
+		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="nhrRevenue" id="nhrRevenue" value="<%=numFormater.format(type.getNhrRevenue())%>" style="text-align:right;background-color:#ffffff"></td>
+		          	<td class="bottomBox"><p align="center"><input type="text"  size="12" name="codingSubContr" id="codingSubContr" value="<%=numFormater.format(type.getCodingSubContr())%>" style="text-align:right;background-color:#ffffff"></td>
 		        </tr>
 				<%
 				}

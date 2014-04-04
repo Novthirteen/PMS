@@ -114,8 +114,8 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 			<tr>
 				<td>
 					<form name="queryForm" action="FindBillingInstruction.do" method="post">
-						<input type="hidden" name="action" value="showDialog">
-						<input type="hidden" name="offSet" value="0">
+						<input type="hidden" name="action" id="action" value="showDialog">
+						<input type="hidden" name="offSet" id="offSet" value="0">
 						<TABLE width="100%">
 							<tr>
 								<td colspan=8><hr color=red></hr></td>
@@ -123,16 +123,16 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 							
 							<tr>
 								<td class="lblbold">Bill Code:</td>
-								<td class="lblLight"><input type="text" name="billCode" size="15" value="<%=billCode != null ? billCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="billCode" id="billCode" size="15" value="<%=billCode != null ? billCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Project:</td>
-								<td class="lblLight"><input type="text" name="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Customer:</td>
-								<td class="lblLight"><input type="text" name="customer" size="15" value="<%=customer != null ? customer : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="customer" id="customer" size="15" value="<%=customer != null ? customer : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 							</tr>
 							
 							<tr>
 								<td class="lblbold">Bill To:</td>
-								<td class="lblLight"><input type="text" name="billTo" size="15" value="<%=billTo != null ? billTo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="billTo" id="billTo" size="15" value="<%=billTo != null ? billTo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Status:</td>
 								<td class="lblLight">
 									<select name="status">
@@ -177,8 +177,8 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 						</table>
 					</form>
 					<form name="editForm" action="EditBillingInstruction.do" method="post" target="BillingDetail">
-						<input type="hidden" name="action" value="view">
-						<input type="hidden" name="billId" value="">
+						<input type="hidden" name="action" id="action" value="view">
+						<input type="hidden" name="billId" id="billId" value="">
 					</form>
 				</td>
 			</tr>
@@ -211,22 +211,22 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 				</td>
 		    	<td align="left"> 
 					<a href="#" onclick="showDetail('<%=sqlResult.getLong(row, "bill_id")%>', '<%=sqlResult.getString(row, "bill_type")%>');"><%=sqlResult.getString(row, "bill_code")%></a> 
-					<input type="hidden" name="hiBillCode" value="<%=sqlResult.getString(row, "bill_code")%>">
+					<input type="hidden" name="hiBillCode" id="hiBillCode" value="<%=sqlResult.getString(row, "bill_code")%>">
 		    	</td>
 		    	<td align="left">                 
 		       		<%=sqlResult.getString(row, "proj_id")%>:<%=sqlResult.getString(row, "proj_name")%>
-		       		<input type="hidden" name="projId" value="<%=sqlResult.getString(row, "proj_id")%>">
-		       		<input type="hidden" name="projName" value="<%=sqlResult.getString(row, "proj_name")%>">
-		       		<input type="hidden" name="contractType" value="<%=sqlResult.getString(row, "contracttype")%>">
-		       		<input type="hidden" name="depId" value="<%=sqlResult.getString(row, "departmentId")%>">
-		       		<input type="hidden" name="depNm" value="<%=sqlResult.getString(row, "department")%>">
-		       		<input type="hidden" name="pmId" value="<%=sqlResult.getString(row, "pmId")%>">
-		       		<input type="hidden" name="pmNm" value="<%=sqlResult.getString(row, "pmName")%>">
+		       		<input type="hidden" name="projId" id="projId" value="<%=sqlResult.getString(row, "proj_id")%>">
+		       		<input type="hidden" name="projName" id="projName" value="<%=sqlResult.getString(row, "proj_name")%>">
+		       		<input type="hidden" name="contractType" id="contractType" value="<%=sqlResult.getString(row, "contracttype")%>">
+		       		<input type="hidden" name="depId" id="depId" value="<%=sqlResult.getString(row, "departmentId")%>">
+		       		<input type="hidden" name="depNm" id="depNm" value="<%=sqlResult.getString(row, "department")%>">
+		       		<input type="hidden" name="pmId" id="pmId" value="<%=sqlResult.getString(row, "pmId")%>">
+		       		<input type="hidden" name="pmNm" id="pmNm" value="<%=sqlResult.getString(row, "pmName")%>">
 		        </td>
 		        <td align="left">                 
 		           <%=sqlResult.getString(row, "billAddr")%>
-		           <input type="hidden" name="billAddrId" value="<%=sqlResult.getString(row, "billAddrId")%>">
-		       	   <input type="hidden" name="billAddrNm" value="<%=sqlResult.getString(row, "billAddr")%>">
+		           <input type="hidden" name="billAddrId" id="billAddrId" value="<%=sqlResult.getString(row, "billAddrId")%>">
+		       	   <input type="hidden" name="billAddrNm" id="billAddrNm" value="<%=sqlResult.getString(row, "billAddr")%>">
 		        </td>
 		        <td align="left">                 
 		           <%=sqlResult.getString(row, "department")%>
@@ -236,7 +236,7 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 		        </td>
 		        <td align="right">                 
 		           <%=formater.format(sqlResult.getDouble(row, "bill_calamount") - sqlResult.getDouble(row, "invoicedAmount"))%>
-		           <input type="hidden" name="remainingAmount" value="<%=formater.format(sqlResult.getDouble(row, "bill_calamount") - sqlResult.getDouble(row, "invoicedAmount"))%>">
+		           <input type="hidden" name="remainingAmount" id="remainingAmount" value="<%=formater.format(sqlResult.getDouble(row, "bill_calamount") - sqlResult.getDouble(row, "invoicedAmount"))%>">
 		        </td>
 		        <td align="center">                 
 		           <%=dateFormater.format(sqlResult.getDate(row, "bill_createDate"))%>

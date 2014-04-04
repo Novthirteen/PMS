@@ -56,7 +56,7 @@ function exportExcel() {
 </script>
 
 <form name="frm" action="findPurchaseOrder.do" method="post">
-<input type="hidden" name="formAction" value="view">
+<input type="hidden" name="formAction" id="formAction" value="view">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <IFRAME frameBorder=0 id=CalFrame marginHeight=0 
 	marginWidth=0 noResize 
@@ -241,7 +241,7 @@ function exportExcel() {
 				</logic:iterate> 		
 					 <tr>
 				<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = result.size();
 				int l = 0;

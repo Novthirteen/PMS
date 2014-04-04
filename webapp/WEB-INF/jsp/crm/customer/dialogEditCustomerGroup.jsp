@@ -57,10 +57,10 @@ if(EditDataInfo != null){
     			<TD width='100%'>
     				<table>
 						<form Action="editCustomerGroup.do" method="post" name="EditForm">
-							<input type="hidden" name="FormAction" value="update">
-							<input type="hidden" name="DataId" value="<%=EditDataInfo.getAccountId().longValue()%>">
-							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
-							<input type="hidden" name="openType" value="dialogView">
+							<input type="hidden" name="FormAction" id="FormAction" value="update">
+							<input type="hidden" name="DataId" id="DataId" value="<%=EditDataInfo.getAccountId().longValue()%>">
+							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+							<input type="hidden" name="openType" id="openType" value="dialogView">
 							<table width='100%' border='0' cellpadding='0' cellspacing='2'>
 								<tr>
 									<td align="right">
@@ -142,10 +142,10 @@ if(EditDataInfo != null){
     			<TD width='100%'>
     				<table>
 						<form Action="editCustomerGroup.do" method="post" name="EditForm">
-							<input type="hidden" name="FormAction" value="create">
-							<input type="hidden" name="DataId" value="">
-							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
-							<input type="hidden" name="openType" value="dialogView">
+							<input type="hidden" name="FormAction" id="FormAction" value="create">
+							<input type="hidden" name="DataId" id="DataId" value="">
+							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+							<input type="hidden" name="openType" id="openType" value="dialogView">
 							<table width='100%' border='0' cellpadding='0' cellspacing='2'>
 								<tr>
 									<td align="right">

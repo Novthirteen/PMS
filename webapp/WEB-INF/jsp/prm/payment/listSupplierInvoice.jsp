@@ -69,7 +69,7 @@ if (AOFSECURITY.hasEntityPermission("SUPPLIER_INVOICE_MSTR", "_VIEW", session)) 
 	<tr>
 		<td>
 			<form name="listPaymentForm" action="listSupplierInvoice.do" method="post">
-				<input type="hidden" name="FormAction" value="query">
+				<input type="hidden" name="FormAction" id="FormAction" value="query">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=12><hr color=red></hr></td>
@@ -133,8 +133,8 @@ if (AOFSECURITY.hasEntityPermission("SUPPLIER_INVOICE_MSTR", "_VIEW", session)) 
 				</table>
 			</form>
 			<form name="editForm" action="editSupplierInvoice.do" method="post">
-				<input type="hidden" name="FormAction" value="edit">
-				<input type="hidden" name="DataId" value="">
+				<input type="hidden" name="FormAction" id="FormAction" value="edit">
+				<input type="hidden" name="DataId" id="DataId" value="">
 			</form>
 		</td>
 	</tr>

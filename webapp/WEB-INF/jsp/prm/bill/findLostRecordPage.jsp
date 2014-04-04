@@ -101,8 +101,8 @@ if (AOFSECURITY.hasEntityPermission("PROJ_LOST", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="queryForm" action="findLost.do" method="post">
-				<input type="hidden" name="formAction" value="query">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="formAction" id="formAction" value="query">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan="10"><hr color=red></hr></td>
@@ -110,9 +110,9 @@ if (AOFSECURITY.hasEntityPermission("PROJ_LOST", "_VIEW", session)) {
 					
 					<tr>
 						<td class="lblbold">Bill Code:</td>
-						<td class="lblLight"><input type="text" name="qryBillCode" size="15" value="<%=qryBillCode != null ? qryBillCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="qryBillCode" id="qryBillCode" size="15" value="<%=qryBillCode != null ? qryBillCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Project:</td>
-						<td class="lblLight"><input type="text" name="qryProject" size="15" value="<%=qryProject != null ? qryProject : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="qryProject" id="qryProject" size="15" value="<%=qryProject != null ? qryProject : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Department:</td>
 						<td class="lblLight">
 							<select name="qryDepartment">
@@ -155,11 +155,11 @@ if (AOFSECURITY.hasEntityPermission("PROJ_LOST", "_VIEW", session)) {
 				</table>
 			</form>
 			<form name="editForm" action="editLost.do" method="post">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="lostRecordId" value="">
-				<input type="hidden" name="qryBillCode" value="">
-				<input type="hidden" name="qryProject" value="">
-				<input type="hidden" name="qryDepartment" value="">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="lostRecordId" id="lostRecordId" value="">
+				<input type="hidden" name="qryBillCode" id="qryBillCode" value="">
+				<input type="hidden" name="qryProject" id="qryProject" value="">
+				<input type="hidden" name="qryDepartment" id="qryDepartment" value="">
 			</form>
 		</td>
 	</tr>

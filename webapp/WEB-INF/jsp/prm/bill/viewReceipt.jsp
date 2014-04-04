@@ -253,8 +253,8 @@ function showDialog_account()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction" >
-    <input type="hidden" name="process" >
+    <input type="hidden" name="FormAction" id="FormAction" >
+    <input type="hidden" name="process" id="process" >
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 
       <tr>
@@ -267,14 +267,14 @@ function showDialog_account()
         </td>
         <%}else{%>
         <td>
-        	<%=receiptNo%><input type="hidden" name="receiptNo" value="<%=receiptNo%>">
+        	<%=receiptNo%><input type="hidden" name="receiptNo" id="receiptNo" value="<%=receiptNo%>">
         </td>
         <%}%>
         <td align="right" class="lblbold">
           <span class="tabletext">Receipt Status:&nbsp;</span>
         </td>
         <td align="left">
-            <%=status==null?"Draft":status%><input type="hidden" name="status" value="<%=status%>">
+            <%=status==null?"Draft":status%><input type="hidden" name="status" id="status" value="<%=status%>">
         </td>        
       </tr>
       
@@ -283,7 +283,7 @@ function showDialog_account()
           <span class="tabletext">Receipt Amount:&nbsp;</span>
         </td>
         <td align="left">
-          <%=UtilFormat.format(receiptAmount)%><input type="hidden" class="inputBox" name="receiptAmount" value="<%=receiptAmount==null?new Double(0.0):receiptAmount%>" size="30">
+          <%=UtilFormat.format(receiptAmount)%><input type="hidden" class="inputBox" name="receiptAmount" id="receiptAmount" value="<%=receiptAmount==null?new Double(0.0):receiptAmount%>" size="30">
         </td>
         <td align="right" class="lblbold">
           <span class="tabletext">Remain Amount (RMB):&nbsp;</span>
@@ -315,7 +315,7 @@ function showDialog_account()
         <td align="left" class="lblbold">
 			<% String cUserId = ""; String cUserName = ""; if (createUser != null) { cUserId = createUser.getUserLoginId(); cUserName = createUser.getName(); } %>
 			<div style="display:inline" id="labelAccount"><%=cUserId+":"+cUserName%>&nbsp;</div>
-			<input type="hidden" name="createUser" value="<%=cUserId%>"><a href="javascript:void(0)" onclick="showDialog_account(); event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>			
+			<input type="hidden" name="createUser" id="createUser" value="<%=cUserId%>"><a href="javascript:void(0)" onclick="showDialog_account(); event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>			
         </td>
 	    <td align="right" class="lblbold">
           <span class="tabletext">Customer:&nbsp;</span>
@@ -328,8 +328,8 @@ function showDialog_account()
 				customerName = customer.getDescription();
 			 }%>
 			<div style="display:inline" id="labelCustomer"><%=customerId+":"+customerName%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="customerName" maxlength="100" value="<%=customerName%>">
-			<input type="hidden" name="customerId" value="<%=customerId%>"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+			<input type="hidden" readonly="true" name="customerName" id="customerName" maxlength="100" value="<%=customerName%>">
+			<input type="hidden" name="customerId" id="customerId" value="<%=customerId%>"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>       
       </tr>
 	  

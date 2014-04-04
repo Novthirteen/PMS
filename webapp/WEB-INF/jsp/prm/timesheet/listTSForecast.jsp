@@ -187,9 +187,9 @@ function OpenReqURL(ReqType, DataId)
 </tr>
 </table>
 <Form action="editTSForecast.do" name="frm" method="post">
-	<input type="hidden" name="UserId" value="<%=chkSelect%>">
-	<input type="hidden" name="DepartmentId" value="<%=chkParty%>">
-	<input type="hidden" name="DataId" value="">
+	<input type="hidden" name="UserId" id="UserId" value="<%=chkSelect%>">
+	<input type="hidden" name="DepartmentId" id="DepartmentId" value="<%=chkParty%>">
+	<input type="hidden" name="DataId" id="DataId" value="">
 </Form>
 <%
 	Hibernate2Session.closeSession();

@@ -115,14 +115,14 @@ function onCloseDialog() {
 
 </script>
 <Form action="selMember.do" name="SelForm" method="post">
-	<input type="hidden" name="CALLBACKNAME" value="">
-	<input type="hidden" name="hiddenDataId" value="">
-	<input type="hidden" name="departmentId" value="">
-	<input type="hidden" name="memberId" value="">
-	<input type="hidden" name="DateStart" value="">
-	<input type="hidden" name="DateEnd" value="">
-	<input type="hidden" name="id" value="">
-	<input type="hidden" name="option" value="">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME" value="">
+	<input type="hidden" name="hiddenDataId" id="hiddenDataId" value="">
+	<input type="hidden" name="departmentId" id="departmentId" value="">
+	<input type="hidden" name="memberId" id="memberId" value="">
+	<input type="hidden" name="DateStart" id="DateStart" value="">
+	<input type="hidden" name="DateEnd" id="DateEnd" value="">
+	<input type="hidden" name="id" id="id" value="">
+	<input type="hidden" name="option" id="option" value="">
 </Form>
 <form action="assignProject.do" method="post" name="EditForm">
 <IFRAME frameBorder=0 id=CalFrame marginHeight=0 
@@ -130,14 +130,14 @@ function onCloseDialog() {
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="action" value="">
-<input type="hidden" name="Id" value="<%=DataId%>">
-<input type="hidden" name="DataId" value="<%=DataId%>">
-<input type="hidden" name="add" value="">
-<input type="hidden" name="memberId" value="">
-<input type="hidden" name="DateStart" value="">
-<input type="hidden" name="DateEnd" value="">
-<input type="hidden" name="projectStatus" value="Open">
+<input type="hidden" name="action" id="action" value="">
+<input type="hidden" name="Id" id="Id" value="<%=DataId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataId%>">
+<input type="hidden" name="add" id="add" value="">
+<input type="hidden" name="memberId" id="memberId" value="">
+<input type="hidden" name="DateStart" id="DateStart" value="">
+<input type="hidden" name="DateEnd" id="DateEnd" value="">
+<input type="hidden" name="projectStatus" id="projectStatus" value="Open">
 </form>
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  Project Assignment </CAPTION>
@@ -148,7 +148,7 @@ function onCloseDialog() {
 				<td colspan=6><hr color=red></hr></td>
 			</tr>
 			<tr>
-				<td class="lblbold" align=right>Project :</td><td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" value="<%=CustProject.getProjId()%>"></td>
+				<td class="lblbold" align=right>Project :</td><td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" id="projectId" value="<%=CustProject.getProjId()%>"></td>
 				<td class="lblbold" align=right>Contract No:</td><td class="lblLight"><%=CustProject.getContractNo()%>&nbsp;</td>	
 				<td class="lblbold" align=right>Status :</td>
 				<td class="lblLight"><%=CustProject.getProjStatus()%></td>	
@@ -290,8 +290,8 @@ function onCloseDialog() {
 				<form name="AddMemberForm" action="assignProject.do">
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" class="inputBox" value="Add Member" onclick="javascript:showDialog('add');">
-				<input type="hidden" name="DataId">
-				<input type="hidden" name="add">
+				<input type="hidden" name="DataId" id="DataId">
+				<input type="hidden" name="add" id="add">
 				</form>
 			   </td>
 			   <td colspan=2></td>
@@ -430,7 +430,7 @@ function fnSubmit1(start) {
            	</logic:iterate>
 			<tr>
 				<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = result.size();
 				int l = 0;

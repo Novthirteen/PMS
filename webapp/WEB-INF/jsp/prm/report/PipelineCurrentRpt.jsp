@@ -87,7 +87,7 @@ function showBidMaster(id) {
 	<tr>
 		<td>
 			<form action="pas.report.PipelineCurrentRpt.do" name="frm" method="post">
-				<input type="hidden" name="formAction">
+				<input type="hidden" name="formAction" id="formAction">
 				<table width=1000>
 					<tr>
 						<td colspan="8" valign="bottom"><hr color=red></hr></td>
@@ -160,10 +160,10 @@ function showBidMaster(id) {
 //						if (AOFSECURITY.hasEntityPermission("SALES_PIPELINE_RPT", "_SALES", session)) {
 					%>				
 						<td class="lblbold" align="center" colspan="1">Department By Salesperson:</td>
-						<input type="hidden" name="viewType" value="sales">
+						<input type="hidden" name="viewType" id="viewType" value="sales">
 					<%}else{%>
 						<td class="lblbold" align="center" colspan="1">Department By Bid:</td>
-						<input type="hidden" name="viewType" value="bid">
+						<input type="hidden" name="viewType" id="viewType" value="bid">
 					<%}%>
 						<td class="lblLight" colspan="1" >
 							<select name="department" class="inputbox">
@@ -224,7 +224,7 @@ function showBidMaster(id) {
 					   salesname="";}
 					   %>
 					    <input type="text" name="sales" value="<%=salesname%>"  class="inputbox" readonly>
-					    <input type="hidden" name="hid_id" value="<%=salseid%>">
+					    <input type="hidden" name="hid_id" id="hid_id" value="<%=salseid%>">
 					    <a href='javascript: showStaff()'><img align="absmiddle" alt="select" src="images/select.gif" border="0" /></a>
 						<a href="javascript:void(0)" onclick="clearUser();event.returnValue=false;"><img align="absmiddle" alt="Clear Employee" src="images/deleteParty.gif" border="0" /></a>
 					    </td>
@@ -438,7 +438,7 @@ function showBidMaster(id) {
 				%>
 				<tr bgcolor="#e9eee1"> 
 					<td class='lblbold'  align="left">
-					<input type="hidden" name="company">
+					<input type="hidden" name="company" id="company">
 					<%=bm.getProspectCompany().getDescription()%>
 					</td>
 					<td  class='lblbold' align="left">
@@ -462,7 +462,7 @@ function showBidMaster(id) {
 					<a href="javascript:showBidMaster(<%=bm.getId().longValue()%>)"><%=bm.getNo()%></a>
 					</td>
 					<td   class='lblbold'   align="left">
-					<input type="hidden" value="<%=decFormat.format(Math.round((bm.getEstimateAmount().doubleValue())/1000))%>" name="<%=recval%>">
+					<input type="hidden" value="<%=decFormat.format(Math.round((bm.getEstimateAmount().doubleValue())/1000))%>" name="<%=recval%>" id="<%=recval%>">
 					<%=numFormat.format(Math.round((bm.getEstimateAmount().doubleValue())/1000))%>
 					</td>
 					<td   class='lblbold'  align="left">
@@ -479,11 +479,11 @@ function showBidMaster(id) {
 					<%=bm.getEstimateEndDate()%>
 					</td>
 					<td  class='lblbold'   align="left">
-					<input type="hidden" value="<%=decFormat.format(thisYearUnW)%>" name="<%=recval%>">
+					<input type="hidden" value="<%=decFormat.format(thisYearUnW)%>" name="<%=recval%>" id="<%=recval%>">
 					<%=numFormat.format(thisYearUnW)%>					
 					</td>
 					<td  class='lblbold'   align="left">
-					<input type="hidden" value="<%=decFormat.format(weightedThisYear)%>" name="<%=recval%>">
+					<input type="hidden" value="<%=decFormat.format(weightedThisYear)%>" name="<%=recval%>" id="<%=recval%>">
 					<%=numFormat.format(weightedThisYear)%>
 					</td>
 					<%
@@ -496,7 +496,7 @@ function showBidMaster(id) {
 					else
 					tempamount=0;
 					%>
-					<td  class='lblbold'  align="right" ><input type="hidden" value="<%=tempamount%>" name="<%=recval%>"><% if((x >= startMonth && x <= endMonth)&&(amountPerMonth!=0)) out.print(numFormat.format(amountPerMonth));%></td>
+					<td  class='lblbold'  align="right" ><input type="hidden" value="<%=tempamount%>" name="<%=recval%>" id="<%=recval%>"><% if((x >= startMonth && x <= endMonth)&&(amountPerMonth!=0)) out.print(numFormat.format(amountPerMonth));%></td>
 					<%
 					}
 					%>

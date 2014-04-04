@@ -63,8 +63,8 @@ if(action == null){
     	action="update";
 %>
 	<form action="editVendorParty.do" method="post" name="frm">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -75,7 +75,7 @@ if(action == null){
           <span class="tabletext">Supplier Code:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=VendorParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" value="<%=VendorParty.getPartyId()%>">
+          <span class="tabletext"><%=VendorParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" id = "PartyId" value="<%=VendorParty.getPartyId()%>">
         </td>
 		<td align="right">
           <span class="tabletext">&nbsp;</span>
@@ -168,7 +168,7 @@ if(action == null){
           "":VendorParty.getAccountCode()%>" size="30">
         </td>
       </tr>
-	  <input type="hidden" name="role" value="SUPPLIER">
+	  <input type="hidden" name="role" id = "role" value="SUPPLIER">
       <tr><td>&nbsp;</td><td><br></td></tr>  
       <tr>
         <td align="right">
@@ -188,8 +188,8 @@ if(action == null){
 	}else{
 %>
 	<form action="editVendorParty.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -287,7 +287,7 @@ if(action == null){
           <input type="text" class="inputBox" name="AccountCode"  size="30">
         </td>
       </tr>
-	  <input type="hidden" name="role" value="SUPPLIER">
+	  <input type="hidden" name="role" id = "role" value="SUPPLIER">
       <tr><td>&nbsp;</td><td><br></td></tr>  
       <%if(hasError!=null){%>
       	<tr><td colspan="4" align="center"><font color="red"><%=(String)hasError%></font></td></tr>

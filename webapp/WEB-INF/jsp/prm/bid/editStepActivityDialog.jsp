@@ -102,11 +102,11 @@ function validate(){
 
 	<BODY>
 <form name="editForm" action="EditStepActivity.do" method="post">
-	<input type="hidden" name="formAction" value="edit">
-	<input type="hidden" name="id" value="<%= activity != null ? String.valueOf(activity.getId()) : ""%>">
-	<input type="hidden" name="stepId" value="<%=stepId%>">
-	<input type="hidden" name="option" value="<%=option%>">
-	<input type="hidden" name="createFlag">
+	<input type="hidden" name="formAction" id="formAction" value="edit">
+	<input type="hidden" name="id" id="id" value="<%= activity != null ? String.valueOf(activity.getId()) : ""%>">
+	<input type="hidden" name="stepId" id="stepId" value="<%=stepId%>">
+	<input type="hidden" name="option" id="option" value="<%=option%>">
+	<input type="hidden" name="createFlag" id="createFlag">
 	
 	<table border=0 width='100%' cellspacing='0' cellpadding='0' align="center">
 		<CAPTION align=center class=pgheadsmall>Sales Activity Maintenance</CAPTION>
@@ -153,7 +153,7 @@ function validate(){
       										<tr>
 										      	
 										      	<td>
-											      	<input type="hidden" name="criticalFlg" value="<%=Constants.STEP_ACTIVITY_CRITICAL_FLAG_STATUS_YES%>" >
+											      	<input type="hidden" name="criticalFlg" id="criticalFlg" value="<%=Constants.STEP_ACTIVITY_CRITICAL_FLAG_STATUS_YES%>" >
 										      	</td>
 										    </tr>
 											<tr>

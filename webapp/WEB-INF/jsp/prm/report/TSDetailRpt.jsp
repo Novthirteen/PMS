@@ -88,7 +88,7 @@ function ExportExcel() {
 <tr>
 	<td>
 		<Form action="pas.report.TSDetailRpt.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<table width=100%>
 			<tr>
 				<td colspan=8 valign="bottom"><hr color=red></hr></td>

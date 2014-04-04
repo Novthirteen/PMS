@@ -211,18 +211,18 @@ function OnSettleCheck(){
 		<td width="100%" colspan=4><hr color=red></hr></td>
 	</tr>
 </table>
-<input type="hidden" name="place" value="">
-<input type="hidden" name="invCode" value="">
-<input type='hidden' name='vendor' value=''>
-<input type='hidden' name='type' value=''>
-<input type='hidden' name='payDate' value=''>
-<input type='hidden' name='currency' value=''>
-<input type='hidden' name='rate' value=''>
-<input type='hidden' name='amt' value=''>
-<input type='hidden' name='paymentId' value='<%=paymentId%>'>
-<input type='hidden' name='tranId' value=''>
-<input type='hidden' name='formAction' value='save'>
-<input type='hidden' name='remainAmt' value=''>
+<input type="hidden" name="place"  id="place"value="">
+<input type="hidden" name="invCode" id="invCode" value="">
+<input type="hidden" name="vendor" id="vendor" value="">
+<input type="hidden" name="type" id="type" value="">
+<input type="hidden" name="payDate" id="payDate" value="">
+<input type="hidden" name="currency" id="currency" value="">
+<input type="hidden" name="rate" id="rate" value="">
+<input type="hidden" name="amt" id="amt" value="">
+<input type="hidden" name="paymentId" id="paymentId" value="<%=paymentId%>">
+<input type="hidden" name="tranId" id="tranId" value="">
+<input type="hidden" name="formAction" id="formAction" value="save">
+<input type="hidden" name="remainAmt" id="remainAmt" value="">
 </form>
 
 <%}else{%>
@@ -313,10 +313,10 @@ function OnSettleCheck(){
 		<td width="100%" colspan=4><hr color=red></hr></td>
 	</tr>
 </table>
-<input type='hidden' name='tranId' value='<%=ppt.getId()%>'>
-<input type='hidden' name='formAction' value='update'>
-<input type='hidden' name='remainAmt' value='<%=ppt.getInvoice().getSettledRemainingAmount()%>'>
-<input type='hidden' name='settledAmt' value='<%=ppt.getAmount()%>'>
+<input type='hidden' name="tranId" id="tranId" value='<%=ppt.getId()%>'>
+<input type='hidden' name="formAction" id="formAction" value='update'>
+<input type='hidden' name="remainAmt" id="remainAmt" value='<%=ppt.getInvoice().getSettledRemainingAmount()%>'>
+<input type='hidden' name="settledAmt" id="settledAmt" value='<%=ppt.getAmount()%>'>
 </form>
 <%}%>
 <%

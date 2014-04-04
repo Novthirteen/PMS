@@ -145,8 +145,8 @@ stList = new LinkedList();
 //int gcount = 0;
 int gap = 0; //for salary level list
 %>
-<input type="hidden" name="formaction" >
-<input type="hidden" name="masterid" value="<%=master.getId()%>" >
+<input type="hidden" name="formaction" id="formaction" >
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>" >
 
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' align="center">
 	<CAPTION align=center class=pgheadsmall>Project Precal Basic Data</CAPTION>
@@ -239,8 +239,8 @@ int gap = 0; //for salary level list
 					ProjPlanType ppt = (ProjPlanType)list.get(i);
 	          %>
 					<tr id="<%=ppt.getId()%>" bgcolor="#e9eee9"> 
-					<td class="lblbold" align="center"><input type="hidden" name="hid_status" value="no"><%=(gap+i+1)%>
-						<input type="hidden" name="id" value="<%=ppt.getId()%>"></td>
+					<td class="lblbold" align="center"><input type="hidden" name="hid_status" id="hid_status" value="no"><%=(gap+i+1)%>
+						<input type="hidden" name="id" id="id" value="<%=ppt.getId()%>"></td>
 					<td class="lblbold" align="center">
 					<input type="text" name="desc" value="<%=ppt.getDescription()%>" 
 						<%if(confirmflag){%>
@@ -291,8 +291,8 @@ int gap = 0; //for salary level list
 		              StandardServiceType sst  = (StandardServiceType)stList.get(i);
 	              %>
    					<tr id="<%=sst.getId()%>" bgcolor="#e9eee9"> 
-					<td class="lblbold" align="center"><input type="hidden" name="hid_status" value="no"><%=(i+1)%>
-						<input type="hidden" name="sstid" value="<%=sst.getId()%>"></td>
+					<td class="lblbold" align="center"><input type="hidden" name="hid_status" id="hid_status" value="no"><%=(i+1)%>
+						<input type="hidden" name="sstid" id="sstid" value="<%=sst.getId()%>"></td>
 					<td class="lblbold" align="center">
 						<input type="text" value="<%=sst.getDescription()%>" name="sstdesc" style="text-align:center;background-color:#ffffff;border-color:#7F9DB9">
 					</td>
@@ -376,7 +376,7 @@ int gap = 0; //for salary level list
 	</td>
 	<td align="center"><input type="text" name="add_rate" value="" style="background-color:#ffffff;border-color:#7F9DB9" 
 	onchange="javascript:CheckDecimal(this)" onclick="javascript:this.value=''"></td>
-	<td align="center"><input type="hidden" name="hid_sl_id" size="15">
+	<td align="center"><input type="hidden" name="hid_sl_id" id="hid_sl_id" size="15">
 		<select name="add_sl_dpt" onchange="javascript:fnChangeDpt(this,0)" style="background-color:#ffffff">
 		</select>
 	</td>
@@ -397,7 +397,7 @@ int gap = 0; //for salary level list
 
 <table width="100%">
 <tr><td>&nbsp;</td></tr>
-<tr align="right"><td><input type="hidden" name="hid_id">
+<tr align="right"><td><input type="hidden" name="hid_id" id="hid_id">
 <%if((list.size()<1)&&(stList.size()>0)){%>
 <input type="submit" value="create" onclick="javascript:document.frm1.formaction.value='insert'" class="button">
 <%}else if(!confirmflag){%>

@@ -3,6 +3,6 @@
   <TR class='topBox'>
     <TD  width="40%" >
     </TD>        
-    <TD align=right width="60%" ><div class="contenttext">Copyright 2006 &copy;Atos Origin China</div></TD>
+    <TD align=right width="60%" ><div class="contenttext"></div></TD>
   </TR>
 </TABLE>

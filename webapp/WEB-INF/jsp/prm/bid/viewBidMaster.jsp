@@ -144,11 +144,11 @@
 	<CAPTION align=center class=pgheadsmall>Bid Master</CAPTION>
 	<tr>
 		<td>
-				<input type="hidden" name="formAction" value="query">
-				<input type="hidden" name="stepGroupId" value="<%=stepGroupId%>">
-				<input type="hidden" name="prospectCompanyId" value="<%=prospectCompanyId%>">
-				<input type="hidden" name="id" value="<%=id%>">
-				<input type="hidden" name="offSet">
+				<input type="hidden" name="formAction" id="formAction" value="query">
+				<input type="hidden" name="stepGroupId" id="stepGroupId" value="<%=stepGroupId%>">
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompanyId%>">
+				<input type="hidden" name="id" id="id" value="<%=id%>">
+				<input type="hidden" name="offSet" id="offSet">
 				<TABLE width="100%">
 					<tr>
 						<td align="right">

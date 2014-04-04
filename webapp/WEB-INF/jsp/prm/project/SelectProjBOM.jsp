@@ -21,7 +21,7 @@
 
 <FORM name="frm1" action="editProjBOM.do" method=post>
 <BR><BR>
-<input type="hidden" name="formaction" value="new">
+<input type="hidden" name="formaction" id="formaction" value="new">
 <TABLE width=100% >
 	<CAPTION class=pgheadsmall>Project BOM
 	</CAPTION>
@@ -32,36 +32,36 @@
 				<tr>
 					<TD class=lblbold align="right">Template:&nbsp;</TD>
 					<td class="lblbold">
-					<input type="hidden" name="template_desc">
+					<input type="hidden" name="template_desc" id="template_desc">
 						<div style="display:inline" id="labeltemplate">&nbsp;</div>
-					<input type="hidden" name="template_id"><a href="javascript:void(0)" onclick="showTemplateDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+					<input type="hidden" name="template_id" id="template_id"><a href="javascript:void(0)" onclick="showTemplateDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 					</td>
 				</tr>
 
 				<tr>
 					<TD class=lblbold align="right">Bid:&nbsp;</TD>
 					<td class="lblbold">
-					<input type="hidden" name="bid_desc">
+					<input type="hidden" name="bid_desc" id="bid_desc">
 						<div style="display:inline" id="labelBid">&nbsp;</div>
-					<input type="hidden" name="bid_id"><a href="javascript:void(0)" onclick="showBidDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+					<input type="hidden" name="bid_id" id="bid_id"><a href="javascript:void(0)" onclick="showBidDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 					</td>
 				</tr>
 				
 				<tr>
 					<TD class=lblbold align="right">Project:&nbsp;</TD>
 					<td class="lblbold">
-					<input type="hidden" name="proj_desc">
+					<input type="hidden" name="proj_desc" id="proj_desc">
 						<div style="display:inline" id="labelProject" size="50">&nbsp;</div>
 						<a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
-					<input type="hidden" name="proj_id">
+					<input type="hidden" name="proj_id" id="proj_id">
 					</td>
 				</tr>
 				
 				<tr>
 					<TD class=lblbold align="right">Customer:&nbsp;</TD>
 					<td class="lblbold" align='left' >
-					<input type="hidden" name="cust_id">
-					<input type="hidden" name="cust_desc">
+					<input type="hidden" name="cust_id" id="cust_id">
+					<input type="hidden" name="cust_desc" id="cust_desc">
 						<div style="display:inline" id="labelCustomer" size="50">&nbsp;</div>
 					</td>
 				</tr>
@@ -69,7 +69,7 @@
 				<tr>
 					<TD class=lblbold align="right">Import from Similar Project BOM:&nbsp;</TD>
 					<td class="lblbold">
-						<input type="hidden" name="simBomId">
+						<input type="hidden" name="simBomId" id="simBomId">
 						<div style="display:inline" id="labelBom">&nbsp;</div>
 						<a href="javascript:void(0)" onclick="showBOMDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 					</td>

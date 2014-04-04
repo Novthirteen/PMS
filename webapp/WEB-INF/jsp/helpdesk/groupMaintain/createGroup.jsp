@@ -95,8 +95,8 @@ function showDialog_staff() {
 	<tr>
 		<td>
 			<Form action="helpdesk.maintainGroup.do" name="frm" method="post">
-				<input type="hidden" name="formAction">
-				<input type="hidden" name="gid" value="<%=gid%>">
+				<input type="hidden" name="formAction" id = "formAction">
+				<input type="hidden" name="gid" id = "gid" value="<%=gid%>">
 				<table width=100% >
 					<tr>
 						<td colspan="16" valign="bottom"><hr color=red></hr></td>
@@ -106,8 +106,8 @@ function showDialog_staff() {
 						<td class="lblbold">Supervisor:</td>
 						<td class="lblLight">
 							<div style="display:inline" id="sup_name"><%=super_name%>&nbsp;</div>
-							<input type="hidden" name="supervisor" value="<%=supervisor%>">
-							<input type="hidden" name="super_name" value="<%=super_name%>">
+							<input type="hidden" name="supervisor" id = "supervisor" value="<%=supervisor%>">
+							<input type="hidden" name="super_name" id = "super_name" value="<%=super_name%>">
 							<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="Select supervisor of the group/>" src="images/select.gif" border="0" /></a>
 						</td>
 						<td/>
@@ -122,7 +122,7 @@ function showDialog_staff() {
 					<tr>
 						<td colspan="3"/>
 						<td>
-						<input type="hidden" name="isUpdate">
+						<input type="hidden" name="isUpdate" id = "isUpdate">
 						<input type="button" value="Save" onclick="saveGroup('<%=isUpdate%>');">
 						<input type="button" value="Delete" onclick="deleteGroup();">
 						<input type="button" value="Back To List" onclick="backToList();"></td>

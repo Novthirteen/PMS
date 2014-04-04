@@ -58,8 +58,8 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <html:form action="/projectList.do" method="POST">
 <title>Project Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall><bean:message key="prm.timesheet.projectSelect.title"/></CAPTION>
 </table>

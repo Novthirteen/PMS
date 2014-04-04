@@ -134,8 +134,8 @@ if(field.value.length > 0 && falert == 1)
 	<CAPTION align=center class=pgheadsmall>
 	AR Tracking History List
 	</CAPTION>
-	<input type="hidden" name="projId" value="<%=projId==null?"":projId%>">
-	<input type="hidden" name="FormAction" value="<%=formAction==null?"":formAction%>">
+	<input type="hidden" name="projId" id="projId" value="<%=projId==null?"":projId%>">
+	<input type="hidden" name="FormAction" id="FormAction" value="<%=formAction==null?"":formAction%>">
 	
 	<tr>
 		<td align="left" class="lblbold" bgcolor="#e9eee9" width="20%">Create User </td>
@@ -155,8 +155,8 @@ if(field.value.length > 0 && falert == 1)
 		<tr >
 	        <td bgcolor="#e9eef9">
 		       	<div style="display:inline" id="AssigneeName"><%=part.getCreateUser().getName()%></div>
-				<input type="hidden" name="Assignee" value="<%=part.getCreateUser().getUserLoginId()%>">
-				<input type="hidden" name="detailId" value="<%=part.getId()%>">
+				<input type="hidden" name="Assignee" id="Assignee" value="<%=part.getCreateUser().getUserLoginId()%>">
+				<input type="hidden" name="detailId" id="detailId" value="<%=part.getId()%>">
 				<%if (true || AOFSECURITY.hasEntityPermission("SALES_FUNNEL", "_ALL", session)) {%>
 					<a href="javascript:showStaff(<%=count%>)">
 						<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
@@ -184,20 +184,20 @@ if(field.value.length > 0 && falert == 1)
 	%>
 	
 	
-		<input type="hidden" name="cc" value="<%=cc%>">
+		<input type="hidden" name="cc" id="cc" value="<%=cc%>">
 		<tr>
 			<td colspan=8 valign="bottom"><hr color="#B5D7D6"></hr></td>
 		</tr>
 		<tr>
 			<td align="left">
 				<div style="display:inline" id="aAssigneeName"><%=ul.getName()%></div>
-				<input type="hidden" name="aAssignee" value="<%=ul.getUserLoginId()%>">
+				<input type="hidden" name="aAssignee" id="aAssignee" value="<%=ul.getUserLoginId()%>">
 				<%if (true || AOFSECURITY.hasEntityPermission("PROJ_PRESALE", "_ALL", session)) {%>
 				<a href="javascript:void(0)" onclick="showStaff1();event.returnValue=false;">
 				<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
 				<%}%>
-				<input type="hidden" name="aName" value="<%=ul.getName()%>">
-				<input type="hidden" name="aId" value="<%=ul.getUserLoginId()%>">
+				<input type="hidden" name="aName" id="aName" value="<%=ul.getName()%>">
+				<input type="hidden" name="aId" id="aId" value="<%=ul.getUserLoginId()%>">
 	        </td>
 	        <td align="left">
 			<input type="text" class="inputBox" name="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="12">

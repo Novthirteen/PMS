@@ -78,7 +78,7 @@
 	<CAPTION align=center class=pgheadsmall>Sales Bid List</CAPTION>
 	<tr>
 		<td>
-			<input type="hidden" name="formAction" value="query">
+			<input type="hidden" name="formAction" id="formAction" value="query">
 			<table width="100%">
 				<tr><td colspan=6><hr color=red></hr></td></tr>
 				<tr>
@@ -116,7 +116,7 @@
 			          <span class="lblbold" >Sales Person:&nbsp;</span>
 			        </td>
 			        <td >
-			        	<input type="text" class="inputBox" name="qrySalesPerson" size="12" value="<%=qrySalesPerson%>">
+			        	<input type="text" class="inputBox" name="qrySalesPerson" id="qrySalesPerson" size="12" value="<%=qrySalesPerson%>">
 						<a href="javascript:showDialog_account()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 			        </td>
      			</tr>

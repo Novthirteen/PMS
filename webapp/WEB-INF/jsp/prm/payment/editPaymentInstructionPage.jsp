@@ -41,12 +41,12 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_CREATE", session)) {
 	}
 %>
 <form name="backForm" action="FindPaymentInstruction.do" method="post">
-	<input type="hidden" name="action" value="query">
-	<input type="hidden" name="payCode" value="<%=payCode%>">
-	<input type="hidden" name="project" value="<%=project%>">
-	<input type="hidden" name="vendor" value="<%=vendor%>">
-	<input type="hidden" name="department" value="<%=department%>">
-	<input type="hidden" name="status" value="<%=status%>">
+	<input type="hidden" name="action" id="action" value="query">
+	<input type="hidden" name="payCode" id="payCode" value="<%=payCode%>">
+	<input type="hidden" name="project" id="project" value="<%=project%>">
+	<input type="hidden" name="vendor" id="vendor" value="<%=vendor%>">
+	<input type="hidden" name="department" id="department" value="<%=department%>">
+	<input type="hidden" name="status" id="status" value="<%=status%>">
 </form>
 <%
 	ProjectPayment pp = (ProjectPayment)request.getAttribute("ProjectPayment");

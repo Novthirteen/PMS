@@ -86,10 +86,10 @@ if (AOFSECURITY.hasEntityPermission("PROJ_INVOICE", "_CREATE", session)) {
 				<CAPTION align=center class=pgheadsmall>Invoice Confirmation</CAPTION>
 				<tr>
 					<td>
-						<input type="hidden" name="formAction" value="edit">
-						<input type="hidden" name="invoiceId" value="<%=invoiceId%>">
-						<input type="hidden" name="confirmId" value="<%= pic != null ? pic.getId() + "" : "" %>">
-						<input type="hidden" name="nextClose" value="nextClose">
+						<input type="hidden" name="formAction" id="formAction" value="edit">
+						<input type="hidden" name="invoiceId" id="invoiceId" value="<%=invoiceId%>">
+						<input type="hidden" name="confirmId" id="confirmId" value="<%= pic != null ? pic.getId() + "" : "" %>">
+						<input type="hidden" name="nextClose" id="nextClose" value="nextClose">
 
 						<TABLE width="100%">
 							<tr>
@@ -115,7 +115,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_INVOICE", "_CREATE", session)) {
 									<div style="display:inline" id="labelBillResponsiblePerson">
 										<%=pic != null ? pic.getResponsiblePerson().getName() : ul.getName()%>
 									</div>
-									<input type="hidden" name="responsiblePerson" value="<%=pic != null ? pic.getResponsiblePerson().getUserLoginId() : ul.getUserLoginId()%>">
+									<input type="hidden" name="responsiblePerson" id="responsiblePerson" value="<%=pic != null ? pic.getResponsiblePerson().getUserLoginId() : ul.getUserLoginId()%>">
 									<a href="javascript:showStaff()"><img align="absmiddle" alt="select" src="images/select.gif" border="0" /></a>
 								</td>
 								

@@ -101,8 +101,8 @@ function checkchk() {
 	<TR>
 		<TD width='100%'>
 			<form action="editProjAccp.do" method="POST" name="aform">
-			<input type="hidden" name="FormAction">
-			<input type="hidden" name="DataId" value="<%=DataId%>">
+			<input type="hidden" name="FormAction" id="FormAction">
+			<input type="hidden" name="DataId" id="DataId" value="<%=DataId%>">
 			
 				<IFRAME frameBorder=0 id=CalFrame marginHeight=0 
 							marginWidth=0 noResize 
@@ -116,21 +116,21 @@ function checkchk() {
 						</td>
 						<td>
 							<span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span>	
-							<input type="hidden" name="DataId" value="<%=CustProject.getProjId()%>">
+							<input type="hidden" name="DataId" id="DataId" value="<%=CustProject.getProjId()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Project Description :&nbsp;</span>
 						</td>
 						<td align="left">
 							<span class="tabletext"><%=CustProject.getProjName()%>&nbsp;</span>
-							<input type="hidden" name="projName" value="<%=CustProject.getProjName()%>">
+							<input type="hidden" name="projName" id="projName" value="<%=CustProject.getProjName()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Project Status :&nbsp;</span>
 						</td>
 						<td align="left">
 							<span class="tabletext"><%=CustProject.getProjStatus()%>&nbsp;</span>
-							<input type="hidden" name="projectStatus" value="<%=CustProject.getProjStatus()%>">
+							<input type="hidden" name="projectStatus" id="projectStatus" value="<%=CustProject.getProjStatus()%>">
 						</td>
 					</tr>
 					<tr>
@@ -139,7 +139,7 @@ function checkchk() {
 						</td>
 						<td align="left">
 							<span class="tabletext"><%=CustProject.getContractNo()%>&nbsp;</span>
-							<input type="hidden" name="contractNo" value="<%=CustProject.getContractNo()%>">
+							<input type="hidden" name="contractNo" id="contractNo" value="<%=CustProject.getContractNo()%>">
 						</td>
 						<%if (CustProject.getProjectCategory().getId().equals("C")){%>
 						<td align="right" class="lblbold">
@@ -147,7 +147,7 @@ function checkchk() {
 						</td>
 						<td>
 							<span class="tabletext"><%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>&nbsp;</span>
-							<input type="hidden" name="customerId" value="<%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>">
+							<input type="hidden" name="customerId" id="customerId" value="<%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>">
 						</td>
 						<%}%>
 						<%if (CustProject.getProjectCategory().getId().equals("P")){%>
@@ -163,7 +163,7 @@ function checkchk() {
 						</td>
 						<td align="left">
 							<span class="tabletext"><%=CustProject.getDepartment().getDescription()%>&nbsp;</span>
-							<input type="hidden" name="departmentId" value="<%=CustProject.getDepartment().getDescription()%>">
+							<input type="hidden" name="departmentId" id="departmentId"  value="<%=CustProject.getDepartment().getDescription()%>">
 						</td>
 					</tr>
 					<tr>
@@ -179,21 +179,21 @@ function checkchk() {
 							}
 							%>
 							<span class="tabletext"><%=PMName%>&nbsp;</span>
-							<input type="hidden" name="projectManagerId" value="<%=PMId%>">
+							<input type="hidden" name="projectManagerId" id="projectManagerId" value="<%=PMId%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext"> Open for All :&nbsp;</span>
 						</td>
 						<td  align="left">
 							<span class="tabletext"><% if (CustProject.getPublicFlag().equals("N")) out.print("NO"); else out.print("YES"); %>&nbsp;</span>
-							<input type="hidden" name="PublicFlag" value="<%=CustProject.getPublicFlag()%>">
+							<input type="hidden" name="PublicFlag" id="PublicFlag" value="<%=CustProject.getPublicFlag()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Contract Type :&nbsp;</span>
 						</td>
 						<td align="left">
 							<span class="tabletext"><% if (CustProject.getContractType().equals("FP")) out.print("Fixed Price"); else out.print("Time & Material");%>&nbsp;</span>
-							<input type="hidden" name="ContractType" value="<%=CustProject.getContractType()%>">
+							<input type="hidden" name="ContractType" id="ContractType" value="<%=CustProject.getContractType()%>">
 						</td>
 					</tr>	 
 					<tr>
@@ -202,21 +202,21 @@ function checkchk() {
 						</td>
 						<td  align="left">
 							<span class="tabletext"><%=Num_formater.format(CustProject.gettotalServiceValue())%>&nbsp;</span>
-							<input type="hidden" name="totalServiceValue" value="<%=CustProject.gettotalServiceValue()%>">
+							<input type="hidden" name="totalServiceValue" id="totalServiceValue" value="<%=CustProject.gettotalServiceValue()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Total Proc./Sub Value(RMB) :&nbsp;</span>
 						</td>
 						<td  align="left">
 							<span class="tabletext"><%=Num_formater.format(CustProject.gettotalLicsValue())%>&nbsp;</span>
-							<input type="hidden" name="totalLicsValue" value="<%=CustProject.gettotalLicsValue()%>">
+							<input type="hidden" name="totalLicsValue" id="totalLicsValue" value="<%=CustProject.gettotalLicsValue()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Service Budget(RMB) :&nbsp;</span>
 						</td>
 						<td  align="left">
 							<span class="tabletext"><%=Num_formater.format(CustProject.getPSCBudget())%>&nbsp;</span>
-							<input type="hidden" name="PSCBudget" value="<%=CustProject.getPSCBudget()%>">
+							<input type="hidden" name="PSCBudget" id="PSCBudget" value="<%=CustProject.getPSCBudget()%>">
 						</td>
 					</tr> 
 					<tr>
@@ -225,21 +225,21 @@ function checkchk() {
 						</td>
 						<td  align="left">
 							<span class="tabletext"><%=Num_formater.format(CustProject.getEXPBudget())%>&nbsp;</span>
-							<input type="hidden" name="EXPBudget" value="<%=CustProject.getEXPBudget()%>">
+							<input type="hidden" name="EXPBudget" id="EXPBudget" value="<%=CustProject.getEXPBudget()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Proc./Sub Budget(RMB) :&nbsp;</span>
 						</td>
 						<td  align="left">
 							<span class="tabletext"><%=Num_formater.format(CustProject.getProcBudget())%>&nbsp;</span>
-							<input type="hidden" name="procBudget" value="<%=CustProject.getProcBudget()%>">
+							<input type="hidden" name="procBudget" id="procBudget" value="<%=CustProject.getProcBudget()%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Need CAF :&nbsp;</span>
 						</td>
 						<td align="left">
 							<span class="tabletext"><% if (CustProject.getCAFFlag().equals("N")) out.print("NO"); else out.print("YES");%>&nbsp;</span>
-							<input type="hidden" name="CAFFlag" value="<%=CustProject.getCAFFlag()%>">
+							<input type="hidden" name="CAFFlag" id="CAFFlag" value="<%=CustProject.getCAFFlag()%>">
 						</td>
 					</tr>
 					<tr>
@@ -254,21 +254,21 @@ function checkchk() {
 							ProjName = CustProject.getParentProject().getProjName();
 							}%>
 							<div style="display:inline" id="labelParentProject"><%=ProjId%>:<%=ProjName%>&nbsp;</div>
-							<input type=hidden name="ParentProjectId" Value="<%=ProjId%>">
+							<input type="hidden" name="ParentProjectId" Id="ParentProjectId" Value="<%=ProjId%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">Start Date :&nbsp;</span>
 						</td>
 						<td>
 							<span class="tabletext"><%=formater.format((java.util.Date)CustProject.getStartDate())%>&nbsp;</span>
-							<input type="hidden" name="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>">
+							<input type="hidden" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>">
 						</td>
 						<td align="right" class="lblbold">
 							<span class="tabletext">End Date :&nbsp;</span>
 						</td>
 						<td align="left">
 							<span class="tabletext"><%=formater.format((java.util.Date)CustProject.getEndDate())%>&nbsp;</span>
-							<input type="hidden" name="endDate" value="<%=formater.format((java.util.Date)CustProject.getEndDate())%>">
+							<input type="hidden" name="endDate" id="endDate" value="<%=formater.format((java.util.Date)CustProject.getEndDate())%>">
 						</td>
 					</tr>
 					<tr>

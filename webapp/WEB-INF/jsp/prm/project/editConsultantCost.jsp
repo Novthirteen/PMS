@@ -101,10 +101,10 @@ function turnPage(offSet) {
     	//FormAction="update";
 %>
 <form Action="editConsultantCost.do" method="post" name="EditForm">
-<input type="hidden" name="FormAction" value="detail">
-<input type="hidden" name="Action" >
-<input type="hidden" name="Count" value="<%=count%>">
-<input type="hidden" name="offset" value="<%=offset%>">
+<input type="hidden" name="FormAction" id="FormAction" value="detail">
+<input type="hidden" name="Action" id="Action" >
+<input type="hidden" name="Count" id="Count" value="<%=count%>">
+<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 <table width="100%">
 <tr>
 				<td colspan=6 valign="bottom"><hr color=red></hr></td>
@@ -198,7 +198,7 @@ function turnPage(offSet) {
 			
 		    	}
 			%>
-			    <input type="hidden" name="Id<%=i%>" value="<%=Id%>">              
+			    <input type="hidden" name="Id<%=i%>" id="Id<%=i%>" value="<%=Id%>">              
                 <td align="left" width="5%"> 
                  <div class="tabletext">
                   <p align="left"><%= i%> 
@@ -207,7 +207,7 @@ function turnPage(offSet) {
                 <td>
                     <div class="tabletext">
                     <p ><bean:write name="p" property="name"/>
-                    <input type="hidden" name="user<%=i%>" value="<bean:write name="p" property="userLoginId"/>">
+                    <input type="hidden" name="user<%=i%>" id="user<%=i%>" value="<bean:write name="p" property="userLoginId"/>">
                     </div>   
                 </td>
 				<td>
@@ -277,9 +277,9 @@ function turnPage(offSet) {
 
 <form Action="editConsultantCost.do" method="post" name="EditForm">
 <table width="100%">
-<input type="hidden" name="FormAction" value="detail">
-<input type="hidden" name="offset" value="<%=offset%>">
-<input type="hidden" name="Action" >
+<input type="hidden" name="FormAction" id="FormAction" value="detail">
+<input type="hidden" name="offset" id="offset" value="<%=offset%>">
+<input type="hidden" name="Action" id="Action" >
 <tr>
 				<td colspan=6 valign="bottom"><hr color=red></hr></td>
 			</tr>

@@ -181,10 +181,10 @@ function showProjectDialog()
 }
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
@@ -210,10 +210,10 @@ function showProjectDialog()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction">
-    <input type="hidden" name="Id" value=<%=DataId%>>
-    <input type="hidden" name="add">
-	<input type="hidden" name="projectType" value=<%=CustProject.getProjectType().getPtId()%>>
+    <input type="hidden" name="FormAction" id="FormAction">
+    <input type="hidden" name="Id" id="Id" value=<%=DataId%>>
+    <input type="hidden" name="add" id="add">
+	<input type="hidden" name="projectType" id="projectType" value=<%=CustProject.getProjectType().getPtId()%>>
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
     <%
         if(repeatName != null && repeatName.equals("yes")){
@@ -234,7 +234,7 @@ function showProjectDialog()
          <%
          	}else{
          %>
-          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" value="<%=CustProject.getProjId()%>">
+          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" id="DataId" value="<%=CustProject.getProjId()%>">
         <%
         	}
         %>
@@ -279,12 +279,12 @@ function showProjectDialog()
 			if(repeatName != null && repeatName.equals("yes")){
      	%>
           <div style="display:inline" id="labelCustomer"><%=name%>&nbsp;</div>
-          <input type=hidden name="customerId" value = "<%=id%>">
+          <input type="hidden" name="customerId" id="customerId" value = "<%=id%>">
           <a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
          <%        	
          	}else{
          %>
-          <input type=hidden name="customerId" value="<%=id%>"><%=id%>:<%=name%>
+          <input type="hidden" name="customerId" id="customerId" value="<%=id%>"><%=id%>:<%=name%>
         <%
         	}
         %>
@@ -334,7 +334,7 @@ function showProjectDialog()
 			}
 			%>
 			<input type="text" readonly="true" name="projectManagerName" maxlength="100" value="<%=PMName%>">
-			<input type="hidden" name="projectManagerId" value="<%=PMId%>">
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value="<%=PMId%>">
 			<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
          <td align="right">
@@ -426,7 +426,7 @@ function showProjectDialog()
 			ProjName = CustProject.getParentProject().getProjName();
 		}
 		%>
-			<div style="display:inline" id="labelParentProject"><%=ProjId%>:<%=ProjName%>&nbsp;</div><input type=hidden name="ParentProjectId" Value="<%=ProjId%>"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+			<div style="display:inline" id="labelParentProject"><%=ProjId%>:<%=ProjName%>&nbsp;</div><input type="hidden" name="ParentProjectId" id="ParentProjectId" Value="<%=ProjId%>"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
       </tr>
       <tr>
@@ -529,9 +529,9 @@ function showProjectDialog()
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
-	<input type="hidden" name="projectType" value="AO-China">
-	<INPUT TYPE="hidden" name="projectCategory" value="I">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+	<input type="hidden" name="projectType" id="projectType" value="AO-China">
+	<INPUT TYPE="hidden" name="projectCategory" id="projectCategory" value="I">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
         <td align="right">
@@ -569,7 +569,7 @@ function showProjectDialog()
         <td align="right">
           <span class="tabletext">Customer:&nbsp;</span>
         </td>
-		<td align="left"><div style="display:inline" id="labelCustomer">&nbsp;</div><input type=hidden name="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+		<td align="left"><div style="display:inline" id="labelCustomer">&nbsp;</div><input type="hidden" name="customerId" id="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
@@ -594,7 +594,7 @@ function showProjectDialog()
         </td>
         <td align="left">
 			<input type="text" readonly="true" name="projectManagerName" maxlength="100" value="">
-			<input type="hidden" name="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
         </td>
          <td align="right">
           <span class="tabletext">Open for All:&nbsp;</span>
@@ -643,7 +643,7 @@ function showProjectDialog()
           <span class="tabletext">Contract Type:&nbsp;</span>
         </td>
 		<td align="left">
-            <input type="hidden" name="ContractType" value="FP">Fixed Price
+            <input type="hidden" name="ContractType" id="ContractType" value="FP">Fixed Price
 		 </td>
       </tr>
 	  <tr>
@@ -658,7 +658,7 @@ function showProjectDialog()
           <span class="tabletext">Parent Project:&nbsp;</span>
         </td>
 		<td align="left">
-			<div style="display:inline" id="labelParentProject">&nbsp;</div><input type=hidden name="ParentProjectId"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+			<div style="display:inline" id="labelParentProject">&nbsp;</div><input type="hidden" name="ParentProjectId" id="ParentProjectId"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
       </tr>
        <tr>

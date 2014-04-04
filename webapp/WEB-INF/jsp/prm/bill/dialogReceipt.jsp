@@ -91,8 +91,8 @@ if (true) {
 %>
 <form action="dialogReceiptList.do" method="POST" name=frm>
 <title>Receipt Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Receipt Select</CAPTION>
 </table>
@@ -124,14 +124,14 @@ if (true) {
 				<td><%=numFormat.format(ItemList.getReceiptAmount())%></td>
 				<td><%=numFormat.format(ItemList.getRemainAmount())%></td>
 				<td><bean:write property="customerString" name="ItemList"/></td>
-				<input type="hidden" name="receiptNo" value="<bean:write name="ItemList" property="receiptNo"/>">
-				<input type="hidden" name="receiptType" value="<bean:write name="ItemList" property="receiptType"/>">
-				<input type="hidden" name="receiptAmount" value="<%=numFormat.format(ItemList.getReceiptAmount())%>">
-				<input type="hidden" name="customerString" value="<bean:write name="ItemList" property="customerString"/>">
-				<input type="hidden" name="currencyString" value="<bean:write name="ItemList" property="currencyString"/>">
-				<input type="hidden" name="exchangeRate" value="<bean:write name="ItemList" property="exchangeRate"/>">
-				<input type="hidden" name="faReceiptno" value="<bean:write name="ItemList" property="faReceiptNo"/>">
-				<input type="hidden" name="receiptDateString" value="<%=ItemList.getReceiptDate()==null?"":formatter.format(ItemList.getReceiptDate())%>"/>
+				<input type="hidden" name="receiptNo" id="receiptNo" value="<bean:write name="ItemList" property="receiptNo"/>">
+				<input type="hidden" name="receiptType" id="receiptType" value="<bean:write name="ItemList" property="receiptType"/>">
+				<input type="hidden" name="receiptAmount" id="receiptAmount" value="<%=numFormat.format(ItemList.getReceiptAmount())%>">
+				<input type="hidden" name="customerString" id="customerString" value="<bean:write name="ItemList" property="customerString"/>">
+				<input type="hidden" name="currencyString" id="currencyString" value="<bean:write name="ItemList" property="currencyString"/>">
+				<input type="hidden" name="exchangeRate" id="exchangeRate" value="<bean:write name="ItemList" property="exchangeRate"/>">
+				<input type="hidden" name="faReceiptno" id="faReceiptno" value="<bean:write name="ItemList" property="faReceiptNo"/>">
+				<input type="hidden" name="receiptDateString" id="receiptDateString" value="<%=ItemList.getReceiptDate()==null?"":formatter.format(ItemList.getReceiptDate())%>"/>
 				<%
 				Double remainAmount = new Double(0.0);
 				if(no != null && !no.equals("")){
@@ -141,7 +141,7 @@ if (true) {
 					//System.out.println("RemainAmout = "+remainAmount);
 				}
 				%>
-				<input type="hidden" name="remainAmount" value="<%=numFormat.format(remainAmount.doubleValue())%>">
+				<input type="hidden" name="remainAmount" id="remainAmount" value="<%=numFormat.format(remainAmount.doubleValue())%>">
 			</tr>
 		</logic:iterate>
 	<tr>

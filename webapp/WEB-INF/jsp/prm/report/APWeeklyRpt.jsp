@@ -101,8 +101,8 @@ if (AOFSECURITY.hasEntityPermission("PRESALE_UPDATE_RPT", "_VIEW", session)) {
 
 <form name="iForm" action="pas.report.APWeeklyRpt.do" method="post">
 	
-	<input type="hidden" name="formAction">
-	<input type="hidden" name="col" value="<%=col%>">
+	<input type="hidden" name="formAction" id="formAction">
+	<input type="hidden" name="col" id="col" value="<%=col%>">
 	
 	<table width=1000>
 		<caption class="pgheadsmall">AP Weekly Report</caption> 
@@ -359,7 +359,7 @@ if (AOFSECURITY.hasEntityPermission("PRESALE_UPDATE_RPT", "_VIEW", session)) {
   								<%
   								if(detailResult == null || detailResult.getRowCount() <= 0){
   								%>
-  								<input type=hidden name="offSet" value="0">
+  								<input type="hidden" name="offSet" Id="offset" value="0">
   								<tr>
 			  						<td colspan='21' class=lblerr align='center'>No Record Found.</td>
 			  					</tr>

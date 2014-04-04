@@ -23,7 +23,7 @@ Num_formater2.setMinimumFractionDigits(2);
 List unweightedList=(List)request.getAttribute("BidUnweightedValueList");
 %>
 <form name="EditForm" action="dialogBidMaster.do" method="post">
-<input type="hidden"  name="yearAdd" value="">
+<input type="hidden"  name="yearAdd" id="yearAdd" value="">
 <table border=0 width='100%' cellspacing='0' cellpadding='1'>
 	<tr>
     	<td width='100%'>

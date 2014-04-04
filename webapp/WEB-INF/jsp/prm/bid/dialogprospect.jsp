@@ -39,7 +39,7 @@ try{
 		<tr>
 			<td align="right"  class="lblbold" width="25%">
 				<span class="tabletext">Prospect Company Name:&nbsp;</span>
-				<input type="hidden" name="prospectCompanyId" value="<%=prospectCompany.getPartyId()%>">
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompany.getPartyId()%>">
 			</td>
 			<td align="left" width=45% colspan=2>
 			<div style="display:inline" id="name"><%=prospectCompany.getDescription() == null ? "" : prospectCompany.getDescription()%></div></td>

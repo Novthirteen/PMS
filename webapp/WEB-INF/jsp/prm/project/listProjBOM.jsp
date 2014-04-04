@@ -78,7 +78,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	<td><input type="text" name="proj_id" value="<%if(projectid!=null)out.println(projectid);%>" class="inputbox" size="30"></td>
 	<td>Project Name:</td>
 	<td><input type="text" name="proj_name" value="<%if(proj_name!=null)out.println(proj_name);%>" class="inputbox" size="30"></td>		
-	<td><input type="hidden" name="formaction" value="list">
+	<td><input type="hidden" name="formaction" id="formaction" value="list">
 		<input type="submit" value="Search" class="button">
 		</td>
 	<td><input type="submit" value="New" class="button" onclick="javascript:fnNew()"></td>
@@ -171,7 +171,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
               <%}%>
   				<tr>
 					<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-					<input type=hidden name="offSet" value="<%=offSet%>">
+					<input type="hidden" name="offSet" Id="offset" value="<%=offSet%>">
 						<%
 							int RecordSize = sr.getRowCount();
 							int l = 0;

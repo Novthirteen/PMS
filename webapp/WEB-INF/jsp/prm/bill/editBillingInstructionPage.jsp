@@ -45,13 +45,13 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_CREATE", session)) {
 	}
 %>
 <form name="backForm" action="FindBillingInstruction.do" method="post">
-	<input type="hidden" name="action" value="query">
-	<input type="hidden" name="billCode" value="<%=billCode%>">
-	<input type="hidden" name="project" value="<%=project%>">
-	<input type="hidden" name="customer" value="<%=customer%>">
-	<input type="hidden" name="billTo" value="<%=billTo%>">
-	<input type="hidden" name="department" value="<%=department%>">
-	<input type="hidden" name="status" value="<%=status%>">
+	<input type="hidden" name="action" id="action" value="query">
+	<input type="hidden" name="billCode" id="billCode" value="<%=billCode%>">
+	<input type="hidden" name="project" id="project" value="<%=project%>">
+	<input type="hidden" name="customer" id="customer" value="<%=customer%>">
+	<input type="hidden" name="billTo" id="billTo" value="<%=billTo%>">
+	<input type="hidden" name="department" id="department" value="<%=department%>">
+	<input type="hidden" name="status" id="status" value="<%=status%>">
 </form>
 <%
 	ProjectBill pb = (ProjectBill)request.getAttribute("ProjectBill");

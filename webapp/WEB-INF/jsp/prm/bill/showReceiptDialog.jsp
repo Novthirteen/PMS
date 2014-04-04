@@ -128,7 +128,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 				scrolling=no src="includes/date/calendar.htm" 
 				style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 			</IFRAME>
-			<input type='hidden' name='invoiceAmount' value='<%=d1%>'>
+			<input type='hidden' name="invoiceAmount" id="invoiceAmount" value='<%=d1%>'>
 			<table width=100% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Receipt</CAPTION>
 				<tr>
@@ -136,10 +136,10 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 				</tr>	
 				<tr>
 					<td>
-						<input type="hidden" name="formAction" value="edit">
-						<input type="hidden" name="invoiceId" value="<%=invoiceId%>">
-						<input type="hidden" name="receiptId" value="<%= pr != null ? pr.getId() + "" : "" %>">
-						<input type="hidden" name="nextClose" value="nextClose">
+						<input type="hidden" name="formAction" id="formAction" value="edit">
+						<input type="hidden" name="invoiceId" id="invoiceId" value="<%=invoiceId%>">
+						<input type="hidden" name="receiptId" id="receiptId" value="<%= pr != null ? pr.getId() + "" : "" %>">
+						<input type="hidden" name="nextClose" id="nextClose" value="nextClose">
 
 						<TABLE width="100%">
 							<tr>
@@ -152,7 +152,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelreceiptNo"><%=pr!= null ? pr.getReceiptNo() : ""%>&nbsp;</div>
-									<input  type="hidden" class="inputBox" name="receiptNo" size="12" value="<%= pr!= null ? pr.getReceiptNo() : "" %>">
+									<input  type="hidden" class="inputBox" name="receiptNo" id="receiptNo" size="12" value="<%= pr!= null ? pr.getReceiptNo() : "" %>">
 									<%
 										} else {
 									%>
@@ -167,7 +167,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelfareceiptNo"><%=faReceiptno%>&nbsp;</div>
-									<input  type="hidden" class="inputBox" name="faReceiptno" size="12" value="">
+									<input  type="hidden" class="inputBox" name="faReceiptno" id="faReceiptno" size="12" value="">
 									<%
 										} else {
 									%>
@@ -185,7 +185,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelreceiptAmount"><%=prm!= null ? numFormat.format(prm.getReceiptAmount()) : ""%>&nbsp;</div>
-									<input type="hidden" style="TEXT-ALIGN:right" name="receiptAmount" value="<%=prm!= null ? numFormat.format(prm.getReceiptAmount()) : ""%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);">									
+									<input type="hidden" style="TEXT-ALIGN:right" name="receiptAmount" id="receiptAmount" value="<%=prm!= null ? numFormat.format(prm.getReceiptAmount()) : ""%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);">									
 									<%
 										} else {
 									%>
@@ -200,7 +200,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelremainAmount"><%=numFormat.format(remainAmount)%>&nbsp;</div>
-									<input type="hidden" style="TEXT-ALIGN:right" name="remainAmount" value="<%=remainAmount%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);">									
+									<input type="hidden" style="TEXT-ALIGN:right" name="remainAmount" id="remainAmount" value="<%=remainAmount%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);">									
 									<%
 										} else {
 									%>
@@ -217,7 +217,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelcurrency"><%=pr != null ? pr.getCurrency().getCurrName() : ""%>&nbsp;</div>
-									<input  type="hidden" class="inputBox" name="currency" size="12" value="<%= pr != null ? pr.getCurrency().getCurrName() : "" %>">									
+									<input  type="hidden" class="inputBox" name="currency" id="currency" size="12" value="<%= pr != null ? pr.getCurrency().getCurrName() : "" %>">									
 									<%
 										} else {
 									%>
@@ -234,7 +234,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelcurrencyRate"><%=pr!= null ? pr.getCurrencyRate() + "" : "1.0"%>&nbsp;</div>
-									<input type="hidden" style="TEXT-ALIGN:right" name="currencyRate" value="<%=pr!= null ? pr.getCurrencyRate() + "" : "1.0"%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);addComma(this, '.', '.', ',');">																		
+									<input type="hidden" style="TEXT-ALIGN:right" name="currencyRate" id="currencyRate" value="<%=pr!= null ? pr.getCurrencyRate() + "" : "1.0"%>" size="15" onblur="checkDeciNumber2(this,1,2,'Amount',-9999999999,9999999999);addComma(this, '.', '.', ',');">																		
 									<%
 										} else {
 									%>
@@ -251,7 +251,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelreceiptType"><%=receiptType%>&nbsp;</div>
-									<input  type="hidden" class="inputBox" name="" size="12" value="">
+
 									<%
 										} else {
 									%>
@@ -266,7 +266,7 @@ if (AOFSECURITY.hasEntityPermission("PROJ_RECEIPT", "_CREATE", session)) {
 										if (canUpdate) {
 									%>
 									<div style="display:inline" id="labelreceiveDate"><%= pr!= null ? dateFormat.format(pr.getReceiveDate()) : "" %>&nbsp;</div>
-									<input  type="hidden" class="inputBox" name="receiveDate" size="12" value="<%= pr!= null ? dateFormat.format(pr.getReceiveDate()) :"" %>">
+									<input  type="hidden" class="inputBox" name="receiveDate" id="receiveDate" size="12" value="<%= pr!= null ? dateFormat.format(pr.getReceiveDate()) :"" %>">
 									<%
 										} else {
 									%>

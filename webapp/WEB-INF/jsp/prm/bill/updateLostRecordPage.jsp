@@ -68,8 +68,8 @@ function doConfirm(){
 %>
 <form name="updateForm" action="editLost.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="update">
-	<input type="hidden" name="lostRecordId" value="<%=pi.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="update">
+	<input type="hidden" name="lostRecordId" id="lostRecordId" value="<%=pi.getId()%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>Lost Record Maintenance</CAPTION>

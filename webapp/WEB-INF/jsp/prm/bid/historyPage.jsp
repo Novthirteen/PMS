@@ -58,7 +58,7 @@ if(bmhistoryList==null){
 }
 %>
 <form name="EditForm" action="editBidMaster.do" method="post">
-	<input type="hidden"  name="yearAdd" value="">
+	<input type="hidden"  name="yearAdd" id="yearAdd" value="">
 	<table border=0 width='100%' cellspacing='0' cellpadding='1'>
 		<tr>
 			<td align=left width='100%' class="wpsPortletTopTitle" colspan=8>Bid Master History</td>

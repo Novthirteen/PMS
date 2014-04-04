@@ -111,8 +111,8 @@ function retselect(){
   
 <body topmargin="0" leftmargin="0">
 
-<input type='hidden' name="returncode" value=""/>
-<input type='hidden' name="returnuser" value=""/>
+<input type='hidden' name="returncode" id="returncode" value=""/>
+<input type='hidden' name="returnuser" id="returnuser" value=""/>
 
 <!--
 <input type='text' name="returncode" id="returncode" value=""/>

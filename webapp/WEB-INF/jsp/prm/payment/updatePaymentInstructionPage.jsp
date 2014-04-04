@@ -107,32 +107,32 @@ request.getSession().setAttribute("poProjId",pp.getProject().getProjId());
 	if (canUpdate) {
 %>
 <form name="delForm" action="EditPaymentInstruction.do" method="post">
-	<input type="hidden" name="action" value="delete">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
-	<input type="hidden" name="payCode" value="<%=payCode%>">
-	<input type="hidden" name="project" value="<%=project%>">
-	<input type="hidden" name="vendor" value="<%=vendor%>">
-	<input type="hidden" name="department" value="<%=department%>">
-	<input type="hidden" name="status" value="<%=status%>">
+	<input type="hidden" name="action" id="action"  value="delete">
+	<input type="hidden" name="payId" id="payId"  value="<%=pp.getId()%>">
+	<input type="hidden" name="payCode" id="payCode"  value="<%=payCode%>">
+	<input type="hidden" name="project" id="project"  value="<%=project%>">
+	<input type="hidden" name="vendor" id="vendor"  value="<%=vendor%>">
+	<input type="hidden" name="department" id="department"  value="<%=department%>">
+	<input type="hidden" name="status" id="status"  value="<%=status%>">
 </form>
 <%	
 	}
 %>
 <form name="rptForm" action="EditPaymentInstruction.do" method="post">
-	<input type="hidden" name="action" value="ExportToExcel">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="action" id="action" value="ExportToExcel">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
 </form>
 <form name="deleteSuppInvForm" action="EditPaymentInstruction.do" method="post">
-	<input type="hidden" name="paymentId" value="">
-	<input type="hidden" name="action" value="">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
-	<input type="hidden" name="category" value="<%=category%>">
+	<input type="hidden" name="paymentId" id="paymentId" value="">
+	<input type="hidden" name="action" id="action" value="">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="category" id="category" value="<%=category%>">
 </form>
 <form name="editForm" action="EditPaymentInstruction.do" method="post">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="action" value="updateHead">
-	<input type="hidden" name="category" value="<%=category%>">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="action" id="action" value="updateHead">
+	<input type="hidden" name="category" id="category" value="<%=category%>">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>
@@ -207,7 +207,7 @@ request.getSession().setAttribute("poProjId",pp.getProject().getProjId());
 							<%
 								if (canUpdate) {
 							%>
-							<input type=hidden name="payAddr" value="<%=pp.getPayAddress().getPartyId()%>">
+							<input type="hidden" name="payAddr" id="payAddr" value="<%=pp.getPayAddress().getPartyId()%>">
 							<a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 							<%

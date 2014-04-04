@@ -69,9 +69,9 @@ function FnUpdate() {
     	FormAction="update";
 %>
 <form Action="editCustomerAccount.do" method="post" name="EditForm">
-<input type="hidden" name="FormAction" value="<%=FormAction%>">
-<input type="hidden" name="DataId" value="<%=EditDataInfo.getAccountId()%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id = "FormAction" value="<%=FormAction%>">
+<input type="hidden" name="DataId" id = "DataId" value="<%=EditDataInfo.getAccountId()%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 <tr>
 	<td align="right">
@@ -127,9 +127,9 @@ function FnUpdate() {
 	}else{
 %>
 <form Action="editCustomerAccount.do" method="post" name="EditForm">
-<input type="hidden" name="FormAction" value="<%=FormAction%>">
-<input type="hidden" name="DataId" value="">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id = "FormAction" value="<%=FormAction%>">
+<input type="hidden" name="DataId" id = "DataId" value="">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 <tr>
 	<td align="right">

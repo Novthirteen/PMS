@@ -103,7 +103,7 @@ try{
 	<tr>
 		<td>
 			<form name="queryForm" action="ListSalesBid.do" method="post">
-				<input type="hidden" name="formAction" value="dialogView">
+				<input type="hidden" name="formAction" id = "formAction" value="dialogView">
 				<TABLE width="100%">
 					
 					<tr>
@@ -208,22 +208,22 @@ try{
 	  					<td align="left"><%=result.getString(row,"custId")%>:<%=result.getString(row,"prospect")%></td>
 	  					<td align="left"><%=result.getString(row,"bid_status")%></td>
 	  				</tr>
-  					<input type="hidden" name="bidMasterId" value="<%=numFormater.format(result.getDouble(row,"id"))%>">
-  					<input type="hidden" name="description2" value="<%=result.getString(row,"bid_description")%>">
-  					<input type="hidden" name="salePersonId" value="<%=result.getString(row,"sales_id") == null ? "" : result.getString(row,"sales_id")%>">
-  					<input type="hidden" name="salesPersonName" value="<%=result.getString(row,"sales") == null ? "" : result.getString(row,"sales")%>">
-  					<input type="hidden" name="estimateAmount" value="<%=result.getString(row,"bid_est_amt") == null ? "" : result.getString(row,"bid_est_amt")%>" >
-  					<input type="hidden" name="exchangeRate"  value="<%=String.valueOf(result.getDouble(row,"exchange_rate")) %>">
-  					<input type="hidden" name="startDate" value="<%=result.getString(row,"start_date") == null ? "" : result.getString(row,"start_date")%>">
-		  			<input type="hidden" name="endDate" value="<%=result.getString(row,"end_date") == null ? "" : result.getString(row,"end_date")%>">
-		  			<input type="hidden" name="currencyId" value="<%=result.getString(row,"currency_id") == null ? "" : result.getString(row,"currency_id")%>">
-		  			<input type="hidden" name="departmentId" value="<%=result.getString(row,"dep_id") == null ? "" : result.getString(row,"dep_id")%>">
-  					<input type="hidden" name="no" value="<%=result.getString(row,"bid_no") == null ? "" : result.getString(row,"bid_no")%>">
-  					<input type="hidden" name="currency" value="<%=result.getString(row,"currency_name") == null ? "" : result.getString(row,"currency_name")%>">
-  					<input type="hidden" name="prospectCompanyId" value="<%=result.getString(row,"custId") == null ? "" : result.getString(row,"custId")%>">
-  					<input type="hidden" name="prospectCompany" value="<%=result.getString(row,"prospect") == null ? "" : result.getString(row,"prospect")%>">
-  					<input type="hidden" name="secondSalesId" value="<%=result.getString(row,"second_sales_id") == null ? "" : result.getString(row,"second_sales_id")%>">
-  					<input type="hidden" name="secondSalesName" value="<%=result.getString(row,"second_sales") == null ? "" : result.getString(row,"second_sales")%>">
+  					<input type="hidden" name="bidMasterId" id = "bidMasterId" value="<%=numFormater.format(result.getDouble(row,"id"))%>">
+  					<input type="hidden" name="description2" id = "description2" value="<%=result.getString(row,"bid_description")%>">
+  					<input type="hidden" name="salePersonId" id = "salePersonId" value="<%=result.getString(row,"sales_id") == null ? "" : result.getString(row,"sales_id")%>">
+  					<input type="hidden" name="salesPersonName" id = "salesPersonName" value="<%=result.getString(row,"sales") == null ? "" : result.getString(row,"sales")%>">
+  					<input type="hidden" name="estimateAmount" id = "estimateAmount" value="<%=result.getString(row,"bid_est_amt") == null ? "" : result.getString(row,"bid_est_amt")%>" >
+  					<input type="hidden" name="exchangeRate" id = "exchangeRate"  value="<%=String.valueOf(result.getDouble(row,"exchange_rate")) %>">
+  					<input type="hidden" name="startDate" id = "startDate" value="<%=result.getString(row,"start_date") == null ? "" : result.getString(row,"start_date")%>">
+		  			<input type="hidden" name="endDate" id = "endDate" value="<%=result.getString(row,"end_date") == null ? "" : result.getString(row,"end_date")%>">
+		  			<input type="hidden" name="currencyId" id = "currencyId" value="<%=result.getString(row,"currency_id") == null ? "" : result.getString(row,"currency_id")%>">
+		  			<input type="hidden" name="departmentId" id = "departmentId" value="<%=result.getString(row,"dep_id") == null ? "" : result.getString(row,"dep_id")%>">
+  					<input type="hidden" name="no" id = "no" value="<%=result.getString(row,"bid_no") == null ? "" : result.getString(row,"bid_no")%>">
+  					<input type="hidden" name="currency" id = "currency" value="<%=result.getString(row,"currency_name") == null ? "" : result.getString(row,"currency_name")%>">
+  					<input type="hidden" name="prospectCompanyId" id = "prospectCompanyId" value="<%=result.getString(row,"custId") == null ? "" : result.getString(row,"custId")%>">
+  					<input type="hidden" name="prospectCompany" id = "prospectCompany" value="<%=result.getString(row,"prospect") == null ? "" : result.getString(row,"prospect")%>">
+  					<input type="hidden" name="secondSalesId" id = "secondSalesId" value="<%=result.getString(row,"second_sales_id") == null ? "" : result.getString(row,"second_sales_id")%>">
+  					<input type="hidden" name="secondSalesName" id = "secondSalesName" value="<%=result.getString(row,"second_sales") == null ? "" : result.getString(row,"second_sales")%>">
   					<%
   						String contractType = "";
   						String contrType = "";
@@ -238,10 +238,10 @@ try{
   							}
   						}
   					%>
-  					<input type="hidden" name="contractType" value="<%=contractType%>">
-  					<input type="hidden" name="contrType" value="<%=contrType%>">
-  					<input type="hidden" name="bidStatus" value="<%=result.getString(row,"bid_status")%>">
-  					<input type="hidden" name="department" value="<%=result.getString(row,"dep")%>">
+  					<input type="hidden" name="contractType" id = "contractType" value="<%=contractType%>">
+  					<input type="hidden" name="contrType" id = "contrType" value="<%=contrType%>">
+  					<input type="hidden" name="bidStatus" id = "bidStatus" value="<%=result.getString(row,"bid_status")%>">
+  					<input type="hidden" name="department" id = "department" value="<%=result.getString(row,"dep")%>">
 	  				<%
 	  				}
 	  				%>
@@ -250,7 +250,7 @@ try{
 	  						<input type="button" class="button" name="select" value="Select" onclick="doSelect();">
 						</td>
 						<td width="100%" colspan="4" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-							<input type=hidden name="offSet" value="<%=offSet%>">
+							<input type="hidden" name="offSet" id="offset" value="<%=offSet%>">
 							<%
 							int RecordSize = result.getRowCount();
 							int l = 0;

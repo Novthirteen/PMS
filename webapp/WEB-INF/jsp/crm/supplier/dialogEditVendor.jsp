@@ -64,11 +64,11 @@ if(action == null){
   			<TR>
     			<TD width='100%'>
 					<form action="editVendorParty.do" method="post">
-						<input type="hidden" name="role" value="SUPPLIER">
-					    <input type="hidden" name="action" value="<%=action%>">
-						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
-						<input type="hidden" name="openType" value="dialogView">
-						<input type="hidden" name="firstVisit" value="false">
+						<input type="hidden" name="role" id = "role" value="SUPPLIER">
+					    <input type="hidden" name="action" id = "action" value="<%=action%>">
+						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+						<input type="hidden" name="openType" id = "openType" value="dialogView">
+						<input type="hidden" name="firstVisit" id = "firstVisit" value="false">
     					<table width='100%' border='0' cellpadding='0' cellspacing='2'>
 					      	<tr>
 					      		<td>&nbsp;	

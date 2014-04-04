@@ -101,10 +101,10 @@ function On_StatusChange() {
 }
 </script>
 <Form action="editTSApproval.do" name="EditTSApprovalForm" method="post">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="hiddenProjectCode">
-<input type="hidden" name="hiddenEventCode">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="hiddenProjectCode" id="hiddenProjectCode">
+<input type="hidden" name="hiddenEventCode" id="hiddenEventCode">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall><bean:message key="prm.timesheet.approval.title"/></CAPTION>
 <tr>
@@ -190,7 +190,7 @@ function On_StatusChange() {
 					if (!NewPart.equals(CurrPart)) {
 						for (col=col; col < MaxCol; col++) {
 							tsId = " ";
-							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'>0</td>";
+							DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'>0</td>";
 						}
 						if (CurrPart != "" && col == MaxCol) {
 							DisplayText = DisplayText+"<td>"+rowCount+"</td>";
@@ -218,9 +218,9 @@ function On_StatusChange() {
 							DisplayText = DisplayText+"</tr><tr class='"+rowClass+"' align='right' bgcolor='#e9eee9'><td><input class=checkboxstyle type=checkbox name='chk' value='"+row+"' onclick='javascript:checkTopBox(document.EditTSApprovalForm.chkAll,document.EditTSApprovalForm.chk)'></td><td class='bottom' align='left' nowrap>"+ts.getProject().getProjId()+":"+ts.getProject().getProjName()+"</td><td class='bottom' align='left' nowrap>"+ts.getProject().getCustomer().getDescription()+"</td><td class='bottom' align='left' nowrap>"+tsm.getTsmUser().getName()+"</td><td class='bottom' align='left' nowrap>"+ts.getProjectEvent().getPeventName()+"</td><td class='bottom' align='left' nowrap>"+ts.getTSServiceType().getDescription()+"</td><td class='bottom' align='center' nowrap>"+ts.getStatus()+"</td><td class='bottom' align='center' nowrap>"+ts.getProject().getCAFFlag()+"</td>";
 						}
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject().getProjId()%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject().getProjId()%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
 						<%
 						CurrPart = NewPart;
 						CurrProj = NewProj;
@@ -230,11 +230,11 @@ function On_StatusChange() {
 					}
 					while (!DayArray[col].equals(NewDate)) {
 						tsId = "";
-						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId+"'>0</td>";
+						DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId+"'>0</td>";
 						col++;
 					}
 					tsId = ts.getTsId().toString();
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId+"'>"+ts.getTsHoursUser().toString()+"</td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId+"'>"+ts.getTsHoursUser().toString()+"</td>";
 					totalCount = totalCount + ts.getTsHoursUser().floatValue();
 					rowCount = rowCount + ts.getTsHoursUser().floatValue();
 					colCount[col] = colCount[col] + ts.getTsHoursUser().floatValue();
@@ -244,7 +244,7 @@ function On_StatusChange() {
 				DisplayText ="";
 				for (col=col; col < MaxCol; col++) {
 					tsId = " ";
-					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" value = '"+tsId.toString()+"'>0</td>";
+					DisplayText = DisplayText+"<td><input type=hidden name=tsId"+row+" id=tsId"+row+" value = '"+tsId.toString()+"'>0</td>";
 				}
 				DisplayText = DisplayText+"<td>"+decFormat.format(rowCount)+"</td>";
 				out.println(DisplayText);
@@ -293,11 +293,11 @@ function On_StatusChange() {
 	</td>
 </tr>
 </table>
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DepartmentId" value="<%=DepartmentId%>">
-<input type="hidden" name="DataId" value="<%=DataPeriod%>">
-<input type="hidden" name="LastDataId" value="<%=LastDataPeriod%>">
-<input type="hidden" name="NextDataId" value="<%=NextDataPeriod%>">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DepartmentId" id="DepartmentId" value="<%=DepartmentId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataPeriod%>">
+<input type="hidden" name="LastDataId" id="LastDataId" value="<%=LastDataPeriod%>">
+<input type="hidden" name="NextDataId" id="NextDataId" value="<%=NextDataPeriod%>">
 </form>
 <%
 request.removeAttribute("QryList");

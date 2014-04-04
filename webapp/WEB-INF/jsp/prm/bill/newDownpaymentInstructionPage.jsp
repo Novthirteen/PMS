@@ -88,8 +88,8 @@ function checkSubmit() {
 </script>
 <form name="newForm" action="EditDownpaymentInstruction.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="new">
-	<input type="hidden" name="billType" value="<%=Constants.BILLING_TYPE_DOWN_PAYMENT%>">
+	<input type="hidden" name="formAction" id="formAction" value="new">
+	<input type="hidden" name="billType" id="billType" value="<%=Constants.BILLING_TYPE_DOWN_PAYMENT%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>Down-Payment Instruction Maintenance</CAPTION>
@@ -112,7 +112,7 @@ function checkSubmit() {
 						<td class="lblbold" align=right width="15%">Project:</td>
 						<td class="lblLight" width="35%">
 							<div style="display:inline" id="labelProject">&nbsp;</div>
-							<input type=hidden name="projId" value="">
+							<input type="hidden" name="projId" id="projId" value="">
 							<a href="javascript:void(0)" onclick="showProjctDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
@@ -137,7 +137,7 @@ function checkSubmit() {
 						<td class="lblbold" align=right width="15%">Bill Address:</td>
 						<td class="lblLight" width="35%">
 							<div style="display:inline" id="labelBillAddress">&nbsp;</div>
-							<input type=hidden name="billAddr">
+							<input type="hidden" name="billAddr" id="billAddr">
 							<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 						</td>

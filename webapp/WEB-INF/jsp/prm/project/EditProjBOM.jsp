@@ -198,7 +198,7 @@ function fnEditNode()
 		
 </script>
 <form name="frm1" action="editProjBOM.do" METHOD="post">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <%
 String actionflag = (String)request.getAttribute("actionflag");
 String action = (String)request.getAttribute("formaction");
@@ -209,7 +209,7 @@ if(master!=null){
 bid = master.getBid();
 pm = master.getProject();
 %>
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
+<input type="hidden" name="masterid" id = "masterid" value="<%=master.getId()%>">
 <%}else{
 	bid = (BidMaster)request.getAttribute("bm");
 	pm = (ProjectMaster)request.getAttribute("pm");
@@ -217,9 +217,9 @@ pm = master.getProject();
 StandardBOMMaster tMaster = (StandardBOMMaster)request.getAttribute("tMaster");
 if(tMaster!=null){
 %>
-<input type="hidden" name="template_id" value="<%=tMaster.getId()%>">
+<input type="hidden" name="template_id" id = "template_id" value="<%=tMaster.getId()%>">
 <%}%>
-<input type="hidden" name="formaction" value="<%=action%>">
+<input type="hidden" name="formaction" id = "formaction" value="<%=action%>">
 
 <table border="0" cellpadding="4" cellspacing="0" align ='center'>
   <tbody align="center">
@@ -234,15 +234,15 @@ if(tMaster!=null){
 	<%if(bid!=null){%>
 
     <td>Bid No:</td>
-    <td class=lblbold align='center'><input type="hidden" name="bid_id" value="<%=bid.getNo()%>"><%=bid.getNo()%>
-	<input type="hidden" name="bidid" value="<%=bid.getId().longValue()%>">
+    <td class=lblbold align='center'><input type="hidden" name="bid_id" id = "bid_id" value="<%=bid.getNo()%>"><%=bid.getNo()%>
+	<input type="hidden" name="bidid" id = "bidid" value="<%=bid.getId().longValue()%>">
     </td>
     <td>Bid Description:</td>
     <td class=lblbold align='center'><%=bid.getDescription()%>
     <%}%>
     <%if(pm!=null){%>
     <td>Project Id :</td>
-    <td class=lblbold align='center'><input type="hidden" name="proj_id" value="<%=pm.getProjId()%>"><%=pm.getProjId()%>
+    <td class=lblbold align='center'><input type="hidden" name="proj_id" id = "proj_id" value="<%=pm.getProjId()%>"><%=pm.getProjId()%>
     </td>
     <td>Project Description:</td>
     <td class=lblbold align='center'><%=pm.getProjName()%>
@@ -335,11 +335,13 @@ if(!action.equalsIgnoreCase("new")){
 	  </input> 
 	  <input type="hidden" >
 	  	<xsl:attribute name="name"><xsl:value-of select="@parentid" /></xsl:attribute>
+	  	<xsl:attribute name="id"><xsl:value-of select="@parentid" /></xsl:attribute>
 	  	<xsl:attribute name="value"><xsl:value-of select="@parent" /></xsl:attribute>
 	  	<xsl:attribute name="onclick"><xsl:value-of select="@onclick" /></xsl:attribute>
 	  </input> 
 	  <input type="hidden" >
-	  	<xsl:attribute name="name"><xsl:value-of select="@descid" /></xsl:attribute>
+	  	<xsl:attribute name="name"><xsl:value-of select="@descid" /></xsl:attribute>	  	
+	  	<xsl:attribute name="Id"><xsl:value-of select="@descid" /></xsl:attribute>
 	  	<xsl:attribute name="value"><xsl:value-of select="@desc" /></xsl:attribute>
 	  	<xsl:attribute name="onclick"><xsl:value-of select="@onclick" /></xsl:attribute>
 	  </input> 
@@ -378,11 +380,13 @@ if(!action.equalsIgnoreCase("new")){
 	  </input> 
 	  <input type="hidden" >
 	  	<xsl:attribute name="name"><xsl:value-of select="@parentid" /></xsl:attribute>
+	  	<xsl:attribute name="id"><xsl:value-of select="@parentid" /></xsl:attribute>
 	  	<xsl:attribute name="value"><xsl:value-of select="@parent" /></xsl:attribute>
 	  	<xsl:attribute name="onclick"><xsl:value-of select="@onclick" /></xsl:attribute>
 	  </input> 
 	  <input type="hidden" >
 	  	<xsl:attribute name="name"><xsl:value-of select="@descid" /></xsl:attribute>
+	  	<xsl:attribute name="id"><xsl:value-of select="@descid" /></xsl:attribute>
 	  	<xsl:attribute name="value"><xsl:value-of select="@desc" /></xsl:attribute>
 	  	<xsl:attribute name="onclick"><xsl:value-of select="@onclick" /></xsl:attribute>
 	  </input> 

@@ -23,7 +23,7 @@ if (AOFSECURITY.hasEntityPermission("DELIV_TYPE", "_VIEW", session)) {
 %>
 
 <form name="frm" action="ListDeliveryType.do" method="post">
-<input type="hidden" name="FormAction" value="batchUpdate">
+<input type="hidden" name="FormAction" id="FormAction" value="batchUpdate">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <CAPTION align=center class=pgheadsmall>Pre-Sale Deliveriable Type List</CAPTION>
 	<tr>

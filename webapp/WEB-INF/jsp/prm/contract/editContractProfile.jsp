@@ -427,10 +427,10 @@ function ViewBidMaster(formAction,id){
 }
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
@@ -460,10 +460,10 @@ function ViewBidMaster(formAction,id){
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction" >
-    <input type="hidden" name="Id" value=<%=contractId%>>
-    <input type="hidden" name="add">
-    <input type="hidden" name="contractId" value="<%=CustProject.getId()%>">
+    <input type="hidden" name="FormAction" id="FormAction" >
+    <input type="hidden" name="Id" id="Id" value=<%=contractId%>>
+    <input type="hidden" name="add" id="add">
+    <input type="hidden" name="contractId" id="contractId" value="<%=CustProject.getId()%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
     <%
         if(repeatName != null && repeatName.equals("yes")){
@@ -481,11 +481,11 @@ function ViewBidMaster(formAction,id){
           	if (canceledFlg) {
           %>
           <%=CustProject.getNo()%>
-          <input type="hidden" name="contractNo" value="<%=CustProject.getNo()%>">
+          <input type="hidden" name="contractNo" id="contractNo" value="<%=CustProject.getNo()%>">
           <%
           	} else {
           %>
-          <input type="text" name="contractNo" value="<%=CustProject.getNo()%>">
+          <input type="text" name="contractNo" id="contractNo" value="<%=CustProject.getNo()%>">
           <%
           	}
           %>
@@ -501,7 +501,7 @@ function ViewBidMaster(formAction,id){
         			Long bidId = CustProject.getBidMaster().getId();
         			String bidid = bidId + "";
         %>
-        	<input type="hidden" class="inputBox" name="bidId" value="<%=bidid%>">
+        	<input type="hidden" class="inputBox" name="bidId" id="bidId" value="<%=bidid%>">
         	<%=bidDescription%>
         <%
         	}else{
@@ -512,7 +512,7 @@ function ViewBidMaster(formAction,id){
          }else{
         %>
         	<div style="display:inline" id="labelBid">&nbsp;</div>
-	        <input type="hidden" class="inputBox" name="bidId" >
+	        <input type="hidden" class="inputBox" name="bidId" id="bidId" >
 	        <a href="javascript:void(0)" onclick="showBidMaster();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
         <%
         }
@@ -528,11 +528,11 @@ function ViewBidMaster(formAction,id){
           	if (canceledFlg) {
           %>
           <%=CustProject.getDescription()%>
-          <input type="hidden" class="inputBox" name="contractDes" value="<%=CustProject.getDescription()%>" size="30">
+          <input type="hidden" class="inputBox" name="contractDes" id="contractDes" value="<%=CustProject.getDescription()%>" size="30">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="contractDes" value="<%=CustProject.getDescription()%>" size="30">
+          <input type="text" class="inputBox" name="contractDes" id="contractDes" value="<%=CustProject.getDescription()%>" size="30">
           <%
           	}
           %>
@@ -562,7 +562,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Status:&nbsp;</span>
         </td>
         <td class="lblLight">
-        	<select name="textStatus">
+        	<select name="textStatus" id="textStatus">
 				<option value="Signed" <%if (CustProject.getStatus().equals("Signed")) out.print("selected");%>>Signed</option>
 				<option value="Unsigned" <%if (CustProject.getStatus().equals("Unsigned")) out.print("selected");%>>Unsigned</option>
 				<option value="Cancel" <%if (CustProject.getStatus().equals("Cancel")) out.print("selected");%>>Cancel</option>
@@ -573,14 +573,14 @@ function ViewBidMaster(formAction,id){
         <td align="right">
           <span class="tabletext">Customer:&nbsp;</span>
         </td>
-        <td align="left"><input type=hidden name="customerId" value="<%=CustProject.getCustomer().getPartyId()%>"><%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>
+        <td align="left"><input type="hidden" name="customerId" id="customerId" value="<%=CustProject.getCustomer().getPartyId()%>"><%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>
         </td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
         </td>
         
         <td align="left">
-          <select name="departmentId">
+          <select name="departmentId" id="departmentId">
 			<%
 			Iterator itd = partyList_dep.iterator();
 			while(itd.hasNext()){
@@ -612,8 +612,8 @@ function ViewBidMaster(formAction,id){
 			}
 			%>
 			<div style="display:inline" id="labelAccount"><%=AMName%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="accountManagerName" maxlength="100" value="<%=AMName%>">
-			<input type="hidden" name="accountManagerId" value="<%=AMId%>">
+			<input type="hidden" readonly="true" name="accountManagerName" id="accountManagerName" maxlength="100" value="<%=AMName%>">
+			<input type="hidden" name="accountManagerId" id="accountManagerId" value="<%=AMId%>">
 			<%
 				if (!canceledFlg) {
 			%>
@@ -630,11 +630,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=signedDate%>
-			<input type="hidden" class="inputBox" name="signedDate" value="<%=signedDate%>" size="10">
+			<input type="hidden" class="inputBox" name="signedDate" id="signedDate" value="<%=signedDate%>" size="10">
 			<%
 				} else {
 			%>
-          <input type="text" class="inputBox" name="signedDate" value="<%=signedDate%>" size="10">
+          <input type="text" class="inputBox" name="signedDate" id="signedDate" value="<%=signedDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg6,document.EditForm.signedDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg6 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 		 
@@ -653,11 +653,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=startDate%>
-			<input type="hidden" class="inputBox" name="startDate" value="<%=startDate%>" size="10">
+			<input type="hidden" class="inputBox" name="startDate" id="startDate" value="<%=startDate%>" size="10">
 			<%
 				} else {
 			%>
-          <input type="text" class="inputBox" name="startDate" value="<%=startDate%>" size="10">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=startDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg1,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg1 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 			<%
@@ -672,11 +672,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=endDate%>
-			<input type="hidden" class="inputBox" name="endDate" value="<%=endDate%>" size="10">
+			<input type="hidden" class="inputBox" name="endDate" id="endDate" value="<%=endDate%>" size="10">
 			<%
 				} else {
 			%>
-          <input type="text" class="inputBox" name="endDate" value="<%=endDate%>" size="10">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=endDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg2,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg2 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 			<%
@@ -693,11 +693,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue().doubleValue()) : ""%>
-          	<input type="hidden" class="inputBox" name="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue().doubleValue()) : ""%>">
+          	<input type="hidden" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue().doubleValue()) : ""%>">
           	<%
 				} else {
 			%>
-			<input type="text" class="inputBox" name="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue().doubleValue()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+			<input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue().doubleValue()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
 			<%
 				}
 			%>
@@ -710,11 +710,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>
-			<input type="hidden" class="inputBox" name="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>">
+			<input type="hidden" class="inputBox" name="alownceAmt" id="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>">
 			<%
 				} else {
 			%>
-          	<input type="text" class="inputBox" name="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
+          	<input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
           	<%
 				}
 			%>
@@ -724,7 +724,7 @@ function ViewBidMaster(formAction,id){
       <tr>
         <td class="tabletext" align=right>Currency:</td>
 				<td class="lblLight">
-					<select name="currency" onchange="javascript:onCurrSelect()">
+					<select name="currency" id="currency" onchange="javascript:onCurrSelect()">
 					<%
 					itCurr = CurrencyList.iterator();
 					float CurrencyRate = 0;
@@ -742,7 +742,7 @@ function ViewBidMaster(formAction,id){
 				</td>
 				<td class="tabletext" align=right>Exchange Rate(RMB):</td>
 				<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="exchangeRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="exchangeRate" id="exchangeRate" value="<%=CurrencyRate%>">
 			</td>
       </tr>
       
@@ -755,11 +755,11 @@ function ViewBidMaster(formAction,id){
 				if (canceledFlg) {
 			%>
 			<%=endDate%>
-			<input type="hidden" class="inputBox" name="legalReviewDate" value="<%=legalReviewDate%>" size="10">
+			<input type="hidden" class="inputBox" name="legalReviewDate" id="legalReviewDate" value="<%=legalReviewDate%>" size="10">
 			<%
 				} else {
 			%>
-          <input type="text" class="inputBox" name="legalReviewDate" value="<%=legalReviewDate%>" size="10">
+          <input type="text" class="inputBox" name="legalReviewDate" id="legalReviewDate" value="<%=legalReviewDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg20,document.EditForm.legalReviewDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg20 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 			<%
@@ -770,7 +770,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Customer Sat.:</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="custSat" value="<%= CustProject.getCustomerSat()==null ? "" : CustProject.getCustomerSat()%>" size="20" onblur="checkDeciNumber2(this,1,1,'custSat',0,5);">
+          <input type="text" class="inputBox" name="custSat" id="custSat" value="<%= CustProject.getCustomerSat()==null ? "" : CustProject.getCustomerSat()%>" size="20" onblur="checkDeciNumber2(this,1,1,'custSat',0,5);">
         </td>
       </tr>
         <tr>
@@ -786,8 +786,8 @@ function ViewBidMaster(formAction,id){
 			}
 			%>
 			<div style="display:inline" id="labelspName1"><%=spName1%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="SalesPersonName1" maxlength="100" value="<%=spName1%>">
-			<input type="hidden" name="SalesPersonId1" value="<%=spId1%>">
+			<input type="hidden" readonly="true" name="SalesPersonName1" id="SalesPersonName1" maxlength="100" value="<%=spName1%>">
+			<input type="hidden" name="SalesPersonId1" id="SalesPersonId1" value="<%=spId1%>">
 			<%
 				if (!canceledFlg) {
 			%>
@@ -808,8 +808,8 @@ function ViewBidMaster(formAction,id){
 			}
 			%>
 			<div style="display:inline" id="labelspName2"><%=spName2%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="SalesPersonName2" maxlength="100" value="<%=spName2%>">
-			<input type="hidden" name="SalesPersonId2" value="<%=spId2%>">
+			<input type="hidden" readonly="true" name="SalesPersonName2" id="SalesPersonName2" maxlength="100" value="<%=spName2%>">
+			<input type="hidden" name="SalesPersonId2" id="SalesPersonId2" value="<%=spId2%>">
 			<%
 				if (!canceledFlg) {
 			%>
@@ -897,7 +897,7 @@ function ViewBidMaster(formAction,id){
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
 	
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
@@ -905,14 +905,14 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Contract No.:&nbsp;</span>
         </td>
         <td>
-          <input type="text" name="contractNo" value="">
+          <input type="text" name="contractNo" id="contractNo" value="">
         </td>
         <td align="right">
           <span class="tabletext">Bid:&nbsp;</span>
         </td>
         <td align="left">
           <div style="display:inline" id="labelBid">&nbsp;</div>
-          <input type="hidden" class="inputBox" name="bidId" >
+          <input type="hidden" class="inputBox" name="bidId" id="bidId" >
           <a href="javascript:void(0)" onclick="showBidMaster();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
         </td>
       </tr>
@@ -921,7 +921,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Contract Description:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="contractDes" value="" size="30">
+          <input type="text" class="inputBox" name="contractDes" id="contractDes" value="" size="30">
         </td>
         <td align="right">
           <span class="tabletext">Contract Type:&nbsp;</span>
@@ -938,13 +938,13 @@ function ViewBidMaster(formAction,id){
         </td>
         <td align="left">
         	<div style="display:inline" id="labelCustomer">&nbsp;</div>
-        	<input type=hidden name="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+        	<input type="hidden" name="customerId" id="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="departmentId">
+          <select name="departmentId" id="departmentId">
 			<%
 			Iterator itd = partyList_dep.iterator();
 			while(itd.hasNext()){
@@ -963,8 +963,8 @@ function ViewBidMaster(formAction,id){
         </td>
         <td align="left">
         	<div style="display:inline" id="labelAccount">&nbsp;</div>
-        	<input type=hidden name="accountManagerId">
-        	<input type=hidden name="accountManagerName">
+        	<input type="hidden" name="accountManagerId" id="accountManagerId">
+        	<input type="hidden" name="accountManagerName" id="accountManagerName">
         	<a href="javascript:void(0)" onclick="showDialog_account();event.returnValue=false;">
         		<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/>
         	</a>
@@ -973,7 +973,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Signed Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="signedDate" value="" size="10">
+          <input type="text" class="inputBox" name="signedDate" id="signedDate" value="" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg9,document.EditForm.signedDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg9 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 		  &nbsp;&nbsp;
@@ -986,7 +986,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
          <td align="left">
-          <input type="text" class="inputBox" name="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="10">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg8,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg8 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -994,7 +994,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">End Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="endDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="10">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg4,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg4 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -1004,19 +1004,19 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Total Contract Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalServiceValue" value="0" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="0" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Customer Paid Allowance Rate:&nbsp;</span>
         </td>
      	 <td align="left">
-          <input type="text" class="inputBox" name="alownceAmt" value="0" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" value="0" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
       <tr>
        <td class="tabletext" align=right>Currency:</td>
 		<td class="lblLight">
-			<select name="currency" onchange="javascript:onCurrSelect()">
+			<select name="currency" id="currency" onchange="javascript:onCurrSelect()">
 			<%
 			itCurr = CurrencyList.iterator();
 			float CurrencyRate = 0;
@@ -1037,7 +1037,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Exchange Rate:</span>
         </td>
 		<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="exchangeRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="exchangeRate" id="exchangeRate" value="<%=CurrencyRate%>">
 				</td>
       </tr>
       <tr>
@@ -1045,7 +1045,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Legal Review Date:</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="legalReviewDate" value="" size="10">
+          <input type="text" class="inputBox" name="legalReviewDate" id="legalReviewDate" value="" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg40,document.EditForm.legalReviewDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg40 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -1053,7 +1053,7 @@ function ViewBidMaster(formAction,id){
           <span class="tabletext">Customer Sat.:</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="custSat" value="" size="20" onblur="checkDeciNumber2(this,1,1,'custSat',0,5);">
+          <input type="text" class="inputBox" name="custSat" id="custSat" value="" size="20" onblur="checkDeciNumber2(this,1,1,'custSat',0,5);">
         </td>
       </tr>
        <tr>
@@ -1063,8 +1063,8 @@ function ViewBidMaster(formAction,id){
         <td align="left">
 			<div style="display:inline" id="labelspName1">&nbsp;</div>
 			
-			<input type="hidden" readonly="true" name="SalesPersonName1" maxlength="100" value="">
-			<input type="hidden" name="SalesPersonId1" value="">
+			<input type="hidden" readonly="true" name="SalesPersonName1" id="SalesPersonName1" maxlength="100" value="">
+			<input type="hidden" name="SalesPersonId1" id="SalesPersonId1" value="">
 			
 			<a href="javascript:showDialog_SalesPerson1()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 			
@@ -1074,8 +1074,8 @@ function ViewBidMaster(formAction,id){
         </td>
         <td align="left">
 			<div style="display:inline" id="labelspName2">&nbsp;</div>
-			<input type="hidden" readonly="true" name="SalesPersonName2" maxlength="100" value="">
-			<input type="hidden" name="SalesPersonId2" value="">
+			<input type="hidden" readonly="true" name="SalesPersonName2" id="SalesPersonName2" maxlength="100" value="">
+			<input type="hidden" name="SalesPersonId2" id="SalesPersonId2" value="">
 			
 			<a href="javascript:showDialog_SalesPerson2()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 			

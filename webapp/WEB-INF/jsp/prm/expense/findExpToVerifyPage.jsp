@@ -88,7 +88,7 @@ function fnSubmit1(start) {
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
 <form name="frm" action="findExpToVerifyPage.do" method="post">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <CAPTION align=center class=pgheadsmall>Expense Forms to Verify</CAPTION>
 <tr>
@@ -236,7 +236,7 @@ function fnSubmit1(start) {
 			</logic:iterate>
 			<tr>
 				<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = result.size();
 				int l = 0;

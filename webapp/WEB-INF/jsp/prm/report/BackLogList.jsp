@@ -186,12 +186,12 @@ if (AOFSECURITY.hasEntityPermission("BACKLOG_REPORT", "_VIEW", session)) {%>
 <table width="100%" cellpadding="1" border="0" cellspacing="1"	align="center">
 	<caption class="pgheadsmall">BackLog Report</caption>
 	<tr>
-	<input type="hidden" name="type" value=<%=request.getAttribute("type")%>>
-	<input type="hidden" name="cmonth" value=<%=request.getAttribute("enter_month")%>>
-	<input type="hidden" name="cyear" value=<%=request.getAttribute("enter_year")%>>
-	<input type="hidden" name='departmentId' value='<%=request.getAttribute("departmentId")%>'>
-	<input type="hidden" name="status" value="draft">	
-	<input type="hidden" name="formaction" value="formaction">	
+	<input type="hidden" name="type" id="type" value=<%=request.getAttribute("type")%>>
+	<input type="hidden" name="cmonth" id="cmonth" value=<%=request.getAttribute("enter_month")%>>
+	<input type="hidden" name="cyear" id="cyear" value=<%=request.getAttribute("enter_year")%>>
+	<input type="hidden" name="departmentId" id="departmentId" value='<%=request.getAttribute("departmentId")%>'>
+	<input type="hidden" name="status" id="status" value="draft">	
+	<input type="hidden" name="formaction" id="formaction" value="formaction">	
 	<td class="lblbold" align="left">Year:<%=request.getAttribute("enter_year")%>
 	&nbsp;&nbsp;&nbsp;Month:<%=request.getAttribute("enter_month")%>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -323,7 +323,7 @@ if (AOFSECURITY.hasEntityPermission("BACKLOG_REPORT", "_VIEW", session)) {%>
 		 type="type"+d;
 	%>
 		<tr bgcolor='#b4d4d4'>
-		<td scope="col"  align="center" class="lblbold"><input type="hidden" name="department" value='<%=(String)securitylist.get(b)%>'><%=(String)securitylist.get(b)%></td>
+		<td scope="col"  align="center" class="lblbold"><input type="hidden" name="department" id="department" value='<%=(String)securitylist.get(b)%>'><%=(String)securitylist.get(b)%></td>
 		<td scope="col"  align="center" class="lblbold">&nbsp;</td>
 		<td scope="col"  align="center" class="lblbold">&nbsp;</td>
 		<td scope="col"  align="center" class="lblbold">&nbsp;</td>
@@ -382,14 +382,14 @@ if (AOFSECURITY.hasEntityPermission("BACKLOG_REPORT", "_VIEW", session)) {%>
 				out.println("<td  align='center' nowrap>"+pb.getIndustry()+"</td>");				
 				%>
 				<td  align="center" class="lblbold" nowrap>
-				<input type="hidden" name="<%=pmonthname%>" value="<%=bean.getPmonth()%>">
- 				<input type="hidden" name="<%=remainrevenue%>" value="<%=bean.getRemainrevenue()%>">
- 				<input type="hidden" name="<%=remainmonth%>" value="<%=bean.getRemainmonth()%>">
+				<input type="hidden" name="<%=pmonthname%>" id="<%=pmonthname%>" value="<%=bean.getPmonth()%>">
+ 				<input type="hidden" name="<%=remainrevenue%>" id="<%=remainrevenue%>" value="<%=bean.getRemainrevenue()%>">
+ 				<input type="hidden" name="<%=remainmonth%>" id="<%=remainmonth%>" value="<%=bean.getRemainmonth()%>">
 				<% 
-				out.println("<input type='hidden' name='projId' value='"+pb.getProjId()+"'>"+pb.getProjId()+"</td>");
+				out.println("<input type='hidden' name='projId' id='projId' value='"+pb.getProjId()+"'>"+pb.getProjId()+"</td>");
 				out.println("<td  style='text-align:left' align='left' nowrap>"+pb.getProjName()+"</td>");
-				out.println("<td  align='center' nowrap><input type='hidden' name='"+type+"'>"+pb.getContractType()+"</td>");
-				out.println("<td  align='right' nowrap size='10' width='10'><input type='hidden' size='10' width='10' value='"+(int)Math.round(pb.getTotalServiceValue().doubleValue()/1000)+"' style='border:0px' name='"+stcv+"' >"+nf.format((int)Math.round(pb.getTotalServiceValue().doubleValue()/1000))+"</td>");
+				out.println("<td  align='center' nowrap><input type='hidden' name='"+type+"' id='"+type+"'>"+pb.getContractType()+"</td>");
+				out.println("<td  align='right' nowrap size='10' width='10'><input type='hidden' size='10' width='10' value='"+(int)Math.round(pb.getTotalServiceValue().doubleValue()/1000)+"' style='border:0px' name='"+stcv+"' id='"+stcv+"' >"+nf.format((int)Math.round(pb.getTotalServiceValue().doubleValue()/1000))+"</td>");
 				out.println("<td  align='center' nowrap>"+pb.getStartDate()+"</td>");
 				out.println("<td  align='center' nowrap>"+pb.getEndDate()+"</td>");
 				out.println("<td  align='center' nowrap>"+pb.getProjStatus()+"</td>");
@@ -397,7 +397,7 @@ if (AOFSECURITY.hasEntityPermission("BACKLOG_REPORT", "_VIEW", session)) {%>
 				if((pb.getContractType().equalsIgnoreCase("tm"))&& (pb.getCAFFlag().equalsIgnoreCase("y")))
 				out.println("<td  align='center' nowrap><input readonly  style='border:0px;background-color:"+colour+";text-align:right' class='inputBox' type='text' size='10' value='"+(int)Math.round(bean.getThisyear().doubleValue())+"'  name='"+yeartotal+"'></td>");
 				else
-				out.println("<td  align='center' nowrap><input type='hidden' value='"+(int)Math.round(bean.getThisyear().doubleValue())+"'><input class='inputBox' type='text' size='10' style='text-align:right' oldvalue='"+(int)Math.round(bean.getThisyear().doubleValue())+"' value='"+nf.format((int)Math.round(bean.getThisyear().doubleValue()))+"' onchange='javascript:ResetRevenue(this.value,"+d+","+gcount+",13)' name='"+yeartotal+"'></td>");
+				out.println("<td  align='center' nowrap><input type='hidden' value='"+(int)Math.round(bean.getThisyear().doubleValue())+"'><input class='inputBox' type='text' size='10' style='text-align:right' oldvalue='"+(int)Math.round(bean.getThisyear().doubleValue())+"' value='"+nf.format((int)Math.round(bean.getThisyear().doubleValue()))+"' onchange='javascript:ResetRevenue(this.value,"+d+","+gcount+",13)' name='"+yeartotal+"' id='"+yeartotal+"'></td>");
 				Double[][] temp=new Double[2][12];
 				temp=bean.getMonth(); 
 				for(int m=0;m<12;m++){

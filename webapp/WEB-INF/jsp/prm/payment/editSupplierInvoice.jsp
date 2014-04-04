@@ -288,8 +288,8 @@ function showDialog_account()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction" >
-    <input type="hidden" name="process" >
+    <input type="hidden" name="FormAction" id="FormAction" >
+    <input type="hidden" name="process" id="process" >
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 
       <tr>
@@ -298,7 +298,7 @@ function showDialog_account()
         </td>
         <%if(payCode != null){%>
         <td>
-        	<%=payCode%><input type="hidden" name="payCode" value="<%=payCode%>">
+        	<%=payCode%><input type="hidden" name="payCode" id="payCode" value="<%=payCode%>">
         </td>
         <%}else{%>
         <td>
@@ -323,8 +323,8 @@ function showDialog_account()
 			<%
 			}
 			%>
-			<input type="hidden" name="projName" value="<%=projName%>">
-			<input type="hidden" name="projId" value="<%=projId%>">
+			<input type="hidden" name="projName" id="projName" value="<%=projName%>">
+			<input type="hidden" name="projId" id="projId" value="<%=projId%>">
       	</td>
       	<td align="right" class="lblbold">
           <span class="tabletext">Vendor:&nbsp;</span>
@@ -337,8 +337,8 @@ function showDialog_account()
 				vendorName = vendor.getDescription();
 			 }%>
 			<div style="display:inline" id="labelVendor"><%=vendorId+":"+vendorName%>&nbsp;</div>
-			<input type="hidden" name="vendorName" value="<%=vendorName%>">
-			<input type="hidden" name="vendorId" value="<%=vendorId%>">
+			<input type="hidden" name="vendorName" id="vendorName" value="<%=vendorName%>">
+			<input type="hidden" name="vendorId" id="vendorId" value="<%=vendorId%>">
         </td>
       </tr>
       <tr>
@@ -383,7 +383,7 @@ function showDialog_account()
         <td align="left">
         <%if(!settledStatus.equals(Constants.SUPPLIER_INVOICE_SETTLE_STATUS_DRAFT)){%>
 		 <div style="display:inline" ><%=currency.getCurrName()%></div>
-		 <input type=hidden name="currency" value="<%=currency.getCurrName()%>">
+		 <input type="hidden" name="currency" id="currency" value="<%=currency.getCurrName()%>">
         <%}else{%>	
           <select name="currency" onchange="javascript:onCurrSelect()">
 		  <%						
@@ -412,7 +412,7 @@ function showDialog_account()
 		<td class="lblLight" width="35%">
 		<%if(!settledStatus.equals(Constants.SUPPLIER_INVOICE_SETTLE_STATUS_DRAFT)){%>	
 			<div style="display:inline" id="labelCurrencyRate"><%if(exchangeRate !=null) out.print(exchangeRate);%></div>
-			<input type=hidden name="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">
+			<input type="hidden" name="exchangeRate" id="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">
 		<%}else{%>
 			<div style="display:none" id="labelCurrencyRate"></div>	
 			<input type=text name="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">	
@@ -503,13 +503,13 @@ function showDialog_account()
 			   if (createUser != null) { cUserId = createUser.getUserLoginId(); cUserName = createUser.getName(); } 
 			   else{ cUserId = ul.getUserLoginId(); cUserName = ul.getName(); }%>
 			<div style="display:inline" id="labelAccount"><%=cUserId+":"+cUserName%>&nbsp;</div>
-			<input type="hidden" name="createUser" value="<%=cUserId%>">
+			<input type="hidden" name="createUser" id="createUser" value="<%=cUserId%>">
         </td>
         
         <td align="right" class="lblbold"><span class="tabletext">Create Date:&nbsp;</span></td>
         <td align="left" class="lblbold">
         	<%=createDateString==null?formatter.format(java.util.Calendar.getInstance().getTime()):createDateString%>
-        	<input type="hidden" class="inputBox" name="createDate" value="<%=createDateString==null?formatter.format(java.util.Calendar.getInstance().getTime()):createDateString%>" size="10">
+        	<input type="hidden" class="inputBox" name="createDate" id="createDate" value="<%=createDateString==null?formatter.format(java.util.Calendar.getInstance().getTime()):createDateString%>" size="10">
         </td>    
       </tr>
       <tr>

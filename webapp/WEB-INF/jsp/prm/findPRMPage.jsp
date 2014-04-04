@@ -91,8 +91,8 @@ function onCloseDialog() {
 }
 </SCRIPT>
 <Form action="PRMUserList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
-	<input type="hidden" name="partyId">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
+	<input type="hidden" name="partyId" id="partyId">
 </Form>
 <FORM name="FindPRMForm" method=post>
 <BR><BR>
@@ -162,9 +162,9 @@ function onCloseDialog() {
 	</tr>
 </TABLE>
 <BR><BR>
-<INPUT TYPE=hidden name=SecId value='<%=SecId%>'>
-<INPUT TYPE=hidden name=chkSelect value="<%=chkSelect%>">
-<INPUT TYPE=hidden name=chkParty value="<%=chkParty%>">
+<INPUT type="hidden" name="SecId" id="SecId" value='<%=SecId%>'>
+<INPUT type="hidden" name="chkSelect" id="chkSelect" value="<%=chkSelect%>">
+<INPUT type="hidden" name="chkParty" id="chkParty" value="<%=chkParty%>">
 </Form>
 <%
 	Hibernate2Session.closeSession();

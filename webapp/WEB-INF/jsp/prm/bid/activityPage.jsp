@@ -47,7 +47,6 @@ if(stepGroup != null){
 			document.getElementById("actSize"+bidActId).innerHTML=actListSize;
 			document.getElementById("actHr"+bidActId).innerHTML=v.split("|")[3];
 			document.getElementById("currStep").innerHTML='<font color=red>'+v.split("|")[2];
-			//document.getElementById("winPer").innerHTML=v.split("|")[2];
 			if (actListSize >0){
 				document.getElementById("actCheckBox"+bidActId+"1").style.display="block";
 				document.getElementById("actCheckBox"+bidActId+"2").style.display="none";
@@ -91,7 +90,7 @@ if(stepGroup != null){
 </script>
 
 <form name="EditForm" action="editBidMaster.do" method="post">
-<input type="hidden" name="stepGroupId"	value="<%=stepGroupId !=null ? stepGroupId : "" %>">
+<input type="hidden" name="stepGroupId" id = "stepGroupId"	value="<%=stepGroupId !=null ? stepGroupId : "" %>">
 <table border=0 width='100%' cellspacing='0' cellpadding='1'>
 	<tr>
 		<td width='100%'>
@@ -182,7 +181,7 @@ if(stepGroup != null){
 							}
 						}
 						%>
-					<input type="hidden" name="bidActId" value="<%=bidActId%>">
+					<input type="hidden" name="bidActId" id = "bidActId" value="<%=bidActId%>">
 						<%			
 						String actName = "actSize"+bidActId;
 						String HrName = "actHr"+bidActId;

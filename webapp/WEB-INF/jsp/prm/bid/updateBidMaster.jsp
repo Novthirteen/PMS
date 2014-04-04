@@ -461,7 +461,7 @@ try{
 		scrolling=no src="includes/date/calendar.htm"
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 
 	<table width=100% cellpadding="1" border="0" cellspacing="1">	
 		<tr>
@@ -469,25 +469,25 @@ try{
 		</tr>
 		<tr>
 			<td width='100%'>
-				<input type="hidden" name="formAction" value="">
-				<input type="hidden" name="id" value="<%=id != null ? id : ""%>">
-				<input type="hidden" name="reason">
-				<input type="hidden" name="changeReason">
-				<input type="hidden" name="departmentId" value="<%=dept%>">
-				<input type="hidden" name="offSet" value="<%=offSet%>">
-				<input type="hidden" name="column" value="<%=column%>">
+				<input type="hidden" name="formAction" id="formAction" value="">
+				<input type="hidden" name="id" id="id" value="<%=id != null ? id : ""%>">
+				<input type="hidden" name="reason" id="reason">
+				<input type="hidden" name="changeReason" id="changeReason">
+				<input type="hidden" name="departmentId" id="departmentId" value="<%=dept%>">
+				<input type="hidden" name="offSet" id="offSet" value="<%=offSet%>">
+				<input type="hidden" name="column" id="column" value="<%=column%>">
 				
 				<table width='100%' border='0' cellspacing='2' cellpadding='0'>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Bid No.:&nbsp;</span></td>
 						<td colspan=2><%=no%></td>
 						<td align="right" class="lblbold"><span class="tabletext">Bid Description:&nbsp;</span></td>
-						<td colspan=2><input type="text" class="inputBox" name="description" value="<%=description%>" size="50" /></td>
+						<td colspan=2><input type="text" class="inputBox" name="description" id="description" value="<%=description%>" size="50" /></td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold">Department:&nbsp;</td>
 						<td class="lblLight" colspan=2>
-							<select name="dapartmentId" onchange="javascript:onDepSelect()" class="inputbox">
+							<select name="dapartmentId" id="dapartmentId" onchange="javascript:onDepSelect()" class="inputbox">
 								<%
 								String sqlStr = "";
 								String pmid="";
@@ -522,8 +522,8 @@ try{
 							}
 							%>
 							<div style="display:inline" id="labelPresalePM"><%=presalePMName%>&nbsp;</div>
-							<input type="hidden" readonly="true" name="PresalePM" maxlength="100" value="<%=presalePMName%>"> 
-							<input type="hidden" name="PresalePMId" value="<%=presalePMId%>"> 
+							<input type="hidden" readonly="true" name="PresalePM" id="PresalePM" maxlength="100" value="<%=presalePMName%>"> 
+							<input type="hidden" name="PresalePMId" id="PresalePMId" value="<%=presalePMId%>"> 
 							<a	href="javascript:showDialog_presalePM()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>	
 					</tr>
@@ -541,8 +541,8 @@ try{
 							}
 							%>
 							<div style="display:inline" id="labelSales"><%=spName%>&nbsp;</div>
-							<input type="hidden" readonly="true" name="salesPersonName" maxlength="100" value="<%=spName%>"> 
-							<input type="hidden" name="salesPersonId" value="<%=spId%>">
+							<input type="hidden" readonly="true" name="salesPersonName" id="salesPersonName" maxlength="100" value="<%=spName%>"> 
+							<input type="hidden" name="salesPersonId" id="salesPersonId" value="<%=spId%>">
 							<a href="javascript:showDialog_account()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
 						<td align="right" class="lblbold"><span class="tabletext">Secondary Sales Person:&nbsp;</span></td>
@@ -558,15 +558,15 @@ try{
 							}
 							%>
 							<div style="display:inline" id="labelSales2"><%=spName2%>&nbsp;</div>
-							<input type="hidden" name="salesPersonName2" maxlength="100" value="<%=spName2%>"> 
-							<input type="hidden" name="salesPersonId2" value="<%=spId2%>"> 
+							<input type="hidden" name="salesPersonName2" id="salesPersonName2" maxlength="100" value="<%=spName2%>"> 
+							<input type="hidden" name="salesPersonId2" id="salesPersonId2" value="<%=spId2%>"> 
 							<a href="javascript:showDialog_account2()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Currency:&nbsp;</span></td>
 						<td colspan=2>
-							<select name="currencyId" onchange="javascript:onCurrSelect()" class="inputbox">
+							<select name="currencyId" id="currencyId" onchange="javascript:onCurrSelect()" class="inputbox">
 								<%						
 								for (int i0 = 0; i0 < currencyList.size(); i0++) {
 									CurrencyType curr = (CurrencyType)currencyList.get(i0);
@@ -601,7 +601,7 @@ try{
        	 				</td>
         				<td colspan=2>
 							<div style="display:none" id="labelCurrencyRate"></div>	
-							<input type=text name="exchangeRate" class="inputbox" readonly style="border:0px;" value="<%if(exchangeRateStr !=null) out.print(exchangeRateStr); %>">	      				
+							<input type="text" name="exchangeRate" id="exchangeRate" class="inputbox" readonly style="border:0px;" value="<%if(exchangeRateStr !=null) out.print(exchangeRateStr); %>">	      				
 						</td>
 						<td align="right" class="lblbold">
           					<span class="tabletext">Total Contract Value(RMB):&nbsp;</span>
@@ -615,15 +615,15 @@ try{
           					<span class="tabletext">Estimated Start Date:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_estimateStartDate" value="no">
+        				<input type="hidden" name="hid_estimateStartDate" id="hid_estimateStartDate" value="no">
         				<%
         				if(startDateStr!=null && startDateStr.length()>0){
         				%>
-						    <input type="text" class="inputBox" name="estimateStartDate" oldvalue="<%=startDateStr%>" value="<%=startDateStr%>" size="10">
+						    <input type="text" class="inputBox" name="estimateStartDate" id="estimateStartDate" oldvalue="<%=startDateStr%>" value="<%=startDateStr%>" size="10">
           				<%
           				}else{
           				%>
-          					 <input type="text" class="inputBox" name="estimateStartDate" oldvalue="" value="" size="10">
+          					 <input type="text" class="inputBox" name="estimateStartDate" id="estimateStartDate" oldvalue="" value="" size="10">
           				<%
           				}
           				%>
@@ -660,16 +660,16 @@ try{
           					<span class="tabletext">Estimated End Date:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_estimateEndDate" value="no">
+        				<input type="hidden" name="hid_estimateEndDate" id="hid_estimateEndDate" value="no">
         				<%
         				if(endDateStr!=null && endDateStr.length()>0){
 
         				%>
-							<input type="text" class="inputBox" name="estimateEndDate" oldvalue="<%=endDateStr%>" value="<%=endDateStr%>" size="10">
+							<input type="text" class="inputBox" name="estimateEndDate" id="estimateEndDate" oldvalue="<%=endDateStr%>" value="<%=endDateStr%>" size="10">
           				<%
           				}else{
           				%>	
-          					<input type="text" class="inputBox" name="estimateEndDate" oldvalue="" value="" size="10">
+          					<input type="text" class="inputBox" name="estimateEndDate" id="estimateEndDate" oldvalue="" value="" size="10">
           				<%
           				}
           				%>
@@ -687,7 +687,7 @@ try{
 								display = "block";
 							}
 							%>
-							<input type="hidden" name="statusValue" value="<%=status%>">
+							<input type="hidden" name="statusValue" id="statusValue" value="<%=status%>">
 							<div id="other" style="display:<%=display%>">
   							<select name="status" id="otherStus" class="inputBox" onChange="fnOnchangeStatus()">
   								<option value="Active" <%if (status.equalsIgnoreCase("active")) out.println("selected");%>>Active</option>
@@ -711,15 +711,15 @@ try{
           					<span class="tabletext">Expected Sign Date:</span>
        	 				</td>
         				<td colspan=2>
-        					<input type="hidden" name="hid_expectedEndDate" value="no">
+        					<input type="hidden" name="hid_expectedEndDate" id="hid_expectedEndDate" value="no">
         				<%
         				if(expectedEndDate!=null && expectedEndDate.length()>0){
         				%>
-							<input type="text" class="inputBox" name="expectedEndDate" oldvalue="<%=expectedEndDate%>" value="<%=expectedEndDate%>" size="10">
+							<input type="text" class="inputBox" name="expectedEndDate" id="expectedEndDate" oldvalue="<%=expectedEndDate%>" value="<%=expectedEndDate%>" size="10">
           				<%
           				}else{
           				%>	
-          					<input type="text" class="inputBox" name="expectedEndDate" oldvalue="" value="" size="10">
+          					<input type="text" class="inputBox" name="expectedEndDate" id="expectedEndDate" oldvalue="" value="" size="10">
           				<%
           				}
           				%>	

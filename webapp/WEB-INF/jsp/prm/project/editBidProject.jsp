@@ -145,10 +145,10 @@ function showCustomerDialog()
 }
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
@@ -174,17 +174,17 @@ function showCustomerDialog()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction">
-    <input type="hidden" name="Id" value=<%=DataId%>>
-    <input type="hidden" name="add">
-	<input type="hidden" name="projectType" value=<%=CustProject.getProjectType().getPtId()%>>
+    <input type="hidden" name="FormAction" id="FormAction">
+    <input type="hidden" name="Id" id="Id" value=<%=DataId%>>
+    <input type="hidden" name="add" id="add">
+	<input type="hidden" name="projectType" id="projectType" value=<%=CustProject.getProjectType().getPtId()%>>
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
         <td align="right">
           <span class="tabletext">Project Code:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" value="<%=CustProject.getProjId()%>">
+          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" id="DataId" value="<%=CustProject.getProjId()%>">
         </td>
         <td align="right">
           <span class="tabletext">Project Description:&nbsp;</span>
@@ -215,7 +215,7 @@ function showCustomerDialog()
         <td align="right">
           <span class="tabletext">Customer:&nbsp;</span>
         </td>
-        <td align="left"><input type=hidden name="customerId" value="<%=CustProject.getCustomer().getPartyId()%>"><%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>
+        <td align="left"><input type="hidden" name="customerId" id="customerId" value="<%=CustProject.getCustomer().getPartyId()%>"><%=CustProject.getCustomer().getPartyId()%>:<%=CustProject.getCustomer().getDescription()%>
         </td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
@@ -235,7 +235,7 @@ function showCustomerDialog()
 			}
 			%>
 			<input type="text" readonly="true" name="projectManagerName" maxlength="100" value="<%=PMName%>">
-			<input type="hidden" name="projectManagerId" value="<%=PMId%>">
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value="<%=PMId%>">
 			<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
          <td align="right">
@@ -307,7 +307,7 @@ function showCustomerDialog()
         <td align="right">
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
-        <td><input type="hidden" name="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>"><%=formater.format((java.util.Date)CustProject.getStartDate())%>
+        <td><input type="hidden" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>"><%=formater.format((java.util.Date)CustProject.getStartDate())%>
         </td>
         <td align="right">
           <span class="tabletext">End Date:&nbsp;</span>
@@ -345,9 +345,9 @@ function showCustomerDialog()
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
-	<input type="hidden" name="projectType" value="Service">
-	<INPUT TYPE="hidden" name="projectCategory" value="B">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+	<input type="hidden" name="projectType" id="projectType" value="Service">
+	<INPUT TYPE="hidden" name="projectCategory" id="projectCategory" value="B">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
         <td align="right">
@@ -385,7 +385,7 @@ function showCustomerDialog()
         <td align="right">
           <span class="tabletext">Customer:&nbsp;</span>
         </td>
-		<td align="left"><div style="display:inline" id="labelCustomer">&nbsp;</div><input type=hidden name="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+		<td align="left"><div style="display:inline" id="labelCustomer">&nbsp;</div><input type="hidden" name="customerId" id="customerId"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 		</td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
@@ -410,7 +410,7 @@ function showCustomerDialog()
         </td>
         <td align="left">
 			<input type="text" readonly="true" name="projectManagerName" maxlength="100" value="">
-			<input type="hidden" name="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
         </td>
          <td align="right">
           <span class="tabletext">Open for All:&nbsp;</span>
@@ -467,7 +467,7 @@ function showCustomerDialog()
         <td align="right">
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
-        <td><input type="hidden" name="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>"><%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>
+        <td><input type="hidden" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>"><%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>
         </td>
         <td align="right">
           <span class="tabletext">End Date:&nbsp;</span>

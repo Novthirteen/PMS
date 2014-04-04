@@ -92,16 +92,16 @@ if (AOFSECURITY.hasEntityPermission("CUST_PROJECT", "_SELECT", session)) {
 %>
 <html:form action="/projectSelect.do" method="POST">
 <title>Project Selection</title>
-<input type="hidden" name="CALLBACKNAME">
-<input type="hidden" name="hiddenProjectCode">
-<input type="hidden" name="hiddenEventCode">
-<input type="hidden" name="hiddenServiceType">
-<input type="hidden" name="hiddenDescription">
-<input type="hidden" name="hiddenBillable">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DataPeriod" value="<%=DataPeriod%>">
-<input type="hidden" name="SelectType" value="<%=SelectType%>">
+<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
+<input type="hidden" name="hiddenProjectCode" id="hiddenProjectCode">
+<input type="hidden" name="hiddenEventCode" id="hiddenEventCode">
+<input type="hidden" name="hiddenServiceType" id="hiddenServiceType">
+<input type="hidden" name="hiddenDescription" id="hiddenDescription">
+<input type="hidden" name="hiddenBillable" id="hiddenBillable">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DataPeriod" id="DataPeriod" value="<%=DataPeriod%>">
+<input type="hidden" name="SelectType" id="SelectType" value="<%=SelectType%>">
 
 <link REL="Stylesheet" type="text/css" href="js/style2.css">
 <table width=100% align=center>
@@ -119,7 +119,7 @@ if (AOFSECURITY.hasEntityPermission("CUST_PROJECT", "_SELECT", session)) {
 	</tr>
 		<tr bgcolor="e9eee9">
 			<td class=lblbold width=10% ><bean:message key="prm.timesheet.eventLable" />:</td>
-			<td class=lblbold width=30% ><html:select property="eventSelect" onchange="javascript:onSelect()" size="1">
+			<td class=lblbold width=30% ><html:select property="eventSelect" styleId = "eventSelect" onchange="javascript:onSelect()" size="1">
 				<html:optionsCollection name="eventSelectArr" value="key"
 					label="value" />
 			</html:select></td>

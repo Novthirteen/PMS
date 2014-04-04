@@ -21,31 +21,31 @@
 <table border="0" width="100%">
   <tr>
     <th align="right">
-	  È¨ÏÞ×é±àÂë:
+	  æƒé™ç»„ç¼–ç :
     </th>
     <td align="left">
-      <html:text property="groupId" size="50"/>
+      <html:text property="groupId" size="50" styleId='groupId'/>
     </td>
   </tr>
 
   <tr>
     <th align="right">
-      È¨ÏÞ×é¹¦ÄÜÃèÊö:
+      æƒé™ç»„åŠŸèƒ½æè¿°:
     </th>
     <td align="left">
-      <html:text property="description" size="50"/>
+      <html:text property="description" size="50" styleId='description'/>
     </td>
   </tr>
 
   <tr>
     <td align="right">
       <html:submit>
-        È·¶¨
+        ç¡®å®š
       </html:submit>
     </td>
     <td align="left">
       <html:reset>
-        ÖØÖÃ
+        é‡ç½®
       </html:reset>
     </td>
   </tr>

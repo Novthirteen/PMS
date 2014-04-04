@@ -48,8 +48,8 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 %>
 
 <form name="frm1" action="editProjBOMCost.do" method="post">
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
-<input type="hidden" name="formaction" value="edit">
+<input type="hidden" name="masterid" id = "masterid" value="<%=master.getId()%>">
+<input type="hidden" name="formaction" id = "formaction" value="edit">
 <table border="0" cellpadding="4" cellspacing="0" align ="center" width="100%">
 	<CAPTION class=pgheadsmall>Project BOM(Precal Confirm)</CAPTION>
 	<tr ><td colspan=10>&nbsp;</td></tr>
@@ -95,9 +95,9 @@ int totalMD[] = new int[stList.size()];
 			ProjPlanType type = (ProjPlanType)stList.get(i);
 		%>
 		<td class=lblbold align=center ><%=type.getDescription()%>/<font color="red"><%=type.getSl().getDescription()%></font></td>
-			<input type=hidden name=servicetypeid value="<%=type.getId()%>">
-			<input type=hidden name=strate value="<%=type.getSTRate()%>">
-			<input type=hidden name=costrate value="<%=type.getSl().getRate()%>">
+			<input type="hidden" name="servicetypeid" Id="servicetypeid" value="<%=type.getId()%>">
+			<input type="hidden" name="strate" Id="strate" value="<%=type.getSTRate()%>">
+			<input type="hidden" name="costrate" Id="costrate" value="<%=type.getSl().getRate()%>">
 		<%}%>
 		<td class="lblbold" bgcolor="#ffffff" width="1%">&nbsp;</td>
 	</tr>
@@ -132,7 +132,7 @@ int totalMD[] = new int[stList.size()];
 		<td id='bom_desc' bgcolor="<%=bgcolor%>" nowrap>
 			<input size="1" type="text" readonly style="border:0px;margin-left:'<%=level*10%>px';background-color:<%=bgcolor%>">
 			<%=ppb.getStepdesc()%>
-			<input type="hidden" name="bom_id" value="<%=ppb.getId()%>">
+			<input type="hidden" name="bom_id" id = "bom_id" value="<%=ppb.getId()%>">
 		</td>
 		<td bgcolor="<%=bgcolor%>" align="center" nowrap>
 			<input size="30" type="text" name="document"  value="<%if(ppb.getDocument()!=null)out.println(ppb.getDocument());%>" readonly style="background-color:<%=bgcolor%>;border:0px">
@@ -150,11 +150,11 @@ int totalMD[] = new int[stList.size()];
 					totalMD[j] += day;
 				}
 			%>
-			<input type="hidden" name="hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
+			<input type="hidden" name="hid_id<%=i%>" id = "hid_id<%=i%>" value="<%=((ProjPlanBOMST)typeMap.get(new Long(ppt.getId()))).getId()%>">
 			<%
 			}else{
 			%>
-			<input type="hidden" name="hid_id<%=i%>" value="-1">
+			<input type="hidden" name="hid_id<%=i%>" id = "hid_id<%=i%>" value="-1">
 			<%}%>	
 			<input type="text"  size="5" name="st<%=i%>" col="<%=j%>" row="<%=i%>" oldvalue="<%=day%>" value="<%=day%>" readonly style="text-align:right;border:0px;background-color:<%=bgcolor%>" onchange="javascript:fnReCal(this)">
 		</td>
@@ -294,7 +294,7 @@ int totalMD[] = new int[stList.size()];
 <tr><td align="right">
 <input type="button" class="button" value="Project BOM Precalculation" onclick="fnDialog()">
 <input type="button" class="button" value="Back to List" onclick="location.replace('findProjBOM.do?formaction=listreve')">
-<input type="hidden" name="dpt" >
+<input type="hidden" name="dpt" id = "dpt">
 </td></tr></table>
 <script language="javascript">
 

@@ -100,7 +100,6 @@ function returnValue() {
 }
 function fnSubmit1()
 {
-//	document.getElementById("pageNumber").value = "";
 	document.frm.submit();
 }
 </script>
@@ -121,10 +120,10 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <title>Project Selection</title>
 <form action="BidChooseDialogue.do?UserId=<%=UserId%>&DataPeriod=<%=DataPeriod%>" name=frm method="POST">
-<input type="hidden" name="UserId" value="<%=UserId%>">
-<input type="hidden" name="DataPeriod" value="<%=DataPeriod%>">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="bid" value="<%=(String)request.getAttribute("bid")%>">
+<input type="hidden" name="UserId" id="UserId" value="<%=UserId%>">
+<input type="hidden" name="DataPeriod" id="DataPeriod" value="<%=DataPeriod%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="bid" id="bid" value="<%=(String)request.getAttribute("bid")%>">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Bid Select</CAPTION>
 	<tr><td align='center' colspan=5>

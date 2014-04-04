@@ -95,24 +95,24 @@ numFormater.setMinimumFractionDigits(2);
 DateFormat dateFormater = new SimpleDateFormat("yyyy/MM/dd");
 %>
 <form name="createInvoiceForm" action="editPaymentInvoice.do" method="post">
-	<input type="hidden" name="formAction" value="view">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="view">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
 </form>
 <form name="rptForm" action="EditPaymentInstruction.do" method="post">
-	<input type="hidden" name="action" value="ExportToExcel">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="action" id="action" value="ExportToExcel">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
 </form>
 <form name="deleteSuppInvForm" action="EditPaymentDownpaymentInstruction.do" method="post">
-	<input type="hidden" name="paymentId" value="">
-	<input type="hidden" name="formAction" value="">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
-	<input type="hidden" name="category" value="<%=category%>">
+	<input type="hidden" name="paymentId" id="paymentId" value="">
+	<input type="hidden" name="formAction" id="formAction" value="">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="category" id="category" value="<%=category%>">
 </form>
 <form name="editForm" action="EditPaymentDownpaymentInstruction.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="update">
-	<input type="hidden" name="payType" value="<%=Constants.PAYMENT_TYPE_DOWN_PAYMENT%>">
-	<input type="hidden" name="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="update">
+	<input type="hidden" name="payType" id="payType" value="<%=Constants.PAYMENT_TYPE_DOWN_PAYMENT%>">
+	<input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>
@@ -188,7 +188,7 @@ DateFormat dateFormater = new SimpleDateFormat("yyyy/MM/dd");
 							<%
 								if (canUpdate) {
 							%>
-							<input type=hidden name="payAddr" value="<%=pp.getPayAddress().getPartyId()%>">
+							<input type="hidden" name="payAddr" id="payAddr" value="<%=pp.getPayAddress().getPartyId()%>">
 							<a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 							<%

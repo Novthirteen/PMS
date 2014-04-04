@@ -79,15 +79,15 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <html:form action="/userList.do" method="POST" >
 <title>Staff Selection</title>
-<input type="hidden" name="CALLBACKNAME">
-<input type="hidden" name="hiddenStaffName">
-<input type="hidden" name="hiddenStaffCode">
-<input type="hidden" name="hiddenPartyCode">
-<input type="hidden" name="hiddenPartyName">
-<input type="hidden" name="hiddenEmailAddr">
-<input type="hidden" name="openType" value="<%=request.getParameter("openType") != null ? request.getParameter("openType") : ""%>">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="partyId" value="<%=partyId%>">
+<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
+<input type="hidden" name="hiddenStaffName" id="hiddenStaffName">
+<input type="hidden" name="hiddenStaffCode" id="hiddenStaffCode">
+<input type="hidden" name="hiddenPartyCode" id="hiddenPartyCode">
+<input type="hidden" name="hiddenPartyName" id="hiddenPartyName">
+<input type="hidden" name="hiddenEmailAddr" id="hiddenEmailAddr">
+<input type="hidden" name="openType" id="openType" value="<%=request.getParameter("openType") != null ? request.getParameter("openType") : ""%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="partyId" id="partyId" value="<%=partyId%>">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Staff Select</CAPTION>
 	<tr><td align='center' colspan =4>
@@ -154,8 +154,8 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 		</td>
 		<td><label id="staffName"><%=ul.getName()%>&nbsp;</label></td>
 		<td><label id="staffId"><%=ul.getUserLoginId()%></label></td>
-		<td><input type="hidden" name="SelPartyId" value = "<%= ul.getParty().getPartyId()%>">
-			<input type="hidden" name="emailAddr" value = "<%= ul.getEmail_addr().trim()%>">
+		<td><input type="hidden" name="SelPartyId" id="SelPartyId" value = "<%= ul.getParty().getPartyId()%>">
+			<input type="hidden" name="emailAddr" id="emailAddr" value = "<%= ul.getEmail_addr().trim()%>">
 			<label id="partyName"><%=ul.getParty().getDescription()%></label></td>
 		</tr>	
 	<%}

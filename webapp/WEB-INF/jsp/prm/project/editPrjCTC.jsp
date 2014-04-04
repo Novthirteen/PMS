@@ -85,8 +85,8 @@ function CalcTot()
 }
 </script>
 <form name="frm" method="post">
-<input type="hidden" name="FormAction" value="Update">
-<input type="hidden" name="VerFMId" value="<%=NewVerFMId%>">
+<input type="hidden" name="FormAction" id="FormAction" value="Update">
+<input type="hidden" name="VerFMId" id="VerFMId" value="<%=NewVerFMId%>">
 <IFRAME frameBorder=0 id=CalFrame marginHeight=0 
 	marginWidth=0 noResize 
 	scrolling=no src="includes/date/calendar.htm" 
@@ -110,7 +110,7 @@ function CalcTot()
 			</tr>
 			<tr>
 				<td class="lblbold" align=right>Project :</td>
-				<td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" value="<%=CustProject.getProjId()%>"></td>
+				<td class="lblLight"><%=CustProject.getProjId()%>&nbsp;:&nbsp;<%=CustProject.getProjName()%><input type="hidden" name="projectId" id="projectId" value="<%=CustProject.getProjId()%>"></td>
 				<td class="lblbold" align=right>Contranct No :</td>
 				<td class="lblLight"><%=CustProject.getContractNo()%>&nbsp;</td>
 				<td class="lblbold" align=right>Contract Type :</td>
@@ -168,7 +168,7 @@ function CalcTot()
 			}
 			for (int i=0; i<CTCType.length; i++) {%>
 				<tr bgcolor="#e9eee9">
-					<td class="lblbold"><%=CTCTypeDESC[i]%><input type="hidden" name="ctc_type" value="<%=CTCType[i]%>"></td>
+					<td class="lblbold"><%=CTCTypeDESC[i]%><input type="hidden" name="ctc_type" id="ctc_type" value="<%=CTCType[i]%>"></td>
 					<%double BudValue = 0;
 					if (CTCType[i].equals("PSC")) {
 						BudValue = CustProject.getPSCBudget().doubleValue();
@@ -179,7 +179,7 @@ function CalcTot()
 					}%>
 					<td class="lblbold" align="right">
 						<%=Num_formater.format(BudValue)%>
-						<input type=hidden Id="tBudget<%=i%>" value="<%=BudValue%>">
+						<input type="hidden" name="tBudget<%=i%>" Id="tBudget<%=i%>" value="<%=BudValue%>">
 					</td>
 					<%
 					double ActualAmt = 0;
@@ -193,7 +193,7 @@ function CalcTot()
 					}%>
 					<td align="right" class="lblbold">
 						<%=Num_formater.format(ActualAmt)%>
-						<input type=hidden Id="tActual<%=i%>" value="<%=ActualAmt%>">
+						<input type="hidden" name="tActual<%=i%>" Id="tActual<%=i%>" value="<%=ActualAmt%>">
 					</td>
 					<%
 					String RecId = "";
@@ -207,7 +207,7 @@ function CalcTot()
 							}
 						}
 					}%>
-					<td align="center"><input type=hidden name="RecId" value="<%=RecId%>"><input type=text class=inputBox name="RecordVal" size=10 value="<%=CTCAmt%>" onblur="checkDeciNumber2(this,1,1,'CTC Value',-9999999,9999999);  CalcTot();  "></td>
+					<td align="center"><input type="hidden" name="RecId" Id="RecId" value="<%=RecId%>"><input type=text class=inputBox name="RecordVal" size=10 value="<%=CTCAmt%>" onblur="checkDeciNumber2(this,1,1,'CTC Value',-9999999,9999999);  CalcTot();  "></td>
 					<td align="right" class="lblbold" Id="tTot<%=i%>"><%=Num_formater.format(CTCAmt+ActualAmt)%></td>
 					<td align="right" class="lblbold" Id="tVarianceBudget<%=i%>"><%=Num_formater.format(ActualAmt-BudValue)%></td>
 					<td align="right" class="lblbold" Id="tVariance<%=i%>"><%=Num_formater.format(CTCAmt+ActualAmt-BudValue)%></td>

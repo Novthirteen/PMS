@@ -56,13 +56,13 @@ if (AOFSECURITY.hasEntityPermission("PAYMENT_INVOICE", "_CREATE", session)) {
 
 <form name="backForm" action="findPaymentInvoice.do" method="post">
 
-	<input type="hidden" name="formAction" value="query">
-	<input type="hidden" name="invoice" value="<%=Invoice%>">
-	<input type="hidden" name="payment" value="<%=Payment%>">
-	<input type="hidden" name="project" value="<%=Project%>">
-	<input type="hidden" name="payAddress" value="<%=PayAddress%>">
-	<input type="hidden" name="status" value="<%=Status%>">
-	<input type="hidden" name="department" value="<%=Department%>">
+	<input type="hidden" name="formAction" id="formAction" value="query">
+	<input type="hidden" name="invoice" id="invoice" value="<%=Invoice%>">
+	<input type="hidden" name="payment" id="payment" value="<%=Payment%>">
+	<input type="hidden" name="project" id="project" value="<%=Project%>">
+	<input type="hidden" name="payAddress" id="payAddress" value="<%=PayAddress%>">
+	<input type="hidden" name="status" id="status" value="<%=Status%>">
+	<input type="hidden" name="department" id="department" value="<%=Department%>">
 </form>
 	<%@ include file="updatePaymentInvoicePage.jsp" %>
 <%

@@ -44,11 +44,11 @@ function assignGroup(number) {
 
 </script>
 <Form action="helpdesk.assignGroupMember.do" name="update_frm" method="post">
-<input type="hidden" name="formAction">
-<input type="hidden" name="gid">
-<input type="hidden" name="supervisor">
-<input type="hidden" name="super_name">
-<input type="hidden" name="desc">
+<input type="hidden" name="formAction" id = "formAction">
+<input type="hidden" name="gid" id = "gid">
+<input type="hidden" name="supervisor" id = "supervisor">
+<input type="hidden" name="super_name" id = "super_name">
+<input type="hidden" name="desc" id = "desc">
 <table width="100%" cellpadding="2" border="0" cellspacing="2">
 <caption class="pgheadsmall">Helpdesk Group List</caption>
 	<tr>
@@ -68,12 +68,12 @@ function assignGroup(number) {
 	%>
 		<tr bgcolor="#e9eee1">
 			<td><a href="#" onclick="assignGroup(<%=seq%>);"><%=cg.getId()%></a></td>
-			<input type="hidden" name="<%="gid"+seq%>" value="<%=cg.getId()%>">
+			<input type="hidden" name="<%="gid"+seq%>" id = "<%="gid"+seq%>" value="<%=cg.getId()%>">
 			<td><%=cg.getSupvisor().getName()%></td>
-			<input type="hidden" name="<%="supervisor"+seq%>" value="<%=cg.getSupvisor().getUserLoginId()%>">
-			<input type="hidden" name="<%="super_name"+seq%>" value="<%=cg.getSupvisor().getName()%>">
+			<input type="hidden" name="<%="supervisor"+seq%>" id = "<%="supervisor"+seq%>" value="<%=cg.getSupvisor().getUserLoginId()%>">
+			<input type="hidden" name="<%="super_name"+seq%>" id = "<%="super_name"+seq%>" value="<%=cg.getSupvisor().getName()%>">
 			<td><%=cg.getDescription()%></td>
-			<input type="hidden" name="<%="desc"+seq%>" value="<%=cg.getDescription()%>">
+			<input type="hidden" name="<%="desc"+seq%>" id = "<%="desc"+seq%>" value="<%=cg.getDescription()%>">
 		</tr>
 	<%seq++;}}%>
 </table>

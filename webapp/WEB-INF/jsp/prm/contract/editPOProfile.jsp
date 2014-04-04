@@ -339,10 +339,10 @@ function onCurrSelect(){
 }
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
@@ -372,10 +372,10 @@ function onCurrSelect(){
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction">
-    <input type="hidden" name="Id" value=<%=contractId%>>
-    <input type="hidden" name="add">
-    <input type="hidden" name="contractId" value="<%=CustProject.getId()%>">
+    <input type="hidden" name="FormAction" id="FormAction">
+    <input type="hidden" name="Id" id="Id" value=<%=contractId%>>
+    <input type="hidden" name="add" id="add">
+    <input type="hidden" name="contractId" id="contractId" value="<%=CustProject.getId()%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
     <%
         if(repeatName != null && repeatName.equals("yes")){
@@ -393,11 +393,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=CustProject.getNo()%>
-          <input type="hidden" name="contractNo" value="<%=CustProject.getNo()%>">
+          <input type="hidden" name="contractNo" id="contractNo" value="<%=CustProject.getNo()%>">
           <%
           	} else {
           %>
-          <input type="text" name="contractNo" value="<%=CustProject.getNo()%>">
+          <input type="text" name="contractNo" id="contractNo" value="<%=CustProject.getNo()%>">
           <%
           	}
           %>
@@ -416,8 +416,8 @@ function onCurrSelect(){
 			}
 			%>
 			<div style="display:inline" id="labelLCNo"><%=LCNNo%>:<%=LCNDES%></div>
-			<input type="hidden" name="linkContractNo" maxlength="100" value="<%=LCNNo%>">
-			<input type="hidden" name="linkContractId" value="<%=LCNId%>">
+			<input type="hidden" name="linkContractNo" id="linkContractNo" maxlength="100" value="<%=LCNNo%>">
+			<input type="hidden" name="linkContractId" id="linkContractId" value="<%=LCNId%>">
 			<%
 			  if(hasProjectFlag==null)hasProjectFlag="";
 			  if(!hasProjectFlag.equals("true") && !canceledFlg){
@@ -436,11 +436,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=CustProject.getDescription()%>
-           <input type="hidden" class="inputBox" name="contractDes" value="<%=CustProject.getDescription()%>">
+           <input type="hidden" class="inputBox" name="contractDes" id="contractDes" value="<%=CustProject.getDescription()%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="contractDes" value="<%=CustProject.getDescription()%>" size="30">
+          <input type="text" class="inputBox" name="contractDes" id="contractDes" value="<%=CustProject.getDescription()%>" size="30">
           <%
           	}
           %>
@@ -481,7 +481,7 @@ function onCurrSelect(){
           <span class="tabletext">Vendor:&nbsp;</span>
         </td>
         <td align="left">
-        	<input type=hidden name="vendorId" value="<%=CustProject.getVendor().getPartyId()%>">
+        	<input type="hidden" name="vendorId" id="vendorId" value="<%=CustProject.getVendor().getPartyId()%>">
         	<%=CustProject.getVendor().getPartyId()%>:<%=CustProject.getVendor().getDescription()%>
         </td>
         <td align="right">
@@ -522,8 +522,8 @@ function onCurrSelect(){
 			}
 			%>
 			<div style="display:inline" id="labelAccount"><%=AMName%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="accountManagerName" maxlength="100" value="<%=AMName%>">
-			<input type="hidden" name="accountManagerId" value="<%=AMId%>">
+			<input type="hidden" readonly="true" name="accountManagerName" id="accountManagerName" maxlength="100" value="<%=AMName%>">
+			<input type="hidden" name="accountManagerId" id="accountManagerId" value="<%=AMId%>">
 			<%
 				if (!canceledFlg) {
 			%>
@@ -540,11 +540,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=signedDate%>
-          <input type="hidden" class="inputBox" name="signedDate" value="<%=signedDate%>">
+          <input type="hidden" class="inputBox" name="signedDate" id="signedDate" value="<%=signedDate%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="signedDate" value="<%=signedDate%>" size="10">
+          <input type="text" class="inputBox" name="signedDate" id="signedDate" value="<%=signedDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg6,document.EditForm.signedDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg6 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 		  <%
@@ -561,11 +561,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=startDate%>
-          <input type="hidden" class="inputBox" name="startDate" value="<%=startDate%>">
+          <input type="hidden" class="inputBox" name="startDate" id="startDate" value="<%=startDate%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="startDate" value="<%=startDate%>" size="10">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=startDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg1,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg1 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 		  <%
@@ -580,11 +580,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=endDate%>
-          <input type="hidden" class="inputBox" name="endDate" value="<%=endDate%>">
+          <input type="hidden" class="inputBox" name="endDate" id="endDate" value="<%=endDate%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="endDate" value="<%=endDate%>" size="10">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=endDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg2,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg2 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
           <%
@@ -601,11 +601,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue()) : ""%>
-          <input type="hidden" class="inputBox" name="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue()) : ""%>">
+          <input type="hidden" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue()) : ""%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="<%=CustProject.getTotalContractValue() != null ? Num_formater.format(CustProject.getTotalContractValue()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
           <%
 		  	}
 		  %>
@@ -618,11 +618,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
          %>
          <%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>
-          <input type="hidden" class="inputBox" name="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>">
+          <input type="hidden" class="inputBox" name="alownceAmt" id="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" value="<%=CustProject.getCustPaidAllowance() != null ? Num_formater.format(CustProject.getCustPaidAllowance()) : ""%>" size="30" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');">
           <%
 		  	}
 		  %>
@@ -650,7 +650,7 @@ function onCurrSelect(){
 				</td>
 				<td class="tabletext" align=right>Exchange Rate(RMB):</td>
 				<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="exchangeRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="exchangeRate" id="exchangeRate" value="<%=CurrencyRate%>">
 			</td>
       </tr>
       <tr>
@@ -662,11 +662,11 @@ function onCurrSelect(){
           	if (canceledFlg) {
           %>
           <%=startDate%>
-          <input type="hidden" class="inputBox" name="legalReviewDate" value="<%=legalReviewDate%>">
+          <input type="hidden" class="inputBox" name="legalReviewDate" id="legalReviewDate" value="<%=legalReviewDate%>">
           <%
           	} else {
           %>
-          <input type="text" class="inputBox" name="legalReviewDate" value="<%=legalReviewDate%>" size="10">
+          <input type="text" class="inputBox" name="legalReviewDate" id="legalReviewDate" value="<%=legalReviewDate%>" size="10">
           <A href="javascript:ShowCalendar(document.EditForm.dimg100,document.EditForm.legalReviewDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id="dimg100" src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 		  <%
@@ -729,7 +729,7 @@ function onCurrSelect(){
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
 	
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
@@ -743,7 +743,7 @@ function onCurrSelect(){
             <span class="tabletext">Linked Contract No:&nbsp;</span>
           </td>
           </td>
-        <td align="left"><div style="display:inline" id="labelLCNo">&nbsp;</div><input type=hidden name="linkContractId"><a href="javascript:void(0)" onclick="showDialog_contract();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+        <td align="left"><div style="display:inline" id="labelLCNo">&nbsp;</div><input type="hidden" name="linkContractId" id="linkContractId"><a href="javascript:void(0)" onclick="showDialog_contract();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
       </tr>
 	  
@@ -766,7 +766,7 @@ function onCurrSelect(){
         <td align="right">
           <span class="tabletext">Vendor:&nbsp;</span>
         </td>
-		<td align="left"><div style="display:inline" id="labelVendor">&nbsp;</div><input type=hidden name="vendorId"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+		<td align="left"><div style="display:inline" id="labelVendor">&nbsp;</div><input type="hidden" name="vendorId" id="vendorId"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
          <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
@@ -789,7 +789,7 @@ function onCurrSelect(){
           <td align="right">
           <span class="tabletext">Account Manager:&nbsp;</span>
         </td>
-        <td align="left"><div style="display:inline" id="labelAccount">&nbsp;</div><input type=hidden name="accountManagerId"><a href="javascript:void(0)" onclick="showDialog_account();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+        <td align="left"><div style="display:inline" id="labelAccount">&nbsp;</div><input type="hidden" name="accountManagerId" id="accountManagerId"><a href="javascript:void(0)" onclick="showDialog_account();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
         <td align="right">
           <span class="tabletext">Signed Date:&nbsp;</span>
@@ -858,7 +858,7 @@ function onCurrSelect(){
           <span class="tabletext">Exchange Rate:</span>
         </td>
 		<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="exchangeRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="exchangeRate" id="exchangeRate" value="<%=CurrencyRate%>">
 				</td>
       </tr>
       <tr>

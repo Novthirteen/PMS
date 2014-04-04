@@ -68,7 +68,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_Precal_MAINTENANCE", session)) {
 		    }
 		    %>
 		    </select> 
-		    <input type="hidden" name="formaction" value="listcost">
+		    <input type="hidden" name="formaction" id="formaction" value="listcost">
 		    <input type="submit" value="Search" class="button">
 	    </form>
 	 </td>
@@ -150,7 +150,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_Precal_MAINTENANCE", session)) {
               %>
                 				<tr>
 					<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-					<input type=hidden name="offSet" value="<%=offSet%>">
+					<input type="hidden" name="offSet" Id="offset" value="<%=offSet%>">
 						<%
 							int RecordSize = sr.getRowCount();
 							int l = 0;

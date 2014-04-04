@@ -88,7 +88,6 @@ function checkSubmit() {
 
 function onCurrSelect(){
 	document.getElementById("currencyRate").value = document.currency.options[document.currency.selectedIndex].value;
-	//document.getElementById("labelCurrencyRate").innerHTML = document.currency.options[document.currency.selectedIndex].value;
 }
 
 function doDelete() {
@@ -174,26 +173,26 @@ function showSI(dataId){
 <form name="form1" action="editPaymentInvoice.do" method="post">
 	<input type="hidden" name="formAction" value="">
 	
-	<input type="hidden" name="invoice" value="<%=Invoice%>">
-	<input type="hidden" name="project" value="<%=Project%>">
-	<input type="hidden" name="payAddress" value="<%=PayAddress%>">
-	<input type="hidden" name="status" value="<%=Status%>">
-	<input type="hidden" name="department" value="<%=Department%>">
+	<input type="hidden" name="invoice" id="invoice" value="<%=Invoice%>">
+	<input type="hidden" name="project" id="project" value="<%=Project%>">
+	<input type="hidden" name="payAddress" id="payAddress" value="<%=PayAddress%>">
+	<input type="hidden" name="status" id="status" value="<%=Status%>">
+	<input type="hidden" name="department" id="department" value="<%=Department%>">
 	<!-- invoiceId getCostcode -->
-	<input type="hidden" name="payAmount"  value="">
+	<input type="hidden" name="payAmount" id="payAmount" value="">
 	<!-- payCode getRefno -->
-	<input type="hidden" name="amount"  value="">
+	<input type="hidden" name="amount" id="amount" value="">
 </form>
 <form name="updateForm" action="editPaymentInvoice.do" method="post" onsubmit="return checkSubmit();">
 
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="payAmount"  value="">
-    <input type="hidden" name="payId" value="<%=pp.getId()%>">
-	<input type="hidden" name="remainAmount"  value="">
-	<input type="hidden" name="formAction" value="update">
+	<input type="hidden" name="payAmount" id="payAmount" value="">
+    <input type="hidden" name="payId" id="payId" value="<%=pp.getId()%>">
+	<input type="hidden" name="remainAmount" id="remainAmount"  value="">
+	<input type="hidden" name="formAction" id="formAction" value="update">
 	<!-- invoiceId getCostcode -->
-	<input type="hidden" name="confirmId" value="">
-	<input type="hidden" name="invoiceType" value="<%=Constants.PAYMENT_INVOICE_TYPE_NORMAL%>">
+	<input type="hidden" name="confirmId" id="confirmId" value="">
+	<input type="hidden" name="invoiceType" id="invoiceType" value="<%=Constants.PAYMENT_INVOICE_TYPE_NORMAL%>">
 	<!-- payCode getRefno -->
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<%
@@ -234,7 +233,7 @@ function showSI(dataId){
 					  <td class="lblLight"><a href="#" onclick="showDetail('<%=pp.getId()%>', '<%=pp.getType()%>');"><%=pp.getPaymentCode()%></a> </td>
 						<td class="lblbold" align=right>Status:</td>
 						<td class="lblLight"><%=pp.getStatus() == null ? "Draft" : pp.getStatus()%></td>
-						<input type="hidden" name="invoiceCode" value="<%=pp.getPaymentCode()%>">
+						<input type="hidden" name="invoiceCode" id="invoiceCode" value="<%=pp.getPaymentCode()%>">
 					</tr>
 					<tr>
 						<td class="lblbold" align=right width="16%">Project:</td>
@@ -283,7 +282,7 @@ function showSI(dataId){
 							<div style="display:inline" id="labelPayAddress">
 								<%=pp.getPayAddress() != null ? pp.getPayAddress().getDescription() : ""%>
 							</div>
-							<input type="hidden" name="payAddressId" value="<%=pp.getPayAddress() == null?"":pp.getPayAddress().getPartyId()%>">	
+							<input type="hidden" name="payAddressId" id="payAddressId" value="<%=pp.getPayAddress() == null?"":pp.getPayAddress().getPartyId()%>">	
 							<%
 								if (canUpdate) {
 							%>
@@ -340,7 +339,7 @@ function showSI(dataId){
 							<%
 								if (canUpdate) {
 							%>						
-							<input type="text" readonly name="currencyRate" size="30" value="1.0" style="TEXT-ALIGN: right" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Exchange Rate',-99999,99999)">			
+							<input type="text" readonly name="currencyRate" id="currencyRate" size="30" value="1.0" style="TEXT-ALIGN: right" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Exchange Rate',-99999,99999)">			
 							<%
 								} else {
 							%>
@@ -394,18 +393,18 @@ function showSI(dataId){
 	</table>
 </form>
 <form name="back1Form" action="FindPaymentInstruction.do" method="post">
-	<input type="hidden" name="action" value="query">
-	<input type="hidden" name="payCode" value="<%=payCode%>">
-	<input type="hidden" name="project" value="<%=project%>">
-	<input type="hidden" name="vendor" value="<%=vendor%>">
-	<input type="hidden" name="department" value="<%=department%>">
-	<input type="hidden" name="status" value="<%=status%>">
+	<input type="hidden" name="action" id="action" value="query">
+	<input type="hidden" name="payCode" id="payCode" value="<%=payCode%>">
+	<input type="hidden" name="project" id="project" value="<%=project%>">
+	<input type="hidden" name="vendor" id="vendor" value="<%=vendor%>">
+	<input type="hidden" name="department" id="department" value="<%=department%>">
+	<input type="hidden" name="status" id="status" value="<%=status%>">
 </form>
 
-<form name='pcmForm' action='editPaymentInvoice.do'>
-<input type='hidden' name='pcmId'>
-<input type='hidden' name='formAction'>
-<input type="hidden" name="payId" value="<%=pp.getId()%>">
+<form name="pcmForm" action="editPaymentInvoice.do">
+<input type="hidden" name="pcmId" id="pcmId">
+<input type="hidden" name="formAction" id="formAction">
+<input type="hidden" name="payId" id="action" value="<%=pp.getId()%>">
 <table width="987">
 <TR>
 	<TD align=left colspan="4" width='100%' class="wpsPortletTopTitle">

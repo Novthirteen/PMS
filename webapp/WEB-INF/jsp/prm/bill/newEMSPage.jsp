@@ -24,11 +24,11 @@ function doBack() {
 </script>
 <form name="newForm" action="editEMS.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="new">
-	<input type="hidden" name="qryEMSType" value="<%=qryEMSType%>">
-	<input type="hidden" name="qryEMSNo" value="<%=qryEMSNo%>">
-	<input type="hidden" name="qryDepartment" value="<%=qryDepartment%>">
-	<input type="hidden" name="emsInvoiceId" value="<%=emsInvoiceId%>">
+	<input type="hidden" name="formAction" id="formAction" value="new">
+	<input type="hidden" name="qryEMSType" id="qryEMSType" value="<%=qryEMSType%>">
+	<input type="hidden" name="qryEMSNo" id="qryEMSNo" value="<%=qryEMSNo%>">
+	<input type="hidden" name="qryDepartment" id="qryDepartment" value="<%=qryDepartment%>">
+	<input type="hidden" name="emsInvoiceId" id="emsInvoiceId" value="<%=emsInvoiceId%>">
 
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>EMS Maintenance</CAPTION>

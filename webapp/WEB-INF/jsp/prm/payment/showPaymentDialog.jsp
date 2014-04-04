@@ -103,8 +103,8 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_VIEW", session)) {
 			<tr>
 				<td>
 					<form name="queryForm" action="FindPaymentInstruction.do" method="post">
-						<input type="hidden" name="action" value="showDialog">
-						<input type="hidden" name="offSet" value="0">
+						<input type="hidden" name="action" id="action" value="showDialog">
+						<input type="hidden" name="offSet" id="offSet" value="0">
 						<TABLE width="100%">
 							<tr>
 								<td colspan=8><hr color=red></hr></td>
@@ -112,11 +112,11 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_VIEW", session)) {
 							
 							<tr>
 								<td class="lblbold">Payment Code:</td>
-								<td class="lblLight"><input type="text" name="payCode" size="15" value="<%=payCode != null ? payCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="payCode" id="payCode" size="15" value="<%=payCode != null ? payCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Project:</td>
-								<td class="lblLight"><input type="text" name="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Supplier:</td>
-								<td class="lblLight"><input type="text" name="vendor" size="15" value="<%=vendor != null ? vendor : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="vendor" id="vendor" size="15" value="<%=vendor != null ? vendor : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 							</tr>
 							
 							<tr>
@@ -163,8 +163,8 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_VIEW", session)) {
 						</table>
 					</form>
 					<form name="editForm" action="EditPaymentInstruction.do" method="post" target="PaymentDetail">
-						<input type="hidden" name="action" value="view">
-						<input type="hidden" name="payId" value="">
+						<input type="hidden" name="action" id="action" value="view">
+						<input type="hidden" name="payId" id="payId" value="">
 					</form>
 				</td>
 			</tr>
@@ -198,22 +198,22 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_VIEW", session)) {
 				</td>
 		    	<td align="left"> 
 					<a href="#" onclick="showDetail('<%=sqlResult.getLong(row, "pay_id")%>', '<%=sqlResult.getString(row, "pay_type")%>');"><%=sqlResult.getString(row, "pay_code")%></a> 
-					<input type="hidden" name="hiPayCode" value="<%=sqlResult.getString(row, "pay_code")%>">
+					<input type="hidden" name="hiPayCode" id="hiPayCode" value="<%=sqlResult.getString(row, "pay_code")%>">
 		    	</td>
 		    	<td align="left">                 
 		       		<%=sqlResult.getString(row, "proj_id")%>:<%=sqlResult.getString(row, "proj_name")%>
-		       		<input type="hidden" name="projId" value="<%=sqlResult.getString(row, "proj_id")%>">
-		       		<input type="hidden" name="projName" value="<%=sqlResult.getString(row, "proj_name")%>">
-		       		<input type="hidden" name="contractType" value="<%=sqlResult.getString(row, "contracttype")%>">
-		       		<input type="hidden" name="depId" value="<%=sqlResult.getString(row, "departmentId")%>">
-		       		<input type="hidden" name="depNm" value="<%=sqlResult.getString(row, "department")%>">
-		       		<input type="hidden" name="pmId" value="<%=sqlResult.getString(row, "pmId")%>">
-		       		<input type="hidden" name="pmNm" value="<%=sqlResult.getString(row, "pmName")%>">
+		       		<input type="hidden" name="projId" id="projId" value="<%=sqlResult.getString(row, "proj_id")%>">
+		       		<input type="hidden" name="projName" id="projName" value="<%=sqlResult.getString(row, "proj_name")%>">
+		       		<input type="hidden" name="contractType" id="contractType" value="<%=sqlResult.getString(row, "contracttype")%>">
+		       		<input type="hidden" name="depId" id="depId" value="<%=sqlResult.getString(row, "departmentId")%>">
+		       		<input type="hidden" name="depNm" id="depNm" value="<%=sqlResult.getString(row, "department")%>">
+		       		<input type="hidden" name="pmId" id="pmId" value="<%=sqlResult.getString(row, "pmId")%>">
+		       		<input type="hidden" name="pmNm" id="pmNm" value="<%=sqlResult.getString(row, "pmName")%>">
 		        </td>
 		        <td align="left">                 
 		           <%=sqlResult.getString(row, "payAddr")%>
-		           <input type="hidden" name="payAddrId" value="<%=sqlResult.getString(row, "payAddrId")%>">
-		       	   <input type="hidden" name="payAddrNm" value="<%=sqlResult.getString(row, "payAddr")%>">
+		           <input type="hidden" name="payAddrId" id="payAddrId" value="<%=sqlResult.getString(row, "payAddrId")%>">
+		       	   <input type="hidden" name="payAddrNm" id="payAddrNm" value="<%=sqlResult.getString(row, "payAddr")%>">
 		        </td>
 		        <td align="left">                 
 		           <%=sqlResult.getString(row, "department")%>
@@ -223,7 +223,7 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_PAYMENT", "_VIEW", session)) {
 		        </td>
 		        <td align="right">                 
 		           <%=formater.format(sqlResult.getDouble(row, "pay_calamount")-sqlResult.getDouble(row, "invoicedAmount"))%>
-		           <input type="hidden" name="remainingAmount" value="<%=formater.format(sqlResult.getDouble(row, "pay_calamount")-sqlResult.getDouble(row, "invoicedAmount"))%>">
+		           <input type="hidden" name="remainingAmount" id="remainingAmount" value="<%=formater.format(sqlResult.getDouble(row, "pay_calamount")-sqlResult.getDouble(row, "invoicedAmount"))%>">
 		        </td>
 		        <td align="left">                 
           			<%=sqlResult.getString(row, "pay_status")%>

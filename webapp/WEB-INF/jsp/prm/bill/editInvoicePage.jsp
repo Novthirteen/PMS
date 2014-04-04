@@ -94,14 +94,14 @@ while(itCurr.hasNext()){
 <%
 	}
 %>
-	<input type="hidden" name="formAction" value="query">
-	<input type="hidden" name="process" value="<%=request.getParameter("process")%>">
-	<input type="hidden" name="invoice" value="<%=Invoice%>">
-	<input type="hidden" name="billing" value="<%=Billing%>">
-	<input type="hidden" name="project" value="<%=Project%>">
-	<input type="hidden" name="billAddress" value="<%=BillAddress%>">
-	<input type="hidden" name="status" value="<%=Status%>">
-	<input type="hidden" name="department" value="<%=Department%>">
+	<input type="hidden" name="formAction" id="formAction" value="query">
+	<input type="hidden" name="process" id="process" value="<%=request.getParameter("process")%>">
+	<input type="hidden" name="invoice" id="invoice" value="<%=Invoice%>">
+	<input type="hidden" name="billing" id="billing" value="<%=Billing%>">
+	<input type="hidden" name="project" id="project" value="<%=Project%>">
+	<input type="hidden" name="billAddress" id="billAddress" value="<%=BillAddress%>">
+	<input type="hidden" name="status" id="status" value="<%=Status%>">
+	<input type="hidden" name="department" id="department" value="<%=Department%>">
 </form>
 <%
 	if (pi == null || pi.getId() == null) {

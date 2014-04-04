@@ -105,9 +105,9 @@ function onCurrSelect(){
 %>
 <form name="newForm" action="editInvoice.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="new">
-	<input type="hidden" name="process" value="maintenance">
-	<input type="hidden" name="invoiceType" value="<%=Constants.INVOICE_TYPE_NORMAL%>">
+	<input type="hidden" name="formAction" id="formAction" value="new">
+	<input type="hidden" name="process" id="process" value="maintenance">
+	<input type="hidden" name="invoiceType" id="invoiceType" value="<%=Constants.INVOICE_TYPE_NORMAL%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>Invoice Maintenance</CAPTION>
@@ -135,12 +135,12 @@ function onCurrSelect(){
 					<tr>
 						<td class="lblbold" align=right width="15%">Invoice Code:</td>
 						<td class="lblLight" width="35%">
-							<input type="text" name="invoiceCode" size="30" value="<%=(pi != null && pi.getInvoiceCode() != null) ? pi.getInvoiceCode() : ""%>" style="TEXT-ALIGN: left" class="lbllgiht">
+							<input type="text" name="invoiceCode" id="invoiceCode" size="30" value="<%=(pi != null && pi.getInvoiceCode() != null) ? pi.getInvoiceCode() : ""%>" style="TEXT-ALIGN: left" class="lbllgiht">
 						</td>
 						<td class="lblbold" align=right width="15%">Bill Code:</td>
 						<td class="lblLight" width="35%">							
 							<div style="display:inline" id="labelBillCode"><%=pb != null && pb.getBillCode() != null ? pb.getBillCode() : ""%></div>
-							<input type="hidden" name="billId" value="<%=pb != null && pb.getId() != null ? String.valueOf(pb.getId()) : ""%>">
+							<input type="hidden" name="billId" id="billId" value="<%=pb != null && pb.getId() != null ? String.valueOf(pb.getId()) : ""%>">
 							<a href="javascript:void(0)" onclick="showBillingDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="select" src="images/select.gif" border="0"/></a>
 						</td>
@@ -188,7 +188,7 @@ function onCurrSelect(){
 								%>
 								<%=projNm%>
 							</div>
-							<input type="hidden" name="projectId" value="<%=projId%>">
+							<input type="hidden" name="projectId" id="projectId" value="<%=projId%>">
 						</td>
 						
 						<td class="lblbold" align=right width="15%">Contract Type:</td>
@@ -231,20 +231,20 @@ function onCurrSelect(){
 							<div style="display:inline" id="labelBillAddress">
 							<%=projBillAddr%>
 							</div>
-							<input type="hidden" name="billAddressId" value="<%=projBillAddrId%>">		
+							<input type="hidden" name="billAddressId" id="billAddressId" value="<%=projBillAddrId%>">		
 							<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>					
 						</td>
 						
 						<td class="lblbold" align=right width="15%">Amount:</td>
 						<td class="lblLight" width="35%">
-							<input type="text" name="amount" size="30" value="<%=amount%>" style="TEXT-ALIGN: right<%=request.getAttribute("ErrorMessage") != null ? ";background-color:#FFAFD3" : ""%>" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999999,9999999999);addComma(this, '.', '.', ',');">
+							<input type="text" name="amount" id="amount" size="30" value="<%=amount%>" style="TEXT-ALIGN: right<%=request.getAttribute("ErrorMessage") != null ? ";background-color:#FFAFD3" : ""%>" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999999,9999999999);addComma(this, '.', '.', ',');">
 						</td>
 					</tr>
 					<tr>
 						<td class="lblbold" align=right width="15%">Currency:</td>
 						<td class="lblLight" width="35%">
-					          <select name="currency" onchange="javascript:onCurrSelect()">
+					          <select name="currency" id="currency" onchange="javascript:onCurrSelect()">
 							  <%						
 				
 							      CurrencyType defaultCurr = null;
@@ -267,13 +267,13 @@ function onCurrSelect(){
 						</td>
 						<td class="lblbold" align=right width="15%">Exchange Rate(RMB):</td>
 						<td class="lblLight" width="35%">	
-							<input type="text" name="currencyRate" size="30" value="<%if(defaultCurrRate != null) out.print(defaultCurrRate.floatValue());%>" style="TEXT-ALIGN: right" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Exchange Rate',-99999,99999)">
+							<input type="text" name="currencyRate" id="currencyRate" size="30" value="<%if(defaultCurrRate != null) out.print(defaultCurrRate.floatValue());%>" style="TEXT-ALIGN: right" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Exchange Rate',-99999,99999)">
 						</td>
 					</tr>
 					<tr>						
 						<td class="lblbold" align=right width="15%">Invoice Date:</td>
 						<td class="lblLight" width="35%">							
-							<input  type="text" name="invoiceDate" size="12" value="<%=dateFormat.format(new Date())%>">
+							<input  type="text" name="invoiceDate" id="invoiceDate" size="12" value="<%=dateFormat.format(new Date())%>">
 							<A href="javascript:ShowCalendar(document.newForm.dimg1,document.newForm.invoiceDate,null,0,330)" onclick=event.cancelBubble=true;>
 								<IMG align=absMiddle border=0 id=dimg1 src="<%=request.getContextPath()%>/images/datebtn.gif" >
 							</A>					

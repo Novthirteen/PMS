@@ -61,7 +61,7 @@ function fnSubmit1(start) {
 	<td colspan=8><hr color=red></hr></td>
 	</tr>
 	<form name="frm" action="listIndustry.do" method="post">
-	<input type=hidden name="offset" value="<%=offset%>">
+	<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 	<tr>
 		<td>			
 			Industry:</td><td>   <select name="text">

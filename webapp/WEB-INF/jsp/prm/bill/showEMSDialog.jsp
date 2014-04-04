@@ -90,10 +90,10 @@ if (AOFSECURITY.hasEntityPermission("PROJ_EMS", "_VIEW", session)) {
 			<tr>
 				<td>
 					<form name="queryForm" action="findEMS.do" method="post">
-						<input type="hidden" name="formAction" value="dialogView">
-						<input type="hidden" name="emsId" value="">
-						<input type="hidden" name="offSet" value="0">
-						<input type="hidden" name="emsInvoiceId" value="<%=emsInvoiceId%>">
+						<input type="hidden" name="formAction" id="formAction" value="dialogView">
+						<input type="hidden" name="emsId" id="emsId" value="">
+						<input type="hidden" name="offSet" id="offSet" value="0">
+						<input type="hidden" name="emsInvoiceId" id="emsInvoiceId" value="<%=emsInvoiceId%>">
 						
 						<IFRAME frameBorder=0 id=CalFrame marginHeight=0 
 							marginWidth=0 noResize 

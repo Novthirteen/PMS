@@ -45,8 +45,8 @@ try{
 		<form name="editForm" action="skillAction.do" method="post">
 			<table width=100% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Edit Comments or Suggestions</CAPTION>				
-				<input type="hidden" name="formAction" value="comment">
-				<input type="hidden" name="command" value="">
+				<input type="hidden" name="formAction" id="formAction" value="comment">
+				<input type="hidden" name="command" id="command" value="">
 				
 				<tr align="center">
 					<td align="center" class="lblbold" bgcolor="#e9eee9" width="60%">Your Suggestions or Comments</td>
@@ -58,7 +58,7 @@ try{
 						SkillComment tmpValue = (SkillComment)valueList.get(i);					
 				%>
 				<tr>
-					<input type="hidden" name="certId" value="<%=tmpValue.getCommentId()%>">
+					<input type="hidden" name="certId" id="certId" value="<%=tmpValue.getCommentId()%>">
 					<td bgcolor="#e9eef9" align="center"><textarea rows="3" cols="90"  style="border:0px;background-color:#e9eef9" readonly><%=tmpValue.getCommentDesc() == null ? "" : tmpValue.getCommentDesc()%></textarea></td>
 					<td bgcolor="#e9eef9" align="center">
 						<a href="skillAction.do?formAction=comment&command=removeComment&commentId=<%=tmpValue.getCommentId()%>">Delete</a>

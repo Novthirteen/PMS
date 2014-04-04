@@ -60,9 +60,9 @@ if (AOFSECURITY.hasEntityPermission("PAYMENT_DOWNPAYMENT", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="queryForm" action="FindPaymentDownpaymentInstruction.do" method="post">
-				<input type="hidden" name="action" value="query">
-				<input type="hidden" name="payId" value="">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="action" id="action" value="query">
+				<input type="hidden" name="payId" id="payId" value="">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=12><hr color=red></hr></td>
@@ -70,11 +70,11 @@ if (AOFSECURITY.hasEntityPermission("PAYMENT_DOWNPAYMENT", "_VIEW", session)) {
 					
 					<tr>
 						<td class="lblbold">Payment Code:</td>
-						<td class="lblLight"><input type="text" name="payCode" size="15" value="<%=payCode != null ? payCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="payCode" id="payCode" size="15" value="<%=payCode != null ? payCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Project:</td>
-						<td class="lblLight"><input type="text" name="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Supplier:</td>
-						<td class="lblLight"><input type="text" name="vendor" size="15" value="<%=vendor != null ? vendor : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="vendor" id="vendor" size="15" value="<%=vendor != null ? vendor : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Status:</td>
 						<td class="lblLight">
 							<select name="status">
@@ -120,13 +120,13 @@ if (AOFSECURITY.hasEntityPermission("PAYMENT_DOWNPAYMENT", "_VIEW", session)) {
 				</table>
 			</form>
 			<form name="editForm" action="EditPaymentDownpaymentInstruction.do" method="post">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="payId" value="">
-				<input type="hidden" name="payCode" value="">
-				<input type="hidden" name="project" value="">
-				<input type="hidden" name="vendor" value="">
-				<input type="hidden" name="department" value="">
-				<input type="hidden" name="status" value="">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="payId" id="payId" value="">
+				<input type="hidden" name="payCode" id="payCode" value="">
+				<input type="hidden" name="project" id="project" value="">
+				<input type="hidden" name="vendor" id="vendor" value="">
+				<input type="hidden" name="department" id="department" value="">
+				<input type="hidden" name="status" id="status" value="">
 			</form>
 		</td>
 	</tr>

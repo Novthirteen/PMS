@@ -65,7 +65,7 @@ function showCustomerDialog(){
 </IFRAME>
 
 <form name="iForm" action="pas.report.ContractGeneralInfoRpt.do" method="post">
-	<input type="hidden" name="formAction" value="">
+	<input type="hidden" name="formAction" id="formAction" value="">
 	<table width=100% cellpadding="1" border="0" cellspacing="1">		
 		<table width=1010 cellpadding="1" border="0" cellspacing="1">
 			<CAPTION align=center class=pgheadsmall>Contract General Information Report</CAPTION>
@@ -105,7 +105,7 @@ function showCustomerDialog(){
 					<td width=5></td>
 					<td class="lblbold" align="right" width=120>Customer:&nbsp;</td>
 					<td class="lblLight"  width=125>
-						<input type="text" name="textCustomer" size="15" value="<%=textCustomer%>" style="TEXT-ALIGN: right" class="lbllgiht">
+						<input type="text" name="textCustomer" id="textCustomer" size="15" value="<%=textCustomer%>" style="TEXT-ALIGN: right" class="lbllgiht">
 						<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/>
 						</a>

@@ -133,14 +133,14 @@ try{
 	  		<TR>
 	    		<TD width='100%'>
 	    			<form action="editCustParty.do" method="post" name="EditForm">
-    					<input type="hidden" name="action" value="<%=action%>">
-						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
-						<input type="hidden" name="role" value="CUSTOMER">
-						<input type="hidden" name="openType" value="dialogView">
-						<input type="hidden" name="firstVisit" value="false">
-						<input type="hidden" name="flag" value="<%=flag%>">
-						<input type="hidden" name="prospectCompanyId" value="<%=prospectCompanyId%>">
-						<input type="hidden" name="id" value="<%=id%>">
+    					<input type="hidden" name="action" id="action" value="<%=action%>">
+						<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+						<input type="hidden" name="role" id="role" value="CUSTOMER">
+						<input type="hidden" name="openType" id="openType" value="dialogView">
+						<input type="hidden" name="firstVisit" id="firstVisit" value="false">
+						<input type="hidden" name="flag" id="flag" value="<%=flag%>">
+						<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompanyId%>">
+						<input type="hidden" name="id" id="id" value="<%=id%>">
     					<table border=0 width='100%' cellspacing='0' cellpadding='2' >
 					      	<tr>
 					      		<td>&nbsp;</td>
@@ -150,7 +150,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.partyId2"/>:&nbsp;</span>
 						        </td>
 						        <td>
-						          	<input type="text" class="inputBox" name="PartyId" size="30">
+						          	<input type="text" class="inputBox" name="PartyId" id="PartyId" size="30">
 						        </td>
 						        <td align="right">
 						          	<span class="tabletext">&nbsp;</span>
@@ -162,7 +162,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.description2"/>:&nbsp;</span>
 						        </td>
 						        <td align="left">
-						          	<input type="text" class="inputBox" name="description" size="30" value="">
+						          	<input type="text" class="inputBox" name="description" id="description" size="30" value="">
 						        </td>
 						    </tr>
 						  	<tr>
@@ -170,7 +170,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.cndescription2"/>:&nbsp;</span>
 						        </td>
 						        <td align="left">
-						          	<input type="text" class="inputBox" name="ChineseName" size="30"  value="">
+						          	<input type="text" class="inputBox" name="ChineseName" id="ChineseName" size="30"  value="">
 						        </td>
 					      	</tr>
 						  	<tr>
@@ -179,7 +179,7 @@ try{
 						        </td>
 								<td align="left">
 						
-									<select name="AccountId">
+									<select name="AccountId" id="AccountId">
 									
 									<%	String chk = "";
 										if(custGroup == null || custGroup.equals("new") || custGroup.equals("")){
@@ -210,7 +210,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.industry"/>:&nbsp;</span>
 						        </td>
 								<td align="left">
-									<select name="IndustryId">
+									<select name="IndustryId" id="IndustryId">
 									<%
 										if(industry ==null || industry.equals("new") || industry.equals("")){
 											chk = "selected";
@@ -239,7 +239,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.address"/>:&nbsp;</span>
 						        </td>
 						        <td align="left">
-						          	<input type="text" class="inputBox" name="address" size="30" value="">
+						          	<input type="text" class="inputBox" name="address" id="address" size="30" value="">
 						        </td>
 						    </tr>
 						  	<tr>
@@ -247,7 +247,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.postCode"/>:&nbsp;</span>
 						        </td>
 						        <td align="left">
-						          	<input type="text" class="inputBox" name="postcode" size="30"  value="">
+						          	<input type="text" class="inputBox" name="postcode" id="postcode" size="30"  value="">
 						        </td>
 					      	</tr>
 					      	<tr>
@@ -255,7 +255,7 @@ try{
 						          	<span class="tabletext"><bean:message key="System.Party.teleCode"/>:&nbsp;</span>
 						        </td>
 						        <td>
-						          	<input type="text" class="inputBox" name="telecode" size="30" value="">
+						          	<input type="text" class="inputBox" name="telecode" id="telecode" size="30" value="">
 						        </td>
 						    </tr>
 	      					<tr><td>&nbsp;</td><td><br></td></tr>  

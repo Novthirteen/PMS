@@ -90,7 +90,7 @@ function showProjectDetail(DataId) {
 </script>
 
 <form name="frm" action="listContractProject.do" method="post">
-<input type="hidden" name="formAction" value="view">
+<input type="hidden" name="formAction" id="formAction" value="view">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <CAPTION align=center class=pgheadsmall>Contract Projects List</CAPTION>
 <tr>
@@ -120,7 +120,7 @@ function showProjectDetail(DataId) {
 			<td class="lblLight"><input type="text" name="textdesc" size="15" value="<%=textdesc%>" style="TEXT-ALIGN: right" class="lbllgiht"></td>
 			<td class="lblbold">Customer:</td>
 			<td class="lblLight">
-				<input type="text" name="textcust" size="15" value="<%=textcust%>" style="TEXT-ALIGN: right" class="lbllgiht">
+				<input type="text" name="textcust" id="textcust" size="15" value="<%=textcust%>" style="TEXT-ALIGN: right" class="lbllgiht">
 				<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 			</td>
@@ -263,7 +263,7 @@ function showProjectDetail(DataId) {
 				</logic:iterate> 		
 					 <tr>
 				<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" Id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = result.size();
 				int l = 0;

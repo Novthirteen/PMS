@@ -72,9 +72,9 @@ if (AOFSECURITY.hasEntityPermission("SKILL_SET", "_MAINTENANCE", session)) {
 		</IFRAME>
 	
 		<form name="editForm" action="skillAction.do" method="post">
-			<input type="hidden" name="formAction" value="cert">
-			<input type="hidden" name="command" value="">
-			<input type="hidden" name="recordCount" value="<%=valueList.size()%>">
+			<input type="hidden" name="formAction" id="formAction" value="cert">
+			<input type="hidden" name="command" id="command" value="">
+			<input type="hidden" name="recordCount" id="recordCount" value="<%=valueList.size()%>">
 			
 			<table width=102% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Edit Personal Certification</CAPTION>
@@ -89,7 +89,7 @@ if (AOFSECURITY.hasEntityPermission("SKILL_SET", "_MAINTENANCE", session)) {
 						SkillCert tmpValue = (SkillCert)valueList.get(i);					
 				%>
 				<tr>
-					<input type="hidden" name="certId" value="<%=tmpValue.getCertId()%>">
+					<input type="hidden" name="certId" id="certId" value="<%=tmpValue.getCertId()%>">
 			        <td bgcolor="#e9eef9" align="center"><%=tmpValue.getCertDesc() == null ? "" : tmpValue.getCertDesc()%></td>
 			    	<td bgcolor="#e9eef9" align="center"><%=tmpValue.getDateGrant() == null ? "" : dateFormater.format(tmpValue.getDateGrant())%></td>
 					<td bgcolor="#e9eef9" align="center">

@@ -132,17 +132,17 @@ function fnCreate(){
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
 
-<input type="hidden" name="option" value="<%=option%>">
-<input type="hidden" name="CALLBACKNAME">
-<input type="hidden" name="hiddenDataId" value="<%=DataId%>">
-<input type="hidden" name="hiddenAdd">
-<input type="hidden" name="hiddenMemberId">
-<input type="hidden" name="hiddenDateStart">
-<input type="hidden" name="hiddenDateEnd">
-<input type="hidden" name="id" value="<%=id%>">
-<input type="hidden" name="depId">
-<input type="hidden" name="action">
-<input type="hidden" name="createFlag">
+<input type="hidden" name="option" id="option" value="<%=option%>">
+<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
+<input type="hidden" name="hiddenDataId" id="hiddenDataId" value="<%=DataId%>">
+<input type="hidden" name="hiddenAdd" id="hiddenAdd">
+<input type="hidden" name="hiddenMemberId" id="hiddenMemberId">
+<input type="hidden" name="hiddenDateStart" id="hiddenDateStart">
+<input type="hidden" name="hiddenDateEnd" id="hiddenDateEnd">
+<input type="hidden" name="id" id="id" value="<%=id%>">
+<input type="hidden" name="depId" id="depId">
+<input type="hidden" name="action" id="action">
+<input type="hidden" name="createFlag" id="createFlag">
 
 
 <table width=100% align=center>
@@ -173,7 +173,7 @@ function fnCreate(){
 			
 		</td>
 	</tr>
-	<input name="CALLBACKNAME" type="hidden">
+	<input name="CALLBACKNAME" id="CALLBACKNAME" type="hidden" >
 	<tr bgcolor="e9eee9">
 		<td class=lblbold>select Member:</td>
 		<td class=lblbold>
@@ -239,8 +239,8 @@ function fnCreate(){
 		    	}
 		    %>
 			<input type=button name="save1" class=button value="Close" onclick="javascript:onClose()">
-		  	<input type="hidden" value="<%=DataId%>" name="DataId">
-			<input type="hidden" name="add" value="add">	
+		  	<input type="hidden" value="<%=DataId%>" name="DataId" id="DataId">
+			<input type="hidden" name="add" id="add" value="add">	
 		</td>
 		
 	</tr>

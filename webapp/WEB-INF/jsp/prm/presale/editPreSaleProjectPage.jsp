@@ -322,10 +322,10 @@ function showBidMaster(){
 </script>
 
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0'>
@@ -354,8 +354,8 @@ if(PreSaleProject != null)
 				scrolling=no src="includes/date/calendar.htm" 
 				style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 			</IFRAME>
-			<input type="hidden" name="FormAction" value="update">
-		    <input type="hidden" name="PsId" value=<%=PsId%>>
+			<input type="hidden" name="FormAction" id="FormAction" value="update">
+		    <input type="hidden" name="PsId" id="PsId" value=<%=PsId%>>
 		    <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 		    	<tr>
 			    	<td align="right" class="lblbold">
@@ -374,7 +374,7 @@ if(PreSaleProject != null)
 			        	}
 			        %>	
 		        	<div style="display:inline" id="labelBid"><%=bidNo%>&nbsp;</div>
-			        <input type="hidden" class="inputBox" name="bidId" value = <%=bidid%>>
+			        <input type="hidden" class="inputBox" name="bidId" id="bidId" value = <%=bidid%>>
 	        	         
 			    	</td>
 			    	<td>
@@ -509,9 +509,9 @@ if(PreSaleProject != null)
 						<td width="5%"></td>
 						<td align="left">
 							<div style="display:inline" id="AssigneeName"><%=ul.getName()%></div>
-							<input type="hidden" name="Assignee" value="<%=ul.getUserLoginId()%>">
-							<input type="hidden" name="aName" value="<%=ul.getName()%>">
-							<input type="hidden" name="aId" value="<%=ul.getUserLoginId()%>">
+							<input type="hidden" name="Assignee" id="Assignee" value="<%=ul.getUserLoginId()%>">
+							<input type="hidden" name="aName" id="aName" value="<%=ul.getName()%>">
+							<input type="hidden" name="aId" id="aId" value="<%=ul.getUserLoginId()%>">
 							<%if (AOFSECURITY.hasEntityPermission("PROJ_PRESALE", "_ALL", session)) {%>
 								<a href="javascript:showStaff2(0)">
 									<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
@@ -521,21 +521,21 @@ if(PreSaleProject != null)
 				        </td>
 				        
 				        <td align="left">
-							<input type="text" class="inputBox" name="actionDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="20">
-							<input type="hidden" name="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>">
+							<input type="text" class="inputBox" name="actionDate" id="actionDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="20">
+							<input type="hidden" name="aDate" id="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>">
 							<A href="javascript:ShowCalendar(document.EditForm.dimg1,document.EditForm.actionDate,null,0,330)" 
 											onclick=event.cancelBubble=true;>
 								<IMG align=absMiddle border=0 id=dimg1 src="<%=request.getContextPath()%>/images/datebtn.gif" >
 							</A>
 						</td>
 						<td align="left">
-			          		<input type="text" class="inputBox" name="aHours" size="15" onblur="checkDeciNumber2(this,1,1,'aHours',0,24);" value="0">
+			          		<input type="text" class="inputBox" name="aHours" id="aHours" size="15" onblur="checkDeciNumber2(this,1,1,'aHours',0,24);" value="0">
 			          	</td>
 			        	<td align="left">
-			          		<input type="text" class="inputBox" name="aDesc" size="40">
+			          		<input type="text" class="inputBox" name="aDesc" id="aDesc" size="40">
 			        	</td>
 			        	<td>
-				        	<select name="aActivityId">
+				        	<select name="aActivityId" id="aActivityId">
 							<%
 								Iterator itd = activityList.iterator();
 								Iterator itId = activityIdList.iterator();
@@ -564,8 +564,8 @@ if(PreSaleProject != null)
 						<td width="5%"></td>
 				        <td bgcolor="#e9eef9">
 					       	<div style="display:inline" id="AssigneeName"><%=psd.getAssignee().getName()%></div>
-							<input type="hidden" name="Assignee" value="">
-							<input type="hidden" name="detailId" value="<%=psd.getPdId()%>">
+							<input type="hidden" name="Assignee" id="Assignee" value="">
+							<input type="hidden" name="detailId" id="detailId" value="<%=psd.getPdId()%>">
 							<%if (AOFSECURITY.hasEntityPermission("PROJ_PRESALE", "_ALL", session)) {%>
 								<a href="javascript:showStaff(<%=count%>)">
 									<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
@@ -573,7 +573,7 @@ if(PreSaleProject != null)
 							<%}%>
 				        </td>
 				        <td bgcolor="#e9eef9">
-				        	<input type="text" class="inputBox" name="actionDate<%=cc%>" value="<%=formater.format(psd.getActionDate())%>" size="20">
+				        	<input type="text" class="inputBox" name="actionDate<%=cc%>" id="actionDate<%=cc%>" value="<%=formater.format(psd.getActionDate())%>" size="20">
 							<A href="javascript:ShowCalendar(document.EditForm.dimg<%=cc%>,document.EditForm.actionDate<%=cc%>,null,0,330)" 
 										onclick=event.cancelBubble=true;>
 								<IMG align=absMiddle border=0 id=dimg<%=cc%> src="<%=request.getContextPath()%>/images/datebtn.gif" >
@@ -581,13 +581,13 @@ if(PreSaleProject != null)
 							
 			        	</td>
 			        	<td bgcolor="#e9eef9">
-			           		<input type="text" class="inputBox" name="hours" size="15" onblur="checkDeciNumber2(this,1,1,'hours',0,24);" value="<%=Num_formater.format(psd.getHours())%>">
+			           		<input type="text" class="inputBox" name="hours" id="hours" size="15" onblur="checkDeciNumber2(this,1,1,'hours',0,24);" value="<%=Num_formater.format(psd.getHours())%>">
 			        	</td>
 			        	<td bgcolor="#e9eef9">
-							<input type="text" class="inputBox" name="actionDesc" size="40" value="<%=psd.getDescription()%>">
+							<input type="text" class="inputBox" name="actionDesc" id="actionDesc" size="40" value="<%=psd.getDescription()%>">
 						</td>
 						<td bgcolor="#e9eef9">
-							<select name="activityId">
+							<select name="activityId" id="activityId">
 							<%
 								String actId = "";
 								if(psd.getSalesActivity()!= null){
@@ -626,7 +626,7 @@ if(PreSaleProject != null)
 					<% 	count=count+1;
 						cc=cc+1;
 					}%>
-						<input type="hidden" name="cc" value="<%=cc%>">
+						<input type="hidden" name="cc" id="cc" value="<%=cc%>">
 					<%if (status.equals(Constants.BID_MASTER_STATUS_WIP)) { %>
 					<tr>
 						<td colspan=8 valign="bottom"><hr color="#B5D7D6"></hr></td>
@@ -635,30 +635,30 @@ if(PreSaleProject != null)
 						<td width="5%"></td>
 						<td align="left">
 							<div style="display:inline" id="AssigneeName"><%=ul.getName()%></div>
-							<input type="hidden" name="Assignee" value="<%=ul.getUserLoginId()%>">
+							<input type="hidden" name="Assignee" id="Assignee" value="<%=ul.getUserLoginId()%>">
 							<%if (AOFSECURITY.hasEntityPermission("PROJ_PRESALE", "_ALL", session)) {%>
 							<a href="javascript:void(0)" onclick="showStaff(<%=count%>);event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
 							<%}%>
-							<input type="hidden" name="cnt" value="<%=count%>">
-							<input type="hidden" name="aName" value="<%=ul.getName()%>">
-							<input type="hidden" name="aId" value="<%=ul.getUserLoginId()%>">
+							<input type="hidden" name="cnt" id="cnt" value="<%=count%>">
+							<input type="hidden" name="aName" id="aName" value="<%=ul.getName()%>">
+							<input type="hidden" name="aId" id="aId" value="<%=ul.getUserLoginId()%>">
 				        </td>
 				        
 				        <td align="left">
-						<input type="text" class="inputBox" name="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="20">
-						<!-- <input type="hidden" name="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>">	-->
+						<input type="text" class="inputBox" name="aDate" id="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="20">
+						<!-- <input type="hidden" name="aDate" id="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>">	-->
 						<A href="javascript:ShowCalendar(document.EditForm.dimgi,document.EditForm.aDate,null,0,330)" 
 										onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimgi src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 						</td>
 						<td align="left">
-			          		<input type="text" class="inputBox" name="aHours" size="15" onblur="checkDeciNumber2(this,1,1,'aHours',0,24);" value="0">
+			          		<input type="text" class="inputBox" name="aHours" id="aHours" size="15" onblur="checkDeciNumber2(this,1,1,'aHours',0,24);" value="0">
 			        	</td>
 			        	<td align="left">
-			          		<input type="text" class="inputBox" name="aDesc" size="40" >
+			          		<input type="text" class="inputBox" name="aDesc" id="aDesc" size="40" >
 			          	</td>
 			          	<td >
-				        	<select name="aActivityId">
+				        	<select name="aActivityId" id="activityId">
 							<%
 								Iterator itd = activityList.iterator();
 								Iterator itId = activityIdList.iterator();
@@ -722,7 +722,7 @@ if(PreSaleProject != null)
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
     	<table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	    	<tr>
@@ -731,7 +731,7 @@ if(PreSaleProject != null)
 		        </td>
 		        <td width="17%" align="left">
 	        	<div style="display:inline" id="labelBid">&nbsp;</div>
-		        <input type="hidden" class="inputBox" name="bidId" value ="">
+		        <input type="hidden" class="inputBox" name="bidId" id="bidId" value ="">
 		        <a href="javascript:void(0)" onclick="showBidMaster();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>		        	         
 		    	</td>
 		    	<td width="16%">
@@ -745,12 +745,12 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelDesc">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="description" value="" size="30" />
+					<input type="hidden" class="inputBox" name="description" id="description" value="" size="30" />
     			</td>
     			<td  align="right" class="lblbold">Department:&nbsp;</td>
 				<td class="lblLight">
 					<div style="display:inline" id="labelDep">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="department" value="" size="30" />
+					<input type="hidden" class="inputBox" name="department" id="department" value="" size="30" />
 				</td>
 			
 				<td width="16%" align="right" class="lblbold">
@@ -758,7 +758,7 @@ if(PreSaleProject != null)
 				</td>
 				<td width="16%" align="left">
 					<div style="display:inline" id="labelStatus">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="bidstatus" value="" size="30" />
+					<input type="hidden" class="inputBox" name="bidstatus" id="bidstatus" value="" size="30" />
 				</td>	
 			</tr>
 			<tr>				
@@ -767,7 +767,7 @@ if(PreSaleProject != null)
 			    </td>
 			    <td align="left">
 			    	<div style="display:inline" id="labelSPName">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="spName" value="" size="30" />
+					<input type="hidden" class="inputBox" name="spName" id="spName" value="" size="30" />
 				</td>
 			
 				<td align="right" class="lblbold">
@@ -775,14 +775,14 @@ if(PreSaleProject != null)
 				</td>
 				<td>
 					<div style="display:inline" id="labelCurrency">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="currency" value="" size="30" />
+					<input type="hidden" class="inputBox" name="currency" id="currency" value="" size="30" />
 				</td>
 				<td align="right" class="lblbold">
   					<span class="tabletext">Contract Type:&nbsp;</span>
 				</td>
 				<td>
 					<div style="display:inline" id="labelCType">&nbsp;</div>
-					<input type="hidden" class="inputBox" name="contractType" value="" size="30" />
+					<input type="hidden" class="inputBox" name="contractType" id="contractType" value="" size="30" />
 				</td>
 			</tr>
 			<tr>
@@ -791,7 +791,7 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelEstimateAmt">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="estimateAmountStr" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="estimateAmountStr" id="estimateAmountStr" value="" size="30" />
     			</td>
 				
 				<td align="right" class="lblbold">
@@ -799,7 +799,7 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelExChangeRate">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="exchangeRateStr" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="exchangeRateStr" id="exchangeRateStr" value="" size="30" />
     			</td>
 			
 				<td align="right" class="lblbold">
@@ -807,7 +807,7 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelSDate">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="startDateStr" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="startDateStr" id="startDateStr" value="" size="30" />
 				</td>
 			<tr>
 				<td align="right" class="lblbold">
@@ -815,7 +815,7 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelEDate">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="endDateStr" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="endDateStr" id="endDateStr" value="" size="30" />
 				</td>
 			
 				<td align="right" class="lblbold">
@@ -823,14 +823,14 @@ if(PreSaleProject != null)
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelPDate">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="postDateStr" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="postDateStr" id="postDateStr" value="" size="30" />
 				</td>
 				<td align="right" class="lblbold">
       				<span class="tabletext">Prospect Company:&nbsp;</span>
    	 			</td>
     			<td>
     				<div style="display:inline" id="labelPCompany">&nbsp;</div>
-    				<input type="hidden" class="inputBox" name="prospectCompany" value="" size="30" />
+    				<input type="hidden" class="inputBox" name="prospectCompany" id="prospectCompany" value="" size="30" />
 				</td>					
 			</tr>
 	</table>

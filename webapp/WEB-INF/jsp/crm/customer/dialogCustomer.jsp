@@ -77,8 +77,8 @@ if (true|| AOFSECURITY.hasEntityPermission("CUST_PARTY", "_VIEW", session)) {
 %>
 <form action="crm.dialogCustomerList.do" method="POST" name=frm>
 <title>Customer Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Customer Select</CAPTION>
 </table>
@@ -102,16 +102,16 @@ if (true|| AOFSECURITY.hasEntityPermission("CUST_PARTY", "_VIEW", session)) {
 				<td><bean:write property="description" name="ItemList"/></td>
 				<td><%=((CustomerProfile) ItemList).getAccount().getDescription()%></td>
 			</tr>
-			<input type="hidden" name="chineseName" value="<%=((CustomerProfile) ItemList).getChineseName()%>">
-			<input type="hidden" name="city" value="<bean:write name="ItemList" property="city"/>">
-			<input type="hidden" name="address" value="<bean:write name="ItemList" property="address"/>">
-			<input type="hidden" name="industry" value="<%=((CustomerProfile) ItemList).getIndustry().getDescription()%>">
-			<input type="hidden" name="industryId" value="<%=((CustomerProfile) ItemList).getIndustry().getId()%>">
-			<input type="hidden" name="customerGroup" value="<%=((CustomerProfile) ItemList).getAccount().getDescription()%>">
-			<input type="hidden" name="customerGroupId" value="<%=((CustomerProfile) ItemList).getAccount().getAccountId()%>">
-			<input type="hidden" name="postCode" value="<bean:write name="ItemList" property="postCode"/>">
-			<input type="hidden" name="teleNo" value="<bean:write name="ItemList" property="teleCode"/>">
-			<input type="hidden" name="faxNo" value="<bean:write name="ItemList" property="faxCode"/>">
+			<input type="hidden" name="chineseName" id="chineseName" value="<%=((CustomerProfile) ItemList).getChineseName()%>">
+			<input type="hidden" name="city" id="city" value="<bean:write name="ItemList" property="city"/>">
+			<input type="hidden" name="address" id="address" value="<bean:write name="ItemList" property="address"/>">
+			<input type="hidden" name="industry" id="industry" value="<%=((CustomerProfile) ItemList).getIndustry().getDescription()%>">
+			<input type="hidden" name="industryId" id="industryId" value="<%=((CustomerProfile) ItemList).getIndustry().getId()%>">
+			<input type="hidden" name="customerGroup" id="customerGroup" value="<%=((CustomerProfile) ItemList).getAccount().getDescription()%>">
+			<input type="hidden" name="customerGroupId" id="customerGroupId" value="<%=((CustomerProfile) ItemList).getAccount().getAccountId()%>">
+			<input type="hidden" name="postCode" id="postCode" value="<bean:write name="ItemList" property="postCode"/>">
+			<input type="hidden" name="teleNo" id="teleNo" value="<bean:write name="ItemList" property="teleCode"/>">
+			<input type="hidden" name="faxNo" id="faxNo" value="<bean:write name="ItemList" property="faxCode"/>">
 		</logic:iterate>
 	<tr>
 		<td colspan=4 align=center>

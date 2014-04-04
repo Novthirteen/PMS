@@ -91,7 +91,7 @@ function FnUpdate() {
     	FormAction="update";
 %>
 	<form Action="editCustProjectType.do" method="post" name="EditForm">
-    <input type="hidden" name="FormAction" >
+    <input type="hidden" name="FormAction" id="FormAction" >
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -102,7 +102,7 @@ function FnUpdate() {
           <span class="tabletext">Code:&nbsp;</span>
         </td>
         <td>
-           <span class="tabletext"><%=EditDataInfo.getPtId()%>&nbsp;</span><input type="hidden" class="inputBox" name="DataId" value="<%=EditDataInfo.getPtId()%>">
+           <span class="tabletext"><%=EditDataInfo.getPtId()%>&nbsp;</span><input type="hidden" class="inputBox" name="DataId" id="DataId" value="<%=EditDataInfo.getPtId()%>">
         </td>
         </tr>
         <tr>
@@ -162,7 +162,7 @@ function FnUpdate() {
 	}else{
 %>
 	<form Action="editCustProjectType.do" method="post">
-    <input type="hidden" name="FormAction" value="<%=FormAction%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=FormAction%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	

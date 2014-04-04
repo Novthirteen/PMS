@@ -496,11 +496,9 @@ function showProspectDialog()
 			desc=v.split("|")[1];
 			document.getElementById("name").innerHTML=desc;
 			document.getElementById("chineseName").innerHTML  = v.split("|")[2];
-		//	document.getElementById("city").innerHTML = v.split("|")[6];
 			document.getElementById("address").innerHTML = v.split("|")[4];
 			document.getElementById("industry").innerHTML = v.split("|")[5];
 			document.getElementById("bankno").innerHTML = v.split("|")[3];
-			//document.getElementById("industry").innerHTML = v.split("|")[6];
 			document.getElementById("custGroup").innerHTML = v.split("|")[6];
 			document.getElementById("postCode").innerHTML = v.split("|")[7];
 			document.getElementById("teleNo").innerHTML = v.split("|")[8];
@@ -533,18 +531,14 @@ function showProspectDialog1()
 			null,
 			'dialogWidth:560px;dialogHeight:660px;status:no;help:no;scroll:no');
 		if (v != null) {
-		//alert(v);
 			code=v.split("|")[0];
-			//alert(code);
 			document.getElementById("prospectCompanyId").value=code;
 			desc=v.split("|")[1];
 			document.getElementById("name").innerHTML=desc;
 			document.getElementById("chineseName").innerHTML  = v.split("|")[2];
-		//	document.getElementById("city").innerHTML = v.split("|")[6];
 			document.getElementById("address").innerHTML = v.split("|")[4];
 			document.getElementById("industry").innerHTML = v.split("|")[5];
 			document.getElementById("bankno").innerHTML = v.split("|")[3];
-			//document.getElementById("industry").innerHTML = v.split("|")[6];
 			document.getElementById("custGroup").innerHTML = v.split("|")[6];
 			document.getElementById("postCode").innerHTML = v.split("|")[7];
 			document.getElementById("teleNo").innerHTML = v.split("|")[8];
@@ -888,7 +882,7 @@ function fnChangeStatus(){
 	scrolling=no src="includes/date/calendar.htm"
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 
 <table width=100% cellpadding="1" border="0" cellspacing="1">	
 			<tr>
@@ -897,16 +891,16 @@ function fnChangeStatus(){
 			</tr>
 			<tr>
 				<td width='100%'>
-				<input type="hidden" name="formAction"> 
-				<input type="hidden" name="stepGroupId"	value="<%=stepGroupId !=null ? stepGroupId : "" %>"> 
-				<input type="hidden" name="prospectCompanyId" value="<%=prospectCompanyId%>"> 
-				<input type="hidden" name="id" value="<%=id != null ? id : ""%>"> 
+				<input type="hidden" name="formAction" id="formAction"> 
+				<input type="hidden" name="stepGroupId" id="stepGroupId" value="<%=stepGroupId !=null ? stepGroupId : "" %>"> 
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompanyId%>"> 
+				<input type="hidden" name="id" id="id" value="<%=id != null ? id : ""%>"> 
 				
-				<input type="hidden" name="contactId">
-				<input type="hidden" name="reason">
-				<input type="hidden" name="changeReason">
-				<input type="hidden" name="departmentId" value="<%=dept%>">
-				<input type="hidden" name="offSet" value="<%=offSet%>">
+				<input type="hidden" name="contactId" id="contactId">
+				<input type="hidden" name="reason" id="reason">
+				<input type="hidden" name="changeReason" id="changeReason">
+				<input type="hidden" name="departmentId" id="departmentId" value="<%=dept%>">
+				<input type="hidden" name="offSet" id="offSet" value="<%=offSet%>">
 				
 				<table width='100%' border='0' cellspacing='2' cellpadding='0'>
 					<tr>
@@ -914,7 +908,7 @@ function fnChangeStatus(){
 						<td colspan=2><%=no%></td>
 
 						<td align="right" class="lblbold">Department:&nbsp;</td>
-						<td class="lblLight" colspan=2><select name="dapartmentId" onchange="javascript:onDepSelect()">
+						<td class="lblLight" colspan=2><select name="dapartmentId" id="dapartmentId" onchange="javascript:onDepSelect()">
 							<%
 								String sqlStr = "";
 								String pmid="";
@@ -950,7 +944,7 @@ function fnChangeStatus(){
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Description:&nbsp;</span>
 						</td>
-						<td colspan=2><input type="text" class="inputBox" name="description" 
+						<td colspan=2><input type="text" class="inputBox" name="description" id="description" 
 							value="<%=description%>" size="50" /></td>
 							
 						<td align="right" class="lblbold"><span class="tabletext">Presale PM:&nbsp;</span></td>
@@ -965,8 +959,8 @@ function fnChangeStatus(){
 							}
 							%>
 						<div style="display:inline" id="labelPresalePM"><%=presalePMName%>&nbsp;</div>
-						<input type="hidden" readonly="true" name="PresalePM" maxlength="100" value="<%=presalePMName%>"> 
-						<input type="hidden" name="PresalePMId" value="<%=presalePMId%>"> 
+						<input type="hidden" readonly="true" name="PresalePM" id="PresalePM" maxlength="100" value="<%=presalePMName%>"> 
+						<input type="hidden" name="PresalePMId" id="PresalePMId" value="<%=presalePMId%>"> 
 						<a	href="javascript:showDialog_presalePM()"><img align="absmiddle" 	alt="<bean:message key="helpdesk.call.select" />"
 							src="images/select.gif" border="0" /></a></td>	
 					</tr>
@@ -986,9 +980,9 @@ function fnChangeStatus(){
 							}
 							%>
 						<div style="display:inline" id="labelSales"><%=spName%>&nbsp;</div>
-						<input type="hidden" readonly="true" name="salesPersonName"
+						<input type="hidden" readonly="true" name="salesPersonName" id="salesPersonName"
 							maxlength="100" value="<%=spName%>"> <input type="hidden"
-							name="salesPersonId" value="<%=spId%>"> <a
+							name="salesPersonId" id="salesPersonId" value="<%=spId%>"> <a
 							href="javascript:showDialog_account()"><img align="absmiddle"
 							alt="<bean:message key="helpdesk.call.select" />"
 							src="images/select.gif" border="0" /></a></td>
@@ -1005,9 +999,9 @@ function fnChangeStatus(){
 							}
 							%>
 						<div style="display:inline" id="labelSales2"><%=spName2%>&nbsp;</div>
-						<input type="hidden" readonly="true" name="salesPersonName2"
+						<input type="hidden" readonly="true" name="salesPersonName2" id="salesPersonName2"
 							maxlength="100" value="<%=spName2%>"> <input type="hidden"
-							name="salesPersonId2" value="<%=spId2%>"> <a
+							name="salesPersonId2" id="salesPersonId2" value="<%=spId2%>"> <a
 							href="javascript:showDialog_account2()"><img align="absmiddle"
 							alt="<bean:message key="helpdesk.call.select" />"
 							src="images/select.gif" border="0" /></a></td>
@@ -1016,7 +1010,7 @@ function fnChangeStatus(){
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Currency:&nbsp;</span></td>
 
-						<td colspan=2><select name="currencyId" onchange="javascript:onCurrSelect()">
+						<td colspan=2><select name="currencyId" id="currencyId" onchange="javascript:onCurrSelect()">
 							<%						
 						      for (int i0 = 0; i0 < currencyList.size(); i0++) {
 								CurrencyType curr = (CurrencyType)currencyList.get(i0);
@@ -1048,7 +1042,7 @@ function fnChangeStatus(){
 								}
 							%>
 							<div id="other" style="display:<%=display%>">
-  							<select name="status" >
+  							<select name="status" id="status">
   								<option value="Active" <%if (status.equalsIgnoreCase("active")) out.println("selected");%>>Active</option>
 								<option value="Lost/Drop" <%if (status.equalsIgnoreCase("Lost/drop")) out.println("selected");%>>Lost/Drop</option>
 								<option value="Suspect" <%if (status.equalsIgnoreCase("suspect")) out.println("selected");%>>Suspect</option>
@@ -1070,7 +1064,7 @@ function fnChangeStatus(){
           					<span class="tabletext">Total Contract Value:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-						<input type="text" class="inputBox" name="estimateAmount" value="<%=estimateAmountStr%>" size="30" onblur="checkDeciNumber2(this,1,1,'estimateAmount',-9999999999,9999999999); caculateRMB(); addComma(this, '.', '.', ',');">
+						<input type="text" class="inputBox" name="estimateAmount" id="estimateAmount" value="<%=estimateAmountStr%>" size="30" onblur="checkDeciNumber2(this,1,1,'estimateAmount',-9999999999,9999999999); caculateRMB(); addComma(this, '.', '.', ',');">
         				</td>				
 						<td align="right" class="lblbold">
           					<span class="tabletext">Exchange Rate(RMB):&nbsp;</span>
@@ -1085,7 +1079,7 @@ function fnChangeStatus(){
           					<span class="tabletext">Total Contract Value(RMB):&nbsp;</span>
        	 				</td>
         				<td colspan=5>
-						<input type="text"  class="inputBox" style="border:0px" readonly="true" name="caculatedAmt" value="<%=bidMaster!=null?Num_formater.format(bidMaster.getEstimateAmount().doubleValue()*bidMaster.getExchangeRate().floatValue()):""%>">
+						<input type="text"  class="inputBox" style="border:0px" readonly="true" name="caculatedAmt" id="caculatedAmt" value="<%=bidMaster!=null?Num_formater.format(bidMaster.getEstimateAmount().doubleValue()*bidMaster.getExchangeRate().floatValue()):""%>">
         				</td>
 					</tr>
 					<tr>
@@ -1093,15 +1087,15 @@ function fnChangeStatus(){
           					<span class="tabletext">Estimated Contract Start Date:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_estimateStartDate" value="no">
+        				<input type="hidden" name="hid_estimateStartDate" id="hid_estimateStartDate" value="no">
         				<%
         				if(startDateStr!=null && startDateStr.length()>0){
         				%>
-						    <input type="text" class="inputBox" name="estimateStartDate" oldvalue="<%=startDateStr%>" value="<%=startDateStr%>" size="10">
+						    <input type="text" class="inputBox" name="estimateStartDate" id="estimateStartDate" oldvalue="<%=startDateStr%>" value="<%=startDateStr%>" size="10">
           				<%
           				}else{
           				%>
-          					 <input type="text" class="inputBox" name="estimateStartDate" oldvalue="" value="" size="10">
+          					 <input type="text" class="inputBox" name="estimateStartDate" id="estimateStartDate" oldvalue="" value="" size="10">
           				<%
           					}
           				%>
@@ -1113,16 +1107,16 @@ function fnChangeStatus(){
           					<span class="tabletext">Estimated Contract End Date:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_estimateEndDate" value="no">
+        				<input type="hidden" name="hid_estimateEndDate" id="hid_estimateEndDate" value="no">
         				<%
         				if(endDateStr!=null && endDateStr.length()>0){
 
         				%>
-							<input type="text" class="inputBox" name="estimateEndDate" oldvalue="<%=endDateStr%>" value="<%=endDateStr%>" size="10">
+							<input type="text" class="inputBox" name="estimateEndDate" id="estimateEndDate" oldvalue="<%=endDateStr%>" value="<%=endDateStr%>" size="10">
           				<%
           				}else{
           				%>	
-          					<input type="text" class="inputBox" name="estimateEndDate" oldvalue="" value="" size="10">
+          					<input type="text" class="inputBox" name="estimateEndDate" id="estimateEndDate" oldvalue="" value="" size="10">
           				<%
           				}
           				%>
@@ -1139,11 +1133,11 @@ function fnChangeStatus(){
         				<%/*
         				if(postDateStr!=null && postDateStr.length()>0){
         				%>
-							<input type="text" class="inputBox" name="postDate" value="<%=postDateStr%>" size="10">
+							<input type="text" class="inputBox" name="postDate" id="postDate" value="<%=postDateStr%>" size="10">
           				<%
           				}else{
           				%>	
-          					<input type="text" class="inputBox" name="postDate" value="" size="10">
+          					<input type="text" class="inputBox" name="postDate" id="postDate" value="" size="10">
           				<%
           				} */
           				%>	
@@ -1155,15 +1149,15 @@ function fnChangeStatus(){
           					<span class="tabletext">Expected Contract Sign Date:</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_expectedEndDate" value="no">
+        				<input type="hidden" name="hid_expectedEndDate" id="hid_expectedEndDate" value="no">
         				<%
         				if(expectedEndDate!=null && expectedEndDate.length()>0){
         				%>
-							<input type="text" class="inputBox" name="expectedEndDate" oldvalue="<%=expectedEndDate%>" value="<%=expectedEndDate%>" size="10">
+							<input type="text" class="inputBox" name="expectedEndDate" id="expectedEndDate" oldvalue="<%=expectedEndDate%>" value="<%=expectedEndDate%>" size="10">
           				<%
           				}else{
           				%>	
-          					<input type="text" class="inputBox" name="expectedEndDate" oldvalue="" value="" size="10">
+          					<input type="text" class="inputBox" name="expectedEndDate" id="expectedEndDate" oldvalue="" value="" size="10">
           				<%
           				}
           				%>	
@@ -1234,7 +1228,7 @@ function fnChangeStatus(){
 			</tr>
 			<tr>
 				<td align="right"  class="lblbold"><span class="tabletext">Prospect	Company Name:&nbsp;</span>
-				<input type="hidden" name="prospectCompanyId" value="<%=prospectCompanyId%>">
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompanyId%>">
 					 </td>
 				<td align="left" width=25% colspan=2>
 				<a href="javascript:void(0)"
@@ -1336,7 +1330,7 @@ function fnChangeStatus(){
 											  	<td align="middle" class="lblbold" colspan=2>Amount (RMB)</td>
 											  	<td align="middle" class="lblbold" colspan=2>Action</td>
 											</tr>
-											<input type="hidden"  name="yearAdd"  />
+											<input type="hidden"  name="yearAdd" id="yearAdd" />
 									<%
 										if (valueList != null){
 										Iterator ValueItst = valueList.iterator();
@@ -1349,10 +1343,10 @@ function fnChangeStatus(){
 									%>
 											<tr>
 												<td  align = "center" colspan=2 >
-							  						<input   type="text"  class="inputBox" style="text-align:center"  style="border:0px" readonly="true" name="year" value="<%=year%>" size="20" />
+							  						<input   type="text"  class="inputBox" style="text-align:center"  style="border:0px" readonly="true" name="year" id="year" value="<%=year%>" size="20" />
 							  					</td>
 							  					<td  colspan=2 align = "center">
-							  						<input type="text" class="inputBox" style="text-align:right" style="border:0px" readonly="true"  name="unweightedValue" value="<%=Num_formater.format(value)%>" size="20" />
+							  						<input type="text" class="inputBox" style="text-align:right" style="border:0px" readonly="true"  name="unweightedValue" id="unweightedValue" value="<%=Num_formater.format(value)%>" size="20" />
 							  					</td>
 							  					
 							  					<td align="center" colspan=2>
@@ -1366,10 +1360,10 @@ function fnChangeStatus(){
 							  		%>
 							  		<tr>
 												<td align="center" colspan=2>
-							  						<input type="text" class="inputBox" name="yearNew"  size="20" />
+							  						<input type="text" class="inputBox" name="yearNew" id="yearNew" size="20" />
 							  					</td>
 							  					<td align="center" colspan=2>
-							  						<input type="text" class="inputBox" name="unweightedValueNew"  size="20" style="text-align:right"/>
+							  						<input type="text" class="inputBox" name="unweightedValueNew" id="unweightedValueNew"  size="20" style="text-align:right"/>
 							  					</td>
 							  					
 							  					<td align="center" colspan=2>
@@ -1414,20 +1408,20 @@ function fnChangeStatus(){
 									%>
 											<tr>
 												<td align="middle">
-												<input type="hidden" class="inputBox" name="clid" value="<%=clid%>" size="30" />
-							  						<input type="text" class="inputBox" name="clname" value="<%=clname%>" size="20" />
+												<input type="hidden" class="inputBox" name="clid" id="clid" value="<%=clid%>" size="30" />
+							  						<input type="text" class="inputBox" name="clname" id="clname" value="<%=clname%>" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clposition" value="<%=clposition%>" size="20" />
+							  						<input type="text" class="inputBox" name="clposition" id="clposition" value="<%=clposition%>" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clchinesename" value="<%=clchinesename%>" size="20" />
+							  						<input type="text" class="inputBox" name="clchinesename" id="clchinesename" value="<%=clchinesename%>" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clteleno" value="<%=clteleno%>" size="20" />
+							  						<input type="text" class="inputBox" name="clteleno" id="clteleno" value="<%=clteleno%>" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clemail" value="<%=clemail%>" size="30" />
+							  						<input type="text" class="inputBox" name="clemail" id="clemail" value="<%=clemail%>" size="30" />
 							  					</td>
 							  					<td align="middle">
 							  						<a href="javascript:deleteContactList(<%=clid%>)">Delete</a>
@@ -1439,19 +1433,19 @@ function fnChangeStatus(){
 							  		%>
 							  				<tr>
 												<td align="middle">
-							  						<input type="text" class="inputBox" name="clname1" value="" size="20" />
+							  						<input type="text" class="inputBox" name="clname1" id="clname1" value="" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clposition1" value="" size="20" />
+							  						<input type="text" class="inputBox" name="clposition1" id="clposition1" value="" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clchinesename1" value="" size="20" />
+							  						<input type="text" class="inputBox" name="clchinesename1" id="clchinesename1" value="" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clteleno1" value="" size="20" />
+							  						<input type="text" class="inputBox" name="clteleno1" id="clteleno1" value="" size="20" />
 							  					</td>
 							  					<td align="middle">
-							  						<input type="text" class="inputBox" name="clemail1" value="" size="30" />
+							  						<input type="text" class="inputBox" name="clemail1" id="clemail1" value="" size="30" />
 							  					</td>
 							  					<td align="middle">
 							  						<a href="javascript:addContactList()">add</a>
@@ -1559,7 +1553,7 @@ function fnChangeStatus(){
 														}
 													}
 												}%>
-							<input type="hidden" name="bidActId" value="<%=bidActId%>">
+							<input type="hidden" name="bidActId" id="bidActId" value="<%=bidActId%>">
 				<%			
 							String actName = "actSize"+bidActId;
 							String HrName = "actHr"+bidActId;

@@ -85,7 +85,7 @@ function ExportExcel() {
 <tr>
 	<td>
 		<Form action="pas.report.CostByPMRpt.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<table width=100% >
 			<tr>
 				<td colspan=7 valign="bottom"><hr color=red></hr></td>

@@ -46,9 +46,9 @@ if (AOFSECURITY.hasEntityPermission("SKILL_SET", "_QUERY", session)) {
 	</HEAD>
 	<BODY>
 		<form name="listForm" action="skillAction.do" method="post">
-			<input type="hidden" name="formAction" value="">
-			<input type="hidden" name="command" value="">
-			<input type="hidden" name="staffId" value="<%=staffId%>">
+			<input type="hidden" name="formAction" id="formAction" value="">
+			<input type="hidden" name="command" id="command" value="">
+			<input type="hidden" name="staffId" id="staffId" value="<%=staffId%>">
 			<table width=102% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>List Personal Certification</CAPTION>
 				<tr align="center">

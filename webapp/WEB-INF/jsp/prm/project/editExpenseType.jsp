@@ -88,8 +88,8 @@ function FnUpdate() {
     	FormAction="update";
 %>
 <form Action="editExpenseType.do" method="post" name="EditForm">
-<input type="hidden" name="FormAction" >
-<input type="hidden" name="DataId" value="<%=DataId%>">
+<input type="hidden" name="FormAction" id="FormAction" >
+<input type="hidden" name="DataId" id="DataId" value="<%=DataId%>">
 <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
 		<td align="right">
@@ -151,7 +151,7 @@ function FnUpdate() {
 	}else{
 %>
 <form Action="editExpenseType.do" method="post">
-<input type="hidden" name="FormAction" value="<%=FormAction%>">
+<input type="hidden" name="FormAction" id="FormAction" value="<%=FormAction%>">
 
 <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>

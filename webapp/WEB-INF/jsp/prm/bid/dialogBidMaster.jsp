@@ -146,7 +146,7 @@ try{
 		scrolling=no src="includes/date/calendar.htm"
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 
 	<table width=100% cellpadding="1" border="0" cellspacing="1">	
 		<tr>
@@ -154,10 +154,10 @@ try{
 		</tr>
 		<tr>
 			<td width='100%'>
-				<input type="hidden" name="formAction" value="">
-				<input type="hidden" name="id" value="<%=id != null ? id : ""%>">
-				<input type="hidden" name="offSet" value="<%=offSet%>">
-				<input type="hidden" name="column" value="<%=column%>">
+				<input type="hidden" name="formAction" id = "formAction" value="">
+				<input type="hidden" name="id" id = "id" value="<%=id != null ? id : ""%>">
+				<input type="hidden" name="offSet" id = "offSet" value="<%=offSet%>">
+				<input type="hidden" name="column" id = "column" value="<%=column%>">
 				
 				<table width='100%' border='0' cellspacing='2' cellpadding='0'>
 					<tr>
@@ -247,7 +247,7 @@ try{
           					<span class="tabletext">Estimated End Date:&nbsp;</span>
        	 				</td>
         				<td colspan=2>
-        				<input type="hidden" name="hid_estimateEndDate" value="no">
+        				<input type="hidden" name="hid_estimateEndDate" id = "hid_estimateEndDate" value="no">
         				<%
         				if(endDateStr!=null && endDateStr.length()>0){
         				%><%=endDateStr%>

@@ -79,9 +79,9 @@ if (AOFSECURITY.hasEntityPermission("PROJ_EMS", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="queryForm" action="findEMS.do" method="post">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="emsId" value="">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="emsId" id="emsId" value="">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan="10"><hr color=red></hr></td>

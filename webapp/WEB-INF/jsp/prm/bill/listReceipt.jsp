@@ -69,7 +69,7 @@ if (AOFSECURITY.hasEntityPermission("RECEIPT_MSTR", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="listReceiptForm" action="listReceipt.do" method="post">
-				<input type="hidden" name="FormAction" value="query">
+				<input type="hidden" name="FormAction" id="FormAction" value="query">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=12><hr color=red></hr></td>
@@ -77,9 +77,9 @@ if (AOFSECURITY.hasEntityPermission("RECEIPT_MSTR", "_VIEW", session)) {
 					
 					<tr>
 						<td class="lblbold">Receipt No.:</td>
-						<td class="lblLight"><input type="text" name="receiptNo" size="15" value="<%=((receiptNo != null) && (FormAction.equals("query"))) ? receiptNo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="receiptNo" id="receiptNo" size="15" value="<%=((receiptNo != null) && (FormAction.equals("query"))) ? receiptNo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Customer:</td>
-						<td class="lblLight"><input type="text" name="customerId" size="15" value="<%=((customerId != null) && (FormAction.equals("query"))) ? customerId : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="customerId" id="customerId" size="15" value="<%=((customerId != null) && (FormAction.equals("query"))) ? customerId : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Type:</td>
 						<td class="lblLight">
 							<select name="type">
@@ -123,8 +123,8 @@ if (AOFSECURITY.hasEntityPermission("RECEIPT_MSTR", "_VIEW", session)) {
 				</table>
 			</form>
 			<form name="editForm" action="editReceipt.do" method="post">
-				<input type="hidden" name="FormAction" value="edit">
-				<input type="hidden" name="DataId" value="">
+				<input type="hidden" name="FormAction" id="FormAction" value="edit">
+				<input type="hidden" name="DataId" id="DataId" value="">
 			</form>
 		</td>
 	</tr>

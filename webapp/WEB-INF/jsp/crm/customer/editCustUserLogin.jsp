@@ -60,7 +60,7 @@ Iterator it = partyList.iterator();
     	action="update";
 %>
 	<form action="editCustUserLogin.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -71,7 +71,7 @@ Iterator it = partyList.iterator();
           <span class="tabletext"><bean:message key="System.UserLogin.userLoginId"/>:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" value="<%=ul.getUserLoginId()%>">
+          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" id = "userLoginId" value="<%=ul.getUserLoginId()%>">
         </td>
         <td align="right">
           <span class="tabletext"><bean:message key="System.UserLogin.name"/>:&nbsp;</span>
@@ -145,7 +145,7 @@ Iterator it = partyList.iterator();
           <input type="text" class="inputBox" name="note" value="<%=ul.getNote()%>" size="30">
         </td>
       </tr>
-	  	  <input type="hidden" name="role" value="<%=ul.getRole()%>">
+	  	  <input type="hidden" name="role" id = "role" value="<%=ul.getRole()%>">
      <tr><td>&nbsp;</td><td><br></td></tr>  
       <tr>
         <td align="right">
@@ -164,7 +164,7 @@ Iterator it = partyList.iterator();
 	}else{
 %>
 	<form action="editCustUserLogin.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -237,7 +237,7 @@ Iterator it = partyList.iterator();
         <td align="left">
           <input type="text" class="inputBox" name="note" size="30">
         </td>
-	  <input type="hidden" name="role" value="CUSTOMER">
+	  <input type="hidden" name="role" id = "role" value="CUSTOMER">
       <tr>
       </tr>
       <tr>

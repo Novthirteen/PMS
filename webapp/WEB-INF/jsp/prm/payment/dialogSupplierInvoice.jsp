@@ -87,8 +87,8 @@ if (true) {
 %>
 <form action="dialogSupplierInvoiceList.do" method="POST" name=frm>
 <title>Supplier Invoice Selection</title>
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Supplier Invoice Select</CAPTION>
 </table>
@@ -118,16 +118,16 @@ if (true) {
 				<td><bean:write property="payAmount" name="ItemList"/></td>
 				<td><bean:write property="remainAmountString" name="ItemList"/></td>
 				<td><bean:write property="vendorString" name="ItemList"/></td>
-				<input type="hidden" name="payCode" value="<bean:write name="ItemList" property="payCode"/>">
-				<input type="hidden" name="payType" value="<bean:write name="ItemList" property="payType"/>">
-				<input type="hidden" name="payAmount" value="<bean:write name="ItemList" property="amountString"/>">
-				<input type="hidden" name="vendorString" value="<bean:write name="ItemList" property="vendorString"/>">
-				<input type="hidden" name="currencyString" value="<bean:write name="ItemList" property="currencyString"/>">
-				<input type="hidden" name="exchangeRate" value="<bean:write name="ItemList" property="exchangeRate"/>">
-				<input type="hidden" name="faPaymentno" value="<bean:write name="ItemList" property="faPaymentNo"/>">
-				<input type="hidden" name="payDateString" value="<%=ItemList.getPayDate()==null?"":formatter.format(ItemList.getPayDate())%>"/>
+				<input type="hidden" name="payCode" id="payCode" value="<bean:write name="ItemList" property="payCode"/>">
+				<input type="hidden" name="payType" id="payType" value="<bean:write name="ItemList" property="payType"/>">
+				<input type="hidden" name="payAmount" id="payAmount" value="<bean:write name="ItemList" property="amountString"/>">
+				<input type="hidden" name="vendorString" id="vendorString" value="<bean:write name="ItemList" property="vendorString"/>">
+				<input type="hidden" name="currencyString" id="currencyString" value="<bean:write name="ItemList" property="currencyString"/>">
+				<input type="hidden" name="exchangeRate" id="exchangeRate" value="<bean:write name="ItemList" property="exchangeRate"/>">
+				<input type="hidden" name="faPaymentno" id="faPaymentno" value="<bean:write name="ItemList" property="faPaymentNo"/>">
+				<input type="hidden" name="payDateString" id="payDateString" value="<%=ItemList.getPayDate()==null?"":formatter.format(ItemList.getPayDate())%>"/>
 				
-				<input type="hidden" name="remainAmount" value="<bean:write name="ItemList" property="remainAmountString"/>">
+				<input type="hidden" name="remainAmount" id="remainAmount" value="<bean:write name="ItemList" property="remainAmountString"/>">
 			</tr>
 		</logic:iterate>
 	<tr>

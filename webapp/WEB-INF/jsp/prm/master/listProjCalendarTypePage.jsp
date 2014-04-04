@@ -49,7 +49,7 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_CALENDAR", "_VIEW", session)) {
 </table>
 
 <form name="ProjectCalendarListForm" action="editProjCalendarType.do" method="post">
-<input type="hidden" name="FormAction" value="batchUpdate">
+<input type="hidden" name="FormAction" id="FormAction" value="batchUpdate">
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
     <TD width='100%'>

@@ -60,7 +60,7 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <title>Template Selection</title>
 <form action="TemplateChooseDialogue.do" name=frm method="POST">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Template Select</CAPTION>
 	<tr><td align='center' colspan=5>

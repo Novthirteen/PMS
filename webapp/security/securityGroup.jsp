@@ -34,31 +34,31 @@
 
   <tr>
     <th align="right">
-	  Ȩ�������:
+	  权限组编码:
     </th>
     <td align="left">
-      <html:text property="fromAddress" size="50"/>
+      <html:text property="fromAddress" size="50" styleId="fromAddress"/>
     </td>
   </tr>
 
   <tr>
     <th align="right">
-      Ȩ���鹦������:
+      权限组功能描述:
     </th>
     <td align="left">
-      <html:text property="replyToAddress" size="50"/>
+      <html:text property="replyToAddress" size="50" styleId="replyToAddress"/>
     </td>
   </tr>
 
   <tr>
     <td align="right">
       <html:submit>
-        ȷ��
+        确定
       </html:submit>
     </td>
     <td align="left">
       <html:reset>
-        ����
+        重置
       </html:reset>
     </td>
   </tr>
@@ -89,7 +89,7 @@
       <table width='100%' border='0' cellspacing='0' cellpadding='0' class='boxtop'>
         <tr>
           <TD align=left width='90%' >
-            <div class='boxhead'>����ϵͳȨ�޵�</div>
+            <div class='boxhead'>新增系统权限点</div>
           </TD>
           <TD align=right width='10%'>&nbsp;</TD>
         </tr>
@@ -105,7 +105,6 @@
               <tr>
                 <td width="100%">
                 <form action="editSecurityPermission.do" method="post">
-                	<input type="hidden" value="">
                     <table border="0" width="100%">
                       <tr> 
                         <td width="100%" colspan="4"> 
@@ -113,7 +112,7 @@
                         </td>
                       </tr>
                       <tr> 
-                        <td width="10%" align="right"><span class="tabletext"><b>Ȩ�޵����:&nbsp;</b></span> 
+                        <td width="10%" align="right"><span class="tabletext"><b>权限点编码:&nbsp;</b></span> 
                         </td>
                         <td width="10%">
                           <input type="text" class="inputBox" name="permissionId" size="30">
@@ -122,7 +121,7 @@
                         <td width="25%">&nbsp;</td>
                       </tr>
                       <tr> 
-                        <td width="10%" align="right"><b><span class="tabletext">����:</span></b></td>
+                        <td width="10%" align="right"><b><span class="tabletext">描述:</span></b></td>
                         <td width="10%"> 
                           <input type="text" class="inputBox" name="description" size="30">
                         </td>
@@ -131,7 +130,7 @@
                       <tr> 
                         <td width="10%" align="right">&nbsp;</td>
                         <td width="10%"> 
-                          <input type="submit" class="inputBox" value="����" name="submit">
+                          <input type="submit" class="inputBox" value="新增" name="submit">
                         </td>
                         <td width="25%">&nbsp; </td>
                       </tr>
@@ -148,7 +147,7 @@
               <tr>
                 <td valign='middle' align='center'>
                   <div class="boxhead">
-                    <p align="left">Ȩ�޵��б�</div>
+                    <p align="left">权限点列表</div>
                 </td>
               </tr>
             </table>
@@ -164,12 +163,12 @@
                       <tr class='viewOneTR1'>
                         <td align="center" width="40%">
                             <div class="head3">
-                            <p align="center">Ȩ�޵����
+                            <p align="center">权限点编码
                             </div>
                         </td>
                         <td align="center" width="40%">
                             <div class="head3">
-                            <p align="center">Ȩ�޵㹦������
+                            <p align="center">权限点功能描述
                             </div>
                         </td>
                         <td align="center" width="10%">
@@ -183,7 +182,7 @@
                             </div>
                         </td>
                       </tr>
-			<!--==================== ��ʾȨ�޵��б� ====================-->
+			<!--==================== 显示权限点列表 ====================-->
 			<logic:iterate id="sp" indexId="indexId" offset="offset" length="length" name="securityPermisssions" type="com.aof.component.domain.security.SecurityPermission" > 
                       <tr>
                         <td align="center" width="40%">
@@ -196,12 +195,12 @@
                         </td>
                         <td align="center" width="10%">
                             <div class="tabletext">
-                            <p align="center"><a href="editSecurityPermission.do?action=edit&permissionId=<bean:write name="sp" property="permissionId"/>">�༭</a>
+                            <p align="center"><a href="editSecurityPermission.do?action=edit&permissionId=<bean:write name="sp" property="permissionId"/>">编辑</a>
                             </div>   
                         </td>
                         <td align="center" width="10%">
                             <div class="tabletext">
-                            <p align="center"><a href="editSecurityPermission.do?action=delete&permissionId=<bean:write name="sp" property="permissionId"/>">ɾ��</a>
+                            <p align="center"><a href="editSecurityPermission.do?action=delete&permissionId=<bean:write name="sp" property="permissionId"/>">删除</a>
                             </div>   
                         </td>
 					  </tr>
@@ -209,9 +208,9 @@
                       <tr>
                         <td colspan="5" align="right" width="100%">
 							<%if(offset.intValue()>0){%>
-							<image src="<%=request.getContextPath()%>/images/pre.gif"><a href="listSecurityPermission.do?offset=<%=offset.intValue()-length.intValue()%>">��һҳ</a>
+							<image src="<%=request.getContextPath()%>/images/pre.gif"><a href="listSecurityPermission.do?offset=<%=offset.intValue()-length.intValue()%>">上一页</a>
 							<%}%>
-							<image src="<%=request.getContextPath()%>/images/next.gif"><a href="listSecurityPermission.do?offset=<%=offset.intValue()+length.intValue()%>">��һҳ</a>                      
+							<image src="<%=request.getContextPath()%>/images/next.gif"><a href="listSecurityPermission.do?offset=<%=offset.intValue()+length.intValue()%>">下一页</a>                      
                         </td>
                       </tr>
                     </table>
@@ -233,7 +232,7 @@
 </TABLE>
 <%
 //}else{
-//	out.println("��û�� SECURITY_PERMISSION_VIEW Ȩ��");
+//	out.println("你没有 SECURITY_PERMISSION_VIEW 权限");
 //}
 %>
 </html:html>

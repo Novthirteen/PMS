@@ -93,7 +93,7 @@ function ExportExcel() {
 <tr>
 	<td>
 		<Form action="pas.report.ResourceForecastRpt.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<table width=100%>
 			<tr>
 				<td colspan=7 valign="bottom"><hr color=red></hr></td>
@@ -220,7 +220,7 @@ function ExportExcel() {
 					} while(calendar.getTime().compareTo(dayEnd) <= 0);
 				%>
 				</tr>
-				<input type="hidden" name=dayCount value=<%=count%>
+				<input type="hidden" name="dayCount" id="dayCount" value=<%=count%>
 				<% 
 				} //end if
 			int cc =0;

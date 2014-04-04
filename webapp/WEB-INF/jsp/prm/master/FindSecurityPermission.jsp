@@ -57,7 +57,7 @@ function ExportExcel() {
 	<td>		
 		<table>
 		<Form action="FindSecurityPermission.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<tr>
 		<td width=15% class="lblbold">Staff:</td>
 		<td width=35%><input type="text" name="UserName" length=16 value =<%=userName%>></td>

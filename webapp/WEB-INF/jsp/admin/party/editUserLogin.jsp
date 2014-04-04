@@ -379,8 +379,8 @@ request.setAttribute("moduleAllList",moduleAllList);
     	action="update";
 %>
 	<form action="editUserLogin.do" method="post" name="editUserLogin">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id="action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 	<table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -391,7 +391,7 @@ request.setAttribute("moduleAllList",moduleAllList);
           <span class="tabletext"><bean:message key="System.UserLogin.userLoginId"/>:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" value="<%=ul.getUserLoginId()%>">
+          <span class="tabletext"><%=ul.getUserLoginId()%>&nbsp;</span><input type="hidden" name="userLoginId" id="userLoginId" value="<%=ul.getUserLoginId()%>">
         </td>
 		<td align="right">
           <span class="tabletext"><bean:message key="System.UserLogin.password"/>:&nbsp;</span>
@@ -527,8 +527,8 @@ request.setAttribute("moduleAllList",moduleAllList);
 			}
 			%>
 			<div style="display:inline" id="labelRP"><%=reportToName%>&nbsp;</div>
-			<input type="hidden" name="reportToName" maxlength="100" value="<%=reportToName%>">
-			<input type="hidden" name="reportToId" value="<%=reportToId%>">
+			<input type="hidden" name="reportToName" id="reportToName" maxlength="100" value="<%=reportToName%>">
+			<input type="hidden" name="reportToId" id="reportToId" value="<%=reportToId%>">
 			<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
         <td align="right">
@@ -574,7 +574,7 @@ request.setAttribute("moduleAllList",moduleAllList);
         	<input type="text" class="inputBox" name="leaveDay" value="<%=ul.getLeaveDay()!=null?dateFormat.format(ul.getLeaveDay()):""%>" size="10"><A href="javascript:ShowCalendar(document.editUserLogin.dimg2,document.editUserLogin.leaveDay,null,0,330)" onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg2 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A></td>
         </td>
        </tr>
-	  	  <input type="hidden" name="role" value="<%=ul.getRole()%>">
+	  	  <input type="hidden" name="role" id="role" value="<%=ul.getRole()%>">
 	  	  
       <tr><td align="right">
           <span class="tabletext">Account Type:&nbsp;</span>
@@ -605,8 +605,8 @@ request.setAttribute("moduleAllList",moduleAllList);
 	}else{
 %>
 	<form action="editUserLogin.do" method="post" name="editUserLogin">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id="action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -731,8 +731,8 @@ request.setAttribute("moduleAllList",moduleAllList);
         	
 			
 			<div style="display:inline" id="labelRP"><%=reportToName%>&nbsp;</div>
-			<input type="hidden" name="reportToName" maxlength="100" value="<%=reportToName%>">
-			<input type="hidden" name="reportToId" value="<%=reportToId%>">
+			<input type="hidden" name="reportToName" id="reportToName" maxlength="100" value="<%=reportToName%>">
+			<input type="hidden" name="reportToId" id="reportToId" value="<%=reportToId%>">
 			<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
         
@@ -761,7 +761,7 @@ request.setAttribute("moduleAllList",moduleAllList);
 			</select>
         </td>
         <td>&nbsp;</td><td></td></tr>  
-        <input type="hidden" name="role" value="STAFF">
+        <input type="hidden" name="role" id="role" value="STAFF">
       <tr>
         <td align="right">
           <span class="tabletext"></span>
@@ -790,7 +790,7 @@ if(ul!=null){
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
     <TD width='100%'>
-	 <input type="hidden" name="action" value="other">
+	 <input type="hidden" name="action" id="action" value="other">
       <table width='100%' border='0' cellspacing='0' cellpadding='0'>
         <tr>
           <TD align=left width='90%' class="wpsPortletTopTitle">
@@ -886,8 +886,8 @@ if(ul!=null){
 						<tr><td>&nbsp;</td></tr>
 						<tr><td colspan=3><hr size="1">
  						<input type="button" class="inputBox" value="Save Permissions" size="20" onclick="selectAllSecurity()"> 
-					    <input type="hidden" value="<%=userLoginId%>" name="userLoginId">
-					    <input type="hidden"   name="add">																		          
+					    <input type="hidden" value="<%=userLoginId%>" name="userLoginId" id="userLoginId">
+					    <input type="hidden"   name="add" id="add">																		          
 						</td></tr>
                     </table>
                     
@@ -1000,7 +1000,7 @@ if(ul!=null){
 						<tr><td><hr size="1"></td></tr>
 						<tr><td>
 					          <input type="button" class="inputBox" value="Save Module" size="20" onclick="selectAllModule()">
-					        <input type="hidden" value="<%=userLoginId%>" name="userLoginId">
+					        <input type="hidden" value="<%=userLoginId%>" name="userLoginId" id="userLoginId">
 				
 						</td>	
 						</tr>						

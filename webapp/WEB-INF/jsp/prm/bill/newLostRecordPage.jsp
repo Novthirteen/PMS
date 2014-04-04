@@ -68,7 +68,7 @@ function onCurrSelect(){
 %>
 <form name="newForm" action="editLost.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="formAction" value="new">
+	<input type="hidden" name="formAction" id="formAction" value="new">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>Lost Record Maintenance</CAPTION>
@@ -97,7 +97,7 @@ function onCurrSelect(){
 						<td class="lblbold" align=right width="15%">Bill Code:</td>
 						<td class="lblLight" width="35%">							
 							<div style="display:inline" id="labelBillCode"><%=pb != null && pb.getBillCode() != null ? pb.getBillCode() : ""%></div>
-							<input type="hidden" name="billId" value="<%=pb != null && pb.getId() != null ? String.valueOf(pb.getId()) : ""%>">
+							<input type="hidden" name="billId" id="billId" value="<%=pb != null && pb.getId() != null ? String.valueOf(pb.getId()) : ""%>">
 							<a href="javascript:void(0)" onclick="showBillingDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="select" src="images/select.gif" border="0"/></a>
 						</td>
@@ -105,7 +105,7 @@ function onCurrSelect(){
 						<td class="lblbold" align=right width="15%">Project:</td>
 						<td class="lblLight" width="35%">
 							<div style="display:inline" id="labelProject"><%=pi != null && pi.getProject().getProjName() != null ? pi.getProject().getProjName() : ""%></div>
-							<input type="hidden" name="projectId" value="<%=pi != null && pi.getProject().getProjId() != null ? pi.getProject().getProjId() : ""%>">
+							<input type="hidden" name="projectId" id="projectId" value="<%=pi != null && pi.getProject().getProjId() != null ? pi.getProject().getProjId() : ""%>">
 						</td>
 					</tr>
 					<tr>
@@ -145,7 +145,7 @@ function onCurrSelect(){
 						
 						<td class="lblbold" align=right width="15%">Amount:</td>
 						<td class="lblLight" width="35%">
-							<input type="text" name="amount" size="30" value="<%=pi != null ? numFormat.format(pi.getAmount()) : ""%>" style="TEXT-ALIGN: right<%=request.getAttribute("ErrorMessage") != null ? ";background-color:#FFAFD3" : ""%>" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999999,9999999999);addComma(this, '.', '.', ',');">
+							<input type="text" name="amount" id="amount" size="30" value="<%=pi != null ? numFormat.format(pi.getAmount()) : ""%>" style="TEXT-ALIGN: right<%=request.getAttribute("ErrorMessage") != null ? ";background-color:#FFAFD3" : ""%>" class="lbllgiht" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999999,9999999999);addComma(this, '.', '.', ',');">
 						</td>
 					</tr>
 
@@ -154,7 +154,7 @@ function onCurrSelect(){
 				          <span class="tabletext">Currency:&nbsp;</span>
 				        </td>
 				        <td align="left">				       
-				          <select name="currency" onchange="javascript:onCurrSelect()">
+				          <select name="currency" id="currency" onchange="javascript:onCurrSelect()">
 						  <%				
 						  	 
 							  for (int i0 = 0; i0 < currencyList.size(); i0++) {
@@ -175,7 +175,7 @@ function onCurrSelect(){
 				        </td>
 						<td class="lblLight" width="35%">
 							<div style="display:none" id="labelCurrencyRate"></div>	
-							<input type=text name="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">		
+							<input type="text" name="exchangeRate" id="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">		
 						</td>
 				      </tr>
 			

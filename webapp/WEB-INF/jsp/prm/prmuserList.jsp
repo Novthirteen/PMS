@@ -68,15 +68,15 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 %>
 <html:form action="/PRMUserList.do" method="POST">
 <title>Staff Selection</title>
-<input type="hidden" name="CALLBACKNAME">
-<input type="hidden" name="hiddenStaffName">
-<input type="hidden" name="hiddenStaffCode">
-<input type="hidden" name="hiddenPartyCode">
-<input type="hidden" name="hiddenPartyName">
-<input type="hidden" name="pageNumber" value="<%=pageNumber%>">
+<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
+<input type="hidden" name="hiddenStaffName" id="hiddenStaffName">
+<input type="hidden" name="hiddenStaffCode" id="hiddenStaffCode">
+<input type="hidden" name="hiddenPartyCode" id="hiddenPartyCode">
+<input type="hidden" name="hiddenPartyName" id="hiddenPartyName">
+<input type="hidden" name="pageNumber" id="pageNumber" value="<%=pageNumber%>">
 
-<input type="hidden" name="FormAction">
-<input type="hidden" name="partyId" value="<%=partyId%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="partyId" id="partyId" value="<%=partyId%>">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Staff Select</CAPTION>
 </table>
@@ -97,7 +97,7 @@ if (true|| AOFSECURITY.hasEntityPermission("USER_LOGIN", "_VIEW", session)) {
 					<html:radio property="selectRadio" value="<%= index.toString()%>" onclick="<%= strFunction %>"/></td>
 				<td><label id="staffId"><bean:write property="userLoginId" name="ItemList"/></label></td>
 				<td><label id="staffName"><bean:write property="name" name="ItemList"/></label></td>
-				<td><input type="hidden" name="SelPartyId" value = "<%= ((UserLogin) ItemList).getParty().getPartyId()%>"><label id="partyName"><%=((UserLogin) ItemList).getParty().getDescription()%></label></td>
+				<td><input type="hidden" name="SelPartyId" id="SelPartyId" value = "<%= ((UserLogin) ItemList).getParty().getPartyId()%>"><label id="partyName"><%=((UserLogin) ItemList).getParty().getDescription()%></label></td>
 			</tr>
 		</logic:iterate>
 	<tr>

@@ -168,9 +168,9 @@
 						}
 						DisplayText = DisplayText+"<tr class='"+rowClass+"' align='right' bgcolor='#e9eee9'><td class='bottom' align='left'>"+ts.getProjectEvent().getPeventName()+"</td><td class='bottom' align='left'>"+ts.getTSServiceType().getDescription()+"</td><td class='bottom' align='left'>"+ts.getProject().getCAFFlag()+"</td>";
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject().getProjId()%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject().getProjId()%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
 						<%
 						CurrPart = NewPart;
 						col = 0;
@@ -363,9 +363,9 @@
 						}
 						DisplayText = DisplayText+"<tr class='"+rowClass+"' align='right' bgcolor='#e9eee9'><td class='bottom' align='left'>"+ts.getProjectEvent().getPeventName()+"</td><td class='bottom' align='left'>"+ts.getTSServiceType().getDescription()+"</td><td class='bottom' align='left'>"+ts.getProject().getCAFFlag()+"</td>";
 						%>
-						<input type="hidden" name="projId" value = "<%=ts.getProject().getProjId()%>">
-						<input type="hidden" name="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
-						<input type="hidden" name="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
+						<input type="hidden" name="projId" id="projId" value = "<%=ts.getProject().getProjId()%>">
+						<input type="hidden" name="PEventId" id="PEventId" value = "<%=ts.getProjectEvent().getPeventId()%>">
+						<input type="hidden" name="PSTId" id="PSTId" value = "<%=ts.getTSServiceType().getId()%>">
 						<%
 						CurrPart = NewPart;
 						col = 0;

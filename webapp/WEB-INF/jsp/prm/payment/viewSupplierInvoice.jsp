@@ -262,8 +262,8 @@ function showDialog_account()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction" >
-    <input type="hidden" name="process" >
+    <input type="hidden" name="FormAction" id="FormAction" >
+    <input type="hidden" name="process" id="process" >
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 
       <tr>
@@ -272,11 +272,11 @@ function showDialog_account()
         </td>
         <%if(payCode != null){%>
         <td>
-        	<%=payCode%><input type="hidden" name="payCode" value="<%=payCode%>">
+        	<%=payCode%><input type="hidden" id="hidden" name="payCode" value="<%=payCode%>">
         </td>
         <%}else{%>
         <td>
-			<input type="text" name="payCode" value="">
+			<input type="text" name="payCode" id="payCode" value="">
         </td>
 		<%}%>
       </tr>
@@ -319,7 +319,7 @@ function showDialog_account()
 			   if (createUser != null) { cUserId = createUser.getUserLoginId(); cUserName = createUser.getName(); } 
 			   else{ cUserId = ul.getUserLoginId(); cUserName = ul.getName(); }%>
 			<div style="display:inline" id="labelAccount"><%=cUserId+":"+cUserName%>&nbsp;</div>
-			<input type="hidden" name="createUser" value="<%=cUserId%>">			
+			<input type="hidden" name="createUser" id="createUser" value="<%=cUserId%>">			
         </td>
 	    <td align="right" class="lblbold">
           <span class="tabletext">Vendor:&nbsp;</span>
@@ -332,8 +332,8 @@ function showDialog_account()
 				vendorName = vendor.getDescription();
 			 }%>
 			<div style="display:inline" id="labelVendor"><%=vendorId+":"+vendorName%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="vendorName" maxlength="100" value="<%=vendorName%>">
-			<input type="hidden" name="vendorId" value="<%=vendorId%>">
+			<input type="hidden" readonly="true" name="vendorName" id="vendorName" maxlength="100" value="<%=vendorName%>">
+			<input type="hidden" name="vendorId" id="vendorId" value="<%=vendorId%>">
         </td>       
       </tr>
 	  
@@ -346,7 +346,7 @@ function showDialog_account()
       
       <tr>
   		<td align="right" class="lblbold"><span class="tabletext">Pay Status:&nbsp;</span></td>
-        <td align="left"><%=status==null?"Draft":status%><input type="hidden" name="status" value="<%=status%>"></td> 
+        <td align="left"><%=status==null?"Draft":status%><input type="hidden" name="status" id="status" value="<%=status%>"></td> 
 
   		<td align="right" class="lblbold"><span class="tabletext">Pay Type:&nbsp;</span></td>
 		<%if(!type.equals("") && type!=null){%>

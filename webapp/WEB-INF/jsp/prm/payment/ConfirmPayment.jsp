@@ -101,8 +101,8 @@ function showInstructionDialog(paymentId) {
 <caption class="pgheadsmall">Payment Confirmation</caption> 
 <tr>
 	<td>
-		<input type="hidden" name="formAction">
-		<input type="hidden" name="tranId">
+		<input type="hidden" name="formAction" id="formAction">
+		<input type="hidden" name="tranId" id="tranId">
 		<table width=100%>
 			<tr>
 				<td colspan=8 valign="bottom"><hr color=red></hr></td>

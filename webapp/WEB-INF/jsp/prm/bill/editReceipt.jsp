@@ -238,10 +238,10 @@ function showDialog_account()
 }
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <%if(errorMessage!=null){out.println(errorMessage);}else{ %>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
@@ -265,8 +265,8 @@ function showDialog_account()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction" >
-    <input type="hidden" name="process" >
+    <input type="hidden" name="FormAction" id="FormAction" >
+    <input type="hidden" name="process" id="process" >
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 
       <tr>
@@ -275,11 +275,11 @@ function showDialog_account()
         </td>
         <%if(receiptNo != null){%>
         <td>
-        	<%=receiptNo%><input type="hidden" name="receiptNo" value="<%=receiptNo%>">
+        	<%=receiptNo%><input type="hidden" name="receiptNo" id="receiptNo" value="<%=receiptNo%>">
         </td>
         <%}else{%>
         <td>
-			<input type="text" name="receiptNo" value="">
+			<input type="text" name="receiptNo" id="receiptNo" value="">
         </td>
 		<%}%>
 		<td align="right" class="lblbold">
@@ -312,7 +312,7 @@ function showDialog_account()
         <td align="left">
         <%if(status != null && !status.equals(Constants.RECEIPT_STATUS_DRAFT)){%>
 		 <div style="display:inline" ><%=currency.getCurrName()%></div>
-		 <input type=hidden name="currency" value="<%=currency.getCurrName()%>">
+		 <input type="hidden" name="currency" id="currency" value="<%=currency.getCurrName()%>">
         <%}else{%>	
           <select name="currency" onchange="javascript:onCurrSelect()">
 		  <%						
@@ -344,7 +344,7 @@ function showDialog_account()
 		<td class="lblLight" width="35%">
 		<%if(status != null && !status.equals(Constants.RECEIPT_STATUS_DRAFT)){%>	
 			<div style="display:inline" id="labelCurrencyRate"><%if(exchangeRate !=null) out.print(exchangeRate);%></div>
-			<input type=hidden name="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate);%>">
+			<input type="hidden" name="exchangeRate" id="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate);%>">
 		<%}else{%>
 			<div style="display:none" id="labelCurrencyRate"></div>	
 			<input type=text name="exchangeRate" value="<%if(exchangeRate !=null) out.print(exchangeRate); %>">	
@@ -361,7 +361,7 @@ function showDialog_account()
 			   if (createUser != null) { cUserId = createUser.getUserLoginId(); cUserName = createUser.getName(); } 
 			   else{ cUserId = ul.getUserLoginId(); cUserName = ul.getName(); }%>
 			<div style="display:inline" id="labelAccount"><%=cUserId+":"+cUserName%>&nbsp;</div>
-			<input type="hidden" name="createUser" value="<%=cUserId%>"><a href="javascript:void(0)" onclick="showDialog_account(); event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>			
+			<input type="hidden" name="createUser" id="createUser" value="<%=cUserId%>"><a href="javascript:void(0)" onclick="showDialog_account(); event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>			
         </td>
 	    <td align="right" class="lblbold">
           <span class="tabletext">Customer:&nbsp;</span>
@@ -374,8 +374,8 @@ function showDialog_account()
 				customerName = customer.getDescription();
 			 }%>
 			<div style="display:inline" id="labelCustomer"><%=customerId+":"+customerName%>&nbsp;</div>
-			<input type="hidden" readonly="true" name="customerName" maxlength="100" value="<%=customerName%>">
-			<input type="hidden" name="customerId" value="<%=customerId%>"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+			<input type="hidden" readonly="true" name="customerName" id="customerName" maxlength="100" value="<%=customerName%>">
+			<input type="hidden" name="customerId" id="customerId" value="<%=customerId%>"><a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>       
       </tr>
 	  
@@ -388,7 +388,7 @@ function showDialog_account()
       
       <tr>
   		<td align="right" class="lblbold"><span class="tabletext">Receipt Status:&nbsp;</span></td>
-        <td align="left"><%=status==null?"Draft":status%><input type="hidden" name="status" value="<%=status%>"></td> 
+        <td align="left"><%=status==null?"Draft":status%><input type="hidden" name="status" id="status" value="<%=status%>"></td> 
 
   		<td align="right" class="lblbold"><span class="tabletext">Receipt Type:&nbsp;</span></td>
 		<%if(!type.equals("") && type!=null){%>

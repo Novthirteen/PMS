@@ -71,7 +71,7 @@ function checkSubmit() {
 </script>
 <form name="newForm" action="EditPaymentInstruction.do" method="post" onsubmit="return checkSubmit();">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="action" value="new">
+	<input type="hidden" name="action" id="action" value="new">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>Payment Instruction Maintenance</CAPTION>
@@ -94,7 +94,7 @@ function checkSubmit() {
 						<td class="lblbold" align=right width="15%">Project:</td>
 						<td class="lblLight" width="35%">
 							<div style="display:inline" id="labelProject">&nbsp;</div>
-							<input type=hidden name="projId" value="">
+							<input type="hidden" name="projId" id="projId" value="">
 							<a href="javascript:void(0)" onclick="showProjctDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
@@ -119,7 +119,7 @@ function checkSubmit() {
 						<td class="lblbold" align=right width="15%">Payment Address:</td>
 						<td class="lblLight" width="35%">
 							<div style="display:inline" id="labelPayAddress">&nbsp;</div>
-							<input type=hidden name="payAddr">
+							<input type="hidden" name="payAddr" id="payAddr">
 							<a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 						</td>

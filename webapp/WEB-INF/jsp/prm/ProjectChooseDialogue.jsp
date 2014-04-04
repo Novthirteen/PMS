@@ -62,10 +62,10 @@ function fnSubmit1()
 %>
 <title>Project Selection</title>
 <form action="ProjectChooseDialogue.do?" name=frm method="POST">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="bid" value="<%if((String)request.getAttribute("bid")!=null) out.print((String)request.getAttribute("bid"));%>">
-<input type="hidden" name="bname" value="<%if((String)request.getAttribute("bname")!=null)out.print((String)request.getAttribute("bname"));%>">
-<input type="hidden" name="bno" value="<%if((String)request.getAttribute("bno")!=null)out.print((String)request.getAttribute("bno"));%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="bid" id="bid" value="<%if((String)request.getAttribute("bid")!=null) out.print((String)request.getAttribute("bid"));%>">
+<input type="hidden" name="bname" id="bname" value="<%if((String)request.getAttribute("bname")!=null)out.print((String)request.getAttribute("bname"));%>">
+<input type="hidden" name="bno" id="bno" value="<%if((String)request.getAttribute("bno")!=null)out.print((String)request.getAttribute("bno"));%>">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall><bean:message key="prm.timesheet.projectSelect.title"/></CAPTION>
 	<tr><td align='center' colspan=5>

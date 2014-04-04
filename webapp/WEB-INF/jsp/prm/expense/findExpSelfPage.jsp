@@ -175,7 +175,7 @@ function fnSubmit1(start) {
 			</logic:iterate> 		
 			<tr>
 				<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = result.size();
 				int l = 0;

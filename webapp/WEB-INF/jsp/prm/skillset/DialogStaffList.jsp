@@ -55,9 +55,9 @@ try{
 	</head>
 	<body>
 		<form name="listForm" action="skillAction.do" method="post">
-			<input type="hidden" name="formAction" value="">
-			<input type="hidden" name="catId" value="<%=(String)request.getAttribute("catId")%>">
-			<input type="hidden" name="levelId" value="<%=(String)request.getAttribute("levelId")%>">
+			<input type="hidden" name="formAction" id="formAction" value="">
+			<input type="hidden" name="catId" id="catId" value="<%=(String)request.getAttribute("catId")%>">
+			<input type="hidden" name="levelId" id="levelId" value="<%=(String)request.getAttribute("levelId")%>">
 			<table width=102% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Staff List</CAPTION>
 				<tr align="center">

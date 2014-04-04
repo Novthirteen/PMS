@@ -86,7 +86,7 @@ if(FormAction == null){
     	FormAction="update";
 %>
 	<form Action="editCustProjectEventType.do" method="post">
-    <input type="hidden" name="FormAction" value="<%=FormAction%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=FormAction%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -97,7 +97,7 @@ if(FormAction == null){
           <span class="tabletext">Code:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=EditDataInfo.getPetId()%>&nbsp;</span><input type="hidden" name="DataId" value="<%=EditDataInfo.getPetId()%>">
+          <span class="tabletext"><%=EditDataInfo.getPetId()%>&nbsp;</span><input type="hidden" name="DataId" id="DataId" value="<%=EditDataInfo.getPetId()%>">
         </td>
         <td align="right">
           <span class="tabletext">Description:&nbsp;</span>
@@ -123,7 +123,7 @@ if(FormAction == null){
 	}else{
 %>
 	<form Action="editCustProjectEventType.do" method="post">
-    <input type="hidden" name="FormAction" value="<%=FormAction%>">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=FormAction%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	

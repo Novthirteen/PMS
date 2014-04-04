@@ -125,7 +125,7 @@
 	<tr>
 		<td>
 			<form action="pas.report.UtilizationByStaffRpt.do" name="iForm" method="post">
-				<input type="hidden" name="formAction">
+				<input type="hidden" name="formAction" id="formAction">
 				<table width=100%>
 					<tr>
 						<td colspan=18 valign="bottom"><hr color=red></hr></td>
@@ -146,7 +146,7 @@
 						</td>
 						<td class="lblbold" width="10%" align="right">Employee ID:&nbsp;</td>
 						<td class="lblLight" width="12%" align="left">
-				        	<input type="text" class="inputBox" name="employeeId" size="10" value="<%=employeeId%>">
+				        	<input type="text" class="inputBox" name="employeeId" id="employeeId" size="10" value="<%=employeeId%>">
 							<a href="javascript:showDialog_account()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 				        </td>
 				        <td class="lblbold"width="10%"  align="right">Department:&nbsp;</td>

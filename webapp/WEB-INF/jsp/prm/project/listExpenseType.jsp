@@ -76,7 +76,7 @@ function fnSubmit1(start) {
 <tr>
 	
 	<td>		
-			<input type=hidden name="offset" value="<%=offset%>">
+			<input type="hidden" name="offset" Id="offset" value="<%=offset%>">
 			Expense Name:
 			<input type="text" name="text" value="<%=text%>">
 	</td>

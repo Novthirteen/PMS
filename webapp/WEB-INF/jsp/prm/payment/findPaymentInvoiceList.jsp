@@ -101,8 +101,8 @@ if ( AOFSECURITY.hasEntityPermission("PAYMENT_INVOICE", "_VIEW", session))
 	<tr>
 		<td>
 			<form name="queryForm" action="findPaymentInvoice.do" method="post">
-				<input type="hidden" name="formAction" value="query">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="formAction" id="formAction" value="query">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=8><hr color=red></hr></td>
@@ -110,15 +110,15 @@ if ( AOFSECURITY.hasEntityPermission("PAYMENT_INVOICE", "_VIEW", session))
 					
 					<tr>
 						<td class="lblbold">Supplier Invoice Code:</td>
-						<td class="lblLight"><input type="text" name="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="invoice" id="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Project:</td>
-						<td class="lblLight"><input type="text" name="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Pay To:</td>
-						<td class="lblLight"><input type="text" name="payAddress" size="15" value="<%=PayAddress != null ? PayAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="payAddress" id="payAddress" size="15" value="<%=PayAddress != null ? PayAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 					</tr>
 					<tr>
 						<td class="lblbold">Payment Code:</td>
-						<td class="lblLight"><input type="text" name="payment" size="15" value="<%=Payment != null ? Payment : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="payment" id="payment" size="15" value="<%=Payment != null ? Payment : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Status:</td>
 						<td class="lblLight">						
 							<select name="status">
@@ -164,15 +164,15 @@ if ( AOFSECURITY.hasEntityPermission("PAYMENT_INVOICE", "_VIEW", session))
 				</table>
 			</form>
 			<form name="editForm" action="editPaymentInvoice.do" method="post">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="invoiceId" value="">
-				<input type="hidden" name="invoiceCode" value="">
-				<input type="hidden" name="payment" value="">
-				<input type="hidden" name="invoice" value="">
-				<input type="hidden" name="project" value="">
-				<input type="hidden" name="payAddress" value="">
-				<input type="hidden" name="status" value="">
-				<input type="hidden" name="department" value="">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="invoiceId" id="invoiceId" value="">
+				<input type="hidden" name="invoiceCode" id="invoiceCode" value="">
+				<input type="hidden" name="payment" id="payment" value="">
+				<input type="hidden" name="invoice" id="invoice" value="">
+				<input type="hidden" name="project" id="project" value="">
+				<input type="hidden" name="payAddress" id="payAddress" value="">
+				<input type="hidden" name="status" id="status" value="">
+				<input type="hidden" name="department" id="department" value="">
 			</form>
 		</td>
 	</tr>

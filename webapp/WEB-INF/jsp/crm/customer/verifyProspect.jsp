@@ -104,9 +104,9 @@ try{
     if(CustParty != null){			
 %>
 	<form action="verifyProspect.do" method="post" name="frm">
-	<input type="hidden" name="pid" value="<%=CustParty.getPartyId()%>">
-    <input type="hidden" name="action" value="">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+	<input type="hidden" name="pid" id = "pid" value="<%=CustParty.getPartyId()%>">
+    <input type="hidden" name="action" id = "action" value="">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -117,7 +117,7 @@ try{
           <span class="tabletext"><bean:message key="System.Party.partyId2"/>:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" value="<%=CustParty.getPartyId()%>">
+          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" id = "PartyId" value="<%=CustParty.getPartyId()%>">
         </td>
 		<td align="right">
           <span class="tabletext">&nbsp;</span>
@@ -143,7 +143,7 @@ try{
           <span class="tabletext"><bean:message key="System.Party.account"/>:&nbsp;</span>
         </td>
 		<td align="left">
-		<input type="hidden" name="AccountId" value="<%=CustParty.getAccount().getAccountId()%>">
+		<input type="hidden" name="AccountId" id = "AccountId" value="<%=CustParty.getAccount().getAccountId()%>">
 		<a href="javascript:void(0)" onclick="editCustomerGroupDialog();event.returnValue=false;">
 		<div style="display:inline" id="name"><%=CustParty.getAccount() == null ? "" : CustParty.getAccount().getDescription()%></div></a>
 		<a href="javascript:void(0)" onclick="showCustomerGroupDialog();event.returnValue=false;">
@@ -229,7 +229,7 @@ try{
 			<%
 				}
 			%>
-	  <input type="hidden" name="role" value="CUSTOMER">
+	  <input type="hidden" name="role" id = "role" value="CUSTOMER">
       <tr><td>&nbsp;</td><td><br></td></tr>  
       <tr>
         <td align="right">

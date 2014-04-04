@@ -49,7 +49,7 @@ function updateGroup(number) {
 }
 </script>
 <Form action="helpdesk.maintainGroup.do" name="create_frm" method="post">
-<input type="hidden" name="formAction">
+<input type="hidden" name="formAction" id = "formAction">
 <TABLE border=0 cellPadding=0 cellSpacing=0 width=100%>
 	<caption class="pgheadsmall">Group Maintainance</caption>
 	<tr>
@@ -77,12 +77,12 @@ function updateGroup(number) {
 </table>
 </form>
 <Form action="helpdesk.maintainGroup.do" name="update_frm" method="post">
-<input type="hidden" name="formAction">
-<input type="hidden" name="gid">
-<input type="hidden" name="supervisor">
-<input type="hidden" name="super_name">
-<input type="hidden" name="desc">
-<input type="hidden" name="isUpdate" value="yes">
+<input type="hidden" name="formAction" id = "formAction">
+<input type="hidden" name="gid" id = "gid">
+<input type="hidden" name="supervisor" id = "supervisor">
+<input type="hidden" name="super_name" id = "super_name">
+<input type="hidden" name="desc" id = "desc">
+<input type="hidden" name="isUpdate" id = "isUpdate" value="yes">
 <table width="100%" cellpadding="2" border="0" cellspacing="2">
 	<tr bgcolor="#e9eee1">
 		<td class="lblbold">Group ID</td>
@@ -98,12 +98,12 @@ function updateGroup(number) {
 	%>
 		<tr bgcolor="#e9eee1">
 			<td><a href="#" onclick="updateGroup(<%=seq%>);"><%=cg.getId()%></a></td>
-			<input type="hidden" name="<%="gid"+seq%>" value="<%=cg.getId()%>">
+			<input type="hidden" name="<%="gid"+seq%>" id = "<%="gid"+seq%>" value="<%=cg.getId()%>">
 			<td><%=cg.getSupvisor().getName()%></td>
-			<input type="hidden" name="<%="supervisor"+seq%>" value="<%=cg.getSupvisor().getUserLoginId()%>">
-			<input type="hidden" name="<%="super_name"+seq%>" value="<%=cg.getSupvisor().getName()%>">
+			<input type="hidden" name="<%="supervisor"+seq%>" id = "<%="supervisor"+seq%>" value="<%=cg.getSupvisor().getUserLoginId()%>">
+			<input type="hidden" name="<%="super_name"+seq%>" id = "<%="super_name"+seq%>" value="<%=cg.getSupvisor().getName()%>">
 			<td><%=cg.getDescription()%></td>
-			<input type="hidden" name="<%="desc"+seq%>" value="<%=cg.getDescription()%>">
+			<input type="hidden" name="<%="desc"+seq%>" id = "<%="desc"+seq%>" value="<%=cg.getDescription()%>">
 		</tr>
 	<%seq++;}}%>
 </table>

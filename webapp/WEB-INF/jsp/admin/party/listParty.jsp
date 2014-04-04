@@ -66,7 +66,7 @@ function fnSubmit1(start) {
 </tr>
 <tr>
 <form name="frm" action="listParty.do" method="post">
-		<input type=hidden name="offset" value="<%=offset%>">
+		<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 <table>
 <tr>
 	<td><bean:message key="System.Keyword.search"/> <bean:message key="System.Party.object1"/>:</td>
@@ -153,7 +153,7 @@ function fnSubmit1(start) {
         </tr>
 </table>
 <form action="editParty.do" name="QueryList" method="post">
-	<input type="hidden" name="PartyId" value="">
+	<input type="hidden" name="PartyId" id="PartyId" value="">
 </form>
 <%
 request.removeAttribute("custPartys");

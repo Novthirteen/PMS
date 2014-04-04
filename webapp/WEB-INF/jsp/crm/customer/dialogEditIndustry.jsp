@@ -83,11 +83,11 @@ if(flag == null)flag = "";
     			<TD width='100%'>
 					<table>
 						<form Action="editIndustry.do" method="post">
-    						<input type="hidden" name="FormAction" value="<%=FormAction%>">
-   							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
-   							<input type="hidden" name="openType" value="dialogView">
-							<input type="hidden" name="firstVisit" value="false">
-							<input type="hidden" name="flag" value="<%=flag%>">
+    						<input type="hidden" name="FormAction" id="FormAction" value="<%=FormAction%>">
+   							<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+   							<input type="hidden" name="openType" id="openType" value="dialogView">
+							<input type="hidden" name="firstVisit" id="firstVisit" value="false">
+							<input type="hidden" name="flag" id="flag" value="<%=flag%>">
 							<table width='100%' border='0' cellpadding='0' cellspacing='2'>
 						      	<tr>
 						      		<td>&nbsp;</td>

@@ -78,7 +78,7 @@ try{
 	<form name="queryForm" action="pas.report.PresaleUpdateRpt.do" method="post">
 	<tr>
 		<td>
-				<input type="hidden" name="formAction" value="query">
+				<input type="hidden" name="formAction" id="formAction" value="query">
 				<TABLE width="100%">
 					
 					<tr>
@@ -97,10 +97,10 @@ try{
 						if(ul.getParty().getIsSales().equalsIgnoreCase("Y")){
 						%>				
 							<td class="lblbold" align="left" colspan="1">Department By Salesperson:</td>
-							<input type="hidden" name="viewType" value="sales">
+							<input type="hidden" name="viewType" id="viewType" value="sales">
 						<%}else{%>
 							<td class="lblbold" align="center" colspan="1">Department By Bid:</td>
-							<input type="hidden" name="viewType" value="bid">
+							<input type="hidden" name="viewType" id="viewType" value="bid">
 						<%}%>
         				
 						<td class="lblLight">

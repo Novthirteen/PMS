@@ -64,7 +64,7 @@ function showProjectDialog()
 
 <FORM name="frm1" action="editProjType.do" method=post>
 <BR><BR>
-<input type="hidden" name="formaction" value="new">
+<input type="hidden" name="formaction" id="formaction" value="new">
 <TABLE width=100% >
 	<CAPTION class=pgheadsmall>Project Service Type
 	</CAPTION>
@@ -74,25 +74,25 @@ function showProjectDialog()
 				<tr>
 					<TD class=lblbold align="center">Project:</TD>
 					<td class="lblbold">
-					<input type="hidden" name="proj_desc">
+					<input type="hidden" name="proj_desc" id="proj_desc">
 						<div style="display:inline" id="labelProject" size="50">&nbsp;</div>
-					<input type="hidden" name="proj_id"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+					<input type="hidden" name="proj_id" id="proj_id"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 					</td>
 				</tr>
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 					<TD class=lblbold align="center">Customer:</TD>
 					<td class="lblbold" align='left' >
-					<input type="hidden" name="cust_id">
-					<input type="hidden" name="cust_desc">
+					<input type="hidden" name="cust_id" id="cust_id">
+					<input type="hidden" name="cust_desc" id="cust_desc">
 						<div style="display:inline" id="labelCustomer" size="50">&nbsp;</div>
 					</td>
 				</tr>
 				<tr>
 					<TD class=lblbold align="center">Department:</TD>
 					<td class="lblbold" align='left' >
-					<input type="hidden" name="dep_id">
-					<input type="hidden" name="dep_name">
+					<input type="hidden" name="dep_id" id="dep_id">
+					<input type="hidden" name="dep_name" id="dep_name">
 						<div style="display:inline" id="labelDepartment" size="50">&nbsp;</div>
 					</td>
 				</tr>

@@ -125,7 +125,7 @@ net.sf.hibernate.Session hs = Hibernate2Session.currentSession();
 					</TD>
 					<TD class=lblbold align=center >
 						<INPUT class=button TYPE="submit" name=btnSave value='Compute New BackLog'  onclick="javascript:set()">
-						<input type="hidden" name="formaction"  value="draft">
+						<input type="hidden" name="formaction" id="formaction"  value="draft">
 					</TD>					
 				</tr>
 			</TABLE>

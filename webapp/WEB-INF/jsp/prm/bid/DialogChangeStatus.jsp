@@ -33,7 +33,7 @@
 	</HEAD>
 	<BODY onunload="loadParam()">
 		<form name="iForm" action="" method="post">
-			<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+			<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 			<table width=102% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Change Bid Status</CAPTION>
 				<tr>

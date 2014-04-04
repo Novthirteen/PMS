@@ -439,8 +439,8 @@ String status = request.getParameter("status");
 			style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 		</IFRAME>
 		<html:form action="/helpdesk.findCall.do" focus="ticketNo" >
-			<input type="hidden" name="allday">
-			<input type="hidden" name="issue">
+			<input type="hidden" name="allday" id = "allday">
+			<input type="hidden" name="issue" id = "issue">
 			<html:hidden property="pageSize"/>
 			<html:hidden property="order"/>
 			<html:hidden property="descend"/>

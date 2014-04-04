@@ -48,9 +48,9 @@ else{
 <br>
 <table width=100% align=center Frame=box rules=none bordercolordark=black bordercolorlight=white bgcolor=white>
 <CAPTION align="center" class=pgheadsmall>  Add New Node </CAPTION>
-<input type="hidden" name="masterid" value="<%=master.getId()%>">
-<input type="hidden" name="parentranking" value="<%if(parentranking!=null)out.print(parentranking);else out.print("0");%>">
-<input type="hidden" name="formaction" value="add">
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>">
+<input type="hidden" name="parentranking" id="parentranking" value="<%if(parentranking!=null)out.print(parentranking);else out.print("0");%>">
+<input type="hidden" name="formaction" id="formaction" value="add">
 
 	<tr bgcolor="#e9eee9">
 	<td class="lblbold" align="center">Parent Node:</td>

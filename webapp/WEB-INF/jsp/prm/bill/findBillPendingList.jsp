@@ -139,9 +139,9 @@ function showDownPayDialog(projectId) {
 </script>
 
 <form name="frm" action="findBillPendingList.do" method="post">
-<input type="hidden" name="FormAction">
-<input type="hidden" name="recordPerPage" value="<%=recordPerPage%>">
-<input type="hidden" name="offSet" value="0">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="recordPerPage" id="recordPerPage" value="<%=recordPerPage%>">
+<input type="hidden" name="offSet" id="offSet" value="0">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <CAPTION align=center class=pgheadsmall>Billing Pending List </CAPTION>
 <tr>

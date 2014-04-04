@@ -93,7 +93,7 @@ try{
 		<tr>
 			<td align="right"  class="lblbold" width="25%">
 				<span class="tabletext">Customer Name:&nbsp;</span>
-				<input type="hidden" name="prospectCompanyId" value="<%=prospectCompany.getPartyId()%>">
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="<%=prospectCompany.getPartyId()%>">
 			</td>
 			<td align="left" width=45% colspan=2>
 				<a href="javascript:void(0)" onclick="showProspectDialog1();event.returnValue=false;"><div style="display:inline" id="name"><%=prospectCompany.getDescription() == null ? "" : prospectCompany.getDescription()%></div></a>

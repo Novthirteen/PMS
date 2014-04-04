@@ -87,9 +87,9 @@ DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 	if (!"dialogView".equals(action) && !pb.getStatus().equals("Closed")) {
 %>
 <form name="createInvoiceForm" id="createInvoiceForm" action="editInvoice.do" method="post">
-	<input type="hidden" name="formAction" value="view">
-	<input type="hidden" name="process" value="maintenance">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="formAction" id="formAction" value="view">
+	<input type="hidden" name="process" id="process" value="maintenance">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
 </form>
 <%
 	}
@@ -98,27 +98,27 @@ DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 	if (canUpdate) {
 %>
 <form name="delForm" action="EditBillingInstruction.do" method="post">
-	<input type="hidden" name="action" value="delete">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
-	<input type="hidden" name="billCode" value="<%=billCode%>">
-	<input type="hidden" name="project" value="<%=project%>">
-	<input type="hidden" name="customer" value="<%=customer%>">
-	<input type="hidden" name="department" value="<%=department%>">
-	<input type="hidden" name="status" value="<%=status%>">
+	<input type="hidden" name="action" id="action" value="delete">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="billCode" id="billCode" value="<%=billCode%>">
+	<input type="hidden" name="project" id="project" value="<%=project%>">
+	<input type="hidden" name="customer" id="customer" value="<%=customer%>">
+	<input type="hidden" name="department" id="department" value="<%=department%>">
+	<input type="hidden" name="status" id="status" value="<%=status%>">
 </form>
 <%	
 	}
 %>
 <form name="rptForm" action="pas.report.Billingprint.do" method="post">
-	<input type="hidden" name="action" value="ExportToExcel">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
-	<input type="hidden" name="category" value="<%=category%>">
+	<input type="hidden" name="action" id="action" value="ExportToExcel">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="category" id="category" value="<%=category%>">
 </form>
 <form name="editForm" action="EditBillingInstruction.do" method="post">
 	<IFRAME frameBorder=0 id=CalFrame marginHeight=0 marginWidth=0 noResize scrolling=no src="includes/date/calendar.htm" style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100"></IFRAME>
-	<input type="hidden" name="action" value="updateHead">
-	<input type="hidden" name="category" value="<%=category%>">
-	<input type="hidden" name="billId" value="<%=pb.getId()%>">
+	<input type="hidden" name="action" id="action" value="updateHead">
+	<input type="hidden" name="category" id="category" value="<%=category%>">
+	<input type="hidden" name="billId" id="billId" value="<%=pb.getId()%>">
 	
 	<table width=100% cellpadding="1" border="0" cellspacing="1">
 		<CAPTION align=center class=pgheadsmall>
@@ -193,7 +193,7 @@ DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
 							<%
 								if (canUpdate) {
 							%>
-							<input type=hidden name="billAddr" value="<%=pb.getBillAddress().getPartyId()%>">
+							<input type="hidden" name="billAddr" id="billAddr" value="<%=pb.getBillAddress().getPartyId()%>">
 							<a href="javascript:void(0)" onclick="showCustomerDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 							<%

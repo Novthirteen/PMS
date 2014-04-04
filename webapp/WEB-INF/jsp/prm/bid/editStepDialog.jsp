@@ -178,12 +178,12 @@
 
 	<BODY>
 <form name="editForm" action="EditStep.do" method="post">
-	<input type="hidden" name="formAction" value="edit">
-	<input type="hidden" name="id" value="<%= step != null ? String.valueOf(step.getId()) : ""%>">
-	<input type="hidden" name="activityId" value="">
-	<input type="hidden" name="stepGroupId" value="<%=stepGroupId%>">
-	<input type="hidden" name="stepOption" value="<%=stepOption%>">
-	<input type="hidden" name="stepCreateFlag">
+	<input type="hidden" name="formAction" id="formAction" value="edit">
+	<input type="hidden" name="id" id="id" value="<%= step != null ? String.valueOf(step.getId()) : ""%>">
+	<input type="hidden" name="activityId" id="activityId" value="">
+	<input type="hidden" name="stepGroupId" id="stepGroupId" value="<%=stepGroupId%>">
+	<input type="hidden" name="stepOption" id="stepOption" value="<%=stepOption%>">
+	<input type="hidden" name="stepCreateFlag" id="stepCreateFlag">
 	<table border=0 width='100%' cellspacing='0' cellpadding='0' align="center">
 		<CAPTION align=center class=pgheadsmall>Sales Step Maintenance</CAPTION>
 		<tr>

@@ -74,7 +74,7 @@ if (AOFSECURITY.hasEntityPermission("PO_PROFILE", "_VIEW", session)) {
 
 	<BODY>
 		<form name="frm" action="findPurchaseOrder.do" method="post">
-			<input type="hidden" name="formAction" value="dialogView">
+			<input type="hidden" name="formAction" id="formAction" value="dialogView">
 			<table width=100% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>PO Profile List</CAPTION>
 				<tr>
@@ -174,7 +174,7 @@ if (AOFSECURITY.hasEntityPermission("PO_PROFILE", "_VIEW", session)) {
 		  					<tr bgcolor="#e9eee9">  
 		  						<td align="center">
 			  						<input type="radio" class="radiostyle" name="contract" value="<%=count++%>">
-			  						<input type="hidden" name="contractId" value="<bean:write name="p" property="id"/>">			  						
+			  						<input type="hidden" name="contractId" id="contractId" value="<bean:write name="p" property="id"/>">			  						
 			  					</td>
 			  					
 			  					<td align="left">
@@ -199,7 +199,7 @@ if (AOFSECURITY.hasEntityPermission("PO_PROFILE", "_VIEW", session)) {
 						    		<input type="button" class="button" name="select" value="Select" onclick="doSelect();">
 						    	</td>
 								<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-									<input type=hidden name="offset" value="<%=offset%>">
+									<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 									<%
 										int RecordSize = result.size();
 										int l = 0;

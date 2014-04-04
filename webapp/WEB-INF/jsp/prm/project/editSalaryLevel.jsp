@@ -63,8 +63,8 @@ function FnUpdate() {
   <TR>
     <TD width='100%'>
 	<form Action="editSalaryLevel.do" method="post" name="EditForm">
-    <input type="hidden" name="formAction" >
-    <input type="hidden" name="id" value="<%=sl != null && sl.getId() != null ? sl.getId().toString() : "" %>">
+    <input type="hidden" name="formAction" id="formAction" >
+    <input type="hidden" name="id" id="id" value="<%=sl != null && sl.getId() != null ? sl.getId().toString() : "" %>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	

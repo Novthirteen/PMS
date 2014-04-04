@@ -284,8 +284,8 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 	<BODY>
 		<form name="iForm" action="editProjBOMPrecal.do" method="post">
 		
-			<input type="hidden" name="formAction" value="view">
-			<input type="hidden" name="masterId" value="<%=masterId%>">
+			<input type="hidden" name="formAction" id="formAction" value="view">
+			<input type="hidden" name="masterId" id="masterId" value="<%=masterId%>">
 			
 			<table border="0" cellpadding="4" cellspacing="0" align ="center" width="100%">
 				<CAPTION class=pgheadsmall>Project BOM Pre-Calculation</CAPTION>
@@ -301,7 +301,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 		            for(int i = 0; i < stList.size(); i++){
 		            	ProjPlanType tmpType = (ProjPlanType)stList.get(i);
 		            %>
-		            <input type="hidden" name="stId" value="<%=tmpType.getId()%>">
+		            <input type="hidden" name="stId" id="stId" value="<%=tmpType.getId()%>">
 		            <td align="center" class="lblbold" bgcolor="#4682b4" width="10%"><%=tmpType.getDescription()%></td>
 		          	<%}%>
 		          	<td align="center" class="lblbold" bgcolor="#4682b4" width="10%">Total</td>
@@ -414,7 +414,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 		            	ProjPlanType type = (ProjPlanType)stList.get(i);
 		            %>
 		            <td align="center" class="lblLight" bgcolor="#e9eee9">
-		            	<input type="text"  size="12" name="nhrRevenue" id="nhrRev<%=i%>" col="<%=i%>" value="<%=numFormater.format(type.getNhrRevenue())%>" oldvalue="<%=numFormater.format(type.getNhrRevenue())%>" style="text-align:right;background-color:#ffffff" onchange="fnChange(this)">
+		            	<input type="text"  size="12" name="nhrRev<%=i%>" id="nhrRev<%=i%>" col="<%=i%>" value="<%=numFormater.format(type.getNhrRevenue())%>" oldvalue="<%=numFormater.format(type.getNhrRevenue())%>" style="text-align:right;background-color:#ffffff" onchange="fnChange(this)">
 		            </td>
 		          	<%
 		          	}
@@ -471,7 +471,7 @@ if (AOFSECURITY.hasEntityPermission("PMS", "_BOM_MAINTENANCE", session)) {
 		            	ProjPlanType type = (ProjPlanType)stList.get(i);
 		            %>
 		            <td align="center" class="lblLight" bgcolor="#b0c4de">
-		            	<input type="text"  size="12" name="csc" id="csc<%=i%>" col="<%=i%>" value="<%=numFormater.format(type.getCodingSubContr())%>" oldvalue="<%=numFormater.format(type.getCodingSubContr())%>" style="text-align:right;background-color:#ffffff" onChange="fnChange(this)">
+		            	<input type="text"  size="12" name="csc<%=i%>" id="csc<%=i%>" col="<%=i%>" value="<%=numFormater.format(type.getCodingSubContr())%>" oldvalue="<%=numFormater.format(type.getCodingSubContr())%>" style="text-align:right;background-color:#ffffff" onChange="fnChange(this)">
 		            </td>
 		          	<%
 		          	}

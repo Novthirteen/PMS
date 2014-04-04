@@ -86,10 +86,10 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="queryForm" action="FindBillingInstruction.do" method="post">
-				<input type="hidden" name="action" value="query">
-				<input type="hidden" name="billId" value="">
-				<input type="hidden" name="offSet" value="0">
-				<input type="hidden" name="recordPerPage" value="<%=recordPerPage%>">
+				<input type="hidden" name="action" id="action" value="query">
+				<input type="hidden" name="billId" id="billId" value="">
+				<input type="hidden" name="offSet" id="offSet" value="0">
+				<input type="hidden" name="recordPerPage" id="recordPerPage" value="<%=recordPerPage%>">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=12><hr color=red></hr></td>
@@ -153,14 +153,14 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_BILLING", "_VIEW", session)) {
 				</table>
 			</form>
 			<form name="editForm" action="EditBillingInstruction.do" method="post">
-				<input type="hidden" name="action" value="view">
-				<input type="hidden" name="billId" value="">
-				<input type="hidden" name="billCode" value="">
-				<input type="hidden" name="project" value="">
-				<input type="hidden" name="customer" value="">
-				<input type="hidden" name="billTo" value="">
-				<input type="hidden" name="department" value="">
-				<input type="hidden" name="status" value="">
+				<input type="hidden" name="action" id="action" value="view">
+				<input type="hidden" name="billId" id="billId" value="">
+				<input type="hidden" name="billCode" id="billCode" value="">
+				<input type="hidden" name="project" id="project" value="">
+				<input type="hidden" name="customer" id="customer" value="">
+				<input type="hidden" name="billTo" id="billTo" value="">
+				<input type="hidden" name="department" id="department" value="">
+				<input type="hidden" name="status" id="status" value="">
 			</form>
 		</td>
 	</tr>

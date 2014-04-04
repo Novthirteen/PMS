@@ -177,8 +177,8 @@ if (AOFSECURITY.hasEntityPermission("EXPENSE_STATISTICS_RPT", "_VIEW", session))
 
 <form name="iForm" action="pas.report.ExpenseDetailRpt.do" method="post">
 	
-	<input type="hidden" name="formAction">
-	<input type="hidden" name="month">
+	<input type="hidden" name="formAction" id="formAction">
+	<input type="hidden" name="month" id="month">
 	
 	<table width=1000>
 		<caption class="pgheadsmall">Expense Detail Analysis Report</caption> 
@@ -470,7 +470,7 @@ if (AOFSECURITY.hasEntityPermission("EXPENSE_STATISTICS_RPT", "_VIEW", session))
   								<%
   								if(detail == null || detail.getRowCount() <= 0){
   								%>
-  								<input type=hidden name="offSet" value="0">
+  								<input type="hidden" name="offSet" Id="offset" value="0">
   								<tr>
 			  						<td colspan='21' class=lblerr align='center'>No Record Found.</td>
 			  					</tr>
@@ -551,7 +551,7 @@ if (AOFSECURITY.hasEntityPermission("EXPENSE_STATISTICS_RPT", "_VIEW", session))
 								%>
 								<tr>
 									<td width="1000" colspan="14" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-										<input type=hidden name="offSet" value="<%=offSet%>">
+										<input type="hidden" name="offSet" Id="offset" value="<%=offSet%>">
 										<%
 										if (detail != null && detail.getRowCount() > 0) {
 											int recordSize = detail.getRowCount();

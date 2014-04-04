@@ -93,7 +93,7 @@ function showProjctDialog() {
 <tr>
 	<td>
 		<Form action="pas.report.CAFSummaryRpt.do" name="frm" method="post">
-		<input type="hidden" name="FormAction">
+		<input type="hidden" name="FormAction" id="FormAction">
 		<table width=100%>
 			<tr>
 				<td colspan=6 valign="bottom"><hr color=red></hr></td>
@@ -107,7 +107,7 @@ function showProjctDialog() {
 				<td width ="20%"></td>
 				<td class="lblbold">Project:</td>
 				<td class="lblLight" width="35%">
-					<input type=hidden name="textname" value="<%=textname%>">
+					<input type="hidden" name="textname" Id="textname" value="<%=textname%>">
 					<input type="text" name="textcode" size="25" value="<%=textcode%>" style="TEXT-ALIGN: right" class="lbllgiht">
 					
 					<a href="javascript:void(0)" onclick="showProjctDialog();event.returnValue=false;">

@@ -78,14 +78,14 @@ function ExportExcel() {
 </script>
 
 <form name="rptForm" action="pas.report.Presaleprint.do" method="post">
-	<input type="hidden" name="action" value="ExportToExcel">
-	<input type="hidden" name="requestorid" value="<%=requestorid%>">
-	<input type="hidden" name="perspectiveid" value="<%=perspectiveid%>">
-	<input type="hidden" name="textdep" value="<%=textdep%>">
+	<input type="hidden" name="action" id="action" value="ExportToExcel">
+	<input type="hidden" name="requestorid" id="requestorid" value="<%=requestorid%>">
+	<input type="hidden" name="perspectiveid" id="perspectiveid" value="<%=perspectiveid%>">
+	<input type="hidden" name="textdep" id="textdep" value="<%=textdep%>">
 </form>
 
 <form name="frm" action="ListPreSaleProject.do" method="post">
-<input type="hidden" name="FormAction">
+<input type="hidden" name="FormAction" id="FormAction">
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 <CAPTION align=center class=pgheadsmall>Pre-Sale Activity List</CAPTION>
 	<tr>
@@ -274,10 +274,10 @@ function ExportExcel() {
 					</td>
 				</tr>
 				</logic:iterate> 	
-				<input type="hidden" name="i" value="<%=mstCount%>">	
+				<input type="hidden" name="i" id="i" value="<%=mstCount%>">	
 				<tr>
 					<td width="100%" colspan="12" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-						<input type=hidden name="offset" value="<%=offset%>">
+						<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 						<%
 						int RecordSize = result.size();
 						int l = 0;

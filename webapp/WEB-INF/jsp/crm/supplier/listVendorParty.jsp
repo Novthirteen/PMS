@@ -127,7 +127,7 @@ function fnSubmit1(start) {
 			
 			<tr>
 				<td width="100%" colspan="5" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-				<input type=hidden name="offset" value="<%=offset%>">
+				<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 				<%
 				int RecordSize = 0;
 				if(result != null)

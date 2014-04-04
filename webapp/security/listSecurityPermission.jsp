@@ -49,7 +49,6 @@ if (AOFSECURITY.hasEntityPermission("SECURITY_PERMISSION", "_VIEW", session)) {
               <tr>
                 <td width="100%">
                 <form action="editSecurityPermission.do" method="post">
-                	<input type="hidden" value="">
                     <table border="0" width="100%">
                       <tr> 
                         <td width="100%" colspan="4"> 

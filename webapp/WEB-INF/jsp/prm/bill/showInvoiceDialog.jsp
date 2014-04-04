@@ -121,10 +121,10 @@ if (AOFSECURITY.hasEntityPermission("PROJ_INVOICE", "_VIEW", session)) {
 				<CAPTION align=center class=pgheadsmall>Invoice List</CAPTION>
 				<tr>
 					<td>
-						<input type="hidden" name="formAction" value="dialogView">
-						<input type="hidden" name="emsId" value="<%=emsId%>">
-						<input type="hidden" name="status" value="<%=Constants.INVOICE_STATUS_UNDELIVERED%>">
-						<input type="hidden" name="offSet" value="0">
+						<input type="hidden" name="formAction" id="formAction" value="dialogView">
+						<input type="hidden" name="emsId" id="emsId" value="<%=emsId%>">
+						<input type="hidden" name="status" id="status" value="<%=Constants.INVOICE_STATUS_UNDELIVERED%>">
+						<input type="hidden" name="offSet" id="offSet" value="0">
 						<TABLE width="100%">
 							<tr>
 								<td colspan=10><hr color=red></hr></td>
@@ -132,11 +132,11 @@ if (AOFSECURITY.hasEntityPermission("PROJ_INVOICE", "_VIEW", session)) {
 							
 							<tr>
 								<td class="lblbold">Invoice Code:</td>
-								<td class="lblLight"><input type="text" name="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="invoice" id="invoice" size="15" value="<%=Invoice != null ? Invoice : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Project:</td>
-								<td class="lblLight"><input type="text" name="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=Project != null ? Project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 								<td class="lblbold">Bill Address:</td>
-								<td class="lblLight"><input type="text" name="billAddress" size="15" value="<%=BillAddress != null ? BillAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+								<td class="lblLight"><input type="text" name="billAddress" id="billAddress" size="15" value="<%=BillAddress != null ? BillAddress : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 							</tr>
 							<tr>
 								<td class="lblbold">Bill Code:</td>

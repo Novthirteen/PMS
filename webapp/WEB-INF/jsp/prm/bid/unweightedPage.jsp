@@ -193,7 +193,7 @@ Num_formater2.setMinimumFractionDigits(2);
 List unweightedList=(List)request.getAttribute("BidUnweightedValueList");
 %>
 <form name="EditForm" action="editBidMaster.do" method="post">
-<input type="hidden"  name="yearAdd" value="">
+<input type="hidden"  name="yearAdd" id="yearAdd" value="">
 <table border=0 width='100%' cellspacing='0' cellpadding='1'>
 	<tr>
     	<td width='100%'>
@@ -224,10 +224,10 @@ List unweightedList=(List)request.getAttribute("BidUnweightedValueList");
 				%>
   				<tr>
 					<td align="center">
-  						<input type="text" class="inputBox" style="text-align:center"  style="border:0px" readonly name="year" value="<%=year%>" size="20">
+  						<input type="text" class="inputBox" style="text-align:center"  style="border:0px" readonly name="year" id="year" value="<%=year%>" size="20">
   					</td>
   					<td align="center">
-  						<input type="text" class="inputBox" style="text-align:right" style="border:0px" readonly name="unweightedValue" value="<%=Num_formater.format(value)%>" size="20">
+  						<input type="text" class="inputBox" style="text-align:right" style="border:0px" readonly name="unweightedValue" id="unweightedValue" value="<%=Num_formater.format(value)%>" size="20">
   					</td>
   					
   					<td align="center" colspan=2>
@@ -244,8 +244,8 @@ List unweightedList=(List)request.getAttribute("BidUnweightedValueList");
   				%>
   				<tr><td colspan=5 valign="bottom"><hr color="#B5D7D6"></hr></td></tr>
   				<tr>
-					<td align="center"><input type="text" class="inputBox" name="yearNew" value="" size="20"></td>
-  					<td align="center"><input type="text" class="inputBox" name="unweightedValueNew" value="" size="20" style="text-align:right"/></td>
+					<td align="center"><input type="text" class="inputBox" name="yearNew" id="yearNew" value="" size="20"></td>
+  					<td align="center"><input type="text" class="inputBox" name="unweightedValueNew" id="unweightedValueNew" value="" size="20" style="text-align:right"/></td>
   					<td align="center"><a href="javascript:addUnweightedValueList()">Add</a></td>
   				</tr>
   				<tr><td colspan=3 align="left"><input type="button" class="button" name="" value="ReCalculate" onclick="javascrip:recal()"></td>

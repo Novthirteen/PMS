@@ -78,12 +78,12 @@ Num_formater.setMinimumFractionDigits(0);
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
 
-<input type="hidden" name="option" value="<%=option%>">
-<input type="hidden" name="projId" value="<%=projId%>">
+<input type="hidden" name="option" id="option" value="<%=option%>">
+<input type="hidden" name="projId" id="projId" value="<%=projId%>">
 <table width=100% align=center>
 	<CAPTION align=center class=pgheadsmall>Service Delivery Detail</CAPTION>
 </table>
-<input type="hidden" name='stlength' value="<%=servicetype.size()%>">
+<input type="hidden" name="stlength" id="stlength" value="<%=servicetype.size()%>">
 
 <table width=100% align=center Frame=box rules=none border=1 bordercolordark=black bordercolorlight=white bgcolor=white>
 <% if(mark){%>
@@ -93,7 +93,7 @@ Num_formater.setMinimumFractionDigits(0);
 <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
 </TR>
 <tr >
-<input type="hidden" name='materialid' value='<%=material.getId()%>'>
+<input type="hidden" name="materialid" id="materialid" value='<%=material.getId()%>'>
 <td align="left" width='10' class="lblbold">Acceptance Date:</td>
 <td colspan=2><input type="text" name='modifydate' class="inputBox" size='10' value='<%=formater.format(material.getCreateDate())%>'>
           <A href="javascript:ShowCalendar(document.selForm.dimg6,document.selForm.modifydate,null,0,530)" 
@@ -154,14 +154,14 @@ Num_formater.setMinimumFractionDigits(0);
 		double price = tr.getPrice().doubleValue();
 %>
 		<tr>
-		<input type="hidden" name='record'>
-		<input type="hidden" name='typeid' value='<%=typeid%>' >
-		<input type="hidden" name='trid' value='<%=trid%>'>
-		<td ><input type="text" size='30' name = 'type'     value='<%=type%>'   readonly='true' style='border:0px;background-color:#e9eee9'></td>
-		<td ><input type="text" size='30' name = 'price'    value='<%=nf.format(price)%>'  readonly='true' style='border:0px;background-color:#e9eee9;text-align:right'></td>
-		<td ><input type="text" size='30' name = 'quantity' oldvalue='<%=nf.format(quantity)%>' value='<%=nf.format(quantity)%>' onchange="javascript:changeprice('<%=i%>')"  <%=read%> style='text-align:right'></td>
-		<td ><input type="text" size='30' name = 'subtotal' value='<%=nf.format(subtotal)%>' readonly='true' style='border:1px;background-color:#e9eee9;text-align:right'></td>
-		<td ><input type="text" size='30' name = 'desc'     value='<%=desc%>' <%=read%> ></td>
+		<input type="hidden" name="record" id="record">
+		<input type="hidden" name="typeid" id="typeid" value="<%=typeid%>" >
+		<input type="hidden" name="trid" id="trid" value="<%=trid%>">
+		<td ><input type="text" size="30" name = "type" id="type"      value="<%=type%>"   readonly="true" style="border:0px;background-color:#e9eee9"></td>
+		<td ><input type="text" size="30" name = "price" id="price"     value="<%=nf.format(price)%>"  readonly="true" style="border:0px;background-color:#e9eee9;text-align:right"></td>
+		<td ><input type="text" size="30" name = "quantity" id="quantity"  oldvalue="<%=nf.format(quantity)%>" value="<%=nf.format(quantity)%>" onchange="javascript:changeprice("<%=i%>")"  <%=read%> style="text-align:right"></td>
+		<td ><input type="text" size="30" name = "subtotal" id="subtotal"  value="<%=nf.format(subtotal)%>" readonly="true" style="border:1px;background-color:#e9eee9;text-align:right"></td>
+		<td ><input type="text" size="30" name = "desc" id="desc"      value="<%=desc%>" <%=read%> ></td>
 		</tr>
 <%}}else{%>
 <%
@@ -175,13 +175,13 @@ Num_formater.setMinimumFractionDigits(0);
 				String desc = st.getDescription();
 %>
 		<tr>
-		<input type="hidden" name='record'>
-		<input type="hidden" name='typeid' value='<%=stid%>' >
-		<td width='10'><input type="text"  size='30' name = 'type'     value='<%=type%>'   readonly='true' style='border:0px;background-color:#e9eee9'></td>
-		<td width='10'><input type="text"  size='30' name = 'price'    value='<%=nf.format(price)%>'  readonly='true' style='border:0px;background-color:#e9eee9;text-align:right'></td>
-		<td width='10'><input type="text"  size='30' name = 'quantity' oldvalue='0' value='0' onchange="javascript:changeprice('<%=i%>')"   style='text-align:right'></td>
-		<td width='10'><input type="text"  size='30' name = 'subtotal' value='0' readonly='true' style='border:0px;background-color:#e9eee9;text-align:right'></td>
-		<td width='10'><input type="text"  size='30' name = 'desc'     value=''  ></td>
+		<input type="hidden" name="record" id="record">
+		<input type="hidden" name="typeid" id="typeid" value="<%=stid%>" >
+		<td width="10"><input type="text"  size="30" name = "type" id="type" value="<%=type%>"   readonly="true" style="border:0px;background-color:#e9eee9"></td>
+		<td width="10"><input type="text"  size="30" name = "price" id="price" value="<%=nf.format(price)%>"  readonly="true" style="border:0px;background-color:#e9eee9;text-align:right"></td>
+		<td width="10"><input type="text"  size="30" name = "quantity" id="quantity" oldvalue="0" value="0" onchange="javascript:changeprice("<%=i%>")"   style="text-align:right"></td>
+		<td width="10"><input type="text"  size="30" name = "subtotal" id="subtotal" value="0" readonly="true" style="border:0px;background-color:#e9eee9;text-align:right"></td>
+		<td width="10"><input type="text"  size="30" name = "desc" id="desc" value=""  ></td>
 		</tr>
 <%			}}
 %>
@@ -202,17 +202,17 @@ Num_formater.setMinimumFractionDigits(0);
 			<tr>
 				<td><input type=button  class=button value="Save & Update" onclick="javascript:fnClose()">&nbsp;&nbsp;</td>
 	    	<%if(!flag){%>
-				<input type="hidden" name="formAction" value="update">
+				<input type="hidden" name="formAction" id="formAction" value="update">
 			<%}%>
 				<td><input type=button  class=button value="Export Excel" onclick="exportExcel()"></td>
-				<input type="hidden" name="excelAction" value="exportNo">
-				<input type="hidden" name="projectId" value="<%=projId%>">
-				<input type="hidden" name="materialIndex" value="<%=material.getIndex()%>">
+				<input type="hidden" name="excelAction" id="excelAction" value="exportNo">
+				<input type="hidden" name="projectId" id="projectId" value="<%=projId%>">
+				<input type="hidden" name="materialIndex" id="materialIndex" value="<%=material.getIndex()%>">
 			</tr>
 		<%}else{%>
 			<tr>
 	    	<td><input type=button  class=button value="Save & Close" onclick="javascript:fnClose()">&nbsp;&nbsp;</td>
-			<input type="hidden" name="formAction" value="insert">
+			<input type="hidden" name="formAction" id="formAction" value="insert">
 			</tr>
 		<%}%>
 		</td>

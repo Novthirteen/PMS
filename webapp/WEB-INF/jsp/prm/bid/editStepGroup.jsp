@@ -74,9 +74,9 @@
 	}
 </script>
 <form name="editForm" action="EditStepGroup.do" method="post">
-	<input type="hidden" name="formAction" value="edit">
-	<input type="hidden" name="id" value="<%= stepGroup != null ? String.valueOf(stepGroup.getId()) : ""%>">
-	<input type="hidden" name="stepId">
+	<input type="hidden" name="formAction" id="formAction" value="edit">
+	<input type="hidden" name="id" id="id" value="<%= stepGroup != null ? String.valueOf(stepGroup.getId()) : ""%>">
+	<input type="hidden" name="stepId" id="stepId">
 	<table border=0 width='100%' cellspacing='0' cellpadding='0' align="center">
 		<CAPTION align=center class=pgheadsmall>Step Group Maintenance</CAPTION>
 		<tr>

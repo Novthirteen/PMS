@@ -51,7 +51,7 @@ Set contactSet = (Set)bidMaster.getContactList();
 if(contactSet == null)contactSet = new HashSet();
 %>
 <form name="EditForm" action="editBidMaster.do" method="post">
-<input type="hidden" name="contactId">
+<input type="hidden" name="contactId" id = "contactId">
 <table border=0 width='100%' cellspacing='0' cellpadding='1'>
 	<tr><td align=left width='90%' class="wpsPortletTopTitle" colspan=4>Contact List</td></tr>
 	<tr>
@@ -87,7 +87,7 @@ if(contactSet == null)contactSet = new HashSet();
 				%>
 				<tr>
 					<td align="center">
-						<input type="hidden" class="inputBox" name="clid" value="<%=clid%>" size="30" />
+						<input type="hidden" class="inputBox" name="clid" id = "clid" value="<%=clid%>" size="30" />
   						<%=clname%>
   					</td>
   					<td align="center"><%=clposition%></td>

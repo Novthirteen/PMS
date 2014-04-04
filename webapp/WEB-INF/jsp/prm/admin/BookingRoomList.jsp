@@ -81,13 +81,13 @@
 	<caption align=center class=pgheadsmall>Meeting Room Booking List</caption>
 	<tr><td>
 		<form name="bookingForm" action="" method="post">
-			<input type="hidden" name="command">
+			<input type="hidden" name="command" id = "command">
 			<table width="100%">
 				<tr><td colspan=6><hr color=red></hr></td></tr>
 				<tr>
 					<td align="right"><span class="lblbold">Checking Date:&nbsp;</span></td>
 					<td class="lblLight">
-						<input type="text" class="inputBox" name="date" size="12" oldvalue="<%=dateFormater.format(date)%>" value="<%=dateFormater.format(date)%>">
+						<input type="text" class="inputBox" name="date" id="date" size="12" oldvalue="<%=dateFormater.format(date)%>" value="<%=dateFormater.format(date)%>">
 						<a href="javascript:ShowCalendar(document.bookingForm.dimgs,document.bookingForm.date,null,0,330)" onclick=event.cancelBubble=true;>
 							<img align=absMiddle border=0 id=dimgs src="<%=request.getContextPath()%>/images/datebtn.gif" >
 						</a>						
@@ -97,7 +97,7 @@
 					%>
 					<td class="lblbold">Checking Room:&nbsp;</td>
     				<td class="lblLight">
-    					<select name="room">
+    					<select name="room" id="room">
 			                <option value="" selected>ALL</option>
 			                <option value="Training Room">Training Room</option>
 			                <option value="Board Room">Board Room</option>

@@ -235,8 +235,8 @@ function checkIdData(){
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="FormAction" value="<%=action%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  Expense Entry Maintenance </CAPTION>
 <tr>
@@ -248,9 +248,9 @@ function checkIdData(){
 			<tr>
 				<td class="lblbold" align=right>ER No.:</td><td class="lblLight">&nbsp</td>
 				<td class="lblbold" align=right>Department:</td><td class="lblLight"><%=ul.getParty().getDescription()%></td>
-				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=ul.getName()%><input type="hidden" name="UserId" value="<%=ul.getUserLoginId()%>"></td>
+				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=ul.getName()%><input type="hidden" name="UserId" id="UserId" value="<%=ul.getUserLoginId()%>"></td>
 				<td class="lblbold" align=right>Status:</td>
-				<td class="lblLight"><input type=hidden name="FormStatus" value="Draft">Draft&nbsp;</td>
+				<td class="lblLight"><input type="hidden" name="FormStatus" id="FormStatus" value="Draft">Draft&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="lblbold" align=right>Entry Period:</td>
@@ -261,7 +261,7 @@ function checkIdData(){
 				</td>
 				<td class="lblbold" align=right>Currency:</td>
 				<td class="lblLight">
-					<select name="ExpenseCurrency" onchange="javascript:onCurrSelect()">
+					<select name="ExpenseCurrency" id="ExpenseCurrency" onchange="javascript:onCurrSelect()">
 					<%
 					itCurr = CurrencyList.iterator();
 					float CurrencyRate = 0;
@@ -279,18 +279,18 @@ function checkIdData(){
 				</td>
 				<td class="lblbold" align=right>Exchange Rate(RMB):</td>
 				<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="CurrencyRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="CurrencyRate" id="CurrencyRate" value="<%=CurrencyRate%>">
 				</td>
 			</tr>
 			<tr>
 				<td class="lblbold" align=right>Project:</td>
 				<td class="lblLight">
-					<div style="display:inline" id="labelProject">&nbsp;</div><input type=hidden name="projId"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
+					<div style="display:inline" id="labelProject">&nbsp;</div><input type="hidden" name="projId" id="projId"><a href="javascript:void(0)" onclick="showProjectDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 				</td>
 				<td class="lblbold" align=right>Customer:</td><td class="lblLight">&nbsp;</td>
 				<td class="lblbold" align=right>Paid By:</td>
 				<td class="lblLight">
-					<select name="ClaimType">
+					<select name="ClaimType" id="ClaimType">
 						<option value="CY">Customer</option>
 						<option value="CN" selected>Company</option>
 					</select>
@@ -393,9 +393,9 @@ function beforeFnSubmit(stat, claimtype){
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="FormAction" value="<%=action%>">
-<input type="hidden" name="DataId" value="<%=findmaster.getId().toString()%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=findmaster.getId().toString()%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table width=100% cellpadding="1" border="0" cellspacing="1" >
 <CAPTION align=center class=pgheadsmall>  Expense Entry Maintenance </CAPTION>
 <tr>
@@ -407,14 +407,14 @@ function beforeFnSubmit(stat, claimtype){
 			<tr>
 				<td class="lblbold" align=right>ER No.:</td><td class="lblLight"><%=findmaster.getFormCode()%></td>
 				<td class="lblbold" align=right>Department :</td><td class="lblLight"><%=findmaster.getExpenseUser().getParty().getDescription()%></td>
-				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=ul.getName()%><input type="hidden" name="UserId" value="<%=findmaster.getExpenseUser().getUserLoginId()%>"></td>
+				<td class="lblbold" align=right>User:</td><td class="lblLight"><%=ul.getName()%><input type="hidden" name="UserId" id="UserId" value="<%=findmaster.getExpenseUser().getUserLoginId()%>"></td>
 				<td class="lblbold" align=right>Status:</td>
 				<%if (findmaster.getStatus().equals("Rejected")){%>
 					<td class="lblLight"><font color="Red"><%=findmaster.getStatus()%></font></td>
 				<%}else{%>
 					<td class="lblLight"><%=findmaster.getStatus()%>
 				<%}%>
-				<input type=hidden name="FormStatus" value="<%=findmaster.getStatus()%>">&nbsp;</td>
+				<input type="hidden" name="FormStatus" id="FormStatus" value="<%=findmaster.getStatus()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="lblbold" align=right>Entry Period:</td>
@@ -423,7 +423,7 @@ function beforeFnSubmit(stat, claimtype){
 				<td class="lblLight"><%=Date_formater.format(findmaster.getExpenseDate())%>&nbsp;</td>
 				<td class="lblbold" align=right>Currency:</td>
 				<td class="lblLight">
-					<select name="ExpenseCurrency" onchange="javascript:onCurrSelect()" <%if (!fRead.equals("")) out.println("disabled");%>>
+					<select name="ExpenseCurrency" id="ExpenseCurrency" onchange="javascript:onCurrSelect()" <%if (!fRead.equals("")) out.println("disabled");%>>
 					<%
 					itCurr = CurrencyList.iterator();
 					float CurrencyRate = 0;
@@ -441,7 +441,7 @@ function beforeFnSubmit(stat, claimtype){
 				</td>
 				<td class="lblbold" align=right>Exchange Rate(RMB):</td>
 				<td class="lblLight">
-					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type=hidden name="CurrencyRate" value="<%=CurrencyRate%>">
+					<div style="display:inline" id="labelCurrencyRate"><%=CurrencyRate%></div><input type="hidden" name="CurrencyRate" id="CurrencyRate" value="<%=CurrencyRate%>">
 				</td>
 			</tr>
 			<tr>
@@ -469,7 +469,7 @@ function beforeFnSubmit(stat, claimtype){
 					<%
 						}else{
 					%>
-						<select name="ClaimType" onchange="return beforeFnSubmit('Draft', this.value)">
+						<select name="ClaimType" id="ClaimType" onchange="return beforeFnSubmit('Draft', this.value)">
 							<option value="CY">Customer</option>
 							<option value="CN" <%=findmaster.getClaimType().equals("CY")?"":"selected"%>>Company</option>
 						</select>
@@ -503,7 +503,7 @@ function beforeFnSubmit(stat, claimtype){
 					ExpLevel= et.getExpSeq().length();
 					if (!findmaster.getClaimType().equals("CY") || et.getExpAccDesc().equalsIgnoreCase("CY")) {
 				%>
-				<td class="lblbold" align="center" width="8%"><%=et.getExpDesc()%><input type="hidden" name="ExpType" value="<%=et.getExpId()%>"></td>
+				<td class="lblbold" align="center" width="8%"><%=et.getExpDesc()%><input type="hidden" name="ExpType" id="ExpType" value="<%=et.getExpId()%>"></td>
 				<%
 					}
 				}
@@ -571,7 +571,7 @@ function beforeFnSubmit(stat, claimtype){
 			while(itDate.hasNext()){
 				Date fd = (Date)itDate.next();%>
 				<tr bgcolor="#e9eee9">
-				<td class="lblbold"><%=Date_formater.format(fd)%><input type=hidden name=DateId value="<%=Date_formater.format(fd)%>"></td>
+				<td class="lblbold"><%=Date_formater.format(fd)%><input type="hidden" name="DateId" id="DateId" value="<%=Date_formater.format(fd)%>"></td>
 				<%itExpType = ExpTypeList.iterator();
 				while(itExpType.hasNext()){
 					ExpenseType et = (ExpenseType)itExpType.next();
@@ -602,10 +602,10 @@ function beforeFnSubmit(stat, claimtype){
 								||(findmaster.getExpenseUser().getUserLoginId().equalsIgnoreCase("CN01548")))							
 							){
 				%>		
-							<td align="right"><input type=hidden name="RecId<%=i%>" value="<%=RecId%>"><input type=text class=inputBox name="RecordVal<%=i%>" size=8 value="<%=RecValue%>" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()" <%=fRead%>></td>
+							<td align="right"><input type="hidden" name="RecId<%=i%>" id="RecId<%=i%>" value="<%=RecId%>"><input type="text" class=inputBox name="RecordVal<%=i%>" id="RecordVal<%=i%>" size=8 value="<%=RecValue%>" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()" <%=fRead%>></td>
 				<%		
 						}else{%>
-							<td align="right"><input type=hidden name="RecId<%=i%>" value="<%=RecId%>"><input type=text readonly Style='background-color:#A9A9A9' class=inputBox name="RecordVal<%=i%>" size=8 value="0" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()" <%=fRead%>></td>
+							<td align="right"><input type="hidden" name="RecId<%=i%>" id="RecId<%=i%>" value="<%=RecId%>"><input type="text" readonly Style='background-color:#A9A9A9' class=inputBox name="RecordVal<%=i%>" id="RecordVal<%=i%>" size=8 value="0" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999);CalcTot()" <%=fRead%>></td>
 				<%
 						}
 					}	
@@ -623,7 +623,7 @@ function beforeFnSubmit(stat, claimtype){
 						}
 					}
 				} %>
-				<td><input type=hidden name="CmtRecId<%=i%>" value="<%=CmtRecId%>"><input type=text class=inputBox name="CmtVal<%=i%>" size=50 value="<%=CmtValue%>" <%=fRead%>></td>
+				<td><input type="hidden" name="CmtRecId<%=i%>" id="CmtRecId<%=i%>" value="<%=CmtRecId%>"><input type="text" class=inputBox name="CmtVal<%=i%>" id="CmtVal<%=i%>" size=50 value="<%=CmtValue%>" <%=fRead%>></td>
 			<% i++;
 			}%>
 			<tr align="center" bgcolor="#e9eee9">
@@ -671,7 +671,7 @@ function beforeFnSubmit(stat, claimtype){
 							}
 						} 
 				%>
-					<td align="right" class="lblbold"><%=AmtStr%><input type=hidden name="AmtRecId" value="<%=RecId%>"></td>
+					<td align="right" class="lblbold"><%=AmtStr%><input type="hidden" name="AmtRecId" id="AmtRecId" value="<%=RecId%>"></td>
 				<%
 					}
 				}
@@ -735,10 +735,10 @@ function beforeFnSubmit(stat, claimtype){
 					<%}%>
 					<input type="button" value="Back to List" name="Back" class="button" onclick="location.replace('findExpSelfPage.do');">
 					<input type="button" class="button" name="ViewTS" value="View TimeSheet" onclick="showTsDialog();">
-					<input type="hidden" name="ExUserId" value="<%=ul.getUserLoginId()%>">
-					<input type="hidden" name="ProjectId" value="<%=findmaster.getProject().getProjId()%>">
-					<input type="hidden" name="ProjectNm" value="<%=findmaster.getProject().getProjName()%>">
-					<input type="hidden" name="DatePeriod" value="<%=Date_formater.format((Date)DateList.iterator().next())%>">
+					<input type="hidden" name="ExUserId" id="ExUserId" value="<%=ul.getUserLoginId()%>">
+					<input type="hidden" name="ProjectId" id="ProjectId" value="<%=findmaster.getProject().getProjId()%>">
+					<input type="hidden" name="ProjectNm" id="ProjectNm" value="<%=findmaster.getProject().getProjName()%>">
+					<input type="hidden" name="DatePeriod" id="DatePeriod" value="<%=Date_formater.format((Date)DateList.iterator().next())%>">
 				</td>
 			</tr>
 		</table>

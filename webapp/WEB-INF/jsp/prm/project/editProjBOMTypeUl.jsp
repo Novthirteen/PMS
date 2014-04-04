@@ -92,8 +92,8 @@ if(childList==null)
 	childList = new LinkedList();
 	
 %>
-<input type="hidden" name="formaction" >
-<input type="hidden" name="masterid" value="<%=master.getId()%>" >
+<input type="hidden" name="formaction" id="formaction" >
+<input type="hidden" name="masterid" id="masterid" value="<%=master.getId()%>" >
 
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' align="center">
 	<CAPTION align=center class=pgheadsmall>Assign Resource</CAPTION>
@@ -175,8 +175,8 @@ if(childList==null)
 					ProjPlanType ul = (ProjPlanType)childList.get(i);
 	          %>
 					<tr id="<%=ul.getId()%>" bgcolor="#e9eee9"> 
-					<td class="lblbold" align="center"><input type="hidden" name="hid_status" value="no"><%=(i+1)%>
-						<input type="hidden" name="id" value="<%=ul.getId()%>"></td>
+					<td class="lblbold" align="center"><input type="hidden" name="hid_status" id="hid_status" value="no"><%=(i+1)%>
+						<input type="hidden" name="id" id="id" value="<%=ul.getId()%>"></td>
 					<td class="lblbold" align="center"><%=ul.getDescription()%></td>
 					<td class="lblbold" align="center"><%=ul.getParent().getDescription()%></td>
 					<td class="lblbold" align="center"><%=ul.getStaff().getName()%></td>
@@ -225,7 +225,7 @@ if(childList==null)
 	<td><input type="text" name="add_st_desc" readonly style="border:0px;text-align:right;background-color:#ffffff" 
 		value="<%if(list.size()>0)out.println(((ProjPlanType)list.get(0)).getSTRate());%>">
 	</td>
-	<td nowrap><input type="hidden" name="add_ul_id" value=""><input type="text" name="add_ul_name" style="text-align:center;border:0px;background-color:#ffffff"readonly>
+	<td nowrap><input type="hidden" name="add_ul_id" id="add_ul_id" value=""><input type="text" name="add_ul_name" style="text-align:center;border:0px;background-color:#ffffff"readonly>
 		<a href='javascript: showStaff()'><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0" /></a>
 	</td>
 	<td><input type="button" value="Add" onclick="javascript:addLine()" class="button"></td>
@@ -237,7 +237,7 @@ if(childList==null)
 
 <table width="100%">
 <tr><td>&nbsp;</td></tr>
-<tr align="right"><td><input type="hidden" name="hid_id">
+<tr align="right"><td><input type="hidden" name="hid_id" id="hid_id">
 <input type="button" value="Continue>>" onclick="javascript:fnContinue()" class="button">
 <input type="button" value="BackToList" onclick="location.replace('findProjBOM.do?formaction=listsche')" class="button">
 </td></tr>

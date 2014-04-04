@@ -80,8 +80,8 @@ try{
 
 <form action="BOMChooseDialogue.do" name=frm method="POST">
 
-	<input type="hidden" name="formAction">
-	<input type="hidden" name="bom" value="<%=(String)request.getAttribute("bom")%>">
+	<input type="hidden" name="formAction" id="formAction">
+	<input type="hidden" name="bom" id="bom" value="<%=(String)request.getAttribute("bom")%>">
 	
 	<table width=100% align=center>
 		<CAPTION align=center class=pgheadsmall>BOM Select</CAPTION>

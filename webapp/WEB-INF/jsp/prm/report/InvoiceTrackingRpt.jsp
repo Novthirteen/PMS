@@ -113,7 +113,7 @@ function showBillToDialog()
 	<tr>
 		<td>
 			<Form action="pas.report.InvoiceTrackingRpt.do" name="frm" method="post">
-				<input type="hidden" name="formAction">
+				<input type="hidden" name="formAction" id="formAction">
 				<table width=100% >
 					<tr>
 						<td colspan="16" valign="bottom"><hr color=red></hr></td>
@@ -133,7 +133,7 @@ function showBillToDialog()
 						</td>
 						<td class="lblbold">Bill To:</td>
 						<td class="lblLight">
-							<input type="text" name="billto" size="15" value="<%=billto%>" style="TEXT-ALIGN: right" class="lbllgiht">
+							<input type="text" name="billto" id="billto" size="15" value="<%=billto%>" style="TEXT-ALIGN: right" class="lbllgiht">
 							<a href="javascript:void(0)" onclick="showBillToDialog();event.returnValue=false;">
 										<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 						</td>

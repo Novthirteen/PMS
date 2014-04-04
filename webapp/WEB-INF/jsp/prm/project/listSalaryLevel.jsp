@@ -51,7 +51,7 @@ if (AOFSECURITY.hasEntityPermission("SALARY_LEVEL", "_VIEW", session)) {
 <tr>	
 	<td>
 		<form name="frm" action="findSalaryLevel.do" method="post">
-			<input type=hidden name="offset" value="<%=offset%>">
+			<input type="hidden" name="offset" Id="offset" value="<%=offset%>">
 		    Level:
 			<input type="text" name="level" value="<%=level != null ? level : ""%>">
 			Description:

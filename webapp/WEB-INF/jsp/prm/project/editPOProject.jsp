@@ -396,10 +396,10 @@ function showProjectDialog()
 
 </script>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="custList.do" name="CustListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <TABLE border=0 width='100%' cellspacing='0' cellpadding='0' class='boxoutside'>
   <TR>
@@ -425,9 +425,9 @@ function showProjectDialog()
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-    <input type="hidden" name="FormAction">
-    <input type="hidden" name="Id" value=<%=DataId%>>
-    <input type="hidden" name="add">
+    <input type="hidden" name="FormAction" id="FormAction">
+    <input type="hidden" name="Id" id="Id" value=<%=DataId%>>
+    <input type="hidden" name="add" id="add">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
     <%
         if(repeatName != null && repeatName.equals("yes")){
@@ -444,11 +444,11 @@ function showProjectDialog()
           <%
         if(repeatName != null && repeatName.equals("yes")){
      	%>
-          <input type="text" class="inputBox" name="DataId" size="30" value="<%=CustProject.getProjId()%>">
+          <input type="text" class="inputBox" name="DataId" id="DataId" size="30" value="<%=CustProject.getProjId()%>">
          <%
          	}else{
          %>
-          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" value="<%=CustProject.getProjId()%>">
+          <span class="tabletext"><%=CustProject.getProjId()%>&nbsp;</span><input type="hidden" name="DataId" id="DataId" value="<%=CustProject.getProjId()%>">
         <%
         	}
         %>
@@ -457,7 +457,7 @@ function showProjectDialog()
           <span class="tabletext">Project Description:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="projName" value="<%=CustProject.getProjName()%>" size="30">
+          <input type="text" class="inputBox" name="projName" id="projName" value="<%=CustProject.getProjName()%>" size="30">
         </td>
       </tr>
       <tr>
@@ -465,7 +465,7 @@ function showProjectDialog()
           <span class="tabletext">Project Status:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="projectStatus">
+          <select name="projectStatus" id="projectStatus">
 			<option value="WIP" <%if (CustProject.getProjStatus().equals("WIP")) out.println("selected");%>>WIP</option>
 			<option value="PC" <%if (CustProject.getProjStatus().equals("PC")) out.println("selected");%>>Project Completed</option>
 			<option value="Close" <%if (CustProject.getProjStatus().equals("Close")) out.println("selected");%>>Close</option>
@@ -480,15 +480,15 @@ function showProjectDialog()
         if(repeatName != null && repeatName.equals("yes")){
      	%>
         <div style="display:inline" id="labelContract"><%=CustProject.getContractNo()%>&nbsp;</div>
-        <input type="hidden" class="inputBox" name="contractNo" value="<%=CustProject.getContractNo()%>"  size="30">
-	      <input type="hidden" class="inputBox" name="contractId" value="<%=CustProject.getContract() != null ? CustProject.getContract().getId() + "" : ""%>">
+        <input type="hidden" class="inputBox" name="contractNo" id="contractNo" value="<%=CustProject.getContractNo()%>"  size="30">
+	      <input type="hidden" class="inputBox" name="contractId" id="contractId" value="<%=CustProject.getContract() != null ? CustProject.getContract().getId() + "" : ""%>">
 	      <a href="javascript:showDialog_contract()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         <%
         	}else{
         %>
          <%=CustProject.getContractNo()%>
-          <input type="hidden" class="inputBox" name="contractNo" value="<%=CustProject.getContractNo()%>" size="30">
-          <input type="hidden" class="inputBox" name="contractId" value="<%=CustProject.getContract() != null ? CustProject.getContract().getId() + "" : ""%>">
+          <input type="hidden" class="inputBox" name="contractNo" id="contractNo" value="<%=CustProject.getContractNo()%>" size="30">
+          <input type="hidden" class="inputBox" name="contractId" id="contractId" value="<%=CustProject.getContract() != null ? CustProject.getContract().getId() + "" : ""%>">
         <%
         	}
         %>
@@ -509,12 +509,12 @@ function showProjectDialog()
 			if(repeatName != null && repeatName.equals("yes")){
      	%>
           <div style="display:inline" id="labelVendor"><%=name%>&nbsp;</div>
-          <input type=hidden name="vendorId" value = "<%=id%>">
+          <input type="hidden" name="vendorId" id="vendorId" value = "<%=id%>">
           <a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
          <%        	
          	}else{
          %>
-          <input type=hidden name="vendorId" value="<%=CustProject.getVendor().getPartyId()%>"><%=CustProject.getVendor().getPartyId()%>:<%=CustProject.getVendor().getDescription()%>
+          <input type="hidden" name="vendorId" id="vendorId" value="<%=CustProject.getVendor().getPartyId()%>"><%=CustProject.getVendor().getPartyId()%>:<%=CustProject.getVendor().getDescription()%>
         <%
         	}
         %>
@@ -525,7 +525,7 @@ function showProjectDialog()
         </td>
         
         <td align="left">
-          <select name="departmentId">
+          <select name="departmentId" id="departmentId">
 			<%
 			Iterator itd = partyList_dep.iterator();
 			while(itd.hasNext()){
@@ -556,8 +556,8 @@ function showProjectDialog()
 			}
 			%>
 			<div style="display:inline" id="labelPM"><%=PMName%>&nbsp;</div>
-			<input type="hidden" name="projectManagerName" maxlength="100" value="<%=PMName%>">
-			<input type="hidden" name="projectManagerId" value="<%=PMId%>">
+			<input type="hidden" name="projectManagerName" id="projectManagerName" maxlength="100" value="<%=PMName%>">
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value="<%=PMId%>">
 			<a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
          <td align="right">
@@ -594,13 +594,13 @@ function showProjectDialog()
           <span class="tabletext">Total Service Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalServiceValue" value="<%=Num_formater.format(CustProject.gettotalServiceValue().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" value="<%=Num_formater.format(CustProject.gettotalServiceValue().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
 		<td align="right">
           <span class="tabletext">Total Proc./Sub Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalLicsValue" value="<%=Num_formater.format(CustProject.gettotalLicsValue().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalLicsValue" id="totalLicsValue" value="<%=Num_formater.format(CustProject.gettotalLicsValue().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr> 
       <tr>
@@ -608,13 +608,13 @@ function showProjectDialog()
           <span class="tabletext">Service Budget(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="PSCBudget" value="<%=Num_formater.format(CustProject.getPSCBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="PSCBudget" id="PSCBudget" value="<%=Num_formater.format(CustProject.getPSCBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Expense Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="EXPBudget" value="<%=Num_formater.format(CustProject.getEXPBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="EXPBudget" id="EXPBudget" value="<%=Num_formater.format(CustProject.getEXPBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
 	  <tr>
@@ -622,7 +622,7 @@ function showProjectDialog()
           <span class="tabletext">Proc./Sub Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="procBudget" value="<%=Num_formater.format(CustProject.getProcBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="procBudget" id="procBudget" value="<%=Num_formater.format(CustProject.getProcBudget().doubleValue())%>" size="30" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
 		<td align="right">
           <span class="tabletext">PO Type:&nbsp;</span>
@@ -667,14 +667,14 @@ function showProjectDialog()
 				<%
 					if (CustProject.getParentProject() != null) {
 				%>
-				<select name="ParentProjectId">
+				<select name="ParentProjectId" id="ParentProjectId">
 					<option value="<%=ProjId%>" "selected" ><%=ProjName%></option>
 				</select>
 				<input TYPE="button" NAME="showParentProjDet" VALUE="ShowDetail" onclick="showProjectDetail();">
 				<%
 					}else{
 				%>
-				<select name="ParentProjectId">
+				<select name="ParentProjectId" id="ParentProjectId">
 				</select>
 				<input TYPE="button" NAME="showParentProjDet" VALUE="ShowDetail" onclick="showProjectDetail();">
 				<%
@@ -687,7 +687,7 @@ function showProjectDialog()
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>" size="30">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)CustProject.getStartDate())%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg6,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg6 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -695,7 +695,7 @@ function showProjectDialog()
           <span class="tabletext">End Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="endDate" value="<%=formater.format((java.util.Date)CustProject.getEndDate())%>" size="30">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=formater.format((java.util.Date)CustProject.getEndDate())%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg2,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg2 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -705,13 +705,13 @@ function showProjectDialog()
           <span class="tabletext">Customer Paid Allowance Rate:&nbsp;</span>
         </td>
      	 <td align="left">
-          <input type="text" class="inputBox" name="alownceAmt" value="<%=Num_formater.format(CustProject.getPaidAllowance())%>" size="30" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999,9999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" value="<%=Num_formater.format(CustProject.getPaidAllowance())%>" size="30" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999,9999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Project Type:&nbsp;</span>
         </td>
         <td align="left">
-			<select name="projectType">
+			<select name="projectType" id="projectType">
 			<%
 			Iterator itPt = ptList.iterator();
 			while(itPt.hasNext()){
@@ -740,7 +740,7 @@ function showProjectDialog()
 			}
 			%>
 			<div style="display:inline" id="labelPA"><%=PAName%></div>
-			<input type="hidden" name="paId" value="<%=PAId%>">
+			<input type="hidden" name="paId" id="paId" value="<%=PAId%>">
 			<a href="javascript:showDialog_pa()">
 				<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
 			</a>
@@ -758,13 +758,13 @@ function showProjectDialog()
 	          <span class="tabletext">Contact Person:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contact" size="30" value="<%=CustProject.getContact() == null ? "" : CustProject.getContact()%>">
+	          <input type="text" class="inputBox" name="contact" id="contact" size="30" value="<%=CustProject.getContact() == null ? "" : CustProject.getContact()%>">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Contact Person Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contactTele" size="30" value="<%=CustProject.getContactTele() == null ? "" : CustProject.getContactTele()%>">
+	          <input type="text" class="inputBox" name="contactTele" id="contactTele" size="30" value="<%=CustProject.getContactTele() == null ? "" : CustProject.getContactTele()%>">
 	        </td>
         </tr>
         <tr>
@@ -772,35 +772,25 @@ function showProjectDialog()
 	          <span class="tabletext">Customer PM:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPM" size="30" value="<%=CustProject.getCustPM() == null ? "" : CustProject.getCustPM()%>">
+	          <input type="text" class="inputBox" name="custPM" id="custPM" size="30" value="<%=CustProject.getCustPM() == null ? "" : CustProject.getCustPM()%>">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Customer PM Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPMTele" size="30" value="<%=CustProject.getCustPMTele() == null ? "" : CustProject.getCustPMTele()%>">
+	          <input type="text" class="inputBox" name="custPMTele" id="custPMTele" size="30" value="<%=CustProject.getCustPMTele() == null ? "" : CustProject.getCustPMTele()%>">
 	        </td>
         </tr>
          <tr>
 	        <td align='right'>
 	          Need Mail Notification for TS Approval:&nbsp;
 	        </td>
-	        <td> <input type='checkbox' class='checkboxstyle' name='mailFlag' <%if((CustProject.getMailFlag()!=null)&&(CustProject.getMailFlag().equals("Y"))) out.print("checked");%>> </td>	
+	        <td> <input type="checkbox" class='checkboxstyle' name='mailFlag' id="mailFlag" <%if((CustProject.getMailFlag()!=null)&&(CustProject.getMailFlag().equals("Y"))) out.print("checked");%>> </td>	
 	    
 	    <%String congroup="";
          if (CustProject.getContractGroup()!= null)
          congroup=CustProject.getContractGroup();
         %>
-     <!--   <td align="right">
-	        	Contract Category:
-	        </td>
-	        <td>
-	         <select name="contractCategory">
-            <option value="Labor" <%//if(congroup.equalsIgnoreCase("Labor")) out.print("selected");%>>By Labor </option>
-            <option value="Material"<%//if(congroup.equalsIgnoreCase("Material")) out.print("selected");%>>By Material</option>
-		  </select>
-		 </td>
-	    -->
 	    </tr>
 	    
       		<tr>
@@ -817,9 +807,9 @@ function showProjectDialog()
 			boolean checked = (set.contains(et)==true)?true:false;
 			if(et.getExpAccDesc().equalsIgnoreCase("CY")){
 				if(checked)
-				out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' checked='"+checked+"' value='"+et.getExpId()+"'>"+et.getExpDesc()+"&nbsp;&nbsp;");
+				out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' id='exTypeChk' checked='"+checked+"' value='"+et.getExpId()+"'>"+et.getExpDesc()+"&nbsp;&nbsp;");
 				else
-				out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' value='"+et.getExpId()+"'>"+et.getExpDesc()+"&nbsp;&nbsp;");
+				out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' id='exTypeChk' value='"+et.getExpId()+"'>"+et.getExpDesc()+"&nbsp;&nbsp;");
 				}
 			}
         %>
@@ -895,7 +885,7 @@ function showProjectDialog()
           	int rows = ServiceTypeList.size() > displayRows ? ServiceTypeList.size() : displayRows;
           %>
           	Display Rows:&nbsp;
-          	<input type="text" class="inputBox" style="text-align:right" size="2" name="displayRows" value="<%=rows%>">
+          	<input type="text" class="inputBox" style="text-align:right" size="2" name="displayRows" id="displayRows" value="<%=rows%>">
           	<input type="button" name="Refresh" value="Refresh" class="loginButton" onclick="refresh();">
           </TD>
         </tr>
@@ -1012,21 +1002,21 @@ function showProjectDialog()
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
-	<INPUT TYPE="hidden" name="projectCategory" value="P">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+	<INPUT TYPE="hidden" name="projectCategory" id="projectCategory" value="P">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
         <td align="right">
           <span class="tabletext">Project Code:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="DataId" size="30">
+          <input type="text" class="inputBox" name="DataId" id="DataId" size="30">
         </td>
         <td align="right">
           <span class="tabletext">Project Description:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="projName" size="30">
+          <input type="text" class="inputBox" name="projName" id="projName" size="30">
         </td>
       </tr>
 	  <tr>
@@ -1034,7 +1024,7 @@ function showProjectDialog()
           <span class="tabletext">Project Status:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="projectStatus">
+          <select name="projectStatus" id="projectStatus">
 			<option value="WIP">WIP</option>
 			<option value="PC">Project Completed</option>
 			<option value="Close">Close</option>
@@ -1046,8 +1036,8 @@ function showProjectDialog()
         </td>
         <td align="left">
           <div style="display:inline" id="labelContract">&nbsp;</div>
-          <input type="hidden" class="inputBox" name="contractNo" size="30">
-          <input type="hidden" class="inputBox" name="contractId">
+          <input type="hidden" class="inputBox" name="contractNo" id="contractNo" size="30">
+          <input type="hidden" class="inputBox" name="contractId" id="contractId">
           <a href="javascript:showDialog_contract()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
       </tr>
@@ -1055,13 +1045,13 @@ function showProjectDialog()
         <td align="right">
           <span class="tabletext">Vendor:&nbsp;</span>
         </td>
-		<td align="left"><div style="display:inline" id="labelVendor">&nbsp;</div><input type=hidden name="vendorId"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+		<td align="left"><div style="display:inline" id="labelVendor">&nbsp;</div><input type="hidden" name="vendorId" id="vendorId"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="departmentId">
+          <select name="departmentId" id="departmentId">
 			<%
 			Iterator itd = partyList_dep.iterator();
 			while(itd.hasNext()){
@@ -1080,8 +1070,8 @@ function showProjectDialog()
         </td>
         <td align="left">
         	<div style="display:inline" id="labelPM">&nbsp;</div>
-			<input type="hidden" name="projectManagerName"  value="">
-			<input type="hidden" name="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
+			<input type="hidden" name="projectManagerName" id="projectManagerName"  value="">
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
         </td>
          <td align="right">
           <span class="tabletext"> Open for All:&nbsp;</span>
@@ -1096,13 +1086,13 @@ function showProjectDialog()
           <span class="tabletext">Total Service Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalServiceValue"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Total Proc./Sub Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalLicsValue"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalLicsValue" id="totalLicsValue" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
 	  <tr>
@@ -1110,13 +1100,13 @@ function showProjectDialog()
           <span class="tabletext">Service Budget(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="PSCBudget"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="PSCBudget" id="PSCBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Expense Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="EXPBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="EXPBudget" id="EXPBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
 	  <tr>
@@ -1124,7 +1114,7 @@ function showProjectDialog()
           <span class="tabletext">Proc./Sub Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="procBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="procBudget" id="procBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">PO Type:&nbsp;</span>
@@ -1146,7 +1136,7 @@ function showProjectDialog()
           <span class="tabletext">Parent Project:&nbsp;</span>
         </td>
 		<td align="left">
-			<select name="ParentProjectId">
+			<select name="ParentProjectId" id="ParentProjectId">
 			</select>
 			<input TYPE="button" NAME="showParentProjDet" VALUE="ShowDetail" onclick="showProjectDetail();">
 		</td>
@@ -1156,7 +1146,7 @@ function showProjectDialog()
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
          <td align="left">
-          <input type="text" class="inputBox" name="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="30">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg8,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg8 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -1164,7 +1154,7 @@ function showProjectDialog()
           <span class="tabletext">End Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="endDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="30">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg4,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg4 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         
@@ -1175,13 +1165,13 @@ function showProjectDialog()
           <span class="tabletext">Customer Paid Allowance Rate:&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="alownceAmt"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');" >
+          <input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');" >
         </td>
         <td align="right">
           <span class="tabletext">Project Type:&nbsp;</span>
         </td>
         <td align="left">
-         	<select name="projectType">
+         	<select name="projectType" id="projectType">
 			<%
 			Iterator itPt = ptList.iterator();
 			while(itPt.hasNext()){
@@ -1200,7 +1190,7 @@ function showProjectDialog()
         </td>
         <td align="left">
         	<div style="display:inline" id="labelPA">&nbsp;</div>
-			<input type="hidden" name="paId" value="">
+			<input type="hidden" name="paId" id="paId" value="">
 			<a href="javascript:showDialog_pa()">
 				<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
 			</a>
@@ -1218,13 +1208,13 @@ function showProjectDialog()
 	          <span class="tabletext">Contact Person:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contact" size="30">
+	          <input type="text" class="inputBox" name="contact" id="contact" size="30">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Contact Person Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contactTele" size="30">
+	          <input type="text" class="inputBox" name="contactTele" id="contactTele" size="30">
 	        </td>
         </tr>
         <tr>
@@ -1232,29 +1222,20 @@ function showProjectDialog()
 	          <span class="tabletext">Customer PM:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPM" size="30">
+	          <input type="text" class="inputBox" name="custPM" id="custPM" size="30">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Customer PM Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPMTele" size="30">
+	          <input type="text" class="inputBox" name="custPMTele" id="custPMTele" size="30">
 	        </td>
         </tr>
         <tr>
 	        <td align='right'>
 	          Need Mail Notification for TS Approval:&nbsp;
 	        </td>
-	        <td> <input type='checkbox' class='checkboxstyle' name='mailFlag'> </td>	
-	<!--        <td align="right">
-	        	Contract Category:
-	        </td>
-	        <td>
-	         <select name="contractCategory">
-            <option value="Labor" selected>By Labor </option>
-            <option value="Material">By Material</option>
-		  </select>
-		</td>-->
+	        <td> <input type='checkbox' class='checkboxstyle' name='mailFlag' id="mailFlag"> </td>	
 	    </tr>
        <tr>
         <td align='right'>
@@ -1266,7 +1247,7 @@ function showProjectDialog()
 			if(exTypeList==null)	exTypeList = new ArrayList();
 			for(int j=0; j<exTypeList.size(); j++){
 			if(((ExpenseType)exTypeList.get(j)).getExpAccDesc().equalsIgnoreCase("CY"))
-			out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' value='"+((ExpenseType)exTypeList.get(j)).getExpId()+"'>"+((ExpenseType)exTypeList.get(j)).getExpDesc()+"&nbsp;&nbsp;");
+			out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' id='exTypeChk' value='"+((ExpenseType)exTypeList.get(j)).getExpId()+"'>"+((ExpenseType)exTypeList.get(j)).getExpDesc()+"&nbsp;&nbsp;");
 			}
         %>
         </td>
@@ -1306,21 +1287,21 @@ function showProjectDialog()
 		scrolling=no src="includes/date/calendar.htm" 
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-    <input type="hidden" name="FormAction" value="<%=action%>">
-	<INPUT TYPE="hidden" name="projectCategory" value="P">
+    <input type="hidden" name="FormAction" id="FormAction" value="<%=action%>">
+	<INPUT TYPE="hidden" name="projectCategory" id="projectCategory" value="P">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
 	<tr>
         <td align="right">
           <span class="tabletext">Project Code:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="DataId" size="30">
+          <input type="text" class="inputBox" name="DataId" id="DataId" size="30">
         </td>
         <td align="right">
           <span class="tabletext">Project Description:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="projName" size="30" value="<%=projName%>">
+          <input type="text" class="inputBox" name="projName" id="projName" size="30" value="<%=projName%>">
         </td>
       </tr>
 	  <tr>
@@ -1328,7 +1309,7 @@ function showProjectDialog()
           <span class="tabletext">Project Status:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="projectStatus">
+          <select name="projectStatus" id="projectStatus">
 			<option value="WIP">WIP</option>
 			<option value="PC">Project Completed</option>
 			<option value="Close">Close</option>
@@ -1340,8 +1321,8 @@ function showProjectDialog()
         </td>
         <td align="left">
           <div style="display:inline" id="labelContract"><%=contractNo%></div>
-          <input type="hidden" class="inputBox" name="contractNo" size="30" value="<%=contractNo%>">
-          <input type="hidden" class="inputBox" name="contractId"  value="<%=contractId%>">
+          <input type="hidden" class="inputBox" name="contractNo" id="contractNo" size="30" value="<%=contractNo%>">
+          <input type="hidden" class="inputBox" name="contractId" id="contractId"  value="<%=contractId%>">
           <a href="javascript:showDialog_contract()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
         </td>
       </tr>
@@ -1349,13 +1330,13 @@ function showProjectDialog()
         <td align="right">
           <span class="tabletext">Vendor:&nbsp;</span>
         </td>
-		<td align="left"><div style="display:inline" id="labelVendor"><%=vendorDesc%></div><input type=hidden name="vendorId" value="<%=vendorId%>"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
+		<td align="left"><div style="display:inline" id="labelVendor"><%=vendorDesc%></div><input type="hidden" name="vendorId" id="vendorId" value="<%=vendorId%>"><a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 		</td>
         <td align="right">
           <span class="tabletext">Department:&nbsp;</span>
         </td>
         <td align="left">
-          <select name="departmentId">
+          <select name="departmentId" id="departmentId">
 			<%
 			Iterator itd = partyList_dep.iterator();
 			while(itd.hasNext()){
@@ -1374,8 +1355,8 @@ function showProjectDialog()
         </td>
         <td align="left">
         	<div style="display:inline" id="labelPM">&nbsp;</div>
-			<input type="hidden" name="projectManagerName"  value="">
-			<input type="hidden" name="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
+			<input type="hidden" name="projectManagerName" id="projectManagerName"  value="">
+			<input type="hidden" name="projectManagerId" id="projectManagerId" value=""><a href="javascript:showDialog_staff()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
         </td>
          <td align="right">
           <span class="tabletext"> Open for All:&nbsp;</span>
@@ -1390,13 +1371,13 @@ function showProjectDialog()
           <span class="tabletext">Total Service Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalServiceValue"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalServiceValue" id="totalServiceValue" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'totalServiceValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Total Proc./Sub Value(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="totalLicsValue"  size="30" value="<%=totalLicsValue%>" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="totalLicsValue" id="totalLicsValue" size="30" value="<%=totalLicsValue%>" onblur="checkDeciNumber2(this,1,1,'totalLicsValue',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
 	  <tr>
@@ -1404,13 +1385,13 @@ function showProjectDialog()
           <span class="tabletext">Service Budget(RMB):&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="PSCBudget"  size="30" value="0" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="PSCBudget" id="PSCBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'PSCBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">Expense Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="EXPBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="EXPBudget" id="EXPBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'EXPBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
       </tr>
 	  <tr>
@@ -1418,7 +1399,7 @@ function showProjectDialog()
           <span class="tabletext">Proc./Sub Budget(RMB):&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="procBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
+          <input type="text" class="inputBox" name="procBudget" id="procBudget" size="30" value="0" onblur="checkDeciNumber2(this,1,1,'procBudget',-9999999999,9999999999); addComma(this, '.', '.', ',');">
         </td>
         <td align="right">
           <span class="tabletext">PO Type:&nbsp;</span>
@@ -1440,7 +1421,7 @@ function showProjectDialog()
           <span class="tabletext">Parent Project:&nbsp;</span>
         </td>
 		<td align="left">
-			<select name="ParentProjectId">
+			<select name="ParentProjectId" id="ParentProjectId">
 			<%
 			if(projSet != null && projSet.size() > 0){
 				Iterator projIter = projSet.iterator();
@@ -1461,7 +1442,7 @@ function showProjectDialog()
           <span class="tabletext">Start Date:&nbsp;</span>
         </td>
          <td align="left">
-          <input type="text" class="inputBox" name="startDate" value="<%=startDate%>" size="30">
+          <input type="text" class="inputBox" name="startDate" id="startDate" value="<%=startDate%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg8,document.EditForm.startDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg8 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         </td>
@@ -1469,7 +1450,7 @@ function showProjectDialog()
           <span class="tabletext">End Date:&nbsp;</span>
         </td>
         <td align="left">
-          <input type="text" class="inputBox" name="endDate" value="<%=endDate%>" size="30">
+          <input type="text" class="inputBox" name="endDate" id="endDate" value="<%=endDate%>" size="30">
           <A href="javascript:ShowCalendar(document.EditForm.dimg4,document.EditForm.endDate,null,0,330)" 
 							onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg4 src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
         
@@ -1480,13 +1461,13 @@ function showProjectDialog()
           <span class="tabletext">Customer Paid Allowance Rate:&nbsp;</span>
         </td>
         <td>
-          <input type="text" class="inputBox" name="alownceAmt"  size="30" value="<%=alownceAmt%>" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');" >
+          <input type="text" class="inputBox" name="alownceAmt" id="alownceAmt" size="30" value="<%=alownceAmt%>" onblur="checkDeciNumber2(this,1,1,'alownceAmt',-9999999,9999999); addComma(this, '.', '.', ',');" >
         </td>
         <td align="right">
           <span class="tabletext">Project Type:&nbsp;</span>
         </td>
         <td align="left">
-         	<select name="projectType">
+         	<select name="projectType" id="projectType">
 			<%
 			Iterator itPt = ptList.iterator();
 			while(itPt.hasNext()){
@@ -1505,7 +1486,7 @@ function showProjectDialog()
         </td>
         <td align="left">
         	<div style="display:inline" id="labelPA">&nbsp;</div>
-			<input type="hidden" name="paId" value="">
+			<input type="hidden" name="paId" id="paId" value="">
 			<a href="javascript:showDialog_pa()">
 				<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
 			</a>
@@ -1524,13 +1505,13 @@ function showProjectDialog()
 	          <span class="tabletext">Contact Person:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contact" size="30">
+	          <input type="text" class="inputBox" name="contact" id="contact" size="30">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Contact Person Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="contactTele" size="30">
+	          <input type="text" class="inputBox" name="contactTele" id="contactTele" size="30">
 	        </td>
         </tr>
         <tr>
@@ -1538,29 +1519,20 @@ function showProjectDialog()
 	          <span class="tabletext">Customer PM:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPM" size="30">
+	          <input type="text" class="inputBox" name="custPM" id="custPM" size="30">
 	        </td>
 	        <td align="right">
 	          <span class="tabletext">Customer PM Tele:&nbsp;</span>
 	        </td>
 	        <td align="left">
-	          <input type="text" class="inputBox" name="custPMTele" size="30">
+	          <input type="text" class="inputBox" name="custPMTele" id="custPMTele" size="30">
 	        </td>
         </tr>
         <tr>
 	        <td align='right'>
 	          Need Mail Notification for TS Approval:&nbsp;
 	        </td>
-	        <td> <input type='checkbox' class='checkboxstyle' name='mailFlag'> </td>	
-	 <!--       <td align="right">
-	        	Contract Category:
-	        </td>
-	        <td>
-	         <select name="contractCategory">
-            <option value="Labor" selected>By Labor </option>
-            <option value="Material">By Material</option>
-		  </select>
-		</td>-->
+	        <td> <input type='checkbox' class='checkboxstyle' name='mailFlag' id="mailFlag"> </td>	
 	    </tr>
        <tr>
         <td align='right'>
@@ -1574,7 +1546,7 @@ function showProjectDialog()
 			}
 			for(int j=0; j<exTypeList.size(); j++){
 				if(((ExpenseType)exTypeList.get(j)).getExpAccDesc().equalsIgnoreCase("CY")){
-					out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' value='"+((ExpenseType)exTypeList.get(j)).getExpId()+"'>"+((ExpenseType)exTypeList.get(j)).getExpDesc()+"&nbsp;&nbsp;");
+					out.println("<input type='checkbox' class='checkboxstyle' name='exTypeChk' id='exTypeChk' value='"+((ExpenseType)exTypeList.get(j)).getExpId()+"'>"+((ExpenseType)exTypeList.get(j)).getExpDesc()+"&nbsp;&nbsp;");
 				}
 			}
         %>

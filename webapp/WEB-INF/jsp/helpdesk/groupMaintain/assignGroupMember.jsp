@@ -81,12 +81,12 @@ function showDialog_staff() {
 	<caption class="pgheadsmall">Helpdesk Group Member Assignment</caption> 
 	<tr>
 		<td>
-				<input type="hidden" name="formAction">
-				<input type="hidden" name="gid" value="<%=gid%>">
+				<input type="hidden" name="formAction" id = "formAction">
+				<input type="hidden" name="gid" id = "gid" value="<%=gid%>">
 				<!--when deleting , uid represents the row id-->
-				<input type="hidden" name="uid">
-				<input type="hidden" name="desc" value="<%=desc%>">
-				<input type="hidden" name="super_name" value="<%=super_name%>">
+				<input type="hidden" name="uid" id = "uid">
+				<input type="hidden" name="desc" id = "desc" value="<%=desc%>">
+				<input type="hidden" name="super_name" id = "super_name" value="<%=super_name%>">
 				<table width=100% >
 					<tr>
 						<td colspan="16" valign="bottom"><hr color=red></hr></td>

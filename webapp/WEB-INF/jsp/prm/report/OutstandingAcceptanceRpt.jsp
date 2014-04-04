@@ -84,7 +84,7 @@ function SearchResult() {
 	<tr>
 		<td>
 			<Form action="pas.report.OutstandingAcceptanceRpt.do" name="frm" method="post">
-				<input type="hidden" name="formAction">
+				<input type="hidden" name="formAction" id="formAction">
 				<table width=100% >
 					<tr>
 						<td colspan="16" valign="bottom"><hr color=red></hr></td>

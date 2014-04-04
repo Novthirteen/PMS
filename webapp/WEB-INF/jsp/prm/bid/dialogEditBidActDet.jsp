@@ -162,10 +162,10 @@ function loadParam(){
 </IFRAME>
 <table width=100% cellpadding="1" border="0" cellspacing="1">
 	<CAPTION align=center class=pgheadsmall>Bid Activity List</CAPTION>
-	<input type="hidden" name="bidActId" value="<%=bidActId%>">
-	<input type="hidden" name="bidId" value="<%=bidId%>">
-	<input type="hidden" name="FormAction" value="<%=formAction%>">
-	<input type="hidden" name="currentStatus" value="<%=bm.getStatus()%>">
+	<input type="hidden" name="bidActId" id="bidActId" value="<%=bidActId%>">
+	<input type="hidden" name="bidId" id="bidId" value="<%=bidId%>">
+	<input type="hidden" name="FormAction" id="FormAction" value="<%=formAction%>">
+	<input type="hidden" name="currentStatus" id="currentStatus" value="<%=bm.getStatus()%>">
 	<tr>
 		<td align="left" class="lblbold" bgcolor="#e9eee9" width="20%">Assignee</td>
 		<td align="left" class="lblbold" bgcolor="#e9eee9" width="20%">Action Date</td>
@@ -177,11 +177,11 @@ function loadParam(){
 		Iterator itst = BidActDetailList.iterator();
 		int cc = 0;
 		%>
-		<input type="hidden" name="detListSize" value="<%=BidActDetailList.size()%>">
+		<input type="hidden" name="detListSize" id="detListSize" value="<%=BidActDetailList.size()%>">
 		<%if (bm.getCurrentStep()==null){%>
-			<input type="hidden" name="currPercent" value=0>
+			<input type="hidden" name="currPercent" id="currPercent" value=0>
 		<%}else{%>
-			<input type="hidden" name="currPercent" value="<%=bm.getCurrentStep().getPercentage()%>">
+			<input type="hidden" name="currPercent" id="currPercent" value="<%=bm.getCurrentStep().getPercentage()%>">
 		<%}%>
 		
 		<%
@@ -197,8 +197,8 @@ function loadParam(){
 		<tr >
 	        <td bgcolor="#e9eef9">
 		       	<div style="display:inline" id="AssigneeName"><%=bad.getAssignee().getName()%></div>
-				<input type="hidden" name="Assignee" value="<%=bad.getAssignee().getUserLoginId()%>">
-				<input type="hidden" name="detailId" value="<%=bad.getId()%>">
+				<input type="hidden" name="Assignee" id="Assignee" value="<%=bad.getAssignee().getUserLoginId()%>">
+				<input type="hidden" name="detailId" id="detailId" value="<%=bad.getId()%>">
 				<%//if (AOFSECURITY.hasEntityPermission("SALES_FUNNEL", "_ALL", session)) {%>
 		<!--			<a href="javascript:showStaff(<%=count%>)">
 						<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" />
@@ -207,7 +207,7 @@ function loadParam(){
 				<%//}%>
 	        </td>
 	        <td bgcolor="#e9eef9">
-	        	<input type="text" class="inputBox" name="actionDate<%=cc%>" value="<%=formater.format(bad.getActionDate())%>" size="12">
+	        	<input type="text" class="inputBox" name="actionDate<%=cc%>" id="actionDate<%=cc%>" value="<%=formater.format(bad.getActionDate())%>" size="12">
 				<A href="javascript:ShowCalendar(document.EditForm.dimg<%=cc%>,document.EditForm.actionDate<%=cc%>,null,0,330)" 
 							onclick=event.cancelBubble=true;>
 					<IMG align=absMiddle border=0 id=dimg<%=cc%> src="<%=request.getContextPath()%>/images/datebtn.gif" >
@@ -233,28 +233,28 @@ function loadParam(){
 		}
 	%>
 	<%if (BidActDetailList.size() > 0){%>
-			<input type="hidden" name="sumHr" value=<%=sumHr%>>
+			<input type="hidden" name="sumHr" id="sumHr" value=<%=sumHr%>>
 		<%}else{%>
-			<input type="hidden" name="sumHr" value=0>
+			<input type="hidden" name="sumHr" id="sumHr" value=0>
 		<%}%>
 	
 	
-		<input type="hidden" name="cc" value="<%=cc%>">
+		<input type="hidden" name="cc" id="cc" value="<%=cc%>">
 		<tr>
 			<td colspan=8 valign="bottom"><hr color="#B5D7D6"></hr></td>
 		</tr>
 		<tr>
 			<td align="left">
 				<div style="display:inline" id="aAssigneeName"><%=ul.getName()%></div>
-				<input type="hidden" name="aAssignee" value="<%=ul.getUserLoginId()%>">
+				<input type="hidden" name="aAssignee" id="aAssignee" value="<%=ul.getUserLoginId()%>">
 				<%//if (AOFSECURITY.hasEntityPermission("PROJ_PRESALE", "_ALL", session)) {%>
 		<!--		<a href="javascript:void(0)" onclick="showStaff1();event.returnValue=false;">
 				<img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>  
 		-->
 				<%//}%>
 		
-				<input type="hidden" name="aName" value="<%=ul.getName()%>">
-				<input type="hidden" name="aId" value="<%=ul.getUserLoginId()%>">
+				<input type="hidden" name="aName" id="aName" value="<%=ul.getName()%>">
+				<input type="hidden" name="aId" id="aId" value="<%=ul.getUserLoginId()%>">
 	        </td>
 	        <td align="left">
 			<input type="text" class="inputBox" name="aDate" value="<%=formater.format((java.util.Date)UtilDateTime.nowTimestamp())%>" size="12">

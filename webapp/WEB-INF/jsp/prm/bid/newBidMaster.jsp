@@ -318,7 +318,7 @@ function onCurrSelect(){
 		scrolling=no src="includes/date/calendar.htm"
 		style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 	</IFRAME>
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 	<table width=100% cellpadding="1" border="0" cellspacing="1">	
 		<tr>
 			<td align=left width='90%' class="wpsPortletTopTitle" colspan=6>New Bid Master</td>
@@ -326,22 +326,22 @@ function onCurrSelect(){
 		<tr>
 			<td width='100%'>
 			
-				<input type="hidden" name="formAction" value="new"> 
-				<input type="hidden" name="prospectCompanyId" value="">
-				<input type="hidden" name="departmentId" value="<%=dept%>">
-				<input type="hidden" name="offSet" value="<%=offSet%>">
+				<input type="hidden" name="formAction" id="formAction" value="new"> 
+				<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="">
+				<input type="hidden" name="departmentId" id="departmentId" value="<%=dept%>">
+				<input type="hidden" name="offSet" id="offSet" value="<%=offSet%>">
 				
 				<table width='100%' border='0' cellspacing='2' cellpadding='0'>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Bid No.:&nbsp;</span></td>
 						<td colspan=2>System Auto Generate</td>
 						<td align="right" class="lblbold"><span class="tabletext">Bid Description:&nbsp;</span></td>
-						<td colspan=2><input type="text" class="inputBox" name="description" value="" size="50" /></td>
+						<td colspan=2><input type="text" class="inputBox" name="description" id="description" value="" size="50" /></td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold">Department:&nbsp;</td>
 						<td class="lblLight" colspan=2>
-							<select name="dapartmentId" onchange="javascript:onDepSelect()" class="inputBox">
+							<select name="dapartmentId" id="dapartmentId" onchange="javascript:onDepSelect()" class="inputBox">
 								<%
 								Iterator itd = partyList.iterator();
 								while(itd.hasNext()){
@@ -367,8 +367,8 @@ function onCurrSelect(){
 							}
 							%>
 							<div style="display:inline" id="labelPresalePM"><%=tmpSL == null ? "" : tmpSL.getName()%></div>
-							<input type="hidden" name="PresalePM" maxlength="100" value=""> 
-							<input type="hidden" name="PresalePMId" value="<%=tmpSL == null ? "" : tmpSL.getUserLoginId()%>">
+							<input type="hidden" name="PresalePM" id="PresalePM" maxlength="100" value=""> 
+							<input type="hidden" name="PresalePMId" id="PresalePMId" value="<%=tmpSL == null ? "" : tmpSL.getUserLoginId()%>">
 							<a href="javascript:showDialog_presalePM()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>	
 					</tr>
@@ -383,22 +383,22 @@ function onCurrSelect(){
 							spName = ul.getName();
 							%>
 							<div style="display:inline" id="labelSales"><%=spName%>&nbsp;</div>
-							<input type="hidden" name="salesPersonName" maxlength="100" value="<%=spName%>">
-							<input type="hidden" name="salesPersonId" value="<%=spId%>">
+							<input type="hidden" name="salesPersonName" id="salesPersonName" maxlength="100" value="<%=spName%>">
+							<input type="hidden" name="salesPersonId" id="salesPersonId" value="<%=spId%>">
 							<a href="javascript:showDialog_account()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
 						<td align="right" class="lblbold"><span class="tabletext">Secondary Sales Person:&nbsp;</span></td>
 						<td align="left" colspan=2>
 							<div style="display:inline" id="labelSales2">&nbsp;</div>
-							<input type="hidden" name="salesPersonName2" maxlength="100" value="">
-							<input type="hidden" name="salesPersonId2" value="">
+							<input type="hidden" name="salesPersonName2" id="salesPersonName2" maxlength="100" value="">
+							<input type="hidden" name="salesPersonId2" id="salesPersonId2" value="">
 							<a href="javascript:showDialog_account2()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 						</td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Currency:&nbsp;</span></td>
 						<td colspan=2>
-							<select name="currencyId" onchange="javascript:onCurrSelect()" class="inputBox">
+							<select name="currencyId" id="currencyId" onchange="javascript:onCurrSelect()" class="inputBox">
 							<%
 							
 							for (int i0 = 0; i0 < currencyList.size(); i0++) {
@@ -419,7 +419,7 @@ function onCurrSelect(){
 						</td>
 						<td align="right" class="lblbold"><span class="tabletext">Total Contract Value:&nbsp;</span></td>
 	        			<td colspan=2>
-							<input type="text" class="inputBox" name="estimateAmount" value="0.00" size="30" onblur="checkDeciNumber2(this,1,1,'estimateAmount',-9999999999,9999999999); caculateRMB(); addComma(this, '.', '.', ',');">
+							<input type="text" class="inputBox" name="estimateAmount" id="estimateAmount" value="0.00" size="30" onblur="checkDeciNumber2(this,1,1,'estimateAmount',-9999999999,9999999999); caculateRMB(); addComma(this, '.', '.', ',');">
 	        			</td>
 					</tr>
 					<tr>			
@@ -430,14 +430,14 @@ function onCurrSelect(){
 						</td>
 						<td align="right" class="lblbold"><span class="tabletext">Total Contract Value(RMB):&nbsp;</span></td>
 	    				<td colspan=5>
-							<input type="text"  class="inputBox" style="border:0px" readonly name="caculatedAmt" value="">
+							<input type="text" class="inputBox" style="border:0px" readonly name="caculatedAmt" id="caculatedAmt" value="">
 	    				</td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Estimated Start Date:&nbsp;</span></td>
 	    				<td colspan=2>
-		    				<input type="hidden" name="hid_estimateStartDate" value="no">
-		    				<input type="text" class="inputBox" name="estimateStartDate" oldvalue="" value="" size="10">
+		    				<input type="hidden" name="hid_estimateStartDate" id="hid_estimateStartDate" value="no">
+		    				<input type="text" class="inputBox" name="estimateStartDate" id="estimateStartDate" oldvalue="" value="" size="10">
 		      				<A href="javascript:ShowCalendar(document.EditForm.dimgs,document.EditForm.estimateStartDate,null,0,330)" onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimgs src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 						</td>
 						<td align="right" class="lblbold"><span class="tabletext">Contract Type:</span></td>
@@ -449,16 +449,16 @@ function onCurrSelect(){
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Estimated End Date:&nbsp;</span></td>
 	    				<td colspan=2>
-	    					<input type="hidden" name="hid_estimateEndDate" value="no">
-	      					<input type="text" class="inputBox" name="estimateEndDate" oldvalue="" value="" size="10">
+	    					<input type="hidden" name="hid_estimateEndDate" id="hid_estimateEndDate" value="no">
+	      					<input type="text" class="inputBox" name="estimateEndDate" id="estimateEndDate" oldvalue="" value="" size="10">
 	      					<A href="javascript:ShowCalendar(document.EditForm.dimge,document.EditForm.estimateEndDate,null,0,330)" onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimge src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 						</td>
 					</tr>
 					<tr>
 						<td align="right" class="lblbold"><span class="tabletext">Expected Sign Date:</span></td>
 	        			<td colspan=2>
-	        				<input type="hidden" name="hid_expectedEndDate" value="no">
-	        				<input type="text" class="inputBox" name="expectedEndDate" oldvalue="" value="" size="10">
+	        				<input type="hidden" name="hid_expectedEndDate" id="hid_expectedEndDate" value="no">
+	        				<input type="text" class="inputBox" name="expectedEndDate" id="expectedEndDate" oldvalue="" value="" size="10">
 	          				<A href="javascript:ShowCalendar(document.EditForm.dimgx,document.EditForm.expectedEndDate,null,0,330)" onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimgx src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 						</td>
 					</tr>
@@ -499,7 +499,7 @@ function onCurrSelect(){
 					<tr>
 						<td align="right"  class="lblbold">
 							<span class="tabletext">Customer Name:&nbsp;</span>
-							<input type="hidden" name="prospectCompanyId" value="">
+							<input type="hidden" name="prospectCompanyId" id="prospectCompanyId" value="">
 						</td>
 						<td align="left" width=25% colspan=2>
 							<a href="javascript:void(0)" onclick="showProspectDialog1();event.returnValue=false;"><div style="display:inline" id="name"></div></a>

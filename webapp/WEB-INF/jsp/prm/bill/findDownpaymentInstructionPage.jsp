@@ -71,9 +71,9 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_DOWNPAYMENT", "_VIEW", session)) {
 	<tr>
 		<td>
 			<form name="queryForm" action="FindDownpaymentInstruction.do" method="post">
-				<input type="hidden" name="action" value="query">
-				<input type="hidden" name="billId" value="">
-				<input type="hidden" name="offSet" value="0">
+				<input type="hidden" name="action" id="action" value="query">
+				<input type="hidden" name="billId" id="billId" value="">
+				<input type="hidden" name="offSet" id="offSet" value="0">
 				<TABLE width="100%">
 					<tr>
 						<td colspan=12><hr color=red></hr></td>
@@ -81,13 +81,13 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_DOWNPAYMENT", "_VIEW", session)) {
 					
 					<tr>
 						<td class="lblbold">Bill Code:</td>
-						<td class="lblLight"><input type="text" name="billCode" size="15" value="<%=billCode != null ? billCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="billCode" id="billCode" size="15" value="<%=billCode != null ? billCode : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Project:</td>
-						<td class="lblLight"><input type="text" name="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="project" id="project" size="15" value="<%=project != null ? project : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Customer:</td>
-						<td class="lblLight"><input type="text" name="customer" size="15" value="<%=customer != null ? customer : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="customer" id="customer" size="15" value="<%=customer != null ? customer : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 						<td class="lblbold">Bill To:</td>
-						<td class="lblLight"><input type="text" name="billTo" size="15" value="<%=billTo != null ? billTo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
+						<td class="lblLight"><input type="text" name="billTo" id="billTo" size="15" value="<%=billTo != null ? billTo : ""%>" style="TEXT-ALIGN: left" class="lbllgiht"></td>
 					</tr>
 					
 					<tr>
@@ -136,14 +136,14 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_DOWNPAYMENT", "_VIEW", session)) {
 				</table>
 			</form>
 			<form name="editForm" action="EditDownpaymentInstruction.do" method="post">
-				<input type="hidden" name="formAction" value="view">
-				<input type="hidden" name="billId" value="">
-				<input type="hidden" name="billCode" value="">
-				<input type="hidden" name="project" value="">
-				<input type="hidden" name="customer" value="">
-				<input type="hidden" name="billTo" value="">
-				<input type="hidden" name="department" value="">
-				<input type="hidden" name="status" value="">
+				<input type="hidden" name="formAction" id="formAction" value="view">
+				<input type="hidden" name="billId" id="billId" value="">
+				<input type="hidden" name="billCode" id="billCode" value="">
+				<input type="hidden" name="project" id="project" value="">
+				<input type="hidden" name="customer" id="customer" value="">
+				<input type="hidden" name="billTo" id="billTo" value="">
+				<input type="hidden" name="department" id="department" value="">
+				<input type="hidden" name="status" id="status" value="">
 			</form>
 		</td>
 	</tr>

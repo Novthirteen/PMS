@@ -69,10 +69,10 @@ if (AOFSECURITY.hasEntityPermission("PROJ_LOST", "_CREATE", session)) {
 	}
 %>
 <form name="backForm" action="findLost.do" method="post">
-	<input type="hidden" name="formAction" value="query">
-	<input type="hidden" name="qryBillCode" value="<%=qryBillCode%>">
-	<input type="hidden" name="qryProject" value="<%=qryProject%>">
-	<input type="hidden" name="qryDepartment" value="<%=qryDepartment%>">
+	<input type="hidden" name="formAction" id="formAction" value="query">
+	<input type="hidden" name="qryBillCode" id="qryBillCode" value="<%=qryBillCode%>">
+	<input type="hidden" name="qryProject" id="qryProject" value="<%=qryProject%>">
+	<input type="hidden" name="qryDepartment" id="qryDepartment" value="<%=qryDepartment%>">
 </form>
 <%
 	if (pi == null || pi.getId() == null) {

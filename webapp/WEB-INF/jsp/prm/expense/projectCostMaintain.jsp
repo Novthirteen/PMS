@@ -150,10 +150,10 @@ Num_formater.setMinimumFractionDigits(2);
 %>
 
 <Form action="projectList.do" name="ProjectListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <Form action="userList.do" name="UserListForm" method="post">
-	<input type="hidden" name="CALLBACKNAME">
+	<input type="hidden" name="CALLBACKNAME" id="CALLBACKNAME">
 </Form>
 <html:form action="projectCostMaintain.do"  method="post">
 <IFRAME frameBorder=0 id=CalFrame marginHeight=0 
@@ -161,10 +161,10 @@ Num_formater.setMinimumFractionDigits(2);
 	scrolling=no src="includes/date/calendar.htm" 
 	style="DISPLAY: none; HEIGHT: 194px; POSITION: absolute; WIDTH: 148px; Z-INDEX: 100">
 </IFRAME>
-<input type="hidden" name="FormAction">
-<input type="hidden" name="hiddenNumber">
-<input type="hidden" name="Type" value="<%=Type%>">
-<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+<input type="hidden" name="FormAction" id="FormAction">
+<input type="hidden" name="hiddenNumber" id="hiddenNumber">
+<input type="hidden" name="Type" id="Type" value="<%=Type%>">
+<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 	<!-- Left Spacer -->
@@ -193,10 +193,10 @@ Num_formater.setMinimumFractionDigits(2);
 					<tr>
 						<td class="lblbold" nowrap width=20%><bean:message key="prm.projectCostMaintain.refNoLable"/>:&nbsp</td>
 						<td class="lblbold" nowrap width=30%>&nbsp;
-							<html:text property="refNo" size="30"/></td>
+							<html:text property="refNo" styleId="refNo" size="30"/></td>
 						<td class="lblbold" nowrap width=20%><bean:message key="prm.projectCostMaintain.costDescriptionLable"/>&nbsp</td>
 						<td class="lblbold" width=30%>&nbsp;
-							<html:text property="costDescription" size="30"/>
+							<html:text property="costDescription" styleId="costDescription" size="30"/>
 						</td>
 					</tr>
 					<%
@@ -270,7 +270,7 @@ Num_formater.setMinimumFractionDigits(2);
 					<tr>
 						<td class="lblbold" nowrap>Cost <bean:message key="prm.projectCostMaintain.typeLable"/>:&nbsp</td>
 						<td class="lblbold" nowrap>&nbsp;
-							<html:select property = "typeSelect" size="1">
+							<html:select property = "typeSelect" styleId = "typeSelect" size="1">
 							<html:optionsCollection name="typeSelectArr" value="key" label="value" />
 							</html:select>							
 						</td>
@@ -281,7 +281,7 @@ Num_formater.setMinimumFractionDigits(2);
 					%>	
 						<td class="lblbold" nowrap>Paid By:&nbsp</td>
 						<td class="lblbold" nowrap>&nbsp;
-							<html:select property = "ClaimTypeSelect" size="1">
+							<html:select property = "ClaimTypeSelect" styleId = "ClaimTypeSelect" size="1">
 								<html:optionsCollection name="ClaimTypeSelectArr" value="key" label="value" />
 							</html:select>
 						</td>
@@ -294,7 +294,7 @@ Num_formater.setMinimumFractionDigits(2);
 							<div style="display:inline" id="labelPayFor">
 								<%=vendor%>
 							</div>
-							<input type=hidden name="payFor" value="<%=payFor%>">
+							<input type="hidden" name="payFor" id="payFor" value="<%=payFor%>">
 							<a href="javascript:void(0)" onclick="showVendorDialog();event.returnValue=false;">
 							<img align="absmiddle" alt="<bean:message key="helpdesk.call.select"/>" src="images/select.gif" border="0"/></a>
 							
@@ -307,23 +307,23 @@ Num_formater.setMinimumFractionDigits(2);
 					<tr>
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.currencyLable"/>:&nbsp</td>
 						<td class="lblbold" nowrap>&nbsp;
-							<html:select property = "currencySelect" onchange = "javascript:onCurrSelect()" size="1">
+							<html:select property = "currencySelect" styleId = "currencySelect" onchange = "javascript:onCurrSelect()" size="1">
 							<html:optionsCollection name="currencySelectArr" value="key" label="value" />
 							</html:select>	
 						</td>
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.exchangeRateLable"/>(RMB):&nbsp</td>
 						<td class="lblbold">&nbsp;
-							<html:text property="exchangeRate" size="30"/>
+							<html:text property="exchangeRate" styleId="exchangeRate" size="30"/>
 						</td>
 					</tr>
 					<tr>
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.totalValueLable"/> (RMB) :&nbsp</td>
 						<td class="lblbold">&nbsp;
-							<html:text property="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
+							<html:text property="totalValue" styleId="totalValue" size="30" onblur="checkDeciNumber2(this,1,1,'Amount Value',-9999999,9999999); addComma(this, '.', '.', ',');"/>
 						</td>
 						<td class="lblbold" nowrap><bean:message key="prm.projectCostMaintain.costDateLable"/>(YYYY-MM-DD):&nbsp</td>
 						<td class="lblbold">&nbsp;
-							<html:text property="costDate" size="30"/>
+							<html:text property="costDate" styleId="costDate" size="30"/>
 							<A href="javascript:ShowCalendar(document.ProjectCostMaintainForm.dimg,document.ProjectCostMaintainForm.costDate,null,0,330)" 
 								onclick=event.cancelBubble=true;><IMG align=absMiddle border=0 id=dimg src="<%=request.getContextPath()%>/images/datebtn.gif" ></A>
 						</td>
@@ -373,7 +373,7 @@ Num_formater.setMinimumFractionDigits(2);
 	</td>
 	</tr>
 </table>
-<input type="hidden" name="DataId" value="<%=DataId%>">
+<input type="hidden" name="DataId" id="DataId" value="<%=DataId%>">
 </html:form>
 <%
 	Hibernate2Session.closeSession();

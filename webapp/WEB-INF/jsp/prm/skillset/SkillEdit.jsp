@@ -152,7 +152,7 @@ try{
 
   			<xsl:template match="leaf">
   				<table><tr>
-  					<input type="hidden" name="cat">
+  					<input type="hidden" name="cat" id="cat">
   						<xsl:attribute name="value"><xsl:value-of select="@id"/></xsl:attribute>
   					</input>
 					<td width="195">
@@ -175,7 +175,7 @@ try{
 					// 如果该员工没有填写skill set，则显示空的技能树
 					if(valueList == null || valueList.size() <= 0){
 					%>
-					<input type="hidden" name="formAction" value="create"/>
+					<input type="hidden" name="formAction" id="formAction" value="create"/>
 					
 					<td>
       					<input type="radio" style="border:0px;background-color:#ffffff">      						
@@ -223,7 +223,7 @@ try{
 	      				// 如果填写了skill set，则check对应的radio
 	      				int size = valueList.size();
 	      			%>
-	      			<input type="hidden" name="formAction" value="update"/>
+	      			<input type="hidden" name="formAction" id="formAction" value="update"/>
 	      			<xsl:variable name="haveData">
 	      				<xsl:choose>
 	      				<%

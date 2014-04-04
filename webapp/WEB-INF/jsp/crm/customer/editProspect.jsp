@@ -72,8 +72,8 @@ try{
     	action="update";
 %>
 	<form action="editProspect.do" method="post" name="frm">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -84,7 +84,7 @@ try{
           <span class="tabletext"><bean:message key="System.Party.partyId2"/>:&nbsp;</span>
         </td>
         <td>
-          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" value="<%=CustParty.getPartyId()%>">
+          <span class="tabletext"><%=CustParty.getPartyId()%>&nbsp;</span><input type="hidden" name="PartyId" id = "PartyId" value="<%=CustParty.getPartyId()%>">
         </td>
 		<td align="right">
           <span class="tabletext">&nbsp;</span>
@@ -201,7 +201,7 @@ try{
 			<%
 				}
 			%>
-	  <input type="hidden" name="role" value="CUSTOMER">
+	  <input type="hidden" name="role" id = "role" value="CUSTOMER">
       <tr><td>&nbsp;</td><td><br></td></tr>  
       <tr>
         <td align="right">
@@ -223,8 +223,8 @@ try{
 	}else{
 %>
 	<form action="editCustParty.do" method="post">
-    <input type="hidden" name="action" value="<%=action%>">
-	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
+    <input type="hidden" name="action" id = "action" value="<%=action%>">
+	<input type="hidden" name="<%=PageKeys.TOKEN_PARA_NAME%>" id = "<%=PageKeys.TOKEN_PARA_NAME%>" value="<%=(String)session.getAttribute(PageKeys.TOKEN_SESSION_NAME)%>">
     <table width='100%' border='0' cellpadding='0' cellspacing='2'>
       <tr>
       <td>&nbsp;	
@@ -336,7 +336,7 @@ try{
           <input type="text" class="inputBox" name="AccountCode"  size="30">
         </td>
       </tr>
-	  <input type="hidden" name="role" value="CUSTOMER">
+	  <input type="hidden" name="role" id = "role" value="CUSTOMER">
       <tr><td>&nbsp;</td><td><br></td></tr>  
       <%if(hasError!=null){%>
       	<tr><td colspan="4" align="center"><font color="red"><%=(String)hasError%></font></td></tr>

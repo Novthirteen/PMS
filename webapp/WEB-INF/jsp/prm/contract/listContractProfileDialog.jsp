@@ -82,7 +82,7 @@ if (AOFSECURITY.hasEntityPermission("CONTRACT_PROFILE", "_VIEW", session)) {
 
 	<BODY>
 		<form name="frm" action="findContractProfile.do" method="post">
-			<input type="hidden" name="formAction" value="dialogView">
+			<input type="hidden" name="formAction" id="formAction" value="dialogView">
 			<table width=100% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Contract Profile List</CAPTION>
 				<tr>
@@ -181,18 +181,18 @@ if (AOFSECURITY.hasEntityPermission("CONTRACT_PROFILE", "_VIEW", session)) {
 		  					<tr bgcolor="#e9eee9">  
 		  						<td align="center">
 			  						<input type="radio" class="radiostyle" name="contract" value="<%=count++%>">
-			  						<input type="hidden" name="contractId" value="<bean:write name="p" property="id"/>">
-			  						<input type="hidden" name="contractNo" value="<bean:write name="p" property="no"/>">
-			  						<input type="hidden" name="description" value="<bean:write name="p" property="description"/>">
-			  						<input type="hidden" name="departmentId" value="<bean:write name="p" property="department.partyId"/>">
-			  						<input type="hidden" name="totalContractValue" value="<%=numFormater.format(p.getTotalContractValue())%>">
-			  						<input type="hidden" name="comments" value="<%=p.getComments()%>">
-			  						<input type="hidden" name="contractType" value="<bean:write name="p" property="contractType"/>">
-			  						<input type="hidden" name="startDate" value="<%=dateFormater.format(p.getStartDate())%>">
-			  						<input type="hidden" name="endDate" value="<%=dateFormater.format(p.getEndDate())%>">
-			  						<input type="hidden" name="custPaidAllowance" value="<bean:write name="p" property="custPaidAllowance"/>">
-			  						<input type="hidden" name="customerId" value="<bean:write name="p" property="customer.partyId"/>">
-			  						<input type="hidden" name="customerName" value="<bean:write name="p" property="customer.description"/>">
+			  						<input type="hidden" name="contractId" id="contractId" value="<bean:write name="p" property="id"/>">
+			  						<input type="hidden" name="contractNo" id="contractNo" value="<bean:write name="p" property="no"/>">
+			  						<input type="hidden" name="description" id="description" value="<bean:write name="p" property="description"/>">
+			  						<input type="hidden" name="departmentId" id="departmentId" value="<bean:write name="p" property="department.partyId"/>">
+			  						<input type="hidden" name="totalContractValue" id="totalContractValue" value="<%=numFormater.format(p.getTotalContractValue())%>">
+			  						<input type="hidden" name="comments" id="comments" value="<%=p.getComments()%>">
+			  						<input type="hidden" name="contractType" id="contractType" value="<bean:write name="p" property="contractType"/>">
+			  						<input type="hidden" name="startDate" id="startDate" value="<%=dateFormater.format(p.getStartDate())%>">
+			  						<input type="hidden" name="endDate" id="endDate" value="<%=dateFormater.format(p.getEndDate())%>">
+			  						<input type="hidden" name="custPaidAllowance" id="custPaidAllowance" value="<bean:write name="p" property="custPaidAllowance"/>">
+			  						<input type="hidden" name="customerId" id="customerId" value="<bean:write name="p" property="customer.partyId"/>">
+			  						<input type="hidden" name="customerName" id="customerName" value="<bean:write name="p" property="customer.description"/>">
 			  					</td>
 			  					
 			  					<td align="left">
@@ -217,7 +217,7 @@ if (AOFSECURITY.hasEntityPermission("CONTRACT_PROFILE", "_VIEW", session)) {
 						    		<input type="button" class="button" name="select" value="Select" onclick="doSelect();">
 						    	</td>
 								<td width="100%" colspan="11" align="right" class=lblbold>Pages&nbsp;:&nbsp;
-									<input type=hidden name="offset" value="<%=offset%>">
+									<input type="hidden" name="offset" id="offset" value="<%=offset%>">
 									<%
 										int RecordSize = result.size();
 										int l = 0;

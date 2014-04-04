@@ -78,7 +78,7 @@ function fnSubmit1(start) {
 	
 	<td>
 		<form name="frm" action="listCustProjectEvent.do" method="post">
-			<input type=hidden name="offset" value="<%=offset%>">
+			<input type="hidden" name="offset" Id="offset" value="<%=offset%>">
 			Event Name:
 			<input type="text" name="text" value="<%=text%>" class="">
 		    Event Category:

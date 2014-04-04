@@ -88,7 +88,7 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_CALENDAR", "_CREATE", session)) {
   <TR>
     <TD width='100%'>
 		<form Action="editProjCalendar.do" method="post" name="form1">
-			<input type="hidden" name="action" value="view">
+			<input type="hidden" name="action" id="action" value="view">
 			<IFRAME frameBorder=0 id=CalFrame marginHeight=0 
 				marginWidth=0 noResize 
 				scrolling=no src="includes/date/calendar.htm" 
@@ -165,10 +165,10 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_CALENDAR", "_CREATE", session)) {
   	<TR>
     	<TD width='100%'>
 			<form Action="editProjCalendar.do" method="post" name="form2">
-				<input type="hidden" name="action" value="update">
-				<input type="hidden" name="year" value="<%= year + ""%>">
-				<input type="hidden" name="month" value="<%= month + ""%>">
-				<input type="hidden" name="typeId" value="<%= typeId + ""%>">
+				<input type="hidden" name="action" id="action" value="update">
+				<input type="hidden" name="year" id="year" value="<%= year + ""%>">
+				<input type="hidden" name="month" id="month" value="<%= month + ""%>">
+				<input type="hidden" name="typeId" id="typeId" value="<%= typeId + ""%>">
 				<table width="100%" cellpadding="1" border="0" cellspacing="1">
 				<%
 					Calendar capCalendar = Calendar.getInstance();
@@ -259,11 +259,11 @@ if (AOFSECURITY.hasEntityPermission("PROJECT_CALENDAR", "_CREATE", session)) {
 								<%=calendar.get(Calendar.DATE)%>&nbsp;
 							</td>
 							<td align="center">
-								<input type="hidden" name="Id" value="<%=projectCalendar.getId() != null ? projectCalendar.getId() + "" : ""%>">
-								<input type="hidden" name="PC_Date_Year" value="<%=calendar.get(Calendar.YEAR)%>">
-								<input type="hidden" name="PC_Date_Month" value="<%=calendar.get(Calendar.MONTH)%>">
-								<input type="hidden" name="PC_Date_Date" value="<%=calendar.get(Calendar.DATE)%>">
-								<input type="text" name="PC_Hours" size="2" value="<%=projectCalendar.getHours()%>">
+								<input type="hidden" name="Id" id="Id" value="<%=projectCalendar.getId() != null ? projectCalendar.getId() + "" : ""%>">
+								<input type="hidden" name="PC_Date_Year" id="PC_Date_Year" value="<%=calendar.get(Calendar.YEAR)%>">
+								<input type="hidden" name="PC_Date_Month" id="PC_Date_Month" value="<%=calendar.get(Calendar.MONTH)%>">
+								<input type="hidden" name="PC_Date_Date" id="PC_Date_Date" value="<%=calendar.get(Calendar.DATE)%>">
+								<input type="text" name="PC_Hours" id="PC_Hours" size="2" value="<%=projectCalendar.getHours()%>">
 							</td>
 					<%
 							if (count % 7 == 6) {	

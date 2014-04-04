@@ -106,10 +106,10 @@ if (AOFSECURITY.hasEntityPermission("MEETING_ROOM_BOOKING", "_CREATE", session))
 		<form name="editForm" action="bookingRoomAction.do" method="post">
 			<table width=100% cellpadding="1" border="0" cellspacing="1">
 				<CAPTION align=center class=pgheadsmall>Edit Meeting Room Booking</CAPTION>
-				<input type="hidden" name="command" value="list4Add">
-				<input type="hidden" name="formAction" value="">
-				<input type="hidden" name="date" value="<%=dateAdd%>">
-				<input type="hidden" name="room" value="<%=roomAdd%>">
+				<input type="hidden" name="command" id = "command" value="list4Add">
+				<input type="hidden" name="formAction" id = "formAction" value="">
+				<input type="hidden" name="date" id = "date" value="<%=dateAdd%>">
+				<input type="hidden" name="room" id = "room" value="<%=roomAdd%>">
 				<tr align="center">
 					<td align="center" class="lblbold" bgcolor="#e9eee9" width="20%">Name</td>
 					<td align="center" class="lblbold" bgcolor="#e9eee9" width="20%">Time</td>
@@ -121,7 +121,7 @@ if (AOFSECURITY.hasEntityPermission("MEETING_ROOM_BOOKING", "_CREATE", session))
 						BookingRoomVO tmpValue = (BookingRoomVO)valueList.get(i);					
 				%>				
 				<tr>
-					<input type="hidden" name="bookingId" value="<%=tmpValue.getBookingId()%>">
+					<input type="hidden" name="bookingId" id = "bookingId" value="<%=tmpValue.getBookingId()%>">
 			        <td bgcolor="#e9eef9" align="center"><%=tmpValue.getPerson().getName()%></td>
 			    	<td bgcolor="#e9eef9" align="center">
 			    		From:&nbsp;
@@ -143,7 +143,7 @@ if (AOFSECURITY.hasEntityPermission("MEETING_ROOM_BOOKING", "_CREATE", session))
 				<tr>
 					<td align="center">
 						
-						<input type="text" class="inputBox" name="iPerson" size="15" value="" readonly>
+						<input type="text" class="inputBox" name="iPerson" id="iPerson" size="15" value="" readonly>
 						<a href="javascript:showDialog_account()"><img align="absmiddle" alt="<bean:message key="helpdesk.call.select" />" src="images/select.gif" border="0" /></a>
 				    </td>
 					<td align="center">
